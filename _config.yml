@@ -1,0 +1,8 @@
+title: adbc-drivers.org
+description: >-
+  Description for adbc-drivers.org
+url: "https://adbc-drivers.org"
+github_username: adbc-drivers
+theme: null
+plugins:
+  - jekyll-feed
