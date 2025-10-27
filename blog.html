@@ -41,11 +41,12 @@ title: Blog
   font-size: 3rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  color: #111;
+  color: var(--text-primary-color);
 }
 
 .blog-description {
-  color: #666;
+  color: var(--text-primary-color);
+  opacity: 0.7;
   font-size: 1.125rem;
   margin: 0;
 }
@@ -67,7 +68,8 @@ title: Blog
 
 .post-date {
   display: block;
-  color: #666;
+  color: var(--text-primary-color);
+  opacity: 0.7;
   font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
@@ -83,23 +85,25 @@ title: Blog
 }
 
 .post-title a {
-  color: #111;
+  color: var(--text-primary-color);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .post-title a:hover {
-  color: #0066cc;
+  color: var(--link-primary-color);
 }
 
 .post-author {
-  color: #666;
+  color: var(--text-primary-color);
+  opacity: 0.7;
   font-size: 0.95rem;
   margin: 0 0 1rem 0;
 }
 
 .post-excerpt {
-  color: #444;
+  color: var(--text-primary-color);
+  opacity: 0.8;
   font-size: 1.0625rem;
   line-height: 1.7;
   margin: 1rem 0;
@@ -111,27 +115,28 @@ title: Blog
 
 .read-more {
   display: inline-block;
-  color: #0066cc;
+  color: var(--link-primary-color);
   text-decoration: none;
   font-weight: 500;
   font-size: 0.95rem;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
+  opacity: 0.8;
 }
 
 .read-more:hover {
-  color: #0044aa;
+  opacity: 1;
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .blog-index {
     padding: 2rem 1.5rem;
   }
-  
+
   .blog-header h1 {
     font-size: 2.25rem;
   }
-  
+
   .post-title {
     font-size: 1.5rem;
   }
