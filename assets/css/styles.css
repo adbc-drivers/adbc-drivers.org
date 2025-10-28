@@ -1,20 +1,41 @@
 :root {
-  --primary-bg: white;
-  --secondary-bg: black;
+  --primary-bg: rgb(255, 255, 255);
+  --secondary-bg: rgb(255, 255, 255);
   --text-primary-color: rgb(50, 50, 50);
-  --text-secondary-color: rgb(225, 225, 225);
+  --text-secondary-color: rgb(50, 50, 50);
+  ;
   --link-primary-color: rgb(0, 0, 200);
-  --link-secondary-color: rgb(225, 225, 225);
-  --link-secondary-color-active: rgb(255, 255, 255);
+  --link-secondary-color: rgb(120, 0, 200);
+  --logo-color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-bg: rgb(30, 30, 30);
+    --secondary-bg: rgb(30, 30, 30);
+    --text-primary-color: rgb(225, 225, 225);
+    --text-secondary-color: rgb(225, 225, 225);
+    --link-primary-color: rgb(68, 147, 248);
+    --link-secondary-color: rgb(52, 113, 194);
+    --logo-color: white;
+  }
 }
 
 body {
   background-color: var(--secondary-bg);
   color: var(--text-primary-color);
   font-size: 16px;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Inter", system-ui, -apple-system, BkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   margin: 0;
   padding: 0;
+}
+
+a {
+  color: var(--link-primary-color);
+}
+
+a:visited {
+  color: var(--link-secondary-color);
 }
 
 body>header,
@@ -45,12 +66,16 @@ body>header {
   place-items: center;
 }
 
-body>header img {
+body>header svg {
   max-width: 100%;
   max-height: 300px;
   height: auto;
   width: auto;
-  object-fit: contain;
+  color: var(--logo-color);
+}
+
+body>footer svg {
+  color: var(--logo-color);
 }
 
 body>main {
@@ -81,3 +106,5 @@ body>footer>div {
     max-width: 512px;
   }
 }
+
+/* Blog styles */
