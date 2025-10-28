@@ -3,9 +3,142 @@ layout: default
 title: Blog
 ---
 
-{% for post in site.posts %}
-<div>
-  <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-  {{ post.excerpt }}
+<div class="blog-index">
+  <div class="posts-list">
+    {% for post in site.posts %}
+    <article class="post-preview">
+      <time class="post-date">{{ post.date | date: "%B %d, %Y" }}</time>
+      <h2 class="post-title">
+        <a href="{{ post.url }}">{{ post.title }}</a>
+      </h2>
+      {% if post.author %}
+        <p class="post-author">{{ post.author }}</p>
+      {% endif %}
+      <div class="post-excerpt">
+        {{ post.excerpt }}
+      </div>
+      <a href="{{ post.url }}" class="read-more">Read more →</a>
+    </article>
+    {% endfor %}
+  </div>
 </div>
-{% endfor %}
+
+<style>
+.blog-index {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+.blog-header {
+  margin-bottom: 4rem;
+  text-align: center;
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+.blog-header h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  color: var(--text-primary-color);
+}
+
+.blog-description {
+  color: var(--text-primary-color);
+  opacity: 0.7;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.posts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.post-preview {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.post-preview:last-child {
+  border-bottom: none;
+}
+
+.post-date {
+  display: block;
+  color: var(--text-primary-color);
+  opacity: 0.7;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.post-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.3;
+}
+
+.post-title a {
+  color: var(--text-primary-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.post-title a:hover {
+  color: var(--link-primary-color);
+}
+
+.post-author {
+  color: var(--text-primary-color);
+  opacity: 0.7;
+  font-size: 0.95rem;
+  margin: 0 0 1rem 0;
+}
+
+.post-excerpt {
+  color: var(--text-primary-color);
+  opacity: 0.8;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.post-excerpt p {
+  margin: 0;
+}
+
+.read-more {
+  display: inline-block;
+  color: var(--link-primary-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: opacity 0.2s;
+  opacity: 0.8;
+}
+
+.read-more:hover {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .blog-index {
+    padding: 2rem 1.5rem;
+  }
+
+  .blog-header h1 {
+    font-size: 2.25rem;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+  }
+}
+</style>
