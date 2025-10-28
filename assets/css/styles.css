@@ -3,7 +3,7 @@
   --secondary-bg: black;
   --text-primary-color: rgb(50, 50, 50);
   --text-secondary-color: rgb(225, 225, 225);
-  --link-primary-color: blue;
+  --link-primary-color: rgb(0, 0, 200);
   --link-secondary-color: rgb(225, 225, 225);
   --link-secondary-color-active: rgb(255, 255, 255);
 }
