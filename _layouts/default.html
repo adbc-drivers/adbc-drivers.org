@@ -20,22 +20,13 @@
 </head>
 
 <body>
-  <header>
-    <div class="section-inner">
-      {% include header.html %}
-    </div>
-  </header>
+  {% include header.html %}
   <main>
-    <div class="section-inner">
+    <div class="wrapper">
       {{ content }}
     </div>
   </main>
-  <footer>
-    <div class="section-inner">
-
-      {% include footer.html %}
-    </div>
-  </footer>
+  {% include footer.html %}
 </body>
 
 </html>
