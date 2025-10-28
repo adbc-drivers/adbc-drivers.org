@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Announcing the ADBC Driver Foundry
-author: Columnar Technologies Inc.
+author: ADBC Drivers Contributors
 ---
 
 ADBC (Arrow Database Connectivity) is at an inflection point. Launched in 2022 as a subproject of Apache Arrow, ADBC is a modern data connectivity standard built to accelerate and simplify data access for analytics applications. Leading companies including Databricks, dbt Labs, Microsoft, and Snowflake are building with ADBC.
