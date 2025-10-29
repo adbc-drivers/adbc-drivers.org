@@ -5,7 +5,7 @@ url: "https://adbc-drivers.org"
 github_username: adbc-drivers
 logo: /assets/images/adbc-drivers-logo.png
 theme: null
-
+future: true
 defaults:
   - scope:
       path: ""
