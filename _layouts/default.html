@@ -2,40 +2,39 @@
 <html lang="en">
 
 <head>
-  <title>{{ page.title }}</title>
   <meta charset="utf-8">
-  <meta name="title" content="{{ page.title }}" />
-  <meta name="description" content="Description of adbc-drivers.org" />
-  <meta property="og:title" content="{{ page.title }}" />
-  <meta property="og:description" content="Description of adbc-drivers.org" />
-  <meta property="og:image" content="/assets/images/adbc-drivers-logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* Critical CSS - prevent logo flash */
+    :root { --logo-color: black; }
+    @media (prefers-color-scheme: dark) { :root { --logo-color: white; } }
+    body>header svg, body>footer svg { color: var(--logo-color); }
+  </style>
+  <script>
+    // Apply stored theme immediately to prevent flash
+    (function() {
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme && storedTheme !== 'auto') {
+        document.documentElement.setAttribute('data-theme', storedTheme);
+      }
+    })();
+  </script>
+  <link rel="preload" href="/assets/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/styles.css">
   <link href='/assets/images/favicon.ico' rel='shortcut icon'>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-    rel="stylesheet">
+  {% seo %}
+  {% feed_meta %}
 </head>
 
 <body>
-  <header>
-    <div class="section-inner">
-      {% include header.html %}
-    </div>
-  </header>
+  {% include header.html %}
   <main>
-    <div class="section-inner">
+    <div class="wrapper">
       {{ content }}
     </div>
   </main>
-  <footer>
-    <div class="section-inner">
-
-      {% include footer.html %}
-    </div>
-  </footer>
+  {% include footer.html %}
+  <script src="/assets/js/theme-switcher.js"></script>
 </body>
 
 </html>

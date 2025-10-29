@@ -1,8 +1,18 @@
-title: adbc-drivers.org
+title: ADBC Driver Foundry
 description: >-
-  Description for adbc-drivers.org
+  An open source hub for federated ADBC driver development
 url: "https://adbc-drivers.org"
 github_username: adbc-drivers
+logo: /assets/images/adbc-drivers-logo.png
 theme: null
+future: true
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/adbc-drivers-logo.png
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap

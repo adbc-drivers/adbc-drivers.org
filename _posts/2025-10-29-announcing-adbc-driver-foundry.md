@@ -14,4 +14,4 @@ For driver developers, the Foundry offers per-project repositories with independ
 
 For driver users and downstream developers, nothing changes immediately. In the coming months, as drivers begin to be distributed from the Foundry, we’ll update some package names and class names. Stay tuned for more details in future posts.
 
-With strong foundations—and now strong scaffolding—ADBC is ready for its next stage of growth. To learn more or get involved, visit [adbc-drivers.org](https://adbc-drivers.org) or email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
+With strong foundations—and now strong scaffolding—ADBC is ready for its next stage of growth. To learn more or get involved, visit us at [github.com/adbc-drivers](https://github.com/adbc-drivers) or email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
