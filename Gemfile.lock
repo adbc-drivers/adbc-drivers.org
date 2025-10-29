@@ -322,6 +322,7 @@ DEPENDENCIES
   github-pages
   jekyll-feed (~> 0.12)
   jekyll-seo-tag
+  jekyll-sitemap
 
 BUNDLED WITH
    2.6.7
