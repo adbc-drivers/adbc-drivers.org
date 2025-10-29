@@ -55,6 +55,29 @@
   }
 }
 
+/* Manual theme overrides */
+html[data-theme="dark"] {
+  --primary-bg: rgb(30, 30, 30);
+  --secondary-bg: rgb(30, 30, 30);
+  --text-primary-color: rgb(205, 205, 205);
+  --text-primary-color-dim: rgba(225, 225, 225, 0.80);
+  --text-secondary-color: rgb(225, 225, 225);
+  --link-primary-color: rgb(68, 147, 248);
+  --link-secondary-color: rgb(52, 113, 194);
+  --logo-color: white;
+}
+
+html[data-theme="light"] {
+  --primary-bg: rgb(255, 255, 255);
+  --secondary-bg: rgb(255, 255, 255);
+  --text-primary-color: rgb(65, 65, 65);
+  --text-primary-color-dim: rgba(50, 50, 50, 0.80);
+  --text-secondary-color: rgb(50, 50, 50);
+  --link-primary-color: rgb(0, 0, 200);
+  --link-secondary-color: rgb(120, 0, 200);
+  --logo-color: black;
+}
+
 body {
   background-color: var(--secondary-bg);
   color: var(--text-primary-color);
@@ -240,4 +263,47 @@ body>footer>div {
   margin-top: 4rem;
   padding: 2rem 0 0 0;
   border-top: 1px solid #e5e5e5;
+}
+
+/* Theme switcher styles */
+.theme-switcher {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  display: flex;
+  gap: 0.125rem;
+  padding: 0.125rem;
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--text-primary-color-dim);
+  border-radius: 4px;
+  z-index: 1000;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  color: var(--text-primary-color);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.theme-btn:hover {
+  background-color: rgba(128, 128, 128, 0.2);
+}
+
+.theme-btn.active {
+  background-color: rgba(128, 128, 128, 0.4);
+  font-weight: bold;
+}
+
+.theme-btn svg {
+  width: 14px;
+  height: 14px;
 }
