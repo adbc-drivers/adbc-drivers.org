@@ -4,8 +4,14 @@ description: >-
 url: "https://adbc-drivers.org"
 github_username: adbc-drivers
 logo: /assets/images/adbc-drivers-logo.png
-image: /assets/images/adbc-drivers-logo.png
 theme: null
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/adbc-drivers-logo.png
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
