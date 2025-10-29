@@ -307,3 +307,30 @@ body>footer>div {
   width: 14px;
   height: 14px;
 }
+
+/* GitHub link styles */
+.github-link {
+  position: absolute;
+  top: calc(1.5rem - 5px);
+  right: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary-color);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+}
+
+.github-link:hover {
+  opacity: 0.7;
+}
+
+.github-link:visited {
+  color: var(--text-primary-color);
+}
+
+.github-link svg {
+  width: 42px;
+  height: 42px;
+}
