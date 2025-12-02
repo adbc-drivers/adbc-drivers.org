@@ -405,7 +405,7 @@ body>footer>div {
   gap: 0.35rem;
   color: var(--text-primary-color);
   text-decoration: none;
-  transition: opacity 0.2s ease;
+  transition: color 0.2s ease;
   z-index: 1000;
   font-size: 0.875rem;
 }
@@ -420,6 +420,11 @@ body>footer>div {
 
 .docs-link:hover,
 .github-link:hover {
+  color: var(--text-primary-color-dim);
+}
+
+.docs-link:hover svg,
+.github-link:hover svg {
   opacity: 0.7;
 }
 
