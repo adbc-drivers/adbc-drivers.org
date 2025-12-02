@@ -395,29 +395,52 @@ body>footer>div {
   height: 14px;
 }
 
-/* GitHub link styles */
+/* Header links (Docs and GitHub) */
+.docs-link,
 .github-link {
   position: absolute;
-  top: calc(1.5rem - 5px);
-  right: 1.5rem;
+  top: calc(1.5rem - 3px);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 0.35rem;
   color: var(--text-primary-color);
   text-decoration: none;
   transition: opacity 0.2s ease;
   z-index: 1000;
+  font-size: 0.875rem;
 }
 
+.docs-link {
+  right: calc(1.5rem + 32px + 0.35rem + 3rem + 1rem);
+}
+
+.github-link {
+  right: 1.5rem;
+}
+
+.docs-link:hover,
 .github-link:hover {
   opacity: 0.7;
 }
 
+.docs-link:visited,
 .github-link:visited {
   color: var(--text-primary-color);
 }
 
+.docs-link svg,
 .github-link svg {
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 319px) {
+  .docs-link span,
+  .github-link span {
+    display: none;
+  }
+
+  .docs-link {
+    right: calc(1.5rem + 32px + 0.5rem);
+  }
 }
