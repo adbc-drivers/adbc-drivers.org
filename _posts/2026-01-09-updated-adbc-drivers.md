@@ -4,7 +4,7 @@ title: Updated ADBC drivers for BigQuery, SQL Server, MySQL, Redshift, Snowflake
 author: ADBC Drivers Contributors
 ---
 
-Today the ADBC Drivers Contributors released updated drivers for six database systems, available immediately via `dbc`. To update, just `dbc install <driver>` to get the latest version.
+Today the ADBC Drivers Contributors released updated drivers for six database systems, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install <driver>` to get the latest version.
 
 The newly released drivers, and some release highlights, are:
 
@@ -12,11 +12,11 @@ The newly released drivers, and some release highlights, are:
   * Support for bulk ingest of Arrow’s list and struct types
   * General bug fixes, including fixing hangs in certain cases
 * [Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.1.0
-  * Improved support for DATETIME2, CHAR/NCHAR
+  * Improved support for `DATETIME2`, `CHAR`/`NCHAR`
   * Support for binding/ingesting Arrow’s large/view/fixed-size string and binary types
 * [MySQL driver](https://github.com/adbc-drivers/mysql) version 0.2.0
   * Force the connection timezone to UTC for consistent handling
-  * Support the BIT type
+  * Support the `BIT` type
 * [Amazon Redshift driver](https://github.com/adbc-drivers/redshift/) version 1.1.0
   * Experimental support for IdP token authentication and more options for IdP browser authentication
   * Support for binding/ingesting Arow’s list/struct types (they become `SUPER` in Redshift)
