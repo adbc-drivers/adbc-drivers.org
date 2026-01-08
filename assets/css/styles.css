@@ -350,6 +350,8 @@ body>footer>div {
   margin-top: 4rem;
   padding: 2rem 0 0 0;
   border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Theme switcher styles */
@@ -396,6 +398,7 @@ body>footer>div {
 }
 
 /* Header links (Docs and GitHub) */
+.blog-link,
 .docs-link,
 .github-link {
   position: absolute;
@@ -410,6 +413,10 @@ body>footer>div {
   font-size: 0.875rem;
 }
 
+.blog-link {
+  right: 13.8rem;
+}
+
 .docs-link {
   right: 7.85rem;
 }
@@ -418,33 +425,41 @@ body>footer>div {
   right: 1.5rem;
 }
 
+.blog-link:hover,
 .docs-link:hover,
 .github-link:hover {
   color: var(--text-primary-color-dim);
 }
 
+.blog-link:hover svg,
 .docs-link:hover svg,
 .github-link:hover svg {
   opacity: 0.7;
 }
 
+.blog-link:visited,
 .docs-link:visited,
 .github-link:visited {
   color: var(--text-primary-color);
 }
 
+.blog-link svg,
 .docs-link svg,
 .github-link svg {
   width: 32px;
   height: 32px;
 }
 
-@media (max-width: 319px) {
+@media (max-width: 419px) {
+  .blog-link span,
   .docs-link span,
   .github-link span {
     display: none;
   }
 
+  .blog-link {
+    right: 7rem;
+  }
   .docs-link {
     right: 4rem;
   }
