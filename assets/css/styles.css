@@ -350,6 +350,8 @@ body>footer>div {
   margin-top: 4rem;
   padding: 2rem 0 0 0;
   border-top: 1px solid #e5e5e5;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* Theme switcher styles */
