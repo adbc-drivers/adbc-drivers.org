@@ -13,9 +13,8 @@ The newly released drivers, and some release highlights, are:
 ### [Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.2.0
 * Add support for EntraID authentication.  To use it, [install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), log in via `az login`, and add `fedauth=` to your connection URI, like so:
 
-  ```
-  sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
-  ```
+  <!-- allow wrapping -->
+  `sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault`
 
   See the [documentation](https://docs.adbc-drivers.org/drivers/mssql/v1.2.0.html#connection-string-format) for more information.
 
