@@ -11,7 +11,13 @@ Today the ADBC Drivers Contributors released updated drivers for two database sy
 The newly released drivers, and some release highlights, are:
 
 ### [Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.2.0
-* Add support for EntraID authentication
+* Add support for EntraID authentication.  To use it, add `fedauth=` to your connection URI, like so:
+
+  ```
+  sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
+  ```
+
+  See the [documentation](https://docs.adbc-drivers.org/drivers/mssql/v1.2.0.html#connection-string-format) for more information.
 
 ### [Snowflake driver](https://github.com/adbc-drivers/snowflake) version 1.10.1
 * Fix occasional deadlocks when reading data ([bug report](https://github.com/apache/arrow-adbc/issues/3730))
