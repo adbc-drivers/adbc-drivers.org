@@ -11,7 +11,7 @@ Today the ADBC Drivers Contributors released updated drivers for two database sy
 The newly released drivers, and some release highlights, are:
 
 ### [Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.2.0
-* Add support for EntraID authentication.  To use it, add `fedauth=` to your connection URI, like so:
+* Add support for EntraID authentication.  To use it, [install the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest), log in via `az login`, and add `fedauth=` to your connection URI, like so:
 
   ```
   sqlserver://my-database-endpoint.database.windows.net:1433?database=my-database-name&fedauth=ActiveDirectoryDefault
