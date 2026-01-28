@@ -4,7 +4,7 @@ title: New ADBC driver for Databricks
 author: ADBC Drivers Contributors
 ---
 
-Today the ADBC Drivers Contributors released a new driver for for Databricks version 0.1.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). Just `dbc install databricks` to get the latest version.
+Today the ADBC Drivers Contributors released a new driver for Databricks version 0.1.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). Just `dbc install databricks` to get the latest version.
 
 The driver supports querying data, bulk ingestion, and querying the catalog (listing tables and columns and so on). Documentation can be found at [docs.adbc-drivers.org](http://docs.adbc-drivers.org/drivers/databricks/). As the version number implies, this is an early version of the driver.  We are still working with Databricks on adding more features and improving performance, so stay tuned.
 
