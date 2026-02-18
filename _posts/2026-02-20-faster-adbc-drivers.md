@@ -21,7 +21,7 @@ The main highlight for all drivers is improved performance.
 
 ### Microsoft SQL Server driver version 1.3.0
 
-- Improved query performance by identifying and submitting fixes for microsoft/go-mssqldb.
+- Improved query performance by identifying and submitting fixes for [microsoft/go-mssqldb](https://github.com/microsoft/go-mssqldb).
 
 ### Trino driver version 0.3.0
 
