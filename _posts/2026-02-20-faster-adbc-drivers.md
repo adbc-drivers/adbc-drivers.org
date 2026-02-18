@@ -49,5 +49,5 @@ Query benchmarks measure the time to retrieve a PyArrow Table, while ingest benc
 | MySQL | 600k rows | 467.8 ± 17.9 | **6.7 ± 0.3** | 13.1 ± 0.7[^mysql] | 0.51x |
 | Trino | 60k rows | 1962.8 ± 182.2 | **52.2 ± 8.2** | 2061.8 ± 15.1[^trino] | 0.03x |
 
-[^mysql]: mysql-connector-python using DuckDB to convert Arrow data to Python objects; using PyArrow Table.to_pylist instead, timing was 15.31 ± 0.59s
+[^mysql]: mysql-connector-python using DuckDB to convert Arrow data to Python objects; using PyArrow `Table.to_pylist` instead, timing was 15.31 ± 0.59s
 [^trino]: trino-python-client
