@@ -8,7 +8,7 @@ Today the ADBC Drivers Contributors released updated drivers for four database s
 
 ## Updated Drivers
 
-The main highlight for all drivers is improved performance.
+The main highlight for all drivers is improved performance. Each newly released driver is now significantly faster than its previous release and is typically faster than or on par with its reference non-ADBC driver, with some variation depending on workload and data types such as strings.
 
 ### Google BigQuery driver version 1.11.0
 
