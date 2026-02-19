@@ -25,7 +25,7 @@ The main highlight for all drivers is improved performance.
 
 ### Trino driver version 0.3.0
 
-- Improved bulk ingest performance.
+- Improved bulk ingest performance. [#58](https://github.com/adbc-drivers/trino/pull/58)
 
 ## Benchmarks
 
