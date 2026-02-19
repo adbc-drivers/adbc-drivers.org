@@ -17,7 +17,7 @@ The main highlight for all drivers is improved performance.
 
 ### MySQL driver version 0.3.0
 
-- Improved bulk ingest performance.
+- Improved bulk ingest performance. [#66](https://github.com/adbc-drivers/mysql/pull/66)
 
 ### Microsoft SQL Server driver version 1.3.0
 
