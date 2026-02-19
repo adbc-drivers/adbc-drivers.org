@@ -36,11 +36,11 @@ Query benchmarks measure the time to retrieve a PyArrow Table, while ingest benc
 | Database | Data Size | ADBC Before (s) | ADBC After (s) | Competitor (s) | Relative Time[^speedup] |
 | :-- | :-- | --: | --: | --: | --: |
 | BigQuery | 6 million rows | 95.2 ± 2.34 | **31.0 ± 2.1** | 56.4 ± 1.3[^bigquery] | 0.55x |
-| Microsoft SQL Server | 1.2 million rows | 9.6 ± 0.1 | 3.3 ± 0.0 | **3.0 ± 0.2**[^mssql] | 1.1x |
+| SQL Server | 1.2 million rows | 9.6 ± 0.1 | 3.3 ± 0.0 | **3.0 ± 0.2**[^mssql] | 1.1x |
 
 [^bigquery]: python-bigquery-sqlalchemy with Storage Read API enabled
 [^mssql]: turbodbc 5.1.2 + msodbcsql 18.6.1.1-1
-[^speedup]: Lower is better.
+[^speedup]: Versus competitor. Lower is better.
 
 ### Ingesting Data
 
