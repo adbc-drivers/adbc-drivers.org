@@ -12,7 +12,7 @@ The main highlight for all drivers is improved performance.
 
 ### Google BigQuery driver version 1.11.0
 
-- Improved query performance by identifying and patching an issue in the Google BigQuery SDK for Go.
+- Improved query performance by identifying and patching an issue in the Google BigQuery SDK for Go. [#102](https://github.com/adbc-drivers/bigquery/pull/102)
 - Added experimental support for bulk ingest via the Storage Write API, instead of by uploading Parquet files. This is still a work in progress and is not recommended for production use. [#105](https://github.com/adbc-drivers/bigquery/pull/105)
 
 ### MySQL driver version 0.3.0
