@@ -4,7 +4,7 @@ title: Faster ADBC drivers for BigQuery, MySQL, SQL Server, and Trino
 author: ADBC Drivers Contributors
 ---
 
-Today the ADBC Drivers Contributors released updated drivers for four database systems, available immediately via dbc. To update, just `dbc install <driver>` to get the latest version.
+Today the ADBC Drivers Contributors released updated drivers for four database systems, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install <driver>` to get the latest version.
 
 ## Updated Drivers
 
