@@ -14,7 +14,7 @@ The newly released drivers, and some release highlights, are:
 **[Snowflake driver](https://github.com/adbc-drivers/snowflake) version 1.10.3** \\
 **[Trino driver](https://github.com/adbc-drivers/trino) version 0.3.1**
 
-* Updated transitive dependencies to pick up security updates. (This also applies to all drivers below.)
+* Update transitive dependencies to pick up security updates. (This also applies to all drivers below.)
 
 **[Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.3.1**
 
