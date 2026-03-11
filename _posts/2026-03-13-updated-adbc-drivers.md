@@ -29,7 +29,7 @@ The newly released drivers, and some release highlights, are:
 
 **Oracle Database driver version 0.5.1**
 
-_Note: this driver is part of Columnar's private driver registry. See our [announcement](https://columnar.tech/blog/announcing-dbc-0.2.0) to learn more about these drivers._
+_Note: this driver is part of Columnar's private driver registry. See [this blog post](https://columnar.tech/blog/announcing-dbc-0.2.0) to learn more._
 
 * Support `REAL` and `DOUBLE PRECISION` types when the latest Instant Client is used.
 * Don't use the `DBA_PDBS` view in GetObjects, which requires more permissions.
