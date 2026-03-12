@@ -14,7 +14,7 @@ The newly released drivers, and some release highlights, are:
 **[Snowflake driver](https://github.com/adbc-drivers/snowflake) version 1.10.3** \\
 **[Trino driver](https://github.com/adbc-drivers/trino) version 0.3.1**
 
-* Update transitive dependencies to pick up security updates. (This also applies to all drivers below.)
+* Update transitive dependencies to pick up security updates. (This is the only change for the three drivers listed above. The drivers listed below also include dependency updates, in addition to other changes detailed separately.)
 
 **[Microsoft SQL Server driver](http://github.com/adbc-drivers/mssql) version 1.3.1**
 
@@ -27,10 +27,10 @@ The newly released drivers, and some release highlights, are:
 * Enable bulk ingest into a temporary table.
 * Fix a bug with bulk ingest and wide schemas.
 
-**Oracle Database driver version 0.5.1**
+**[Oracle Database driver](https://docs.columnar.tech/drivers/oracle) version 0.5.1**
 
 {: .admonition.note }
-This driver is part of Columnar's private driver registry. See [this blog post](https://columnar.tech/blog/announcing-dbc-0.2.0) to learn more.
+This driver is available from Columnar's private driver registry. See [this blog post](https://columnar.tech/blog/announcing-dbc-0.2.0) to learn more.
 
 * Support `REAL` and `DOUBLE PRECISION` types when the latest Instant Client is used.
 * Don't use the `DBA_PDBS` view in GetObjects, which requires more permissions.
