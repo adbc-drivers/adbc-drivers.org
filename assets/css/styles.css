@@ -387,6 +387,22 @@ body>footer>div {
   justify-content: space-between;
 }
 
+.admonition {
+    border: 1px solid var(--text-primary-color);
+    border-left: 4px solid var(--text-primary-color);
+    box-shadow: 0 1px 2px color-mix(in srgb, var(--text-primary-color) 1%, transparent), 0 3px 10px color-mix(in srgb, var(--text-primary-color) 10%, transparent);
+    padding: 0.7em;
+}
+
+.admonition.note::before {
+    content: "Note";
+    display: block;
+    font-size: 0.85em;
+    font-style: normal;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 /* Theme switcher styles */
 .theme-switcher {
   position: absolute;
