@@ -19,6 +19,13 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Generate OG images
+        run: |
+          pip install -r scripts/requirements.txt
+          python scripts/generate_og_images.py
       - name: Build site
         run: |
           bundle exec jekyll build
