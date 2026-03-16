@@ -41,21 +41,6 @@ def parse_front_matter(filepath):
     return yaml.safe_load(m.group(1))
 
 
-def inject_image_front_matter(filepath, image_path):
-    """Add image: to a post's front matter (in-place, for CI builds)."""
-    with open(filepath) as f:
-        content = f.read()
-    m = re.match(r"^(---\s*\n)(.*?)\n(---)", content, re.DOTALL)
-    if not m:
-        return
-    fm_text = m.group(2)
-    if "image:" in fm_text:
-        return
-    new_content = m.group(1) + fm_text + f"\nimage: {image_path}\n" + m.group(3) + content[m.end():]
-    with open(filepath, "w") as f:
-        f.write(new_content)
-
-
 def date_from_filename(filename):
     """Format a human-readable date from a Jekyll post filename."""
     m = re.match(r"(\d{4})-(\d{2})-(\d{2})", filename)
@@ -178,8 +163,6 @@ def main():
         output = os.path.join(args.output_dir, f"{post_file.stem}.png")
         print(f"Generating: {title}")
         generate_image(title, date_str, output, fonts, logo)
-        image_url = f"/assets/images/og/{post_file.stem}.png"
-        inject_image_front_matter(post_file, image_url)
 
 
 if __name__ == "__main__":
