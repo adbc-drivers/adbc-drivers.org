@@ -1,10 +1,10 @@
 ---
 layout: blog
-title: New ADBC driver for SingleStore
+title: Preview of a new ADBC driver for SingleStore
 author: ADBC Drivers Contributors
 ---
 
-A beta of the ADBC driver for [SingleStore](https://www.singlestore.com/), version 0.1.0 (beta 1), is now available via [dbc](https://docs.columnar.tech/dbc/). Just `dbc install singlestore` to get the latest version.
+A beta release of a new ADBC driver for [SingleStore](https://www.singlestore.com/) is now available via [dbc](https://docs.columnar.tech/dbc/). If you have [dbc 0.2.0](https://columnar.tech/blog/announcing-dbc-0.2.0) or newer installed, run `dbc install singlestore --pre` to try it out today.
 
 The driver supports query execution, bulk ingestion, catalog metadata (listing tables, etc.), transactions, and other ADBC features. Documentation can be found at [docs.adbc-drivers.org](http://docs.adbc-drivers.org/drivers/singlestore/).
 
