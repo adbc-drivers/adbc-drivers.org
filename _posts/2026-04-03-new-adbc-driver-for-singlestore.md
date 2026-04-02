@@ -16,4 +16,6 @@ singlestore://user:password@tcp(host:3306)/database
 
 Bulk ingestion uses `LOAD DATA LOCAL INFILE` under the hood. The driver includes comprehensive type mappings between SingleStore and Arrow types, covering integers, floating-point numbers, decimals, temporal types (DATE, DATETIME, TIME, TIMESTAMP), strings, binary data, and JSON.
 
+The ADBC Quickstarts have [runnable examples demonstrating the SingleStore driver](https://github.com/columnar-tech/adbc-quickstarts/tree/by-database/singlestore) in C++, Go, Java, Python, R, and Rust.
+
 Please submit bug reports and feature requests directly to the [`singlestore-adbc-connector` repository](https://github.com/singlestore-labs/singlestore-adbc-connector). You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
