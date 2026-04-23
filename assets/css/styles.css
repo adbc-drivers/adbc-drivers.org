@@ -47,7 +47,7 @@
   :root {
     --primary-bg: rgb(30, 30, 30);
     --secondary-bg: rgb(30, 30, 30);
-    --highlight-bg: rgba(255, 255, 255, 0.05);
+    --highlight-bg: rgba(255, 255, 255, 0.15);
     --text-primary-color: rgb(205, 205, 205);
     --text-primary-color-dim: rgba(225, 225, 225, 0.80);
     --text-secondary-color: rgb(225, 225, 225);
@@ -61,7 +61,7 @@
 html[data-theme="dark"] {
   --primary-bg: rgb(30, 30, 30);
   --secondary-bg: rgb(30, 30, 30);
-  --highlight-bg: rgba(255, 255, 255, 0.05);
+  --highlight-bg: rgba(255, 255, 255, 0.15);
   --text-primary-color: rgb(205, 205, 205);
   --text-primary-color-dim: rgba(225, 225, 225, 0.80);
   --text-secondary-color: rgb(225, 225, 225);
@@ -401,6 +401,80 @@ body>footer>div {
     font-style: normal;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+/* Home page styles */
+.home-hero {
+  max-width: 512px;
+  margin-top: 3rem;
+}
+
+.home-section {
+  margin-top: 3rem;
+}
+
+.home-section:first-child {
+  margin-top: 0;
+}
+
+.home-all-posts {
+  display: block;
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: right;
+}
+
+.home-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 600px) {
+  .home-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.home-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  border: 1px solid var(--text-primary-color-dim);
+  border-left: 0.5rem solid var(--text-primary-color);
+  text-decoration: none;
+  color: var(--text-primary-color);
+  transition: background-color 0.15s ease;
+  cursor: pointer;
+}
+
+.home-card:visited {
+  color: var(--text-primary-color);
+}
+
+.home-card:hover {
+  background-color: var(--highlight-bg);
+  text-decoration: none;
+}
+
+.home-card:hover p {
+  color: var(--text-primary-color);
+}
+
+.home-card h3 {
+  margin: 0 0 0.5rem 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.home-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--text-primary-color-dim);
 }
 
 /* Theme switcher styles */

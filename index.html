@@ -3,24 +3,64 @@ layout: default
 title: ADBC Driver Foundry
 ---
 
-<div class="wrapper wrapper-narrow">
+<section class="home-section">
+  <div class="home-cards">
+    {% assign latest = site.posts.first %}
+    <a href="{{ latest.url }}" class="home-card">
+      <h3>Latest From The Blog</h3>
+      <p>
+        {{ latest.title }}
+        <span class="text-muted">({{ latest.date | date: "%b %d, %Y" }})</span>
+      </p>
+      <span class="home-all-posts">See latest post &rarr;</span>
+    </a>
+    <a href="https://docs.adbc-drivers.org/getting-started/" class="home-card">
+      <h3>Using Drivers</h3>
+      <p>Install your first ADBC driver and run your first query in minutes.</p>
+      <span class="home-all-posts">Get started &rarr;</span>
+    </a>
+    <a href="https://docs.adbc-drivers.org/drivers/" class="home-card">
+      <h3>Available Drivers</h3>
+      <p>
+        Browse the catalog of ADBC drivers for databases, data warehouses, and
+        more.
+      </p>
+      <span class="home-all-posts">Browse drivers &rarr;</span>
+    </a>
+    <a href="https://docs.adbc-drivers.org/contributing/" class="home-card">
+      <h3>Contribute Your Driver</h3>
+      <p>
+        Learn how to build and contribute your own ADBC driver to the ecosystem.
+      </p>
+      <span class="home-all-posts">Learn more &rarr;</span>
+    </a>
+  </div>
+</section>
+
+<div class="home-hero">
+  <h2>What is <a href="https://adbc-drivers.org">adbc-drivers.org</a>?</h2>
   <p class="text-muted">
     <code>SELECT * FROM adbc_drivers;</code>
   </p>
   <p>
-    ADBC is the modern data connectivity standard built to accelerate and simplify data access for analytics
-    applications. And it’s at an inflection point.
+    ADBC is the modern data connectivity standard built to accelerate and
+    simplify data access for analytics applications. And it's at an inflection
+    point.
   </p>
   <p>
-    More projects and organizations are embracing ADBC and looking for drivers to connect to an ever-expanding
-    landscape of data systems. But there’s still much work to be done—both technical and social—to shape ADBC’s
-    next era.
+    More projects and organizations are embracing ADBC and looking for drivers
+    to connect to an ever-expanding landscape of data systems. But there's still
+    much work to be done—both technical and social—to shape ADBC's next era.
   </p>
   <p>
-    That’s why we’re launching a new initiative: the ADBC Driver Foundry. If you’re interested, please
-    <a href="/2025/10/29/announcing-adbc-driver-foundry.html">read our launch announcement</a> to learn more.
+    That's why we're launching a new initiative: the ADBC Driver Foundry. If
+    you're interested, please
+    <a href="/2025/10/29/announcing-adbc-driver-foundry.html"
+      >read our launch announcement</a
+    >
+    to learn more.
   </p>
   <p class="text-muted">
-    <em>Where we’re going, we don’t need rows.</em>
+    <em>Where we're going, we don't need rows.</em>
   </p>
 </div>
