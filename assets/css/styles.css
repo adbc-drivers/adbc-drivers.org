@@ -406,7 +406,16 @@ body>footer>div {
 /* Home page styles */
 .home-hero {
   max-width: 512px;
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
+  margin: 3rem auto 0 auto;
+}
+
+.home-hero h2 a {
+  text-decoration: none;
+}
+
+.home-hero h2 a:visited {
+  color: inherit;
 }
 
 .home-section {
