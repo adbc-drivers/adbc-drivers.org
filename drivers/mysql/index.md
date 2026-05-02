@@ -15,12 +15,13 @@
 {}
 ---
 
-# MySQL
+# MySQL/MariaDB
 
 :::{toctree}
 :maxdepth: 1
 :hidden:
 
+changelog.md
 v0.3.1.md
 v0.3.0.md
 v0.2.0.md
