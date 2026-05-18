@@ -175,7 +175,7 @@ driver_header_links_config = {
         {"url": "https://github.com/adbc-drivers/bigquery", "label": "GitHub"},
     ],
     "clickhouse": [
-        {"url": "https://github.com/adbc-drivers/clickhouse", "label": "GitHub"},
+        {"url": "https://github.com/ClickHouse/adbc_clickhouse", "label": "GitHub"},
     ],
     "databricks": [
         {"url": "https://github.com/adbc-drivers/databricks", "label": "GitHub"},
