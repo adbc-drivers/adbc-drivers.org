@@ -17,6 +17,22 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+## v1.4.0 (2026-05-19)
+
+New features:
+
+- Add `mssql.query.large_text_type` option to choose what Arrow type to use for NVARCHAR(MAX) and other similar database types
+- Support passing a catalog/schema name to GetTableSchema
+- Add `MSSQL:type` metadata on result set schema fields to provide the database's type name
+- Support querying GEOMETRY/GEOGRAPHY types as well-known binary (WKB) with the [GeoArrow](https://geoarrow.org/) extension type, with the SRID inferred from the first batch of data
+- Support ingesting GeoArrow WKB
+
+Fixes:
+
+- Support ExecuteSchema for queries with unnamed columns ([mssql#7](https://github.com/adbc-drivers/mssql/issues/7))
+- Map TINYINT to Arrow `uint8` instead of `int8`
+- Support Kerberos authentication (which was advertised before, but not properly enabled at build time) ([mssql#8](https://github.com/adbc-drivers/mssql/issues/8))
+
 ## v1.3.1 (2026-03-11)
 
 Fixes:
