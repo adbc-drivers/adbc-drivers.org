@@ -4,7 +4,7 @@ title: Preview of a new ADBC driver for DuckDB Quack
 author: ADBC Drivers Contributors
 ---
 
-A beta release of a new ADBC driver for [DuckDB's Quack protocol]() is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install quack --pre` to try it out today.
+A beta release of a new ADBC driver for [DuckDB's Quack protocol](https://duckdb.org/quack/) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install quack --pre` to try it out today.
 
 The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, prepared statements, and transactions. Documentation can be found at [docs.adbc-drivers.org](https://docs.adbc-drivers.org/drivers/quack/). This is a preview release, and more features are actively being developed, so stay tuned.
 
