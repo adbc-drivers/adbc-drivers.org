@@ -19,14 +19,14 @@
 
 As ADBC has grown, the focus has shifted to building out drivers for all manner of different systems. For the first couple years of the project's history, most drivers were centrally developed by Apache Arrow contributors, with one or two drivers developed indepndently in scattered places. The ADBC Driver Foundry ("the Foundry") aims to scale up driver development by providing an open source hub for federated driver development, along with resources to support database vendors and users in development.
 
-The federated nature of the Foundry lets each driver have its own repository, with its own maintainers and privileges. At the same time, it provides centralized frameworks and consistent processes to ensure a common level of functionality and polish, and gives users a single place to discover, download, and submit feedback on drivers.
+The federated nature of the Foundry lets each driver have its own repository, with its own maintainers and privileges. At the same time, it provides centralized frameworks and consistent processes to ensure a common level of functionality and polish, and gives users a single place to discover, download, and submit feedback on drivers. This offers developers more flexibility than the centralized development model of the core Apache repository, while still ensuring a consistent user experience unlike the "Wild West" of ODBC and JDBC drivers all developed in their own scattered repositories to differing standards.
 
 Concretely, the Foundry provides:
 
 - A home for your drivers in our [adbc-drivers](https://github.com/adbc-drivers) GitHub organization
 - Well-tested and feature complete SDKs for building drivers in a variety of languages
 - Ready to run CI workflows for building, testing, and releasing drivers on all major platforms
-- A powerful driver validation suite to help you test and document your drivers capabilities
+- A flexible and extensible driver validation suite to help you test and document your drivers capabilities
 - A place to host documentation for your driver (this website)
 
 If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w) or to file an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding).
