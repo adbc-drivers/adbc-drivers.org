@@ -17,9 +17,11 @@
 
 # Building Drivers
 
-While ADBC is an open standard, few external contributors have successfully built and released ADBC drivers outside the Apache ecosystem. The purpose of the Foundry is to change that. The Foundry provides all of the resources that were previously missing for database vendors and users to easily build their own drivers.
+As ADBC has grown, the focus has shifted to building out drivers for all manner of different systems. For the first couple years of the project's history, most drivers were centrally developed by Apache Arrow contributors, with one or two drivers developed indepndently in scattered places. The ADBC Driver Foundry ("the Foundry") aims to scale up driver development by providing an open source hub for federated driver development, along with resources to support database vendors and users in development.
 
-The Foundry provides:
+The federated nature of the Foundry lets each driver have its own repository, with its own maintainers and privileges. At the same time, it provides centralized frameworks and consistent processes to ensure a common level of functionality and polish, and gives users a single place to discover, download, and submit feedback on drivers.
+
+Concretely, the Foundry provides:
 
 - A home for your drivers in our [adbc-drivers](https://github.com/adbc-drivers) GitHub organization
 - Well-tested and feature complete SDKs for building drivers in a variety of languages
@@ -33,20 +35,22 @@ If you're interested in building a driver with the Foundry, continue reading to 
 
 Your code can live in a repo in the [adbc-drivers](https://github.com/adbc-drivers) organization or under your GitHub organization.
 
-**Internal**: If you choose to develop under [adbc-drivers](https://github.com/adbc-drivers), Foundry staff can grant your team members enough permission to operate entirely independently, including managing secrets and environments for access to external cloud resources.
+**Internal**: If you choose to develop under [adbc-drivers](https://github.com/adbc-drivers), a Foundry administrator can grant your team members enough permission to operate entirely independently, including managing secrets and environments for access to external cloud resources.
 
-**External:** If you prefer to develop your driver under your own organization, Foundry staff can create a build-only repository for your driver under adbc-drivers.
+**External:** If you prefer to develop your driver under your own organization, a Foundry administrator can create a build-only repository for your driver under adbc-drivers.
 
 ## Process
 
 At a high level, here's what the process looks like to from zero to a fully released and dbc-installable driver.
 
 1. File an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding). Fill in the template describing the driver you want to build or contribute.
-2. Foundry staff creates a repo under adbc-drivers.org for your driver.
-3. Foundry staff adds templates with common workflows, CI, and validation.
+2. A Foundry administrator creates a repo under adbc-drivers.org for your driver.
+3. A Foundry administrator adds templates with common workflows, CI, and validation.
 4. They invite members of your team and give you appropriate access.
 5. You develop the driver as you see fit.
-6. When you tag a release, Foundry staff can help coordinate making it available with [dbc](https://columnar.tech/dbc).
+6. You tag releases as they are ready.
+
+When you tag a release, you can coordinate with Foundry administrators to make it available on distribution channels like [dbc](https://columnar.tech/dbc).
 
 ## Resources
 
@@ -107,7 +111,7 @@ The Foundry provides a validation suite at [adbc-drivers/validation](https://git
 
 Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps your database's column types to Arrow data types and vice versa.
 
-If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry staff ask that you run this suite so that we can include the documentation on [docs.adbc-drivers.org](https://docs.adbc-drivers.org).
+If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [docs.adbc-drivers.org](https://docs.adbc-drivers.org).
 
 #### Bootstrapping
 
@@ -231,7 +235,7 @@ For Apache-licensed repositories:
 
 If you use {ref}`standard CI workflows <building-drivers-internal-tooling>`, then pushing a tag will trigger a build-test-release that ends with a new release on GitHub containing packages that we can then upload to the CDN. Otherwise, you will need to generate appropriate packages yourself; you can see the [packaging script](https://github.com/adbc-drivers/dev/blob/main/adbc_drivers_dev/package.py) as a reference for the format. You will also need to generate a `manifest.toml` and ideally a documentation page (again, all of this is handled by the standard CI workflows).
 
-Once you have a GitHub release with the expected formats, let Foundry staff know so we can check the release and upload it to the dbc CDN.
+Once you have a GitHub release with the expected formats, let a Foundry administrator know so we can check the release and upload it to the dbc CDN.
 
 ### Repository Standards
 
@@ -241,7 +245,7 @@ We ask that all open source repositories follow these standards:
 
 ### Why not under apache/arrow-adbc?
 
-TODO: Talk about this
+apache/arrow-adbc is under the Apache Software Foundation, and the maintenance is shared with the broader Apache Arrow project. That creates problems for driver developers and for the Arrow maintainers. For contributors focusing on particular drivers, granting them privileges for their particular projects is difficult or impossible, and the road to maintainership requires demonstrating contributions to the Arrow project as a whole. And for the Arrow maintainers, reviewing contributions and releasing drivers adds to the already large workload of a relatively small group. The Foundry solves this mismatch between the centralized privilege model of Apache projects and the federated nature of driver development.
 
 ### Who owns the repo under adbc-drivers?
 
