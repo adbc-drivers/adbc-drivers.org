@@ -54,9 +54,9 @@ The Foundry offers a variety of tools to help develop and maintain drivers.
 
 ### SDKs
 
-The Foundry is focused on building drivers that can be loaded by an ADBC Driver Manager. Under this mode, drivers can be written in any language that can export a C ABI.
+The Foundry is focused on building drivers as shared libraries that can be loaded by any ADBC Driver Manager. Under this mode, drivers can be written in any language that can export a C ABI.
 
-In practice, most drivers are written in C/C++, Go, or Rust. And because Go and Rust are such common choices, the Foundry provides frameworks for both languages that include helpers for common concerns such as error handling and managing result sets, testing, and more. Both of these projects use a "HEAD-only" model where formal releases are not made: just depend on the latest commit. (Also, we currently do not publish to package managers like crates.io, though that may change in the future.)
+In practice, most drivers are written in C/C++, Go, or Rust. And because Go and Rust are such common choices, the Foundry provides frameworks for both languages that include helpers for common concerns such as error handling and managing result sets, testing, and more. Both of these projects use a "HEAD-only" model where formal releases are not made: just depend on the latest commit. (Also, we currently do not publish these helper frameworks to package managers like crates.io, though that may change in the future.)
 
 #### Go
 
@@ -105,7 +105,7 @@ We encourage you to test your driver thoroughly. In particular, we encourage you
 
 The Foundry provides a validation suite at [adbc-drivers/validation](https://github.com/adbc-drivers/validation) that tests common driver functionality and generates user documentation based on the results. These tests are independent of the driver's implementation.
 
-Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps column types to Arrow data types and vice versa.
+Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps your database's column types to Arrow data types and vice versa.
 
 If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry staff ask that you run this suite so that we can include the documentation on [docs.adbc-drivers.org](https://docs.adbc-drivers.org).
 
@@ -193,7 +193,7 @@ If you include a `compose.yaml`, you can run tests/validation against a containe
 
 ### Licensing
 
-Generally, drivers are open-source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers/committers/PMC members for Apache Software Foundation projects, but licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license).
+Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license).
 
 If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please talk with us.
 
@@ -235,7 +235,7 @@ Once you have a GitHub release with the expected formats, let Foundry staff know
 
 ### Repository Standards
 
-We ask that all open-source repositories follow these standards:
+We ask that all open source repositories follow these standards:
 
 ## FAQ
 
