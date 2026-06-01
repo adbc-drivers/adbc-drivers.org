@@ -37,5 +37,6 @@ quack/index.md
 redshift/index.md
 singlestore/index.md
 snowflake/index.md
+spark/index.md
 trino/index.md
 :::

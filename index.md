@@ -78,6 +78,30 @@ Documentation
 
 ::::{grid-item-card}
 :class-header: sd-card-header-with-icon
+**Apache Spark**
+:::{image} _static/driver_icons/color/light_mode/spark.png
+:class: only-light
+:width: 32px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/spark.svg
+:class: only-dark
+:width: 32px
+:align: center
+:alt:
+:::
+^^^
+Connect to Apache Spark, a multi-language engine for large data analytics on single-node machines and multi-node clusters. Supports the HiveServer2 Thrift protocol, Spark Connect, and Apache Livy.
++++
+:::{button-ref} drivers/spark/index
+:click-parent:
+Documentation
+:::
+::::
+
+::::{grid-item-card}
+:class-header: sd-card-header-with-icon
 **BigQuery**
 :::{image} _static/driver_icons/color/light_mode/bigquery.svg
 :class: only-light
