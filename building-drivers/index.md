@@ -17,9 +17,11 @@
 
 # Building Drivers
 
-As ADBC has grown, the focus has shifted to building out drivers for all manner of different systems. For the first couple years of the project's history, most drivers were centrally developed by Apache Arrow contributors, with one or two drivers developed indepndently in scattered places. The ADBC Driver Foundry ("the Foundry") aims to scale up driver development by providing an open source hub for federated driver development, along with resources to support database vendors and users in development.
+In ADBC's first years, only a handful of drivers existed. Most were built by a small group of core developers within the Apache Arrow project, and a few by independent community members. Then ADBC went mainstream, and demand for new drivers exploded. At the same time, the vendors behind the databases, query engines, and data platforms that ADBC connects to wanted an active role in the direction and maintenance of their own drivers. The centralized Apache Software Foundation governance model was ill-suited to both: it funneled every contribution through the small group of core maintainers who could review and merge it, and it gave vendors no real ownership of the drivers that carried their names.
 
-The federated nature of the Foundry lets each driver have its own repository, with its own maintainers and privileges. At the same time, it provides centralized frameworks and consistent processes to ensure a common level of functionality and polish, and gives users a single place to discover, download, and submit feedback on drivers. This offers developers more flexibility than the centralized development model of the core Apache repository, while still ensuring a consistent user experience unlike the "Wild West" of ODBC and JDBC drivers all developed in their own scattered repositories to differing standards.
+The ADBC Driver Foundry ("the Foundry") was created to fix this. Each driver lives in its own repository, with its own maintainers and commit privileges. Those who own a driver can steer its direction and ship changes without waiting on a central gatekeeper. But the Foundry stops short of the opposite extreme—fully independent projects, each reinventing the basics and drifting toward its own conventions. Instead, it pairs that autonomy with shared scaffolding. Common frameworks and consistent processes hold every driver to the same baseline of functionality and polish. Centrally run services handle the work each driver would otherwise duplicate—validating drivers; building binaries; code-signing, notarizing, and distributing them; and documentation. For driver developers, this means time spent on the driver itself, not on the machinery of shipping it. For users, it means one trustworthy place to find drivers, and a consistent experience across them—rather than the fragmented, uneven landscape typical of earlier driver ecosystems.
+
+This model has proven successful. The Foundry is now home to more than a dozen drivers from a diverse group of vendors, and it has emerged as the preferred source of drivers for numerous downstream systems that rely on ADBC for database connectivity. And there's much further to go: the infrastructure behind the Foundry is built to handle hundreds more drivers as the ecosystem continues to grow.
 
 Concretely, the Foundry provides:
 
@@ -44,7 +46,7 @@ Your code can live in a repo in the [adbc-drivers](https://github.com/adbc-drive
 At a high level, here's what the process looks like to from zero to a fully released and dbc-installable driver.
 
 1. File an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding). Fill in the template describing the driver you want to build or contribute.
-2. A Foundry administrator creates a repo under adbc-drivers.org for your driver.
+2. A Foundry administrator creates a repo for your driver in the adbc-drivers organization.
 3. A Foundry administrator adds templates with common workflows, CI, and validation.
 4. They invite members of your team and give you appropriate access.
 5. You develop the driver as you see fit.
