@@ -40,13 +40,13 @@ Drivers available from the ADBC Driver Foundry:
 **Amazon Redshift**
 :::{image} _static/driver_icons/color/light_mode/redshift.svg
 :class: only-light
-:width: 14px
+:width: 18px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/redshift.svg
 :class: only-dark
-:width: 14px
+:width: 18px
 :align: center
 :alt:
 :::
@@ -63,7 +63,7 @@ Documentation
 :class-header: sd-card-header-with-icon
 **Apache DataFusion**
 :::{image} _static/driver_icons/color/light_mode/datafusion.svg
-:width: 14px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -79,15 +79,15 @@ Documentation
 ::::{grid-item-card}
 :class-header: sd-card-header-with-icon
 **Apache Spark**
-:::{image} _static/driver_icons/color/light_mode/spark.png
+:::{image} _static/driver_icons/color/light_mode/spark.svg
 :class: only-light
-:width: 32px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/spark.svg
 :class: only-dark
-:width: 32px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -105,13 +105,13 @@ Documentation
 **BigQuery**
 :::{image} _static/driver_icons/color/light_mode/bigquery.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/bigquery.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -129,13 +129,13 @@ Documentation
 **ClickHouse**
 :::{image} _static/driver_icons/color/light_mode/clickhouse.svg
 :class: only-light
-:width: 16px
+:width: 20px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/clickhouse.svg
 :class: only-dark
-:width: 16px
+:width: 20px
 :align: center
 :alt:
 :::
@@ -153,13 +153,13 @@ Documentation
 **Databricks**
 :::{image} _static/driver_icons/color/light_mode/databricks.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/databricks.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -175,15 +175,15 @@ Documentation
 ::::{grid-item-card}
 :class-header: sd-card-header-with-icon
 **DuckDB Quack**
-:::{image} _static/driver_icons/color/light_mode/duckdb.svg
+:::{image} _static/driver_icons/color/light_mode/quack.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
-:::{image} _static/driver_icons/color/dark_mode/duckdb.svg
+:::{image} _static/driver_icons/color/dark_mode/quack.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -212,13 +212,13 @@ Documentation
 **Microsoft SQL Server**
 :::{image} _static/driver_icons/color/light_mode/mssql.svg
 :class: only-light
-:width: 16px
+:width: 20px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/mssql.svg
 :class: only-dark
-:width: 16px
+:width: 20px
 :align: center
 :alt:
 :::
@@ -236,13 +236,13 @@ Documentation
 **MySQL/MariaDB**
 :::{image} _static/driver_icons/color/light_mode/mysql.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/mysql.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -273,13 +273,13 @@ Documentation
 **Snowflake**
 :::{image} _static/driver_icons/color/light_mode/snowflake.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/snowflake.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -297,13 +297,13 @@ Documentation
 **Trino**
 :::{image} _static/driver_icons/color/light_mode/trino.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/trino.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -331,13 +331,13 @@ Drivers available across the ADBC-verse:
 **DuckDB**
 :::{image} _static/driver_icons/color/light_mode/duckdb.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/duckdb.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -355,13 +355,13 @@ Documentation
 **Flight SQL**
 :::{image} _static/driver_icons/color/light_mode/flightsql.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/flightsql.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -380,13 +380,13 @@ Documentation
 **PostgreSQL**
 :::{image} _static/driver_icons/color/light_mode/postgresql.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/postgresql.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -404,13 +404,13 @@ Documentation
 **SQLite**
 :::{image} _static/driver_icons/color/light_mode/sqlite.svg
 :class: only-light
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/sqlite.svg
 :class: only-dark
-:width: 16px
+:width: 24px
 :align: center
 :alt:
 :::
@@ -465,6 +465,7 @@ If you'd like to see your ADBC driver listed here, please shoot an email to [hel
 
 :::::{grid} 1 2 3 3
 :margin: 4 4 0 0
+:gutter: 3
 
 ::::{grid-item-card}
 **Apache Arrow ADBC**

@@ -206,6 +206,9 @@ driver_header_links_config = {
     "snowflake": [
         {"url": "https://github.com/adbc-drivers/snowflake", "label": "GitHub"},
     ],
+    "spark": [
+        {"url": "https://github.com/adbc-drivers/spark", "label": "GitHub"},
+    ],
     "trino": [
         {"url": "https://github.com/adbc-drivers/trino", "label": "GitHub"},
     ],
