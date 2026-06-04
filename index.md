@@ -465,6 +465,7 @@ If you'd like to see your ADBC driver listed here, please shoot an email to [hel
 
 :::::{grid} 1 2 3 3
 :margin: 4 4 0 0
+:gutter: 3
 
 ::::{grid-item-card}
 **Apache Arrow ADBC**
