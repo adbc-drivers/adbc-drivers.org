@@ -24,7 +24,7 @@
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|0.1.0` {badge-success}`Tested With|DuckDB Quack 1.5`
+{badge-primary}`Driver Version|0.1.0` {badge-secondary}`Release Date|2026-05-21` {badge-success}`Tested With|DuckDB Quack 1.5`
 
 :::{warning}
 This is documentation for a prerelease version.

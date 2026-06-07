@@ -27,7 +27,7 @@ v1.10.0.md
 v1.0.0.md
 :::
 
-[{badge-primary}`Driver Version|v1.11.2`](#driver-bigquery-v1.11.2 "Permalink") {badge-success}`Tested With|BigQuery 1.73.1`
+[{badge-primary}`Driver Version|v1.11.2`](#driver-bigquery-v1.11.2 "Permalink") {badge-secondary}`Release Date|2026-03-10` {badge-success}`Tested With|BigQuery 1.73.1`
 
 This driver provides access to [BigQuery][bigquery], a data warehouse offered by Google Cloud.
 

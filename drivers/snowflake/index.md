@@ -26,7 +26,7 @@ v1.10.1.md
 v1.10.0.md
 :::
 
-[{badge-primary}`Driver Version|v1.10.3`](#driver-snowflake-v1.10.3 "Permalink") {badge-success}`Tested With|Snowflake 10`
+[{badge-primary}`Driver Version|v1.10.3`](#driver-snowflake-v1.10.3 "Permalink") {badge-secondary}`Release Date|2026-03-10` {badge-success}`Tested With|Snowflake 10`
 
 This driver provides access to [Snowflake][snowflake], a cloud-based data warehouse platform.
 

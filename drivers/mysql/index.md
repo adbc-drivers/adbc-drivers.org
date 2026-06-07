@@ -28,7 +28,7 @@ v0.2.0.md
 v0.1.0.md
 :::
 
-[{badge-primary}`Driver Version|v0.3.1`](#driver-mysql-v0.3.1 "Permalink") {badge-success}`Tested With|MySQL 9.4`
+[{badge-primary}`Driver Version|v0.3.1`](#driver-mysql-v0.3.1 "Permalink") {badge-secondary}`Release Date|2026-03-11` {badge-success}`Tested With|MySQL 9.4`
 
 This driver provides access to [MySQL][mysql]{target="_blank"}, a free and
 open-source relational database management system.

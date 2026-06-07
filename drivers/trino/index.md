@@ -27,7 +27,7 @@ v0.2.0.md
 v0.1.0.md
 :::
 
-[{badge-primary}`Driver Version|v0.3.1`](#driver-trino-v0.3.1 "Permalink") {badge-success}`Tested With|Trino 479`
+[{badge-primary}`Driver Version|v0.3.1`](#driver-trino-v0.3.1 "Permalink") {badge-secondary}`Release Date|2026-03-10` {badge-success}`Tested With|Trino 479`
 
 This driver provides access to [Trino][trino], a free and
 open-source distributed SQL query engine.

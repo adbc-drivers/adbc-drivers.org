@@ -25,7 +25,7 @@
 v0.1.0-beta.1.md
 :::
 
-[{badge-primary}`Driver Version|v0.1.0-beta.1`](#driver-singlestore-v0.1.0-beta.1 "Permalink") {badge-success}`Tested With|SingleStore 9.0.20`
+[{badge-primary}`Driver Version|v0.1.0-beta.1`](#driver-singlestore-v0.1.0-beta.1 "Permalink") {badge-secondary}`Release Date|2026-04-01` {badge-success}`Tested With|SingleStore 9.0.20`
 
 This driver provides access to [SingleStore][singlestore]{target="_blank"}, a distributed database for low-latency SQL. It is developed by SingleStore, Inc. The source code can be found at [singlestore-adbc-connector](https://github.com/singlestore-labs/singlestore-adbc-connector); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
 

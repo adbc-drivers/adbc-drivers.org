@@ -28,7 +28,7 @@ v1.1.0 <v1.1.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.3.0`](#driver-redshift-v1.3.0 "Permalink") {badge-success}`Tested With|Amazon Redshift aws`
+[{badge-primary}`Driver Version|v1.3.0`](#driver-redshift-v1.3.0 "Permalink") {badge-secondary}`Release Date|2026-05-25` {badge-success}`Tested With|Amazon Redshift aws`
 
 This driver provides access to [Amazon Redshift][redshift]{target="_blank"}
 (commonly referred to as just "Redshift").
