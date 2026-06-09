@@ -10,7 +10,7 @@ Today the ADBC Drivers Contributors released updated drivers for Apache DataFusi
 
 **[Apache DataFusion driver](https://github.com/adbc-drivers/datafusion) version [0.25.0](https://docs.adbc-drivers.org/drivers/datafusion/v0.25.0)**
 
-- Enable direct querying of HTTP/S3/etc. URIs in the same way that datafusion-cli does. Example:
+- Enable direct querying of HTTP/S3/etc. URIs and local files and directories in the same way that datafusion-cli does. Example:
 
   ```sql
   SELECT `Breed Name`, `Lifespan`
