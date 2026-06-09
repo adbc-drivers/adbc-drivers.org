@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Updated ADBC drivers for ClickHouse and SQL Server
+title: Updated ADBC drivers for Apache DataFusion, Exasol, and Trino
 author: ADBC Drivers Contributors
 ---
 
