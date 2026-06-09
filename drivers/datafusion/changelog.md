@@ -21,7 +21,7 @@
 
 New features:
 
-- Enable direct querying of HTTP/S3/etc. URIs and files/directories in the same way as `datafusion-cli`
+- Enable direct querying of HTTP/S3/etc. URIs and local files/directories in the same way as `datafusion-cli`
 
 ## v0.24.1 (2026-05-27)
 
