@@ -21,10 +21,12 @@
 :maxdepth: 1
 :hidden:
 
+Changelog <changelog.md>
+v0.25.0 <v0.25.0.md>
 v0.24.1 <v0.24.1.md>
 :::
 
-[{badge-primary}`Driver Version|v0.24.1`](#driver-datafusion-v0.24.1 "Permalink") {badge-secondary}`Release Date|2026-05-27` {badge-success}`Tested With|Apache DataFusion 53`
+[{badge-primary}`Driver Version|v0.25.0`](#driver-datafusion-v0.25.0 "Permalink") {badge-secondary}`Release Date|2026-06-08` {badge-success}`Tested With|Apache DataFusion 53`
 
 This driver provides access to [Apache DataFusion][datafusion].
 
@@ -61,6 +63,28 @@ dbapi.connect("datafusion://")
 Note: The example above is for Python using the [adbc-driver-manager](https://pypi.org/project/adbc-driver-manager) package but the process will be similar for other driver managers.  See [adbc-quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 ## Feature & Type Support
+
+The DataFusion driver supports many of the extensions to the SQL dialect that the [DataFusion CLI](https://datafusion.apache.org/user-guide/cli/) implements, including `SHOW ALL`, `SHOW`, `SET <OPTION> TO <VALUE>`, `CREATE EXTERNAL TABLE`, and scanning local and remote files/directories, including over HTTP and on S3.
+
+For example:
+
+```sql
+SELECT `Breed Name`, `Lifespan`
+  FROM 'https://hyperparam-public.s3.amazonaws.com/bunnies.parquet'
+  ORDER BY `Lifespan` DESC
+  LIMIT 5;
+
+-- Result:
+-- ┌──────────────────┬──────────┐
+-- │ Breed Name       │ Lifespan │
+-- ├──────────────────┼──────────┤
+-- │ French Angora    │ 12       │
+-- │ English Angora   │ 10       │
+-- │ Netherland Dwarf │ 10       │
+-- │ Mini Lop         │ 9        │
+-- │ Lionhead         │ 9        │
+-- └──────────────────┴──────────┘
+```
 
 <table class="docutils data align-default" style="width: 100%">
   <colgroup>
@@ -765,5 +789,11 @@ TIMESTAMP WITH TIME ZONE
 This driver was tested on:
 
 - Apache DataFusion `53.1.0`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.24.1](./v0.24.1.md)
 
 [datafusion]: https://datafusion.apache.org/

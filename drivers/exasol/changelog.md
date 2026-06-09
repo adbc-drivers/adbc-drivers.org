@@ -19,6 +19,16 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+## v0.12.6 (2026-06-08)
+
+Fixes:
+
+- If a nonexistent schema is specified in the connection URI, the driver will still connect instead of failing
+- `?` characters inside string literals, quoted identifiers, and comments are no longer treated as bind parameter placeholders
+- Multi-value `WHERE col IN (...)` now properly returns all matching rows
+- Apply the `query_timeout` connection parameter to all statements
+- Update dependencies with security advisories (see the [upstream changelogs](https://github.com/exasol-labs/exarrow-rs/releases) for details)
+
 ## v0.12.0 (2026-04-30)
 
 New features:
