@@ -199,12 +199,14 @@ If you include a `compose.yaml`, you can run tests/validation against a containe
 
 ### Licensing
 
-Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license).
+Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license). If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>` and build your driver in Rust, this will be enforced for you by [cargo-about](https://embarkstudios.github.io/cargo-about/).
 
 If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please talk with us.
 
 For Apache-licensed repositories:
 
+- Put a LICENSE.txt at the root.
+- Put a NOTICE.txt at the root.
 - All files (within reason) should have the Apache license header and copyright declaration:
 
   ```text
@@ -235,13 +237,53 @@ For Apache-licensed repositories:
 
 ### Distribution & Packaging
 
-If you use {ref}`standard CI workflows <building-drivers-internal-tooling>`, then pushing a tag will trigger a build-test-release that ends with a new release on GitHub containing packages that we can then upload to the CDN. Otherwise, you will need to generate appropriate packages yourself; you can see the [packaging script](https://github.com/adbc-drivers/dev/blob/main/adbc_drivers_dev/package.py) as a reference for the format. You will also need to generate a `manifest.toml` and ideally a documentation page (again, all of this is handled by the standard CI workflows).
+If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>`, then pushing a tag will trigger a build-test-release that ends with a new release on GitHub containing packages that we can then upload to the CDN. Otherwise, you will need to generate appropriate packages yourself; you can see the [packaging script](https://github.com/adbc-drivers/dev/blob/main/adbc_drivers_dev/package.py) as a reference for the format. You will also need to generate a `manifest.toml` and ideally a documentation page (again, all of this is handled by the standard CI workflows).
 
 Once you have a GitHub release with the expected formats, let a Foundry administrator know so we can check the release and upload it to the dbc CDN.
 
 ### Repository Standards
 
 We ask that all open source repositories follow these standards:
+
+- Ensure the Licensing guidelines above are followed.
+- Put a `README.md` at the root answering these questions. You are encouraged to follow the format and style of an existing README.
+  - What is it?
+  - How do I install it? Instructions inline.
+  - How do I use it / learn more about it? Some mix of inline and linking to docs is fine.
+  - How do I build it? Inline or link to `CONTRIBUTING.md`
+  - How do I contribute (link to `CONTRIBUTING.md`)
+- Put a `CONTRIBUTING.md` at the root with this information. You are encouraged to follow the format and style of an existing `CONTRIBUTING.md`.
+  - Reporting bugs
+  - Reporting security vulnerabilities
+    - Point to the **Security Policy** using the URL `https://github.com/adbc-drivers/<repo>?tab=security-ov-file#readme`
+  - Making feature requests
+  - Setting up a developer environment
+  - Development: Cover any git standards (e.g., conventional commits), code style, etc.
+  - Point to the **Code of Conduct** using the URL `https://github.com/adbc-drivers/<repo>?tab=coc-ov-file#readme`
+- Do **not** add a `CODE_OF_CONDUCT.md` or `SECURITY.md` at root (they are provided globally by the .github repo).
+- Name the default branch `main`.
+- Add a `.pre-commit-config.yaml`.
+  - Add language-specific linters.
+    - For Go, configure `golangci-lint` and `.golangci.toml` (best to copy the configuration from an existing repository) as well as a local hook for `go fix`.
+    - For Rust, configure `cargo fmt`.
+- Update the GitHub landing page. On the top right of the repository page, under the gear icon:
+  - Fill in "About".
+  - Add topics for the repository.
+  - Hide the packages and deployments sections.
+- Update the GitHub settings.
+  - Disable Wikis.
+  - Disable Projects.
+  - Enable "Always suggest updating pull request branches".
+  - Enable "Automatically delete head branches".
+  - Disable non-squash merging.
+  - Set squash merging to "Pull request title and description".
+- Ensure Dependabot is configured.
+- Add issue templates and pull request template, if desired.
+
+After making a repository public:
+
+- Enable approvers in environments.
+- In Settings > Actions, check that "Approval for running fork pull request workflows from contributors" is set to "Require approval for all external contributors" (this should be the default).
 
 ## FAQ
 
@@ -251,11 +293,17 @@ apache/arrow-adbc is under the Apache Software Foundation, and the maintenance i
 
 ### Who owns the repo under adbc-drivers?
 
-TODO: Talk about how we envision that the driver/author will be who owns the repo and that the Foundry will help manage it.
+The author of the driver is the primary owner of the repository and has administrator privileges over it. The ADBC Driver Foundry is a co-owner that helps manage the repository and provides the hosting.
 
 ### When is a driver ready for release?
 
-Talk about prereleases
+There is no hard requirement for a driver to be "ready", but generally:
+
+- It should support Linux, macOS, and Windows.
+- It should support a minimum baseline of functionality: querying, bulk ingest, and basic metadata operations (GetObjects).
+- It should run the standard validation suite and ensure the minimum functionality passes.
+
+Drivers that do not quite meet these requirements but want to make an initial release for testing can make a prerelease by tagging with an appropriate version number (e.g. `v0.1.0-alpha.1`).
 
 ### After I build my driver, how does it become available with dbc?
 
