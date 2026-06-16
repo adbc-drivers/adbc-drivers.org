@@ -28,35 +28,10 @@ Below you will find documentation for how to get involved with the Foundry, what
 To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} website.
 
 
-## Guides
-
-:::::{grid} 1 2 3 3
-:margin: 4 4 0 0
-:gutter: 3
-
-::::{grid-item-card}
-**Using Drivers**
-^^^
-Learn how to install drivers from the Foundry and use them with your favorite programming language.
-+++
-:::{button-ref} using-drivers/index
-:click-parent:
-Guide
+:::{card}
+:class-card: sd-bg-primary sd-text-white sd-card-announcement
+New: [Building Drivers](./building-drivers/index.md) — learn how to build and ship an ADBC driver with the Foundry.
 :::
-::::
-
-::::{grid-item-card}
-**Building Drivers**
-^^^
-Learn how to build an ADBC driver in the Foundry.
-+++
-:::{button-ref} building-drivers/index
-:click-parent:
-Guide
-:::
-::::
-
-:::::
 
 ## Available Drivers
 
@@ -413,6 +388,36 @@ Documentation
 
 If you'd like to see your ADBC driver listed here, please shoot an email to [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
 
+
+## Guides
+
+:::::{grid} 1 2 3 3
+:margin: 4 4 0 0
+:gutter: 3
+
+::::{grid-item-card}
+**Using Drivers**
+^^^
+Learn how to install drivers from the Foundry and use them with your favorite programming language.
++++
+:::{button-ref} using-drivers/index
+:click-parent:
+Guide
+:::
+::::
+
+::::{grid-item-card}
+**Building Drivers**
+^^^
+Learn how to build an ADBC driver in the Foundry.
++++
+:::{button-ref} building-drivers/index
+:click-parent:
+Guide
+:::
+::::
+
+:::::
 
 ## ADBC Resources
 

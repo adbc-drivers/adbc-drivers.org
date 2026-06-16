@@ -326,6 +326,12 @@ section:has(> .driver-header-links) .md-typeset__table {
     overflow-x: auto;
 }
 
+/* Announcement card: white text and links on a primary-colored background */
+.sd-card-announcement a {
+    color: white !important;
+    text-decoration: underline;
+}
+
 /* Color the GitHub icon - black in light mode, white in dark mode */
 .driver-github-link {
     color: black !important;
