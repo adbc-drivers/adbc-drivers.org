@@ -289,7 +289,7 @@ After making a repository public:
 
 ### Why not under apache/arrow-adbc?
 
-apache/arrow-adbc is under the Apache Software Foundation, and the maintenance is shared with the broader Apache Arrow project. That creates problems for driver developers and for the Arrow maintainers. For contributors focusing on particular drivers, granting them privileges for their particular projects is difficult or impossible, and the road to maintainership requires demonstrating contributions to the Arrow project as a whole. And for the Arrow maintainers, reviewing contributions and releasing drivers adds to the already large workload of a relatively small group. The Foundry solves this mismatch between the centralized privilege model of Apache projects and the federated nature of driver development.
+[apache/arrow-adbc](https://github.com/apache/arrow-adbc) is under the Apache Software Foundation, and the maintenance is shared with the broader Apache Arrow project. That creates problems for driver developers and for the Arrow maintainers. For contributors focusing on particular drivers, granting them privileges for their particular projects is difficult or impossible, and the road to maintainership requires demonstrating contributions to the Arrow project as a whole. And for the Arrow maintainers, reviewing contributions and releasing drivers adds to the already large workload of a relatively small group. The Foundry solves this mismatch between the centralized privilege model of Apache projects and the federated nature of driver development.
 
 ### Who owns the repo under adbc-drivers?
 

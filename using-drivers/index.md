@@ -17,11 +17,11 @@
 
 # Using Drivers
 
-All of the drivers listed under Available Drivers (and more) can be installed with dbc, Columnar's CLI for installing and managing ADBC drivers. When drivers are released from the Foundry, they are automatically made available on Columnar's fast, reliable, and globally-available CDN which dbc pulls from.
+All of the drivers listed under [Available Drivers](../drivers/index.md) (and more) can be installed with [dbc](https://docs.columnar.tech/dbc/), Columnar's CLI for installing and managing ADBC drivers. When drivers are released from the Foundry, they are automatically made available on Columnar's fast, reliable, and globally-available CDN which dbc pulls from.
 
 ## Using dbc
 
-dbc has its own documentation that covers its installation and usage: https://docs.columnar.tech/dbc/. We recommended checking that out.
+dbc has its own documentation that covers its installation and usage: [https://docs.columnar.tech/dbc/](https://docs.columnar.tech/dbc/). We recommended checking that out.
 
 To give you a sense of how simple it is to use dbc, the following steps should work for most users to get started:
 
