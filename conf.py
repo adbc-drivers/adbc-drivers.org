@@ -138,6 +138,7 @@ myst_enable_extensions = [
     "linkify",
     "substitution",
 ]
+myst_heading_anchors = 3
 myst_substitutions = {
     "BREAKING_CHANGE": "({octicon}`alert-fill;1em;sd-text-warning` **Breaking change**)"
 }

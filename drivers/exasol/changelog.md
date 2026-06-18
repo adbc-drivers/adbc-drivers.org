@@ -19,6 +19,12 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+## v0.12.7 (2026-06-18)
+
+Fixes:
+
+- Preserve the schema of empty result sets
+
 ## v0.12.6 (2026-06-08)
 
 Fixes:

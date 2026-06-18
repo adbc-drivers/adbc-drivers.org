@@ -17,6 +17,17 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+# v0.4.0 (2026-06-18)
+
+New features:
+
+- Support querying unsigned types
+
+Fixes:
+
+- Guard against zero columns, >65536 columns in bulk ingest
+- Disable underlying connection pooling to avoid connection exhaustion
+
 # v0.3.1 (2026-03-11)
 
 New features:
