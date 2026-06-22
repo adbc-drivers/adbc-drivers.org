@@ -17,7 +17,7 @@
 
 # Changelog for MySQL/MariaDB Driver
 
-# v0.4.0 (2026-06-18)
+## v0.4.0 (2026-06-18)
 
 New features:
 
@@ -28,7 +28,7 @@ Fixes:
 - Guard against zero columns, >65536 columns in bulk ingest
 - Disable underlying connection pooling to avoid connection exhaustion
 
-# v0.3.1 (2026-03-11)
+## v0.3.1 (2026-03-11)
 
 New features:
 
@@ -38,7 +38,7 @@ Fixes:
 
 - Cap the size of batched INSERTS in bulk ingest, fixing a bug with wide tables
 
-# v0.3.0 (2026-02-19)
+## v0.3.0 (2026-02-19)
 
 New features:
 
@@ -46,13 +46,13 @@ New features:
 
 [^opt-0.3.0]: https://columnar.tech/blog/adbc-driver-optimization-deep-dive
 
-# v0.2.0 (2026-01-07)
+## v0.2.0 (2026-01-07)
 
 New features:
 
 - Support querying the `BIT` type
 - Force connection timezone to UTC for consistent handling
 
-# v0.1.0 (2025-09-18)
+## v0.1.0 (2025-09-18)
 
 - Initial release

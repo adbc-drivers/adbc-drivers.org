@@ -17,7 +17,7 @@
 
 # Changelog for BigQuery Driver
 
-# v1.12.0 (2026-06-22)
+## v1.12.0 (2026-06-22)
 
 New features:
 
@@ -35,13 +35,13 @@ Fixes:
 - Handle dry-run queries properly instead of erroring
 - Process the connection URI first to avoid potential nondeterminism in connection options
 
-# v1.11.2 (2026-03-10)
+## v1.11.2 (2026-03-10)
 
 Fixes:
 
 - Handle cancellation during bulk ingest better
 
-# v1.11.0 (2026-02-19)
+## v1.11.0 (2026-02-19)
 
 New features:
 
@@ -52,7 +52,7 @@ Fixes:
 
 - Wait for table existence to propagate in bulk ingest
 
-# v1.10.0 (2026-01-07)
+## v1.10.0 (2026-01-07)
 
 :::{note}
 The version number was bumped to align with the upstream arrow-adbc release.
@@ -70,7 +70,7 @@ Fixes:
 - Work around hanging due to infinite retries in Google SDKs
 - Always return `decimal256(76,38)` for BIGDECIMAL columns
 
-# v1.0.0 (2025-09-17)
+## v1.0.0 (2025-09-17)
 
 New features:
 
