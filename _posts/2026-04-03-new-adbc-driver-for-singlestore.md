@@ -8,10 +8,10 @@ A beta release of a new ADBC driver for [SingleStore](https://www.singlestore.co
 
 The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, prepared statements, and transactions. Documentation can be found at [docs.adbc-drivers.org](https://docs.adbc-drivers.org/drivers/singlestore/). This is a beta release, and more features are actively being developed, so stay tuned.
 
-The driver was developed by SingleStore, is implemented in Go, and uses the MySQL wire protocol to connect. To get started, provide a connection URI using the [Go MySQL Driver DSN format](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name) with a `singlestore://` scheme:
+The driver was developed by SingleStore, is implemented in Go, and uses the MySQL wire protocol to connect. To get started, provide a connection URI in the standard [MySQL URI format](https://dev.mysql.com/doc/refman/8.4/en/connecting-using-uri-or-key-value-pairs.html#connecting-using-uri) with the `singlestore://` scheme:
 
 ```
-singlestore://user:password@tcp(host:3306)/database
+singlestore://user:password@host:3306/database
 ```
 
 Bulk ingestion uses `LOAD DATA LOCAL INFILE` under the hood. The driver includes comprehensive type mappings between SingleStore and Arrow types, covering integers, floating-point numbers, decimals, temporal types (DATE, DATETIME, TIME, TIMESTAMP), strings, binary data, and JSON.
