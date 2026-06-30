@@ -18,15 +18,16 @@ hide-toc: true
 
 # ADBC Driver Foundry Documentation
 
+::::{grid} 1 1 2 2
+
+:::{grid-item}
 ```{include} _static/adbc-drivers-logo.svg
 ```
-
-Welcome to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} driver documentation site.
-
-Below you will find documentation for how to get involved with the Foundry, what drivers are available, resources for learning how to use them, and more about [ADBC](https://arrow.apache.org/adbc).
-
-To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} website.
-
+:::
+:::{grid-item}
+Welcome to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} driver documentation site. Learn what drivers are available, how to use them, more about [ADBC](https://arrow.apache.org/adbc), and how to get involved with the Foundry. To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} website.
+:::
+::::
 
 :::{card}
 :class-card: sd-bg-primary sd-text-white sd-card-announcement
@@ -37,9 +38,10 @@ To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://
 
 Drivers available from the ADBC Driver Foundry. If you'd like your driver to be listed here, check out [Building Drivers](./building-drivers/index.md).
 
-:::::{grid} 1 2 3 3
-:margin: 4 4 0 0
-:gutter: 3
+:::::{grid} 1 2 4 4
+:margin: 0
+:class-container: drivers-grid
+:gutter: 2
 
 ::::{grid-item-card}
 :class-header: sd-card-header-with-icon
@@ -328,9 +330,10 @@ Documentation
 
 Drivers available across the ADBC-verse:
 
-:::::{grid} 1 2 3 3
-:margin: 4 4 0 0
-:gutter: 3
+:::::{grid} 1 2 4 4
+:margin: 0
+:class-container: drivers-grid
+:gutter: 2
 
 ::::{grid-item-card}
 :class-header: sd-card-header-with-icon
@@ -470,8 +473,9 @@ If you'd like to see your ADBC driver listed here, please shoot an email to [hel
 ## Guides
 
 :::::{grid} 1 2 3 3
-:margin: 4 4 0 0
-:gutter: 3
+:margin: 0
+:class-container: drivers-grid
+:gutter: 2
 
 ::::{grid-item-card}
 **Using Drivers**
@@ -500,8 +504,9 @@ Read Guide
 ## ADBC Resources
 
 :::::{grid} 1 2 3 3
-:margin: 4 4 0 0
-:gutter: 3
+:margin: 0
+:class-container: drivers-grid
+:gutter: 2
 
 ::::{grid-item-card}
 **Apache Arrow ADBC**

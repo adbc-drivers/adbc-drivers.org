@@ -340,3 +340,8 @@ section:has(> .driver-header-links) .md-typeset__table {
 [data-md-color-scheme="slate"] .driver-github-link {
     color: white !important;
 }
+
+.drivers-grid {
+    padding-left: 0;
+    padding-right: 0;
+}
