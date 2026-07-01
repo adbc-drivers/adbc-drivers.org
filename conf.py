@@ -30,7 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent / "_ext"))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "ADBC Driver Foundry Documentation"
-copyright = "2025 ADBC Drivers Contributors"
+copyright = "2025-2026 ADBC Drivers Contributors"
 author = "ADBC Drivers Contributors"
 
 # -- General configuration ---------------------------------------------------

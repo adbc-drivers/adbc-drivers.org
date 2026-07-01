@@ -282,6 +282,14 @@ We ask that all open source repositories follow these standards:
   - Disable non-squash merging.
   - Set squash merging to "Pull request title and description".
 - Ensure Dependabot is configured.
+  - Ensure Dependabot security alerts are enabled.
+    - Settings > Advanced Security
+    - Enable:
+      - "Dependabot alerts"
+      - "Dependabot malware alerts"
+      - "Dependabot security updates"
+      - "Dependency graph" (GitHub may prompt you to enable this when enabling "Dependabot alerts")
+    - **Do not** enable paid security features.
 - Add issue templates and pull request template, if desired.
 
 After making a repository public:

@@ -38,7 +38,7 @@ linkify-it-py = ">=2.0.3,<3"
 matplotlib = ">=3.10.6,<4"
 
 [pypi-dependencies]
-sphinx-immaterial = ">=0.13.6, <0.14"
+sphinx-immaterial = ">=0.13.9, <0.14"
 
 [environments]
 lint = ["lint"]
