@@ -25,6 +25,7 @@ hide-toc: true
 ```
 :::
 :::{grid-item}
+:class: grid-vertical-center
 Welcome to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} driver documentation site. Learn what drivers are available, how to use them, more about [ADBC](https://arrow.apache.org/adbc), and how to get involved with the Foundry. To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} website.
 :::
 ::::
@@ -36,14 +37,16 @@ Welcome to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} dri
 
 ## Available Drivers
 
-Drivers available from the ADBC Driver Foundry. If you'd like your driver to be listed here, check out [Building Drivers](./building-drivers/index.md).
+Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foundry. If you'd like your driver to be listed here, check out [Building Drivers](./building-drivers/index.md).
 
 :::::{grid} 1 2 4 4
 :margin: 0
-:class-container: drivers-grid
+:class-container: grid-no-padding grid-no-body
 :gutter: 2
 
 ::::{grid-item-card}
+:link: drivers/redshift/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Amazon Redshift**
 :::{image} _static/driver_icons/color/light_mode/redshift.svg
@@ -59,15 +62,11 @@ Drivers available from the ADBC Driver Foundry. If you'd like your driver to be 
 :alt:
 :::
 ^^^
-Work with Amazon Redshift, a data warehouse offered by AWS. Supports both Provisioned and Serverless offerings.
-+++
-:::{button-ref} drivers/redshift/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/datafusion/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Apache DataFusion**
 :::{image} _static/driver_icons/color/light_mode/datafusion.svg
@@ -76,15 +75,11 @@ Documentation
 :alt:
 :::
 ^^^
-Embed Apache DataFusion, an extensible query engine that uses Apache Arrow as its in-memory format.
-+++
-:::{button-ref} drivers/datafusion/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/spark/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Apache Spark**
 :::{image} _static/driver_icons/color/light_mode/spark.svg
@@ -100,15 +95,11 @@ Documentation
 :alt:
 :::
 ^^^
-Connect to Apache Spark, a multi-language engine for large data analytics on single-node machines and multi-node clusters. Supports the HiveServer2 Thrift protocol, Spark Connect, and Apache Livy.
-+++
-:::{button-ref} drivers/spark/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/bigquery/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **BigQuery**
 :::{image} _static/driver_icons/color/light_mode/bigquery.svg
@@ -124,15 +115,11 @@ Documentation
 :alt:
 :::
 ^^^
-Work with BigQuery, a data warehouse offered by Google Cloud.
-+++
-:::{button-ref} drivers/bigquery/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/clickhouse/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **ClickHouse**
 :::{image} _static/driver_icons/color/light_mode/clickhouse.svg
@@ -148,15 +135,11 @@ Documentation
 :alt:
 :::
 ^^^
-Work with ClickHouse, an open source data warehouse and analytical database by ClickHouse, Inc.
-+++
-:::{button-ref} drivers/clickhouse/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/databricks/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Databricks**
 :::{image} _static/driver_icons/color/light_mode/databricks.svg
@@ -172,15 +155,11 @@ Documentation
 :alt:
 :::
 ^^^
-Work with Databricks, a cloud data platform.
-+++
-:::{button-ref} drivers/databricks/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/quack/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **DuckDB Quack**
 :::{image} _static/driver_icons/color/light_mode/quack.svg
@@ -196,26 +175,18 @@ Documentation
 :alt:
 :::
 ^^^
-Connect to a remote DuckDB instance via the Quack protocol.
-+++
-:::{button-ref} drivers/quack/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/exasol/index
+:link-type: doc
 **Exasol**
 ^^^
-Work with the Exasol in-memory analytics engine.
-+++
-:::{button-ref} drivers/exasol/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/mssql/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Microsoft SQL Server**
 :::{image} _static/driver_icons/color/light_mode/mssql.svg
@@ -231,15 +202,11 @@ Documentation
 :alt:
 :::
 ^^^
-Work with Microsoft SQL Server, a relational database system offered by Microsoft.
-+++
-:::{button-ref} drivers/mssql/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/mysql/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **MySQL/MariaDB**
 :::{image} _static/driver_icons/color/light_mode/mysql.svg
@@ -255,28 +222,18 @@ Documentation
 :alt:
 :::
 ^^^
-Work with MySQL, a free and open source relational database management system.
-
-Also supports MariaDB.
-+++
-:::{button-ref} drivers/mysql/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/singlestore/index
+:link-type: doc
 **SingleStore**
 ^^^
-Work with SingleStore, a distributed database for low-latency SQL.
-+++
-:::{button-ref} drivers/singlestore/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/snowflake/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Snowflake**
 :::{image} _static/driver_icons/color/light_mode/snowflake.svg
@@ -292,50 +249,39 @@ Documentation
 :alt:
 :::
 ^^^
-Work with Snowflake, a cloud data warehouse.
-+++
-:::{button-ref} drivers/snowflake/index
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: drivers/trino/index
+:link-type: doc
 :class-header: sd-card-header-with-icon
 **Trino**
 :::{image} _static/driver_icons/color/light_mode/trino.svg
 :class: only-light
-:width: 24px
+:width: 18px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/trino.svg
 :class: only-dark
-:width: 24px
+:width: 18px
 :align: center
 :alt:
 :::
 ^^^
-Work with Trino, a distributed SQL query engine.
-+++
-:::{button-ref} drivers/trino/index
-:click-parent:
-Documentation
-:::
 ::::
 
 :::::
 
-## Other Drivers
-
-Drivers available across the ADBC-verse:
+Other drivers available on dbc from across the ADBC-verse:
 
 :::::{grid} 1 2 4 4
 :margin: 0
-:class-container: drivers-grid
+:class-container: grid-no-padding grid-no-body
 :gutter: 2
 
 ::::{grid-item-card}
+:link: https://duckdb.org/docs/stable/clients/adbc
 :class-header: sd-card-header-with-icon
 **DuckDB**
 :::{image} _static/driver_icons/color/light_mode/duckdb.svg
@@ -351,15 +297,10 @@ Drivers available across the ADBC-verse:
 :alt:
 :::
 ^^^
-DuckDB ADBC driver from the DuckDB project
-+++
-:::{button-link} https://duckdb.org/docs/stable/clients/adbc
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://arrow.apache.org/adbc/current/driver/flight_sql.html
 :class-header: sd-card-header-with-icon
 **Flight SQL**
 :::{image} _static/driver_icons/color/light_mode/flightsql.svg
@@ -375,15 +316,10 @@ Documentation
 :alt:
 :::
 ^^^
-Arrow Flight SQL ADBC driver from the Apache Arrow project
-+++
-:::{button-link} https://arrow.apache.org/adbc/current/driver/flight_sql.html
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://arrow.apache.org/adbc/current/driver/postgresql.html
 :class-header: sd-card-header-with-icon
 
 **PostgreSQL**
@@ -400,15 +336,10 @@ Documentation
 :alt:
 :::
 ^^^
-PostgreSQL ADBC driver from the Apache Arrow project
-+++
-:::{button-link} https://arrow.apache.org/adbc/current/driver/postgresql.html
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://arrow.apache.org/adbc/current/driver/sqlite.html
 :class-header: sd-card-header-with-icon
 **SQLite**
 :::{image} _static/driver_icons/color/light_mode/sqlite.svg
@@ -424,45 +355,24 @@ Documentation
 :alt:
 :::
 ^^^
-SQLite ADBC driver from the Apache Arrow project
-+++
-:::{button-link} https://arrow.apache.org/adbc/current/driver/sqlite.html
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://docs.columnar.tech/drivers/oracle
 **Oracle Database**
 ^^^
-ADBC driver for Oracle Database from Columnar
-+++
-:::{button-link} https://docs.columnar.tech/drivers/oracle
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://docs.columnar.tech/drivers/sap-hana
 **SAP HANA**
 ^^^
-ADBC driver for SAP HANA from Columnar
-+++
-:::{button-link} https://docs.columnar.tech/drivers/sap-hana
-:click-parent:
-Documentation
-:::
 ::::
 
 ::::{grid-item-card}
+:link: https://docs.columnar.tech/drivers/teradata
 **Teradata**
 ^^^
-ADBC driver for Teradata from Columnar
-+++
-:::{button-link} https://docs.columnar.tech/drivers/teradata
-:click-parent:
-Documentation
-:::
 ::::
 
 :::::
@@ -474,7 +384,7 @@ If you'd like to see your ADBC driver listed here, please shoot an email to [hel
 
 :::::{grid} 1 2 3 3
 :margin: 0
-:class-container: drivers-grid
+:class-container: grid-no-padding
 :gutter: 2
 
 ::::{grid-item-card}
@@ -505,7 +415,7 @@ Read Guide
 
 :::::{grid} 1 2 3 3
 :margin: 0
-:class-container: drivers-grid
+:class-container: grid-no-padding
 :gutter: 2
 
 ::::{grid-item-card}

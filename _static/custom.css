@@ -341,7 +341,24 @@ section:has(> .driver-header-links) .md-typeset__table {
     color: white !important;
 }
 
-.drivers-grid {
+/* For grids on the homepage: remove forced padding on the sides */
+.grid-no-padding {
     padding-left: 0;
     padding-right: 0;
+}
+
+/* For grids on the homepage: no body */
+.grid-no-body .sd-card-body {
+    padding: 0;
+}
+
+/* Vertically center text of a grid item */
+.grid-vertical-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grid-vertical-center p:last-child {
+    margin-bottom: 0;
 }
