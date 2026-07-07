@@ -26,7 +26,7 @@ v0.1.0 <v0.1.0.md>
 v0.1.0-alpha.2 <prerelease.md>
 :::
 
-[{badge-primary}`Driver Version|v0.1.0`](#driver-clickhouse-v0.1.0 "Permalink") {badge-secondary}`Release Date|2026-07-07` {badge-success}`Tested With|ClickHouse 26.4`
+[{badge-primary}`Driver Version|v0.1.0`](#driver-clickhouse-v0.1.0 "Permalink") {badge-secondary}`Release Date|2026-07-06` {badge-success}`Tested With|ClickHouse 26.4`
 
 This driver provides access to [ClickHouse][clickhouse], an open source data warehouse and analytical database.  It is developed by ClickHouse, Inc.  The source code can be found at [adbc_clickhouse](https://github.com/ClickHouse/adbc_clickhouse); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
 

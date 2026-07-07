@@ -17,6 +17,6 @@
 
 # Changelog for ClickHouse Driver
 
-## v0.1.0 (2026-07-07)
+## v0.1.0 (2026-07-06)
 
 Initial release
