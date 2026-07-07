@@ -19,6 +19,12 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+## v0.13.0 (2026-07-07)
+
+Fixes:
+
+- Fix execution of multiple sets of bind parameters by writing in row-major order as expected
+
 ## v0.12.7 (2026-06-18)
 
 Fixes:
