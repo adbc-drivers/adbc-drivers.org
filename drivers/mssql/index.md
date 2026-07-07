@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.5.0 <v1.5.0.md>
 v1.4.1 <v1.4.1.md>
 v1.4.0 <v1.4.0.md>
 v1.3.1 <v1.3.1.md>
@@ -35,7 +36,7 @@ v1.0.0 <v1.0.0.md>
 This project is not associated with Microsoft.
 :::
 
-[{badge-primary}`Driver Version|v1.4.1`](#driver-mssql-v1.4.1 "Permalink") {badge-secondary}`Release Date|2026-05-22` {badge-success}`Tested With|Microsoft SQL Server 2025`
+[{badge-primary}`Driver Version|v1.5.0`](#driver-mssql-v1.5.0 "Permalink") {badge-secondary}`Release Date|2026-07-07` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
 
 This driver provides access to [Microsoft SQL Server][mssql].
 
@@ -1143,12 +1144,16 @@ DATETIME2
 
 This driver was tested on:
 
-- Microsoft SQL Server `17.0.4045.5 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `12.0.2000.8 SQL Azure`
+- Microsoft SQL Server `16.0.4255.1 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `17.0.4055.5 Enterprise Evaluation Edition (64-bit)`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.4.1](./v1.4.1.md)
+- [v1.4.0](./v1.4.0.md)
 - [v1.3.1](./v1.3.1.md)
 - [v1.3.0](./v1.3.0.md)
 - [v1.2.0](./v1.2.0.md)
