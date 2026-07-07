@@ -17,6 +17,12 @@
 
 # Changelog for ADBC Driver for Apache DataFusion
 
+## v0.26.0 (2026-07-07)
+
+New features:
+
+- Implement `ExecutePartitions` and `ReadPartition`
+
 ## v0.25.0 (2026-06-08)
 
 New features:
