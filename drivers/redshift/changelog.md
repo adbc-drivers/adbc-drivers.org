@@ -17,6 +17,12 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.4.0 (2026-07-07)
+
+Fixes:
+
+- Correctly query decimal values whose decimal representation ended in multiple zeroes
+
 ## v1.3.0 (2026-05-25)
 
 New features:
