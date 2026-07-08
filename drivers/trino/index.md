@@ -210,6 +210,18 @@ The driver also supports the Trino DSN format (see [Go Trino Client documentatio
 <tr>
 <td style="text-align: left;">
 
+ARRAY
+
+</td>
+<td style="text-align: center;">
+
+list
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
 BIGINT
 
 </td>
@@ -482,7 +494,46 @@ DATE
 decimal128
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td style="text-align: center;">
+
+DECIMAL
+
+</td>
+<td style="text-align: center;">
+
+DECIMAL, NUMERIC ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+decimal32
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+<td style="text-align: center;">
+
+DECIMAL
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+decimal64
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+<td style="text-align: center;">
 
 DECIMAL
 
@@ -621,7 +672,7 @@ string
 </td>
 <td style="text-align: center;">
 
-IPADDRESS, VARCHAR
+VARCHAR, IPADDRESS
 
 </td>
 <td style="text-align: center;">
@@ -812,6 +863,6 @@ To see documentation for previous versions of this driver, see the following:
 - [v0.2.0](./v0.2.0.md)
 - [v0.1.0](./v0.1.0.md)
 
-
+[^1]: Negative scales are not supported
 
 [trino]: https://trino.io/
