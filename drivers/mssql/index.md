@@ -110,80 +110,84 @@ This driver also supports other types of connection strings that are supported b
   <colgroup>
     <col span="1" style="width: 25%;">
     <col span="1" style="width: 25%;">
-    <col span="1" style="width: 50.0%;">
+    <col span="1" style="width: 25.0%;">
+    <col span="1" style="width: 25.0%;">
   </colgroup>
   <thead>
     <tr>
       <th colspan="2">Feature</th>
       <th style="text-align: center;">Microsoft SQL Server</th>
+      <th style="text-align: center;">Fabric Data Warehouse</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Append</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Create/Append</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Replace</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Temporary Table</td>
       <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Target Catalog</td>
       <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Target Schema</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Non-nullable fields are marked NOT NULL</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td rowspan="4">Catalog (GetObjects)</td>
       <td>depth=catalogs</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=tables</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=columns (all)</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Get Parameter Schema</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Get Table Schema</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Prepared Statements</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Transactions</td>
-      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
   </tbody>
 </table>
@@ -197,6 +201,7 @@ This driver also supports other types of connection strings that are supported b
 <tr>
 <th style="text-align: left; vertical-align: middle;">Database Type</th>
 <th style="text-align: center;">Microsoft SQL Server</th>
+<th style="text-align: center;">Fabric Data Warehouse</th>
 </tr>
 </thead>
 <tbody>
@@ -206,7 +211,7 @@ This driver also supports other types of connection strings that are supported b
 BIGINT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int64
 
@@ -218,7 +223,7 @@ int64
 BIT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 bool
 
@@ -230,7 +235,7 @@ bool
 CHAR
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 string
 
@@ -242,7 +247,7 @@ string
 DATE
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 date32[day]
 
@@ -254,7 +259,7 @@ date32[day]
 DATETIME
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 timestamp[us] (with time zone)
 
@@ -266,7 +271,7 @@ timestamp[us] (with time zone)
 DATETIME2
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 timestamp[us] (with time zone)
 
@@ -278,7 +283,7 @@ timestamp[us] (with time zone)
 DECIMAL
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 decimal128
 
@@ -290,7 +295,7 @@ decimal128
 DOUBLE PRECISION
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 double
 
@@ -307,6 +312,11 @@ GEOGRAPHY
 extension&lt;geoarrow.wkb&gt;
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -317,6 +327,11 @@ GEOMETRY
 <td style="text-align: center;">
 
 extension&lt;geoarrow.wkb&gt;
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
 
 </td>
 </tr>
@@ -331,6 +346,11 @@ IMAGE
 binary
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -338,7 +358,7 @@ binary
 INT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int32
 
@@ -355,6 +375,11 @@ MONEY
 decimal128
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -365,6 +390,11 @@ NCHAR
 <td style="text-align: center;">
 
 string
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
 
 </td>
 </tr>
@@ -379,6 +409,11 @@ NTEXT
 string
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -389,6 +424,11 @@ NTEXT (mssql.query.large_text_type = large_string)
 <td style="text-align: center;">
 
 large_string
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
 
 </td>
 </tr>
@@ -403,16 +443,9 @@ NTEXT (mssql.query.large_text_type = string_view)
 string_view
 
 </td>
-</tr>
-<tr>
-<td style="text-align: left;">
-
-NUMERIC
-
-</td>
 <td style="text-align: center;">
 
-decimal128
+(NA/not tested)
 
 </td>
 </tr>
@@ -427,6 +460,11 @@ NVARCHAR
 string
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -434,7 +472,7 @@ string
 REAL
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 float
 
@@ -451,6 +489,11 @@ SMALLDATETIME
 timestamp[us] (with time zone)
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -458,7 +501,7 @@ timestamp[us] (with time zone)
 SMALLINT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int16
 
@@ -475,6 +518,28 @@ SMALLMONEY
 decimal128
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+SQL_VARIANT
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;parquet.variant&gt;
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -485,6 +550,11 @@ TEXT
 <td style="text-align: center;">
 
 string
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
 
 </td>
 </tr>
@@ -499,6 +569,11 @@ TEXT (mssql.query.large_text_type = large_string)
 large_string
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -511,6 +586,11 @@ TEXT (mssql.query.large_text_type = string_view)
 string_view
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -518,7 +598,7 @@ string_view
 TIME
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time64[ns] ⚠️ [^1]
 
@@ -530,7 +610,7 @@ time64[ns] ⚠️ [^1]
 TIME(0)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time32[s]
 
@@ -542,7 +622,7 @@ time32[s]
 TIME(1)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time32[ms]
 
@@ -554,7 +634,7 @@ time32[ms]
 TIME(2)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time32[ms]
 
@@ -566,7 +646,7 @@ time32[ms]
 TIME(3)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time32[ms]
 
@@ -578,7 +658,7 @@ time32[ms]
 TIME(4)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time64[us]
 
@@ -590,7 +670,7 @@ time64[us]
 TIME(5)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time64[us]
 
@@ -602,7 +682,7 @@ time64[us]
 TIME(6)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time64[us]
 
@@ -619,6 +699,11 @@ TIME(7)
 time64[ns]
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -631,6 +716,11 @@ TINYINT
 uint8
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -638,7 +728,7 @@ uint8
 UNIQUEIDENTIFIER
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 extension&lt;arrow.uuid&gt;
 
@@ -650,7 +740,7 @@ extension&lt;arrow.uuid&gt;
 VARBINARY
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 binary
 
@@ -662,7 +752,7 @@ binary
 VARCHAR
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 string
 
@@ -679,6 +769,11 @@ XML
 string
 
 </td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 </tbody>
 </table>
@@ -690,8 +785,11 @@ string
 <tr>
 <th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
 <th colspan="2" style="text-align: center;">Microsoft SQL Server Type</th>
+<th colspan="2" style="text-align: center;">Fabric Data Warehouse Type</th>
 </tr>
 <tr>
+<th style="text-align: center;">Bind</th>
+<th style="text-align: center;">Ingest</th>
 <th style="text-align: center;">Bind</th>
 <th style="text-align: center;">Ingest</th>
 </tr>
@@ -701,6 +799,16 @@ string
 <td style="text-align: left;">
 
 binary
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY(MAX)
 
 </td>
 <td style="text-align: center;">
@@ -730,6 +838,16 @@ VARBINARY
 VARBINARY(MAX)
 
 </td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY(MAX) ⚠️ [^3] [^4]
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -737,7 +855,7 @@ VARBINARY(MAX)
 bool
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 BIT
 
@@ -749,7 +867,7 @@ BIT
 date32[day]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATE
 
@@ -763,12 +881,22 @@ decimal128
 </td>
 <td style="text-align: center;">
 
-DECIMAL(10,2)
+DECIMAL
 
 </td>
 <td style="text-align: center;">
 
-NUMERIC
+DECIMAL ⚠️ [^5]
+
+</td>
+<td style="text-align: center;">
+
+DECIMAL
+
+</td>
+<td style="text-align: center;">
+
+DECIMAL ⚠️ [^5]
 
 </td>
 </tr>
@@ -778,9 +906,24 @@ NUMERIC
 double
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td style="text-align: center;">
 
 DOUBLE PRECISION
+
+</td>
+<td style="text-align: center;">
+
+FLOAT
+
+</td>
+<td style="text-align: center;">
+
+DOUBLE PRECISION
+
+</td>
+<td style="text-align: center;">
+
+FLOAT
 
 </td>
 </tr>
@@ -800,11 +943,43 @@ extension&lt;geoarrow.wkb&gt;
 GEOGRAPHY, GEOMETRY
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+extension&lt;parquet.variant&gt;
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+SQL_VARIANT
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
 
 fixed_size_binary
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY(MAX)
 
 </td>
 <td style="text-align: center;">
@@ -824,7 +999,7 @@ VARBINARY(MAX)
 float
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 REAL
 
@@ -846,6 +1021,16 @@ REAL
 (NA/not tested)
 
 </td>
+<td style="text-align: center;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -853,7 +1038,7 @@ REAL
 int16
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 SMALLINT
 
@@ -865,7 +1050,7 @@ SMALLINT
 int32
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 INT
 
@@ -877,7 +1062,7 @@ INT
 int64
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 BIGINT
 
@@ -887,6 +1072,16 @@ BIGINT
 <td style="text-align: left;">
 
 large_binary
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY(MAX)
 
 </td>
 <td style="text-align: center;">
@@ -916,6 +1111,16 @@ NVARCHAR
 NVARCHAR(MAX)
 
 </td>
+<td style="text-align: center;">
+
+VARCHAR(MAX)
+
+</td>
+<td style="text-align: center;">
+
+VARCHAR
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -931,6 +1136,16 @@ NVARCHAR
 <td style="text-align: center;">
 
 NVARCHAR(MAX)
+
+</td>
+<td style="text-align: center;">
+
+VARCHAR(MAX)
+
+</td>
+<td style="text-align: center;">
+
+VARCHAR
 
 </td>
 </tr>
@@ -950,6 +1165,16 @@ NVARCHAR
 NVARCHAR(MAX)
 
 </td>
+<td style="text-align: center;">
+
+VARCHAR(MAX)
+
+</td>
+<td style="text-align: center;">
+
+VARCHAR ⚠️ [^3] [^6]
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -959,12 +1184,22 @@ time32[ms]
 </td>
 <td style="text-align: center;">
 
-TIME(3), TIME(2), TIME, TIME(1)
+TIME
 
 </td>
 <td style="text-align: center;">
 
-TIME(7) ⚠️ [^3]
+TIME(7)
+
+</td>
+<td style="text-align: center;">
+
+TIME
+
+</td>
+<td style="text-align: center;">
+
+TIME(3)
 
 </td>
 </tr>
@@ -976,12 +1211,22 @@ time32[s]
 </td>
 <td style="text-align: center;">
 
-TIME, TIME(0)
+TIME
 
 </td>
 <td style="text-align: center;">
 
-TIME(7) ⚠️ [^3]
+TIME(7)
+
+</td>
+<td style="text-align: center;">
+
+TIME
+
+</td>
+<td style="text-align: center;">
+
+TIME(0)
 
 </td>
 </tr>
@@ -993,12 +1238,17 @@ time64[ns]
 </td>
 <td style="text-align: center;">
 
-TIME, TIME(7)
+TIME
 
 </td>
 <td style="text-align: center;">
 
-TIME(7) ⚠️ [^3]
+TIME(7)
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIME(6)
 
 </td>
 </tr>
@@ -1010,12 +1260,22 @@ time64[us]
 </td>
 <td style="text-align: center;">
 
-TIME(6), TIME(5), TIME(4), TIME
+TIME
 
 </td>
 <td style="text-align: center;">
 
-TIME(7) ⚠️ [^3]
+TIME(7)
+
+</td>
+<td style="text-align: center;">
+
+TIME
+
+</td>
+<td style="text-align: center;">
+
+TIME(6)
 
 </td>
 </tr>
@@ -1030,6 +1290,11 @@ timestamp[ms]
 DATETIME2
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(3)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -1042,6 +1307,11 @@ timestamp[ms] (with time zone)
 DATETIME2
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(3)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -1049,14 +1319,19 @@ DATETIME2
 timestamp[ns]
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME2 [^2]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2
+DATETIME2(6) [^2]
+
+</td>
+<td style="text-align: center;">
+
+DATETIME2(6) [^7]
 
 </td>
 </tr>
@@ -1066,14 +1341,19 @@ DATETIME2
 timestamp[ns] (with time zone)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME2 [^2]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2
+DATETIME2(6) [^2]
+
+</td>
+<td style="text-align: center;">
+
+DATETIME2(6) [^7]
 
 </td>
 </tr>
@@ -1088,6 +1368,11 @@ timestamp[s]
 DATETIME2
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(0)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -1098,6 +1383,11 @@ timestamp[s] (with time zone)
 <td colspan="2" style="text-align: center;">
 
 DATETIME2
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(0)
 
 </td>
 </tr>
@@ -1112,6 +1402,11 @@ timestamp[us]
 DATETIME2
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(6)
+
+</td>
 </tr>
 <tr>
 <td style="text-align: left;">
@@ -1124,21 +1419,209 @@ timestamp[us] (with time zone)
 DATETIME2
 
 </td>
+<td colspan="2" style="text-align: center;">
+
+DATETIME2(6)
+
+</td>
 </tr>
 </tbody>
 </table>
+
+## Microsoft Fabric Data Warehouse Support
+
+[Microsoft Fabric Data Warehouse](https://learn.microsoft.com/fabric/data-warehouse/data-warehousing) (hereafter referred to as 'FDW') is described as a "relational warehouse on a data lake foundation". It uses T-SQL, the same dialect of SQL as used by Microsoft SQL Server, and can be connected to over the same protocol using the same driver with some additional configuration.
+
+### Limitations
+
+<!-- https://stackoverflow.com/a/78162891 -->
+<!-- https://www.reddit.com/r/MicrosoftFabric/comments/1rmam9y -->
+- Bulk ingest into a temporary table is not supported.
+- Various data types differ between FDW and regular SQL Server. Consult Microsoft documentation for more details.
+
+### Connecting
+
+Get the hostname:
+
+1. Open the warehouse in the web UI.
+1. In the top toolbar, click the gear icon to open the settings panel.
+1. Choose the "SQL endpoint" tab.
+1. Copy the hostname, which will look something like "xxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxx.datawarehouse.fabric.microsoft.com".
+1. Build the connection URI:
+
+   ```
+   mssql://xxxxxxxxxxxxxxxxxxxxxxxxxx-xxxxxxxxxxxxxxxxxxxxxxxxxx.datawarehouse.fabric.microsoft.com/?fedauth=ActiveDirectoryDefault
+   ```
+
+Log in to Azure:
+
+1. Ensure the Azure CLI is installed.
+1. Run `az login`.
+
+Now you can connect with the connection URI.
+
+### Bulk Ingest
+
+Fabric Data Warehouse supports ingesting data from Parquet files in object storage as well as the `INSERT BULK` command that the driver normally uses to pipe data into the database. We have found Parquet files perform better, but they require configuring a staging area (either in Azure Blob Storage, Azure Data Lake Storage Gen2, or Fabric OneLake) where the driver will upload Parquet files. As long as the staging area is configured, however, the difference is transparent to you as a user of the ADBC driver. The driver defaults to uploading Parquet files when connected to FDW.
+
+#### Using `INSERT BULK`
+
+Set the option `mssql.ingest.method` (see below).
+
+#### Using Azure Blob Storage or Azure Data Lake Storage Gen2 as a Staging Area
+
+To use Azure Blob Storage (either directly, or through Azure Data Lake Storage Gen2), the user used to log in to FDW must have read permissions on the container. *It must have these permissions even if it is already an owner of the data.*
+
+First, to configure/check the necessary permissions:
+
+1. Open the [Azure portal](https://portal.azure.com/).
+1. Open the storage account you wish to use.
+1. On the left, expand "Data storage" and choose "Containers".
+1. Choose the container you wish to use.
+1. On the left, choose "Access Control (IAM)".
+1. Choose the "Role assignments" tab.
+1. The user must have the roles "Reader" and "Storage Blob Data Reader" (so FDW can read the uploaded data) and "Storage Blob Data Contributor" (so the driver can upload data).
+
+If the user does not have the role:
+
+1. Return to the "Check access" tab.
+1. Click "Add role assignment".
+1. Search for the "Reader" role and select it.
+1. Search for the "Storage Blob Data Reader" role and select it.
+1. Select "Next" at the bottom.
+1. Choose the user(s) to add.
+1. Select "Review + assign" at the bottom.
+1. Select "Review + assign" again.
+
+:::{note}
+It may take a minute or two for permissions to propagate.
+:::
+
+:::{note}
+We have not found in our experience that setting up and granting permissions to a [Workspace Identity](https://learn.microsoft.com/fabric/security/workspace-identity) is necessary for interactive use.
+:::
+
+Then, you must configure the driver:
+
+1. Set the option `mssql.ingest.storage_account` to the name of the storage account.
+1. Set the option `mssql.ingest.storage_container` to the name of the storage container.
+
+In the following URLs, `spamandeggs` is the storage account name and `super-secret` is the storage container name:
+
+```
+https://spamandeggs.dfs.core.windows.net/super-secret/lineitem.parquet
+https://spamandeggs.blob.core.windows.net/super-secret/lineitem.parquet
+```
+
+#### Using Microsoft Fabric OneLake as a Staging Area
+
+Instead of Azure Blob Storage, you can instead use a Lakehouse inside a Fabric workspace as a stanging area via OneLake. You must instead set these options:
+
+1. Set the option `mssql.ingest.storage_url` to `https://onelake.blob.fabric.microsoft.com/<WORKSPACE_GUID>`.
+1. Set the option `mssql.ingest.storage_container` to `<LAKEHOUSE_GUID>/Files`.
+
+The GUID of the workspace and the Lakehouse can be inferred by opening Microsoft Fabric, browsing to the Lakehouse, and looking at the URL. For example:
+
+```
+https://app.fabric.microsoft.com/groups/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/lakehouses/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+                                        ^WORKSPACE_GUID                                 ^LAKEHOUSE_GUID
+```
+
+:::{note}
+In our testing, the "equivalent" URL that uses the name of the warehouse/lakehouse is not sufficient; only the URL that uses the GUIDs will work.
+:::
+
+#### Using a Service Principal
+
+You may want to authenticate with a service principal, e.g. in a pipeline. In general, this works, but please note the following additional requirements when using bulk ingest:
+
+- The service principal must have the storage permissions as described above. It should be granted these at the application level (Azure Portal => Subscriptions => Access control (IAM) => assign roles to the service principal); we have found that assigning the permissions at the storage container level is insufficient.
+- The service principal needs the following permissions granted through T-SQL in FDW, in addition to any permissions the user should have regularly:
+
+  ```sql
+  GRANT ADMINISTER DATABASE BULK OPERATIONS TO [my-service-principal]
+  ```
+- The service principal will be unable to access OneLake/Azure Blob Storage/Azure Data Lake Storage Gen2 unless it first generates an authentication token and performs a request with it. This can be done like so:
+
+  ```
+  export AUTH_TOKEN=$(az account get-access-token \
+    --resource https://api.fabric.microsoft.com \
+    --query accessToken \
+    -o tsv)
+  curl -fsS \
+    -H "Authorization: Bearer $AUTH_TOKEN" \
+    "https://api.fabric.microsoft.com/v1/workspaces/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/items"
+  #                                                 ^ substitute your workspace GUID here
+  ```
 
 ## Options
 
 ### Options Affecting Queries
 
 `mssql.query.large_text_type`
-: Values: `string`, `string_view`, or `large_string`. Default: `string`
+: **Values:** `string`, `string_view`, or `large_string`. **Default:** `string`
 
   Determines the Arrow string type to use for `VARCHAR(MAX)` and
   `NVARCHAR(MAX)` (and their deprecated aliases `TEXT` and `NTEXT`) columns.
 
   This does not affect bulk ingest.
+
+### Options Affecting Bulk Ingest
+
+`mssql.ingest.method`
+: **Values:** `auto`, `insertbulk`, or `parquet`. **Default:** `auto`
+
+  Select how to bulk insert data.
+
+  - `auto`: use `parquet` for Fabric Data Warehouse, else `insertbulk`
+  - `insertbulk`: use `INSERT BULK`. Support for this is [in preview](https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Bulk-Copy-API-for-faster-ingestion-in-Fabric-Data/ba-p/5195627) for Fabric Data Warehouse.
+  - `parquet`: upload Parquet files to a storage container and then copy them into the target table. Only supported on Fabric Data Warehouse.
+
+  In our testing, uploading Parquet is faster than using `INSERT BULK`. But for small-ish datasets, `INSERT BULK` may have acceptable performance, and is easier to set up.
+
+`mssql.ingest.allow_unsafe_casts`
+: **Type:** boolean. **Default:** false
+
+  Only applies to `parquet` ingests. Some Arrow types must be downcast (e.g. `timestamp[ns]` to `timestamp[us]`); by default this uses a "safe" cast which will not truncate values, but this option will enable "unsafe" casts. Note that the rounding/truncation behavior is unspecified and may change, and is not necessarily the same as what the database does in `INSERT BULK`.
+
+`mssql.ingest.storage_account`
+: **Type:** string
+  The name of the Azure storage account to use as a staging area. Required for
+  bulk ingest into Microsoft Fabric Data Warehouse.
+
+`mssql.ingest.storage_container`
+: **Type:** string
+  The name of the Azure storage container to use as a staging area. Required
+  for bulk ingest into Microsoft Fabric Data Warehouse.
+
+`mssql.ingest.copy_method`
+: **Values:** `openrowset`, `copyinto`, or `bulkinsert`. **Default:** `openrowset`
+
+  Selects the T-SQL statement used to load staged Parquet files into the
+  target table when ingesting into Microsoft Fabric Data Warehouse. Has no
+  effect when ingesting into Microsoft SQL Server (which uses `INSERT
+  BULK`).
+
+  In some basic testing, we have not found any difference between these methods.
+
+`mssql.ingest.geo_type`
+: **Values:** `auto`, `geometry`, or `geography`. **Default:** `auto`
+
+  What type to use when `geoarrow.wkb` is detected.
+
+  - `auto`: in the GeoArrow metadata, if the detected SRID is nonzero and `edges` is `spherical`, then use GEOGRAPHY. Else use GEOMETRY.
+  - `geometry`: always use GEOMETRY.
+  - `geography`: in the GeoArrow metadata, if the detected SRID is nonzero, then use GEOGRAPHY. Else use GEOMETRY.
+
+  In all cases, if the detected SRID is nonzero, then it will be applied. Also, if the data contains an embedded SRID (i.e. it is EWKB), the embedded SRID will take precedence for that row.
+
+  :::{note}
+  SQL Server requires a valid SRID for GEOGRAPHY columns.
+  :::
+
+  :::{note}
+  In driver version 1.4.x, the logic was different (and slightly inconsistent internally) and this option was not publicly documented. The original behavior would always use GEOGRAPHY when the SRID was not detected, which was semantically incorrect.
+  :::
 
 ## Compatibility
 
@@ -1162,6 +1645,10 @@ To see documentation for previous versions of this driver, see the following:
 
 [^1]: while the documentation claims 7 digits of precision, the client only receives 6
 [^2]: Values rounded to microsecond precision
-[^3]: ingested as TIME(7)
+[^3]: arrow-go cannot write view types to Parquet
+[^4]: binary_view is not supported for VARBINARY(MAX)
+[^5]: Negative scales are not supported
+[^6]: string_view is not supported for VARCHAR
+[^7]: The driver will refuse to truncate nanoseconds to microseconds by default
 
 [mssql]: https://www.microsoft.com/sql-server

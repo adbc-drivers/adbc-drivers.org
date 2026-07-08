@@ -23,16 +23,10 @@ New features:
 
 - Add support for Microsoft Fabric Data Warehouse, including ingest support, OneLake support, `INSERT BULK`, and compatibility improvements
 - Add support for querying, binding, and ingesting `SQL_VARIANT`
-- Add support for injecting an application name into connections
-- Add an option to allow unsafe casts for ingesting Parquet
-- Detect server version and adjust `CREATE TABLE` accordingly
-- Retry connection timeouts on Azure
 
 Fixes:
 
 - {{BREAKING_CHANGE}} When ingesting `geoarrow.wkb`, ingest as GEOGRAPHY only when SRID and `"edges":"spherical"` are defined. See the new option `mssql.ingest.geo_type`
-- Improve `TIME` and `DATETIME2` support on Fabric Data Warehouse
-- Override additional queries for Fabric Data Warehouse
 - Fix typos in `INSERT BULK` support
 
 ## v1.4.1 (2026-05-22)
