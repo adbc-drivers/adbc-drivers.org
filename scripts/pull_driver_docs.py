@@ -24,10 +24,10 @@ Pre-requisites:
 - gh CLI
 
 Usage:
-    python scripts/sync_driver_docs.py <repo_name> <release_tag>
+    python scripts/pull_driver_docs.py <repo_name> <release_tag>
 
 Example:
-    python scripts/sync_driver_docs.py mysql go/v0.5.0
+    python scripts/pull_driver_docs.py mysql go/v0.5.0
 """
 
 import argparse
@@ -101,17 +101,24 @@ def extract_version_from_tag(tag: str) -> str:
 
 def get_all_versions_from_filesystem(driver_dir: Path) -> list[str]:
     """Get list of all version files in driver directory, sorted newest to
-    oldest. We do this because we terat what's on the filesystem as truth for
-    "what versions have been published for this driver"."""
+    oldest. We do this because we treat what's on the filesystem as truth for
+    "what versions have been published for this driver".
+
+    Matches version files like v0.5.0, v1.0.0-rc1, v2.3.4-beta.2, etc.
+    """
     versions = []
     for file in driver_dir.glob("v*.md"):
-        if file.stem.startswith("v") and re.match(r'^v\d+\.\d+\.\d+$', file.stem):
+        # Match v1.2.3 with optional pre-release suffix like -rc1, -beta.2, etc.
+        if file.stem.startswith("v") and re.match(r'^v\d+\.\d+\.\d+', file.stem):
             versions.append(file.stem)
 
     # Sort by semantic version (newest first)
     def version_key(v: str) -> tuple:
-        parts = v[1:].split('.')  # Remove 'v' prefix
-        return tuple(int(p) for p in parts)
+        # Extract just the numeric part for sorting (v1.2.3-rc1 -> 1.2.3)
+        match = re.match(r'^v(\d+)\.(\d+)\.(\d+)', v)
+        if match:
+            return tuple(int(p) for p in match.groups())
+        return (0, 0, 0)  # Fallback for malformed versions
 
     return sorted(versions, key=version_key, reverse=True)
 
@@ -321,8 +328,8 @@ def update_index_header(
         if line.startswith("# ") and frontmatter_closed:
             title_index = i
             current_title = line
-            # Check if previous line is an anchor
-            if i > 0 and lines[i-1].startswith("(driver-"):
+            # Check if previous line is a driver version anchor (e.g., (driver-mysql-v0.5.0)=)
+            if i > 0 and re.match(r'^\(driver-[^-]+-v[\d.]+.*\)=$', lines[i-1].strip()):
                 lines.pop(i-1)
                 title_index = i - 1
             break
@@ -475,6 +482,21 @@ def main():
     repo_name = args.repo_name
     release_tag = args.release_tag
     version = extract_version_from_tag(release_tag)
+
+    # Check if gh CLI is installed
+    try:
+        subprocess.run(
+            ["gh", "--version"],
+            capture_output=True,
+            check=True,
+        )
+    except FileNotFoundError:
+        print("Error: gh CLI is not installed or not in PATH")
+        print("Please install it from: https://cli.github.com/")
+        sys.exit(1)
+    except subprocess.CalledProcessError:
+        print("Error: gh CLI is installed but returned an error")
+        sys.exit(1)
 
     print(f"Looking for release {release_tag} in {repo_org}/{repo_name}...")
 
