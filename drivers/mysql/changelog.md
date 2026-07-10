@@ -17,6 +17,13 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+
+## v0.5.0 (2026-07-10)
+
+## New Features
+
+- add options to control zero datetime behavior
+
 ## v0.4.0 (2026-06-18)
 
 New features:
