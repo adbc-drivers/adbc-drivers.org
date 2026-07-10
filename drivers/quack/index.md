@@ -21,10 +21,12 @@
 :maxdepth: 1
 :hidden:
 
+Changelog <changelog.md>
+v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|0.1.0` {badge-secondary}`Release Date|2026-05-21` {badge-success}`Tested With|DuckDB Quack 1.5`
+{badge-primary}`Driver Version|0.1.0-alpha.2` {badge-secondary}`Release Date|2026-07-10` {badge-success}`Tested With|DuckDB Quack 1.5`
 
 :::{warning}
 This is documentation for a prerelease version.
@@ -36,6 +38,14 @@ remote protocol.
 :::{note}
 This project is not associated with DuckDB Labs.
 :::
+
+## Installation & Quickstart
+
+The driver can be installed with [dbc](https://docs.columnar.tech/dbc):
+
+```bash
+dbc install --pre quack
+```
 
 ## Connecting
 
@@ -413,7 +423,7 @@ decimal128
 </td>
 <td style="text-align: center;">
 
-NUMERIC
+NUMERIC ⚠️ [^1]
 
 </td>
 </tr>
@@ -617,7 +627,7 @@ time32[ms]
 </td>
 <td style="text-align: center;">
 
-TIME [^1]
+TIME [^2]
 
 </td>
 </tr>
@@ -634,7 +644,7 @@ time32[s]
 </td>
 <td style="text-align: center;">
 
-TIME [^1]
+TIME [^2]
 
 </td>
 </tr>
@@ -702,7 +712,7 @@ timestamp[ms] (with time zone)
 </td>
 <td style="text-align: center;">
 
-TIMESTAMP(3) WITH TIME ZONE [^2]
+TIMESTAMP(3) WITH TIME ZONE [^3]
 
 </td>
 </tr>
@@ -736,7 +746,7 @@ timestamp[ns] (with time zone)
 </td>
 <td style="text-align: center;">
 
-TIMESTAMP(9) WITH TIME ZONE [^2]
+TIMESTAMP(9) WITH TIME ZONE [^3]
 
 </td>
 </tr>
@@ -770,7 +780,7 @@ timestamp[s] (with time zone)
 </td>
 <td style="text-align: center;">
 
-TIMESTAMP(0) WITH TIME ZONE [^2]
+TIMESTAMP(0) WITH TIME ZONE [^3]
 
 </td>
 </tr>
@@ -811,11 +821,18 @@ TIMESTAMP(6) WITH TIME ZONE
 </tbody>
 </table>
 
-[^1]: DuckDB normalizes TIME values to microsecond precision on readback.
-[^2]: DuckDB normalizes TIMESTAMPTZ values to microsecond precision on readback.
+[^1]: Negative scales are not supported
+[^2]: DuckDB normalizes TIME values to microsecond precision on readback.
+[^3]: DuckDB normalizes TIMESTAMPTZ values to microsecond precision on readback.
 
 ## Compatibility
 
 This driver was tested on:
 
-- DuckDB Quack `1.5.3`
+- DuckDB Quack `1.5.4`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.1.0-alpha.1.md](./v0.1.0-alpha.1.md)
