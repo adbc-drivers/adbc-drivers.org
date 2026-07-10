@@ -109,13 +109,13 @@ def get_all_versions_from_filesystem(driver_dir: Path) -> list[str]:
     versions = []
     for file in driver_dir.glob("v*.md"):
         # Match v1.2.3 with optional pre-release suffix like -rc1, -beta.2, etc.
-        if file.stem.startswith("v") and re.match(r'^v\d+\.\d+\.\d+', file.stem):
+        if file.stem.startswith("v") and re.match(r"^v\d+\.\d+\.\d+", file.stem):
             versions.append(file.stem)
 
     # Sort by semantic version (newest first)
     def version_key(v: str) -> tuple:
         # Extract just the numeric part for sorting (v1.2.3-rc1 -> 1.2.3)
-        match = re.match(r'^v(\d+)\.(\d+)\.(\d+)', v)
+        match = re.match(r"^v(\d+)\.(\d+)\.(\d+)", v)
         if match:
             return tuple(int(p) for p in match.groups())
         return (0, 0, 0)  # Fallback for malformed versions
@@ -141,7 +141,9 @@ def build_toc_section(versions: list[str]) -> list[str]:
     return toc_lines
 
 
-def build_previous_versions_section(versions: list[str], current_version: str) -> list[str]:
+def build_previous_versions_section(
+    versions: list[str], current_version: str
+) -> list[str]:
     """Build Previous Versions section from list of versions, excluding current."""
     lines = [
         "## Previous Versions",
@@ -160,7 +162,9 @@ def build_previous_versions_section(versions: list[str], current_version: str) -
     return lines
 
 
-def update_previous_versions_section(content: str, all_versions: list[str], current_version: str) -> str:
+def update_previous_versions_section(
+    content: str, all_versions: list[str], current_version: str
+) -> str:
     """Replace Previous Versions section in content with filesystem-based list."""
     lines = content.split("\n")
 
@@ -179,22 +183,34 @@ def update_previous_versions_section(content: str, all_versions: list[str], curr
             if prev_versions_end == -1:
                 # Section goes to end of file, but stop before footnotes
                 for j in range(len(lines) - 1, i, -1):
-                    if lines[j].strip() and not lines[j].startswith("[^") and not lines[j].startswith("["):
+                    if (
+                        lines[j].strip()
+                        and not lines[j].startswith("[^")
+                        and not lines[j].startswith("[")
+                    ):
                         prev_versions_end = j + 1
                         break
             break
 
     if prev_versions_start != -1:
-        new_prev_section = build_previous_versions_section(all_versions, current_version)
+        new_prev_section = build_previous_versions_section(
+            all_versions, current_version
+        )
         if prev_versions_end != -1:
-            lines = lines[:prev_versions_start] + new_prev_section + lines[prev_versions_end:]
+            lines = (
+                lines[:prev_versions_start]
+                + new_prev_section
+                + lines[prev_versions_end:]
+            )
         else:
             lines = lines[:prev_versions_start] + new_prev_section
 
     return "\n".join(lines)
 
 
-def replace_section(lines: list[str], start_marker: str, end_marker: str, new_content: list[str]) -> list[str]:
+def replace_section(
+    lines: list[str], start_marker: str, end_marker: str, new_content: list[str]
+) -> list[str]:
     """Replace content between start_marker and end_marker with new_content.
 
     Returns the modified lines. If markers aren't found, returns original lines.
@@ -221,7 +237,7 @@ def replace_section(lines: list[str], start_marker: str, end_marker: str, new_co
         return lines
 
     # Replace the section
-    return lines[:start_idx] + new_content + lines[end_idx + 1:]
+    return lines[:start_idx] + new_content + lines[end_idx + 1 :]
 
 
 def extract_title_from_content(content: str) -> Optional[str]:
@@ -267,14 +283,14 @@ def strip_version_from_title(title: str, version: str) -> str:
     """
     # Remove common patterns: "Driver v0.5.0", "v0.5.0", etc.
     patterns = [
-        rf'\s+Driver\s+{re.escape(version)}$',  # " Driver v0.5.0"
-        rf'\s+{re.escape(version)}$',           # " v0.5.0"
-        r'\s+Driver$',                           # " Driver" (if version was already removed)
+        rf"\s+Driver\s+{re.escape(version)}$",  # " Driver v0.5.0"
+        rf"\s+{re.escape(version)}$",  # " v0.5.0"
+        r"\s+Driver$",  # " Driver" (if version was already removed)
     ]
 
     result = title
     for pattern in patterns:
-        result = re.sub(pattern, '', result)
+        result = re.sub(pattern, "", result)
 
     return result
 
@@ -329,8 +345,10 @@ def update_index_header(
             title_index = i
             current_title = line
             # Check if previous line is a driver version anchor (e.g., (driver-mysql-v0.5.0)=)
-            if i > 0 and re.match(r'^\(driver-[^-]+-v[\d.]+.*\)=$', lines[i-1].strip()):
-                lines.pop(i-1)
+            if i > 0 and re.match(
+                r"^\(driver-[^-]+-v[\d.]+.*\)=$", lines[i - 1].strip()
+            ):
+                lines.pop(i - 1)
                 title_index = i - 1
             break
 
@@ -362,7 +380,7 @@ def update_index_header(
 
     if toc_start != -1 and toc_end != -1:
         # Replace existing TOC
-        lines = lines[:toc_start] + new_toc + lines[toc_end + 1:]
+        lines = lines[:toc_start] + new_toc + lines[toc_end + 1 :]
     else:
         # Insert TOC after title
         insert_pos = title_index + 1
@@ -373,30 +391,22 @@ def update_index_header(
     # Update the badge line with new version and date
     for i, line in enumerate(lines):
         if line.startswith("[{badge-primary}`Driver Version|"):
-            line = re.sub(
-                r'Driver Version\|v[\d.]+',
-                f'Driver Version|{version}',
-                line
-            )
-            line = re.sub(
-                r'#driver-[^-]+-v[\d.]+',
-                f'#driver-{driver}-{version}',
-                line
-            )
-            line = re.sub(
-                r'Release Date\|[\d-]+',
-                f'Release Date|{release_date}',
-                line
-            )
+            line = re.sub(r"Driver Version\|v[\d.]+", f"Driver Version|{version}", line)
+            line = re.sub(r"#driver-[^-]+-v[\d.]+", f"#driver-{driver}-{version}", line)
+            line = re.sub(r"Release Date\|[\d-]+", f"Release Date|{release_date}", line)
             lines[i] = line
             break
 
     # Replace Previous Versions section entirely with filesystem truth
-    content_with_prev = update_previous_versions_section("\n".join(lines), all_versions, version)
+    content_with_prev = update_previous_versions_section(
+        "\n".join(lines), all_versions, version
+    )
     return content_with_prev
 
 
-def update_changelog(changelog_path: Path, version: str, release_date: str, release_body: str) -> None:
+def update_changelog(
+    changelog_path: Path, version: str, release_date: str, release_body: str
+) -> None:
     """Update the changelog.md file with new release notes."""
     if not changelog_path.exists():
         print(f"Warning: {changelog_path} does not exist, skipping changelog update")
@@ -445,13 +455,17 @@ def update_changelog(changelog_path: Path, version: str, release_date: str, rele
                 continue
 
             # Stop skipping when we hit another ## heading
-            if skip_section and line.strip().startswith("##") and "Detailed Changelog" not in line:
+            if (
+                skip_section
+                and line.strip().startswith("##")
+                and "Detailed Changelog" not in line
+            ):
                 skip_section = False
 
             # Include line if not in skip section
             if not skip_section:
                 # Strip GitHub PR/issue references like " (#116)" or "(#116)"
-                cleaned_line = re.sub(r'\s*\(#\d+\)', '', line)
+                cleaned_line = re.sub(r"\s*\(#\d+\)", "", line)
                 filtered_lines.append(cleaned_line)
 
         new_entry.extend(filtered_lines)
@@ -566,16 +580,24 @@ def main():
 
     # Now scan filesystem for ALL versions (including the one we just created)
     all_versions = get_all_versions_from_filesystem(driver_dir)
-    print(f"Found {len(all_versions)} versions on filesystem: {', '.join(all_versions)}")
+    print(
+        f"Found {len(all_versions)} versions on filesystem: {', '.join(all_versions)}"
+    )
 
     # Update Previous Versions section in the versioned file based on filesystem
     print(f"Updating Previous Versions in {version}.md...")
-    versioned_content = update_previous_versions_section(new_content, all_versions, version)
+    versioned_content = update_previous_versions_section(
+        new_content, all_versions, version
+    )
     version_path.write_text(versioned_content)
 
     # Generate index.md from downloaded file (with title, TOC, and Previous Versions modifications)
-    print(f"Generating index.md from {repo_name}.md (replacing title, TOC, and Previous Versions)...")
-    updated_content = update_index_header(new_content, repo_name, version, release_date, all_versions, existing_title)
+    print(
+        f"Generating index.md from {repo_name}.md (replacing title, TOC, and Previous Versions)..."
+    )
+    updated_content = update_index_header(
+        new_content, repo_name, version, release_date, all_versions, existing_title
+    )
     index_path.write_text(updated_content)
 
     # Update changelog
