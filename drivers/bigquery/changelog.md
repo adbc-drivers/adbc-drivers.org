@@ -19,6 +19,8 @@
 
 ## v1.12.1 (2026-07-10)
 
+Fixes:
+
 - Bumped Go version to address security vulnerabilities (CVEs)
 
 ## v1.12.0 (2026-06-22)
