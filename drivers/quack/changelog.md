@@ -19,6 +19,9 @@
 
 ## v0.1.0-alpha.2 (2026-07-10)
 
+
+New features:
+
 - Bump DuckDB from `1.5.3` to `1.5.4`
 
 ## v0.1.0-alpha.1 (2026-05-21)
