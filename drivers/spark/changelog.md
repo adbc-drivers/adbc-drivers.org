@@ -21,19 +21,15 @@
 
 New features:
 
-- Properly release Spark Connect sessions on disconnect
-- Add the `spark.ingest.location` option for bulk ingest staging
+- Add the `spark.ingest.location` option to specify the LOCATION clause for CREATE TABLE in bulk ingest
 - Improve compatibility with Spark Connect on Amazon EMR
 - Improve compatibility with Livy on Amazon EMR
 
 Fixes:
 
+- Properly release Spark Connect sessions on disconnect
 - Accept `auth_type=none` for Livy
 - Accept no username with Spark Connect when `auth_type=none`
-
-Documentation:
-
-- Document additional Livy caveats
 
 ## v0.1.0-alpha.2 (2026-06-02)
 
