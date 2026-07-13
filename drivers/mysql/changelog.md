@@ -22,7 +22,7 @@
 
 ## New Features
 
-- add options to control zero datetime behavior
+- Add option to control how date(time)s with zero components (`0000-00-00`) are read (either raising an error, or treating it as NULL)
 
 ## v0.4.0 (2026-06-18)
 
