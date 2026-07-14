@@ -132,28 +132,23 @@ Examples:
     <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Append</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Create/Append</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Replace</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Temporary Table</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Target Catalog</td>
@@ -170,23 +165,19 @@ Examples:
     <tr>
       <td rowspan="4">Catalog (GetObjects)</td>
       <td>depth=catalogs</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=tables</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=columns (all)</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Get Parameter Schema</td>
@@ -194,8 +185,7 @@ Examples:
     </tr>
     <tr>
       <td colspan="2">Get Table Schema</td>
-      <td colspan="1" style="text-align: center;">✅</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td colspan="2">Prepared Statements</td>
@@ -227,14 +217,9 @@ Examples:
 BIGINT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int64
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -244,14 +229,9 @@ int64
 BIGINT UNSIGNED
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 uint64
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -261,14 +241,9 @@ uint64
 BIT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 binary
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -285,7 +260,7 @@ int64, int8 ⚠️ [^1]
 </td>
 <td style="text-align: center;">
 
-❌ [^1]
+int32, int8 ⚠️ [^1]
 
 </td>
 </tr>
@@ -295,14 +270,9 @@ int64, int8 ⚠️ [^1]
 DATE
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 date32[day]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -312,14 +282,9 @@ date32[day]
 DATETIME
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 timestamp[us]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -329,14 +294,9 @@ timestamp[us]
 DOUBLE PRECISION
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 double
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -346,14 +306,9 @@ double
 INT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int32
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -370,7 +325,7 @@ extension&lt;arrow.json&gt;
 </td>
 <td style="text-align: center;">
 
-❌
+string
 
 </td>
 </tr>
@@ -380,14 +335,9 @@ extension&lt;arrow.json&gt;
 NUMERIC
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 decimal64
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -397,14 +347,9 @@ decimal64
 REAL
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 float
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -414,14 +359,9 @@ float
 SMALLINT
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int16
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -431,14 +371,9 @@ int16
 TIME
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 time64[us]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -448,14 +383,9 @@ time64[us]
 TIMESTAMP
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
-
-</td>
-<td style="text-align: center;">
-
-❌ [^1]
 
 </td>
 </tr>
@@ -465,14 +395,9 @@ timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
 VARBINARY
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 binary
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -482,14 +407,9 @@ binary
 VARCHAR
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 string
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -519,14 +439,9 @@ string
 binary
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARBINARY
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -536,14 +451,9 @@ VARBINARY
 binary_view
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARBINARY
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -553,14 +463,9 @@ VARBINARY
 bool
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 BOOLEAN
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -570,14 +475,9 @@ BOOLEAN
 date32[day]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATE
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -597,9 +497,14 @@ DECIMAL
 DECIMAL ⚠️ [^2]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td style="text-align: center;">
 
-❌
+DECIMAL
+
+</td>
+<td style="text-align: center;">
+
+DECIMAL ⚠️ [^2]
 
 </td>
 </tr>
@@ -609,14 +514,9 @@ DECIMAL ⚠️ [^2]
 double
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DOUBLE PRECISION
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -626,14 +526,9 @@ DOUBLE PRECISION
 fixed_size_binary
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARBINARY
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -648,7 +543,17 @@ float
 REAL
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
 
 ❌
 
@@ -672,7 +577,7 @@ REAL
 </td>
 <td style="text-align: center;">
 
-❌
+REAL
 
 </td>
 <td style="text-align: center;">
@@ -687,14 +592,9 @@ REAL
 int16
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 SMALLINT
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -704,14 +604,9 @@ SMALLINT
 int32
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 INT
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -721,14 +616,9 @@ INT
 int64
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 BIGINT
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -738,14 +628,9 @@ BIGINT
 large_binary
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARBINARY
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -755,14 +640,9 @@ VARBINARY
 large_string
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARCHAR
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -772,14 +652,9 @@ VARCHAR
 string
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARCHAR
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -789,14 +664,9 @@ VARCHAR
 string_view
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 VARCHAR
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -806,14 +676,9 @@ VARCHAR
 time32[ms]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -823,14 +688,9 @@ TIME
 time32[s]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -840,14 +700,9 @@ TIME
 time64[ns]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -857,14 +712,9 @@ TIME
 time64[us]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -874,14 +724,9 @@ TIME
 timestamp[ms]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATETIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -891,14 +736,9 @@ DATETIME
 timestamp[ms] (with time zone)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIMESTAMP
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -908,14 +748,9 @@ TIMESTAMP
 timestamp[ns]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATETIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -925,14 +760,9 @@ DATETIME
 timestamp[ns] (with time zone)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIMESTAMP
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -942,14 +772,9 @@ TIMESTAMP
 timestamp[s]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATETIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -959,14 +784,9 @@ DATETIME
 timestamp[s] (with time zone)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIMESTAMP
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -976,14 +796,9 @@ TIMESTAMP
 timestamp[us]
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 DATETIME
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -993,14 +808,9 @@ DATETIME
 timestamp[us] (with time zone)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TIMESTAMP
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -1010,14 +820,9 @@ TIMESTAMP
 uint16
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 SMALLINT UNSIGNED
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -1027,14 +832,9 @@ SMALLINT UNSIGNED
 uint32
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 INT UNSIGNED
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -1044,14 +844,9 @@ INT UNSIGNED
 uint64
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 BIGINT UNSIGNED
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -1061,14 +856,9 @@ BIGINT UNSIGNED
 uint8
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="4" style="text-align: center;">
 
 TINYINT UNSIGNED
-
-</td>
-<td colspan="2" style="text-align: center;">
-
-❌
 
 </td>
 </tr>
@@ -1086,7 +876,7 @@ TINYINT UNSIGNED
 
 This driver was tested on:
 
-- MySQL `(unknown)`
+- MySQL `12.2.2-MariaDB-ubu2404 (mariadb.org binary distribution)`
 - MySQL `9.4.0 (MySQL Community Server - GPL)`
 
 ## Previous Versions
