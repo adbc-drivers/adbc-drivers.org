@@ -201,7 +201,10 @@ driver_header_links_config = {
         {"url": "https://github.com/adbc-drivers/redshift", "label": "GitHub"},
     ],
     "singlestore": [
-        {"url": "https://github.com/adbc-drivers/singlestore", "label": "GitHub"},
+        {
+            "url": "https://github.com/singlestore-labs/singlestore-adbc-connector",
+            "label": "GitHub",
+        },
     ],
     "snowflake": [
         {"url": "https://github.com/adbc-drivers/snowflake", "label": "GitHub"},
