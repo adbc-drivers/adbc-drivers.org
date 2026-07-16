@@ -58,6 +58,11 @@
     display: table;
 }
 
+/* It can get confusing when there are a lot of columns in a type table and some rows are split instead of merged (because different backends have different types): show cell borders in this case */
+tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
+    border-right: 0.05rem solid var(--md-typeset-table-color);
+}
+
 /* Make sphinx-design and sphinx-immaterial play better */
 .sd-card-text .sd-btn {
     font-size: inherit;
