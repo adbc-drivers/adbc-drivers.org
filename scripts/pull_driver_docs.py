@@ -438,8 +438,10 @@ def update_changelog(
     # Create new changelog entry
     new_entry = [
         "",
-        f"## {version} ({release_date})\n\n",
-        "<!-- NOTE: The items below have been automatically extracted from GitHub release body. Consider each item carefully and rewrite or improve any that aren't clear enough. Remove this comment before committing. -->\n\n",
+        f"## {version} ({release_date})",
+        "",
+        "<!-- NOTE: The items below have been automatically extracted from GitHub release body. Consider each item carefully and rewrite or improve any that aren't clear enough. Remove this comment before committing. -->",
+        "",
         "",
     ]
 
