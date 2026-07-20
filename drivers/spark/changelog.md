@@ -17,6 +17,17 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.1.0 (2026-07-20)
+
+New features:
+
+- Implement GetTableSchema
+- Add option to set catalog on initial connect
+
+Fixes:
+
+- Guard against panic in Livy
+
 ## v0.1.0-alpha.3 (2026-07-10)
 
 New features:
