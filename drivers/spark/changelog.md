@@ -26,7 +26,6 @@ New features:
 
 Fixes:
 
-- Test alternate catalogs/schemas
 - Guard against panic in Livy
 
 ## v0.1.0-alpha.3 (2026-07-10)
