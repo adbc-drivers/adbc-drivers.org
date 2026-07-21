@@ -42,6 +42,7 @@ extensions = [
     "ablog",
     "myst_parser",
     "sphinx_design",
+    "selective_html",
     "sphinx_immaterial",
     "sphinx.ext.intersphinx",
     "sphinx_sitemap",
@@ -76,6 +77,9 @@ html_static_path = ["_static"]
 html_theme = "sphinx_immaterial"
 html_title = "ADBC Driver Foundry"
 html_baseurl = "https://adbc-drivers.org/"
+# Render links to index documents as their containing directory. The
+# selective_html builder applies the same clean-URL treatment to blog posts.
+html_use_directory_uris_for_index_pages = True
 html_theme_options = {
     "features": [
         "content.code.copy",
@@ -324,6 +328,7 @@ class ExternalLinkHtmlTranslator(HTMLTranslator):
 
 def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
+    app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
 
     # Register custom badge roles with Sphinx
     for variant in custom_badge_variants:

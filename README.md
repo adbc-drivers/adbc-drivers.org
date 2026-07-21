@@ -57,10 +57,12 @@ You may need to remove `_build` and start again, especially when changing theme 
 ## Adding a blog post
 
 Blog posts are regular MyST Markdown documents stored at
-`YYYY/MM/DD/post-slug.md`. Mark the document with `blogpost: true` and a date
+`blog/YYYY/MM/DD/post-slug.md`. Mark the document with `blogpost: true` and a date
 in its YAML front matter; ABlog then adds it to `/blog/` and the Atom feed. The
-source path intentionally produces the existing date-based public URL, such as
-`/2026/07/20/updated-spark-driver.html`.
+source path intentionally produces a clean date-based public URL, such as
+`/blog/2026/07/20/updated-spark-driver/`. The build also writes redirects from
+the post's former root-level `.html` and trailing-slash URLs so existing links
+continue to work.
 
 Use an existing post as the template so the author/date byline and page options
 remain consistent. Ensure that `hide-toc: true` and `orphan: true` are included

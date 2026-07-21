@@ -20,7 +20,7 @@ platforms = ["linux-64", "osx-arm64"]
 version = "0.1.0"
 
 [tasks]
-build = "sphinx-build -E -a . _build -W"
+build = "sphinx-build -b foundryhtml -E -a . _build -W"
 clean = "rm -rf _build"
 serve = "python -m http.server -d _build"
 pull = "python scripts/pull_driver_docs.py"
@@ -56,4 +56,4 @@ pre-commit = "pre-commit run --all-files --color=always --show-diff-on-failure -
 sphinx-autobuild = ">=2024.10.3,<2025"
 
 [feature.watch.tasks]
-watch = "sphinx-autobuild -E -a . _build"
+watch = "sphinx-autobuild -b foundryhtml -E -a . _build"
