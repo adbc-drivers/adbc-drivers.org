@@ -81,6 +81,9 @@ class SelectiveHTMLBuilder(StandaloneHTMLBuilder):
                 self.handle_page(pagename, context, template)
 
 
+# Production traffic is also proxied through Cloudflare, where Redirect Rules
+# handle these legacy URLs first. Generate static redirects as a backup / second
+# line of defense for deployments or requests that bypass those rules.
 def _write_legacy_blog_redirects(app: Sphinx, exception: Exception | None) -> None:
     if exception is not None or app.builder.name != SelectiveHTMLBuilder.name:
         return

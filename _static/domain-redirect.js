@@ -14,7 +14,11 @@
  * limitations under the License.
  */
 
-/* Redirect the former documentation hostname while preserving the full URL. */
+/*
+ * Traffic is also proxied through Cloudflare, where Redirect Rules perform
+ * these redirects first. Keep this client-side redirect as a backup / second
+ * line of defense while preserving the full URL.
+ */
 (() => {
   if (window.location.hostname !== "docs.adbc-drivers.org") {
     return;
