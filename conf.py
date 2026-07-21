@@ -17,8 +17,10 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import shutil
 import sys
 from pathlib import Path
+from urllib.parse import urlparse
 
 from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
@@ -37,6 +39,7 @@ author = "ADBC Drivers Contributors"
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+    "ablog",
     "myst_parser",
     "sphinx_design",
     "sphinx_immaterial",
@@ -66,16 +69,17 @@ suppress_warnings = ["myst.header"]
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_css_files = ["custom.css"]
-html_extra_path = ["robots.txt"]
+html_extra_path = ["robots.txt", "CNAME"]
 html_logo = "_static/adbc-drivers-logo.png"
 html_favicon = "_static/favicon.ico"
 html_static_path = ["_static"]
 html_theme = "sphinx_immaterial"
-html_title = "ADBC Driver Foundry Documentation"
-html_baseurl = "https://docs.adbc-drivers.org/"
+html_title = "ADBC Driver Foundry"
+html_baseurl = "https://adbc-drivers.org/"
 html_theme_options = {
     "features": [
         "content.code.copy",
+        "navigation.tabs",
     ],
     "font": {
         "text": "IBM Plex Sans",
@@ -139,6 +143,7 @@ myst_enable_extensions = [
     "substitution",
 ]
 myst_heading_anchors = 3
+myst_update_mathjax = False
 myst_substitutions = {
     "BREAKING_CHANGE": "({octicon}`alert-fill;1em;sd-text-warning` **Breaking change**)"
 }
@@ -146,8 +151,8 @@ myst_substitutions = {
 # -- Options for OpenGraph ---------------------------------------------------
 
 ogp_description_length = 400
-ogp_site_url = "https://docs.adbc-drivers.org"
-ogp_site_name = "ADBC Driver Foundry Documentation"
+ogp_site_url = "https://adbc-drivers.org"
+ogp_site_name = "ADBC Driver Foundry"
 ogp_social_cards = {
     "image": "_static/opengraph-logo.png",
     "line_color": "#434343",
@@ -158,10 +163,37 @@ ogp_social_cards = {
 # sphinx-sitemap defaults to "{lang}{version}{link}" but we don't need {lang} or
 # {version}
 sitemap_url_scheme = "{link}"
-# We don't need this index in the sitemap and if we don't exclude it sitemap
-# generation breaks for some reason
-sitemap_excludes = ["genindex.html"]
+# Exclude utility and duplicate indexes. ABlog generates these pages to support
+# its archive widgets, but they are not useful search-engine landing pages.
+sitemap_excludes = [
+    "genindex.html",
+    "blog.html",
+    "blog/archive.html",
+    "blog/author.html",
+    "blog/author/*.html",
+    "blog/drafts.html",
+    "blog/[0-9][0-9][0-9][0-9].html",
+]
 sitemap_show_lastmod = True
+
+# -- Options for ABlog -------------------------------------------------------
+
+blog_path = "blog"
+blog_baseurl = html_baseurl.rstrip("/")
+blog_title = "ADBC Driver Foundry Blog"
+blog_feed_subtitle = "News and releases from the ADBC Driver Foundry"
+blog_feed_fulltext = True
+blog_authors = {
+    "ADBC Drivers Contributors": (
+        "ADBC Drivers Contributors",
+        "https://github.com/adbc-drivers",
+    ),
+}
+blog_default_author = "ADBC Drivers Contributors"
+post_date_format = "%B %d, %Y"
+post_date_format_short = "%B %d"
+post_show_prev_next = True
+BLOG_SIDEBAR_POST_COUNT = 5
 
 # -- Customization -----------------------------------------------------------
 
@@ -271,8 +303,15 @@ class ExternalLinkHtmlTranslator(HTMLTranslator):
     _external_icon = """ <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-link-external" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg>"""
 
     def visit_reference(self, node):
+        same_site = urlparse(node.get("refuri", "")).hostname in {
+            "adbc-drivers.org",
+            "www.adbc-drivers.org",
+        }
         if node.get("newtab") or not (
-            node.get("target") or node.get("internal") or "refuri" not in node
+            node.get("target")
+            or node.get("internal")
+            or same_site
+            or "refuri" not in node
         ):
             node["target"] = "_blank"
         super().visit_reference(node)
@@ -301,3 +340,50 @@ def setup(app):
         app.config.html_last_updated_fmt = None
 
     app.connect("builder-inited", reset_last_updated_fmt)
+
+    # With top-level navigation rendered as tabs, the left sidebar is useful
+    # only when the active section has child pages. Hide it for leaf sections,
+    # orphaned blog posts, and generated pages that are outside the toctree.
+    def configure_section_navigation(app, pagename, templatename, context, doctree):
+        blog = context.get("ablog")
+        blog_path = getattr(blog, "blog_path", "blog")
+        show_blog_sidebar = blog is not None and (
+            pagename in blog
+            or pagename == blog_path
+            or pagename.startswith(f"{blog_path}/")
+        )
+        context["show_blog_sidebar"] = show_blog_sidebar
+        context["blog_sidebar_post_count"] = BLOG_SIDEBAR_POST_COUNT
+
+        page = context.get("page")
+        navigation = context.get("nav")
+        if not isinstance(page, dict) or navigation is None:
+            return
+
+        if show_blog_sidebar:
+            return
+
+        has_subpages = any(item.active and item.children for item in navigation)
+        if has_subpages:
+            return
+
+        hidden = page.setdefault("meta", {}).setdefault("hide", [])
+        if "navigation" not in hidden:
+            hidden.append("navigation")
+
+    # sphinx-immaterial creates `page` and `nav` at the default priority, so
+    # run this afterward.
+    app.connect("html-page-context", configure_section_navigation, priority=900)
+
+    # Jekyll published the original blog feed at /feed.xml. ABlog publishes
+    # the canonical feed at /blog/atom.xml, so retain the old endpoint as a
+    # byte-for-byte compatibility copy.
+    def copy_legacy_blog_feed(app, exception):
+        if exception is not None or app.builder.format != "html":
+            return
+
+        source = Path(app.outdir) / "blog" / "atom.xml"
+        if source.exists():
+            shutil.copyfile(source, Path(app.outdir) / "feed.xml")
+
+    app.connect("build-finished", copy_legacy_blog_feed)

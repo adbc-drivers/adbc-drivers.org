@@ -20,7 +20,7 @@ platforms = ["linux-64", "osx-arm64"]
 version = "0.1.0"
 
 [tasks]
-build = "sphinx-build . _build -W"
+build = "sphinx-build -E -a . _build -W"
 clean = "rm -rf _build"
 serve = "python -m http.server -d _build"
 pull = "python scripts/pull_driver_docs.py"
@@ -39,6 +39,7 @@ linkify-it-py = ">=2.0.3,<3"
 matplotlib = ">=3.10.6,<4"
 
 [pypi-dependencies]
+ablog = ">=0.11.13, <0.12"
 sphinx-immaterial = ">=0.13.9, <0.14"
 
 [environments]
@@ -55,4 +56,4 @@ pre-commit = "pre-commit run --all-files --color=always --show-diff-on-failure -
 sphinx-autobuild = ">=2024.10.3,<2025"
 
 [feature.watch.tasks]
-watch = "sphinx-autobuild . _build"
+watch = "sphinx-autobuild -E -a . _build"

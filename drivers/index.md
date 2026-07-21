@@ -21,7 +21,7 @@ The ADBC Driver Foundry provides a set of ADBC drivers for different
 vendors.  All drivers implement the ADBC 1.1 interface and can be used from
 different languages including Go, Python, R, Rust, and more.
 
-See the individual driver pages for information on each driver:
+Documentation for the following ADBC Driver Foundry drivers is hosted on this website:
 
 :::{toctree}
 :maxdepth: 1
@@ -41,4 +41,27 @@ spark/index.md
 trino/index.md
 :::
 
-If you'd like to see your driver show up in the list, check out our [Building Drivers](../building-drivers/index.md) guide.
+The following drivers are also installable with [dbc](https://docs.columnar.tech/dbc/), but their documentation is hosted elsewhere:
+
+- [DuckDB](https://duckdb.org/docs/stable/clients/adbc)
+- [Flight SQL](https://arrow.apache.org/adbc/current/driver/flight_sql.html)
+- [PostgreSQL](https://arrow.apache.org/adbc/current/driver/postgresql.html)
+- [SQLite](https://arrow.apache.org/adbc/current/driver/sqlite.html)
+- [Oracle Database](https://docs.columnar.tech/drivers/oracle)
+- [SAP HANA](https://docs.columnar.tech/drivers/sap-hana)
+- [Teradata](https://docs.columnar.tech/drivers/teradata)
+
+:::{toctree}
+:hidden:
+:maxdepth: 1
+
+DuckDB <https://duckdb.org/docs/stable/clients/adbc>
+Flight SQL <https://arrow.apache.org/adbc/current/driver/flight_sql.html>
+PostgreSQL <https://arrow.apache.org/adbc/current/driver/postgresql.html>
+SQLite <https://arrow.apache.org/adbc/current/driver/sqlite.html>
+Oracle Database <https://docs.columnar.tech/drivers/oracle>
+SAP HANA <https://docs.columnar.tech/drivers/sap-hana>
+Teradata <https://docs.columnar.tech/drivers/teradata>
+:::
+
+If you'd like to see your driver show up in the list, check out our [Building Drivers](../building-drivers/index.md) guide or email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).

@@ -14,9 +14,11 @@
   limitations under the License.
 -->
 
-# ADBC Driver Foundry Documentation
+# ADBC Driver Foundry Website
 
-Source code for the [ADBC Driver Foundry](https://adbc-drivers.org) driver documentation [website](https://docs.adbc-drivers.org).
+Source code for the [ADBC Driver Foundry website](https://adbc-drivers.org),
+including driver documentation, the Foundry blog, and information about the
+project.
 This project uses [Sphinx](https://sphinx-doc.org) and can be built with [Pixi](https://pixi.sh).
 
 ## Building
@@ -51,6 +53,26 @@ Then visit <http://localhost:8000>.
 
 Note that the theme used does not always work well with incremental builds.
 You may need to remove `_build` and start again, especially when changing theme options.
+
+## Adding a blog post
+
+Blog posts are regular MyST Markdown documents stored at
+`YYYY/MM/DD/post-slug.md`. Mark the document with `blogpost: true` and a date
+in its YAML front matter; ABlog then adds it to `/blog/` and the Atom feed. The
+source path intentionally produces the existing date-based public URL, such as
+`/2026/07/20/updated-spark-driver.html`.
+
+Use an existing post as the template so the author/date byline and page options
+remain consistent. Ensure that `hide-toc: true` and `orphan: true` are included
+in the YAML.
+
+## Domains
+
+The canonical production domain is `adbc-drivers.org`. The GitHub Pages custom
+domain for this repository must be set to that apex domain. The legacy
+`docs.adbc-drivers.org` host should issue a permanent redirect to the same path,
+query, and fragment on `adbc-drivers.org`; the site also includes a client-side
+host redirect as a fallback when the legacy hostname serves this artifact.
 
 ## Contributing
 

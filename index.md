@@ -20,6 +20,7 @@ hide-toc: true
 
 ::::{grid} 1 1 2 2
 :gutter: 2
+:class-row: homepage-intro-grid
 
 :::{grid-item}
 ```{include} _static/adbc-drivers-logo.svg
@@ -27,13 +28,16 @@ hide-toc: true
 :::
 :::{grid-item}
 :class: grid-vertical-center
-Welcome to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} driver documentation site. Learn what drivers are available, how to use them, more about [ADBC](https://arrow.apache.org/adbc), and how to get involved with the Foundry. To learn more about the Foundry, head back to the [ADBC Driver Foundry](https://adbc-drivers.org){target=_self} website.
+Welcome to the **ADBC Driver Foundry**, a community hub for developers and users of [ADBC](https://arrow.apache.org/adbc) drivers. Learn what drivers are available, how to use them, and how to get involved with the Foundry. Read the latest project news on the [Blog](./blog/index.md).
 :::
 ::::
 
 :::{card}
 :class-card: sd-bg-primary sd-text-white sd-card-announcement
-**New: [Building Drivers](./building-drivers/index.md)**—learn how to build and ship an ADBC driver with the Foundry.
+:link: building-drivers/index
+:link-type: doc
+:link-alt: Building Drivers
+**New: Building Drivers**—learn how to build and ship an ADBC driver with the Foundry.
 :::
 
 ## Available Drivers
@@ -363,7 +367,7 @@ Other drivers available on dbc from across the ADBC-verse:
 
 :::::
 
-If you'd like to see your ADBC driver listed here, please shoot an email to [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
+If you'd like to see your ADBC driver listed here, please email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
 
 
 ## Guides
@@ -405,9 +409,9 @@ Read Guide
 :gutter: 2
 
 ::::{grid-item-card}
-**Apache Arrow ADBC**
+**ADBC**
 ^^^
-Official documentation for the ADBC specification and project.
+Official documentation for the ADBC specification and project, a part of the Apache Arrow project.
 +++
 :::{button-link} https://arrow.apache.org/adbc/current/index.html
 :click-parent:
@@ -444,8 +448,9 @@ Repository
 :hidden:
 
 Home <self>
-building-drivers/index.md
-using-drivers/index.md
-drivers/index.md
-Back to ADBC Driver Foundry <https://adbc-drivers.org>
+Drivers <drivers/index.md>
+Using Drivers <using-drivers/index.md>
+Building Drivers <building-drivers/index.md>
+Blog <blog/index.md>
+About <about/index.md>
 :::
