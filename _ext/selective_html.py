@@ -33,6 +33,7 @@ _BLOG_POST_HTML_PATH = re.compile(
     r"^(?P<post>/blog/\d{4}/\d{2}/\d{2}/[^/]+)\.html$"
 )
 _BLOG_ARCHIVE_YEAR = re.compile(r"^\d{4}$")
+_LEGACY_POST_LASTMOD_THROUGH = (2026, 7)
 
 
 def _is_blog_post(docname: str) -> bool:
@@ -154,19 +155,42 @@ def _clean_sitemap_urls(app: Sphinx, exception: Exception | None) -> None:
 
     tree = ElementTree.parse(sitemap_path)
     root = tree.getroot()
+    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
+    url_tag = f"{{{namespace}}}url"
+    loc_tag = f"{{{namespace}}}loc"
+    lastmod_tag = f"{{{namespace}}}lastmod"
+
+    from ablog.blog import Blog
+
+    baseurl = app.config.html_baseurl.rstrip("/") + "/"
+    post_dates = {
+        urljoin(baseurl, app.builder.get_target_uri(post.docname)): post.date.strftime(
+            "%Y-%m-%dT00:00:00Z"
+        )
+        for post in Blog(app).posts
+        if (post.date.year, post.date.month) <= _LEGACY_POST_LASTMOD_THROUGH
+    }
+
     changed = False
-    for location in root.iter("{http://www.sitemaps.org/schemas/sitemap/0.9}loc"):
-        if location.text is None:
+    for url in root.iter(url_tag):
+        location = url.find(loc_tag)
+        if location is None or location.text is None:
             continue
         cleaned = _clean_sitemap_location(location.text)
         if cleaned != location.text:
             location.text = cleaned
             changed = True
 
+        if post_date := post_dates.get(cleaned):
+            lastmod = url.find(lastmod_tag)
+            if lastmod is None:
+                lastmod = ElementTree.SubElement(url, lastmod_tag)
+            if lastmod.text != post_date:
+                lastmod.text = post_date
+                changed = True
+
     if changed:
-        ElementTree.register_namespace(
-            "", "http://www.sitemaps.org/schemas/sitemap/0.9"
-        )
+        ElementTree.register_namespace("", namespace)
         tree.write(
             sitemap_path,
             xml_declaration=True,
