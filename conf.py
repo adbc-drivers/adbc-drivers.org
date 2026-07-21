@@ -17,6 +17,7 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import locale
 import shutil
 import sys
 from pathlib import Path
@@ -25,6 +26,11 @@ from urllib.parse import urlparse
 from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
 from sphinx_design.icons import get_octicon
+
+# ABlog formats month names with ``datetime.strftime``, which otherwise uses
+# the locale of the machine running the build. Keep the English-language site
+# output deterministic while leaving every other locale category untouched.
+locale.setlocale(locale.LC_TIME, "C")
 
 # Add _ext directory to Python path for custom extensions
 sys.path.insert(0, str(Path(__file__).parent / "_ext"))
