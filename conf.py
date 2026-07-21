@@ -24,6 +24,7 @@ from urllib.parse import urlparse
 
 from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
+from sphinx_design.icons import get_octicon
 
 # Add _ext directory to Python path for custom extensions
 sys.path.insert(0, str(Path(__file__).parent / "_ext"))
@@ -42,6 +43,7 @@ extensions = [
     "ablog",
     "myst_parser",
     "sphinx_design",
+    "external_nav_links",
     "selective_html",
     "sphinx_immaterial",
     "sphinx.ext.intersphinx",
@@ -304,7 +306,7 @@ def badge_role(name, rawtext, text, lineno, inliner, options={}, content=[]):
 
 
 class ExternalLinkHtmlTranslator(HTMLTranslator):
-    _external_icon = """ <svg version="1.1" width="1.0em" height="1.0em" class="sd-octicon sd-octicon-link-external" viewBox="0 0 16 16" aria-hidden="true"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2Zm6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1Z"></path></svg>"""
+    _external_icon = " " + get_octicon("link-external")
 
     def visit_reference(self, node):
         same_site = urlparse(node.get("refuri", "")).hostname in {
@@ -362,6 +364,7 @@ def setup(app):
 
         page = context.get("page")
         navigation = context.get("nav")
+
         if not isinstance(page, dict) or navigation is None:
             return
 

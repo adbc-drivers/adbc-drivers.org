@@ -86,21 +86,16 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 
 /* External driver documentation lives alongside the Foundry drivers in the
    primary navigation, but remains visibly distinct. */
-.md-sidebar--primary .md-nav__link[href^="http://"]::after,
-.md-sidebar--primary .md-nav__link[href^="https://"]::after {
-    background-color: currentColor;
-    content: "";
+.md-sidebar--primary .md-nav__link[href^="http://"],
+.md-sidebar--primary .md-nav__link[href^="https://"] {
+    gap: 0.25rem;
+}
+
+.md-sidebar--primary .md-nav__link > .external-nav-icon {
+    fill: currentColor;
     flex: 0 0 0.65rem;
     height: 0.65rem;
-    margin-top: 0.1rem;
-    -webkit-mask-image: url("external-link.svg");
-    mask-image: url("external-link.svg");
-    -webkit-mask-position: center;
-    mask-position: center;
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: contain;
-    mask-size: contain;
+    margin-top: 0.15rem;
     opacity: 0.65;
     width: 0.65rem;
 }
