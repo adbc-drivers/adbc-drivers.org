@@ -369,6 +369,16 @@ Other drivers available on dbc from across the ADBC-verse:
 
 If you'd like to see your ADBC driver listed here, please email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
 
+## Latest Blog Posts
+
+:::{div} homepage-blog-posts
+```{postlist} 3
+:date: "%B %d, %Y"
+:format: "{date} {title}"
+```
+:::
+
+[View all blog posts →](blog/index.md)
 
 ## Guides
 
@@ -384,7 +394,7 @@ Learn how to install drivers from the Foundry and use them with your favorite pr
 +++
 :::{button-ref} using-drivers/index
 :click-parent:
-Read Guide
+Read guide
 :::
 ::::
 
@@ -395,7 +405,7 @@ Learn how to build an ADBC driver in the Foundry.
 +++
 :::{button-ref} building-drivers/index
 :click-parent:
-Read Guide
+Read guide
 :::
 ::::
 

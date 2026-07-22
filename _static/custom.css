@@ -672,7 +672,8 @@ body:has(.blog-sidebar) .md-content h1 > .headerlink {
     border-bottom: 0;
 }
 
-.blog-post-list .ablog-post-title {
+.blog-post-list .ablog-post-title,
+.homepage-blog-post-date {
     color: var(--md-default-fg-color--light);
     font-size: 0.78rem;
     font-weight: 600;
