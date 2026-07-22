@@ -15,7 +15,7 @@
 [workspace]
 authors = ["David Li <li.davidm96@gmail.com>"]
 channels = ["conda-forge"]
-name = "ADBC Driver Foundry Documentation"
+name = "ADBC Driver Foundry"
 platforms = ["linux-64", "osx-arm64"]
 version = "0.1.0"
 

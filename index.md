@@ -16,7 +16,7 @@ hide-navigation: true
 hide-toc: true
 ---
 
-# ADBC Driver Foundry Documentation
+# ADBC Driver Foundry
 
 ::::{grid} 1 1 2 2
 :gutter: 2
