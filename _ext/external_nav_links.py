@@ -23,7 +23,6 @@ from sphinx.application import Sphinx
 from sphinx.util.typing import ExtensionMetadata
 from sphinx_design.icons import get_octicon
 
-
 _ANCHOR = re.compile(
     r"<a\b(?P<attributes>[^>]*)>(?P<body>.*?)</a>",
     flags=re.IGNORECASE | re.DOTALL,
@@ -65,10 +64,14 @@ def _rewrite_nav_anchor(match: re.Match[str], site_origin: tuple[str, str]) -> s
         return match.group(0)
 
     destination = urlparse(_get_attribute(attributes, "href") or "")
-    if destination.scheme not in {"http", "https"} or (
-        destination.scheme,
-        destination.netloc,
-    ) == site_origin:
+    if (
+        destination.scheme not in {"http", "https"}
+        or (
+            destination.scheme,
+            destination.netloc,
+        )
+        == site_origin
+    ):
         return match.group(0)
 
     attributes = _set_attribute(attributes, "target", "_blank")

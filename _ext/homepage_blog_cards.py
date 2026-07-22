@@ -18,7 +18,6 @@ from docutils import nodes
 from sphinx.application import Sphinx
 from sphinx.util.typing import ExtensionMetadata
 
-
 _GRID_CONTAINER_CLASSES = [
     "sd-container-fluid",
     "sd-sphinx-override",
@@ -62,9 +61,7 @@ def _make_card(post: nodes.list_item) -> nodes.container | None:
     ).strip()
 
     header = nodes.container(classes=["sd-card-header"])
-    header_text = nodes.paragraph(
-        classes=["sd-card-text", "homepage-blog-post-date"]
-    )
+    header_text = nodes.paragraph(classes=["sd-card-text", "homepage-blog-post-date"])
     header_text += nodes.Text(date_text)
     header += header_text
 
