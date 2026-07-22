@@ -392,10 +392,11 @@ def setup(app):
     app.connect("html-page-context", configure_section_navigation, priority=900)
 
     # Jekyll published the original blog feed at /feed.xml. ABlog publishes
-    # the canonical feed at /blog/atom.xml, so retain the old endpoint as a
-    # byte-for-byte compatibility copy. External-link icons are useful in the
-    # site UI, but add noisy inline SVG markup to feed readers, so remove them
-    # before making the compatibility copy.
+    # the canonical feed at /blog/atom.xml, and a Cloudflare Redirect Rule
+    # redirects the old endpoint to it. Retain a byte-for-byte copy at the old
+    # endpoint as a backup. External-link icons are useful in the site UI, but
+    # add noisy inline SVG markup to feed readers, so remove them before making
+    # the backup copy.
     def finalize_blog_feeds(app, exception):
         if exception is not None or app.builder.format != "html":
             return
