@@ -18,7 +18,7 @@
 # Building Drivers
 
 :::{warning}
-**This guide is a work-in-progress.**
+**This guide is a work in progress.**
 :::
 
 In ADBC's first years, only a handful of drivers existed. Most were built by a small group of core developers within the Apache Arrow project, and a few by independent community members. Then ADBC went mainstream, and demand for new drivers exploded. At the same time, the vendors behind the databases, query engines, and data platforms that ADBC connects to wanted an active role in the direction and maintenance of their own drivers. The centralized Apache Software Foundation governance model was ill-suited to both: it funneled every contribution through the small group of core maintainers who could review and merge it, and it gave vendors no real ownership of the drivers that carried their names.
@@ -117,7 +117,7 @@ The Foundry provides a validation suite at [adbc-drivers/validation](https://git
 
 Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps your database's column types to Arrow data types and vice versa.
 
-If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [docs.adbc-drivers.org](https://docs.adbc-drivers.org).
+If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [adbc-drivers.org](https://adbc-drivers.org).
 
 #### Bootstrapping
 

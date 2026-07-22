@@ -1,0 +1,38 @@
+---
+blogpost: true
+date: 2026-01-28
+author: ADBC Drivers Contributors
+hide-toc: true
+orphan: true
+---
+
+<!--
+  Copyright (c) 2025-2026 ADBC Drivers Contributors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+# New ADBC driver for Databricks
+
+<p class="blog-post-meta">
+  <time datetime="2026-01-28">January 28, 2026</time>
+  <span class="blog-post-author">ADBC Drivers Contributors</span>
+</p>
+
+Today the ADBC Drivers Contributors released a new driver for Databricks version 0.1.2, available immediately via [dbc](https://docs.columnar.tech/dbc/). Just `dbc install databricks` to get the latest version.
+
+The driver supports querying data, bulk ingestion, and querying the catalog (listing tables and columns and so on). Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/databricks/). As the version number implies, this is an early version of the driver.  We are still working with Databricks on adding more features and improving performance, so stay tuned.
+
+This driver uses Databricks's Thrift transport with Cloud Fetch and Apache Arrow data transfer enabled.  It can connect to serverless compute, provisioned ("classic") compute, and SQL warehouses, by setting the server hostname, port, and HTTP path appropriately.  See the [documentation](https://docs.databricks.com/dev-tools/go-sql-driver) for the official Go SDK for details on how to get these values.
+
+Bug reports and feature requests are welcome through [GitHub Issues in the `databricks` repository](https://github.com/adbc-drivers/databricks/issues) in the ADBC Driver Foundry. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).

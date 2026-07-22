@@ -21,6 +21,13 @@
     --columnar: #434343;
 }
 
+/* Sphinx Design's default card border and shadow are black in dark mode,
+   making cards disappear into the Slate background. */
+[data-md-color-scheme="slate"] {
+    --sd-color-card-border: rgba(255, 255, 255, 0.18);
+    --sd-color-shadow: rgba(255, 255, 255, 0.08);
+}
+
 /* Fixes for questionable choices in Material Design */
 
 /* Header and drawer */
@@ -82,6 +89,116 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 [for=__drawer].md-nav__title {
     text-wrap: inherit;
     line-height: inherit;
+}
+
+/* External driver documentation lives alongside the Foundry drivers in the
+   primary navigation, but remains visibly distinct. */
+.md-sidebar--primary .md-nav__link[href^="http://"],
+.md-sidebar--primary .md-nav__link[href^="https://"] {
+    gap: 0.25rem;
+}
+
+.md-sidebar--primary .md-nav__link > .external-nav-icon {
+    fill: currentColor;
+    flex: 0 0 0.65rem;
+    height: 0.65rem;
+    margin-top: 0.15rem;
+    opacity: 0.65;
+    width: 0.65rem;
+}
+
+.md-sidebar--primary .md-nav__link[href^="http://"] .md-ellipsis,
+.md-sidebar--primary .md-nav__link[href^="https://"] .md-ellipsis {
+    flex-grow: 0;
+}
+
+.md-sidebar--primary .md-nav__item:has(
+    > .md-nav__link[href^="https://duckdb.org/docs/stable/clients/adbc"]
+) {
+    border-top: 0.05rem solid var(--md-default-fg-color--lightest);
+    margin-top: 0.55rem;
+    padding-top: 0.35rem;
+}
+
+/* Footer credits share the first row on wide screens. The trademark notice is
+   deliberately a separate, full-width row beneath them. */
+.footer-sponsor {
+    align-items: center;
+    color: var(--md-footer-fg-color--lighter);
+    display: flex;
+    font-size: 0.64rem;
+    gap: 0.3rem;
+    justify-content: center;
+    margin: auto 0.6rem;
+    padding: 0.4rem 0 0.6rem;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.md-footer-meta .footer-trademark {
+    color: var(--md-footer-fg-color--lighter);
+    flex: 0 1 calc(100% - 1.2rem);
+    font-size: 0.64rem;
+    margin: 0 0.6rem 0.4rem;
+    max-width: calc(100% - 1.2rem);
+    padding: 0;
+}
+
+.md-footer-meta .footer-sponsor__link {
+    color: var(--md-footer-fg-color--light);
+    display: inline-flex;
+    outline-offset: 0.15rem;
+    transition: color 125ms;
+}
+
+.md-footer-meta .footer-sponsor__link:focus,
+.md-footer-meta .footer-sponsor__link:hover {
+    color: var(--md-footer-fg-color);
+}
+
+.footer-sponsor__logo {
+    background-color: currentColor;
+    display: block;
+    height: 1.2rem;
+    -webkit-mask-image: url("columnar-logo.svg");
+    mask-image: url("columnar-logo.svg");
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    width: 4.8rem;
+}
+
+@media screen and (min-width: 45em) {
+    .md-footer-meta__inner {
+        align-items: center;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+
+    .md-footer-meta .md-copyright {
+        grid-column: 1;
+        grid-row: 1;
+        min-width: 0;
+        width: auto;
+    }
+
+    .footer-sponsor {
+        grid-column: 2;
+        grid-row: 1;
+        justify-content: flex-end;
+        justify-self: end;
+        width: auto;
+    }
+
+    .md-footer-meta .footer-trademark {
+        align-self: flex-start;
+        grid-column: 1 / -1;
+        grid-row: 2;
+        max-width: none;
+    }
 }
 
 /***********************************************************************
@@ -228,6 +345,7 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 
   From: https://www.tpgi.com/the-anatomy-of-visually-hidden/
 */
+#adbc-driver-foundry>h1,
 #adbc-driver-foundry-documentation>h1 {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);
@@ -358,6 +476,11 @@ section:has(> .driver-header-links) .md-typeset__table {
     padding-right: 0;
 }
 
+.homepage-intro-grid {
+    padding-bottom: 0.5rem;
+    row-gap: 20px;
+}
+
 /* Vertically center text of a grid item */
 .grid-vertical-center {
     display: flex;
@@ -367,4 +490,313 @@ section:has(> .driver-header-links) .md-typeset__table {
 
 .grid-vertical-center p:last-child {
     margin-bottom: 0;
+}
+
+/***********************************************************************
+ * Unified site navigation and editorial pages
+ ***********************************************************************/
+
+/* Give the native top-level tabs a little more definition while retaining
+   the documentation theme's restrained, utilitarian character. */
+.md-tabs {
+    background-color: var(--columnar);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.md-tabs__link {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.homepage-nav {
+    margin: 1.25rem 0 1rem;
+}
+
+.homepage-nav-card {
+    border-top: 0.18rem solid var(--md-accent-fg-color);
+    transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.homepage-nav-card:hover {
+    border-top-color: var(--md-primary-fg-color);
+    box-shadow: 0 0.35rem 0.9rem rgba(0, 0, 0, 0.12);
+    transform: translateY(-0.08rem);
+}
+
+.homepage-nav-card .sd-card-title {
+    font-size: 1.05rem;
+}
+
+.text-muted {
+    color: var(--md-default-fg-color--light);
+}
+
+.about-query {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-tagline {
+    margin-top: 1.75rem;
+}
+
+/* Recent-post navigation shown throughout the blog. */
+.blog-sidebar {
+    padding-bottom: 1.5rem;
+}
+
+.blog-sidebar-panel {
+    display: none;
+}
+
+body:has(.blog-sidebar) .md-content h1 > .headerlink {
+    display: none;
+}
+
+@media screen and (min-width: 76.25em) {
+    .md-sidebar.blog-sidebar-shell {
+        height: auto;
+    }
+
+    .blog-sidebar-shell .md-sidebar__scrollwrap {
+        backface-visibility: visible;
+        overflow: visible;
+    }
+
+    .blog-sidebar-drawer {
+        display: none;
+    }
+
+    .blog-sidebar-panel {
+        display: block;
+        padding-inline-end: 1rem;
+    }
+}
+
+.blog-sidebar__header {
+    border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
+    margin: 0 0.6rem 0.4rem;
+    padding: 0.35rem 0 0.7rem;
+}
+
+.blog-sidebar__header a,
+.blog-sidebar__header span {
+    display: block;
+}
+
+.blog-sidebar__header a {
+    color: var(--md-default-fg-color);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.blog-sidebar__header span {
+    color: var(--md-default-fg-color--light);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    margin-top: 0.2rem;
+    text-transform: uppercase;
+}
+
+.blog-sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.blog-sidebar__item {
+    margin: 0;
+}
+
+.blog-sidebar__link {
+    border-left: 0.12rem solid transparent;
+    display: block;
+    padding: 0.48rem 0.6rem;
+    transition: background-color 120ms ease, border-color 120ms ease;
+}
+
+.blog-sidebar__link:hover,
+.blog-sidebar__link:focus-visible {
+    background-color: var(--md-default-fg-color--lightest);
+    border-left-color: var(--md-default-fg-color--lighter);
+}
+
+.blog-sidebar__link--active {
+    background-color: var(--md-accent-fg-color--transparent);
+    border-left-color: var(--md-accent-fg-color);
+}
+
+.blog-sidebar__date,
+.blog-sidebar__post-title {
+    display: block;
+}
+
+.blog-sidebar__date {
+    color: var(--md-default-fg-color--light);
+    font-size: 0.56rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.blog-sidebar__post-title {
+    color: var(--md-default-fg-color);
+    font-size: 0.67rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-top: 0.12rem;
+}
+
+.blog-sidebar__all-posts {
+    border-top: 0.05rem solid var(--md-default-fg-color--lightest);
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin: 0.55rem 0.6rem 0;
+    padding-top: 0.7rem;
+}
+
+/* Blog index generated by ABlog. */
+.blog-post-list .postlist {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.blog-post-list .postlist > .ablog-post {
+    border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
+    margin: 0;
+    padding: 1.5rem 0;
+}
+
+.blog-post-list .postlist > .ablog-post:first-child {
+    padding-top: 0.75rem;
+}
+
+.blog-post-list .postlist > .ablog-post:last-child {
+    border-bottom: 0;
+}
+
+.blog-post-list .ablog-post-title,
+.homepage-blog-post-date {
+    color: var(--md-default-fg-color--light);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+}
+
+.blog-post-list .ablog-post-title a {
+    color: var(--md-default-fg-color);
+    display: block;
+    font-size: 1.25rem;
+    letter-spacing: normal;
+    line-height: 1.3;
+    margin-top: 0.25rem;
+    text-transform: none;
+}
+
+.blog-post-list .ablog-post-excerpt {
+    line-height: 1.7;
+    margin: 0.75rem 0 0;
+}
+
+.blog-post-list .ablog-post-expand {
+    margin: 0.6rem 0 0;
+}
+
+.blog-post-list .ablog-post-expand em {
+    font-style: normal;
+    font-weight: 600;
+}
+
+.blog-post-meta {
+    align-items: center;
+    color: var(--md-default-fg-color--light);
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    font-weight: 600;
+    gap: 0.35rem 0.8rem;
+    letter-spacing: 0.025em;
+    margin: -0.5rem 0 2rem !important;
+    text-transform: uppercase;
+}
+
+.blog-post-meta .blog-post-author::before {
+    content: "·";
+    margin-right: 0.8rem;
+}
+
+.ablog__prev-next {
+    border-top: 0.05rem solid var(--md-default-fg-color--lightest);
+    display: grid;
+    gap: 1.75rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    margin-top: 3rem;
+    padding-top: 1.25rem;
+    position: relative;
+}
+
+.ablog__prev-next::after {
+    background-color: var(--md-default-fg-color--lightest);
+    bottom: 0;
+    content: "";
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    top: 1.25rem;
+    transform: translateX(-50%);
+    width: 0.05rem;
+}
+
+.ablog__prev,
+.ablog__next {
+    display: block;
+    min-width: 0;
+}
+
+.ablog__next {
+    text-align: right;
+}
+
+.ablog__spacer {
+    display: none;
+}
+
+/* The legacy /blog.html archive remains available for old links. */
+.ablog__collection .ablog-post {
+    border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
+    padding: 0.75rem 0 1.5rem;
+}
+
+.ablog__collection .ablog-archive {
+    color: var(--md-default-fg-color--light);
+    font-size: 0.8rem;
+    list-style: none;
+    margin-left: 0;
+}
+
+@media screen and (max-width: 44.984375em) {
+    .blog-post-meta {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .blog-post-meta .blog-post-author::before {
+        content: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .homepage-nav-card {
+        transition: none;
+    }
+
+    .homepage-nav-card:hover {
+        transform: none;
+    }
 }

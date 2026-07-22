@@ -13,6 +13,7 @@
 # limitations under the License.
 
 _build
+__pycache__/
 # pixi environments
 .pixi/*
 !.pixi/config.toml

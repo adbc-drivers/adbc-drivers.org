@@ -66,7 +66,7 @@ To find the documentation for any driver dbc lists, run `dbc doc <driver>`. For 
 
 ```console
 $ dbc docs mysql
-# your browser should open to https://docs.adbc-drivers.org/drivers/mysql/
+# your browser should open to https://adbc-drivers.org/drivers/mysql/
 ```
 
 Another great resource for getting started with ADBC is Columnar's [adbc-quickstarts](https://github.com/columnar-tech/adbc-quickstarts) repo.

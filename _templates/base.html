@@ -18,4 +18,36 @@
 {% block site_meta %}
 {{ super() }}
 {{- metatags }}
+<script src="{{ pathto('_static/domain-redirect.js', 1) }}"></script>
+{% endblock %}
+
+{% block site_nav %}
+{% if show_blog_sidebar %}
+  <div class="md-sidebar md-sidebar--primary blog-sidebar-shell">
+    <div class="md-sidebar__scrollwrap">
+      <div class="md-sidebar__inner">
+        <div class="blog-sidebar-drawer">
+          {% include "partials/nav.html" %}
+        </div>
+        <div class="blog-sidebar-panel">
+          {% include "blog-sidebar.html" %}
+        </div>
+      </div>
+    </div>
+  </div>
+  {% if "toc.integrate" not in features %}
+    {% if page.meta and page.meta.hide %}
+      {% set hidden = "hidden" if "toc" in page.meta.hide %}
+    {% endif %}
+    <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" {{ hidden }}>
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% include "partials/toc.html" %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% else %}
+  {{ super() }}
+{% endif %}
 {% endblock %}
