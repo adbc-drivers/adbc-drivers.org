@@ -21,27 +21,77 @@ All of the drivers listed under [Available Drivers](../drivers/index.md) (and mo
 
 ## Using dbc
 
-dbc has its own documentation that covers its installation and usage: [https://docs.columnar.tech/dbc/](https://docs.columnar.tech/dbc/). We recommended checking that out.
+dbc has its own documentation that covers its installation and usage: [docs.columnar.tech/dbc](https://docs.columnar.tech/dbc/). We recommended checking that out.
 
 To give you a sense of how simple it is to use dbc, the following steps should work for most users to get started:
 
 ### Install dbc
 
-```sh
-curl -LsSf https://dbc.columnar.tech/install.sh | sh
+::::{tab-set}
+:class: dbc-install-tabs
+
+:::{tab-item} Linux/macOS shell
+```console
+$ curl -LsSf https://dbc.columnar.tech/install.sh | sh
 ```
+:::
+
+:::{tab-item} Windows shell
+```console
+$ powershell -ExecutionPolicy ByPass -c "irm https://dbc.columnar.tech/install.ps1 | iex"
+```
+:::
+
+:::{tab-item} Windows MSI
+Download <https://dbc.columnar.tech/latest/dbc-latest-x64.msi> and then run the installer.
+:::
+
+:::{tab-item} WinGet
+```console
+$ winget install Columnar.dbc
+```
+:::
+
+:::{tab-item} uv
+```console
+$ uv tool install dbc
+```
+:::
+
+:::{tab-item} pipx
+```console
+$ pipx install dbc
+```
+:::
+
+:::{tab-item} Homebrew
+```console
+$ brew install columnar-tech/tap/dbc
+```
+:::
+
+:::{tab-item} npm
+```console
+$ npm install -g @columnar-tech/dbc
+```
+:::
+
+::::
 
 ### Find Drivers
 
-```sh
+```console
 $ dbc search
 bigquery           An ADBC driver for Google BigQuery developed by the ADBC Driver Foundry
+clickhouse         An ADBC driver for ClickHouse developed by ClickHouse, Inc.
 databricks         An ADBC Driver for Databricks developed by the ADBC Driver Foundry
+datafusion         An ADBC driver for Apache DataFusion developed by the ADBC Driver Foundry
 duckdb             An ADBC driver for DuckDB developed by the DuckDB Foundation
 exasol             An ADBC driver for Exasol developed by Exasol Labs
 flightsql          An ADBC driver for Apache Arrow Flight SQL developed under the Apache Software Foundation
 mssql              An ADBC driver for Microsoft SQL Server developed by Columnar
 mysql              An ADBC Driver for MySQL developed by the ADBC Driver Foundry
+⋮
 ```
 
 ## Install a Driver
@@ -52,8 +102,14 @@ dbc install sqlite
 
 ## Run a Query
 
-```sh
-$ uv run --with "adbc_driver_manager,pyarrow" python -c "from adbc_driver_manager import dbapi; con = dbapi.connect(uri=\"sqlite://\"); cur = con.cursor(); tbl = cur.execute(\"select 1\").fetch_arrow_table(); print(tbl)"
+```console
+$ uv run \
+    --with "adbc_driver_manager,pyarrow" python -c \
+    "from adbc_driver_manager import dbapi; \
+    con = dbapi.connect(uri='sqlite://'); \
+    cur = con.cursor(); \
+    tbl = cur.execute('select 1').fetch_arrow_table(); \
+    print(tbl)"
 pyarrow.Table
 1: int64
 ----
@@ -62,7 +118,7 @@ pyarrow.Table
 
 ## Using Drivers
 
-To find the documentation for any driver dbc lists, run `dbc doc <driver>`. For example,
+To find the documentation for any driver dbc lists, run `dbc docs <driver>`. For example,
 
 ```console
 $ dbc docs mysql

@@ -76,6 +76,10 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     padding: 0;
 }
 
+.dbc-install-tabs > label {
+    font-size: inherit;
+}
+
 /* Fix text wrapping in highlighted code blocks. Very long, unbroken strings
    will break out of their box without this.
 */
