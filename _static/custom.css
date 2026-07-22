@@ -21,6 +21,13 @@
     --columnar: #434343;
 }
 
+/* Sphinx Design's default card border and shadow are black in dark mode,
+   making cards disappear into the Slate background. */
+[data-md-color-scheme="slate"] {
+    --sd-color-card-border: rgba(255, 255, 255, 0.18);
+    --sd-color-shadow: rgba(255, 255, 255, 0.08);
+}
+
 /* Fixes for questionable choices in Material Design */
 
 /* Header and drawer */
@@ -338,6 +345,7 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 
   From: https://www.tpgi.com/the-anatomy-of-visually-hidden/
 */
+#adbc-driver-foundry>h1,
 #adbc-driver-foundry-documentation>h1 {
     clip: rect(0 0 0 0);
     clip-path: inset(50%);

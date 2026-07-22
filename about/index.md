@@ -20,10 +20,10 @@ hide-toc: true
 
 # About the ADBC Driver Foundry
 
-ADBC is the modern data connectivity standard built to accelerate and simplify data access for analytics and AI applications.
+[ADBC](https://arrow.apache.org/adbc) is the modern data connectivity standard built to accelerate and simplify data access for analytics and AI applications.
 
 More projects and organizations are embracing ADBC and looking for drivers to connect to an ever-expanding landscape of data systems. But there’s still much work to be done—both technical and social—to shape ADBC’s next era.
 
-That’s why we launched the ADBC Driver Foundry. If you’re interested, please [read our launch announcement](../blog/2025/10/29/announcing-adbc-driver-foundry.md) to learn more.
+That’s why we launched the ADBC Driver Foundry. [Read our launch announcement](../blog/2025/10/29/announcing-adbc-driver-foundry.md) to learn more, or [see how to build and ship a driver with the Foundry](../building-drivers/index).
 
 *Where we’re going, we don’t need rows.*

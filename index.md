@@ -28,7 +28,7 @@ hide-toc: true
 :::
 :::{grid-item}
 :class: grid-vertical-center
-Welcome to the **ADBC Driver Foundry**, a community hub for developers and users of [ADBC](https://arrow.apache.org/adbc) drivers. Learn what drivers are available, how to use them, and how to get involved with the Foundry. Read the latest project news on the [Blog](./blog/index.md).
+Welcome to the **ADBC Driver Foundry**, a community hub for developers and users of [ADBC](https://arrow.apache.org/adbc) drivers. Learn [what drivers are available](./drivers/index.md), [how to use them](./using-drivers/index.md), and [how to get involved](./building-drivers/index.md) with the Foundry. Read the latest project news on the [blog](./blog/index.md).
 :::
 ::::
 
@@ -37,7 +37,7 @@ Welcome to the **ADBC Driver Foundry**, a community hub for developers and users
 :link: building-drivers/index
 :link-type: doc
 :link-alt: Building Drivers
-**New: Building Drivers**—learn how to build and ship an ADBC driver with the Foundry.
+**New: Building Drivers** — Learn how to build and ship an ADBC driver with the Foundry.
 :::
 
 ## Available Drivers
