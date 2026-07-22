@@ -20,6 +20,7 @@
 import locale
 import shutil
 import sys
+from html import escape as escape_html
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -391,14 +392,23 @@ def setup(app):
     app.connect("html-page-context", configure_section_navigation, priority=900)
 
     # Jekyll published the original blog feed at /feed.xml. ABlog publishes
-    # the canonical feed at /blog/atom.xml, so retain the old endpoint as a
-    # byte-for-byte compatibility copy.
-    def copy_legacy_blog_feed(app, exception):
+    # the canonical feed at /blog/atom.xml, and a Cloudflare Redirect Rule
+    # redirects the old endpoint to it. Retain a byte-for-byte copy at the old
+    # endpoint as a backup. External-link icons are useful in the site UI, but
+    # add noisy inline SVG markup to feed readers, so remove them before making
+    # the backup copy.
+    def finalize_blog_feeds(app, exception):
         if exception is not None or app.builder.format != "html":
             return
 
         source = Path(app.outdir) / "blog" / "atom.xml"
         if source.exists():
+            feed = source.read_text(encoding="utf-8")
+            external_icon = escape_html(
+                ExternalLinkHtmlTranslator._external_icon, quote=False
+            )
+            feed = feed.replace(external_icon, "")
+            source.write_text(feed, encoding="utf-8")
             shutil.copyfile(source, Path(app.outdir) / "feed.xml")
 
-    app.connect("build-finished", copy_legacy_blog_feed)
+    app.connect("build-finished", finalize_blog_feeds)
