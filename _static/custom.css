@@ -77,9 +77,56 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     padding: 0;
 }
 
-/* Fix text wrapping in highlighted code blocks. Very long, unbroken strings
-   will break out of their box without this.
-*/
+/* Match a one-line code block while keeping the MSI instructions as prose. */
+.sd-tab-content > .installer-download {
+    background-color: var(--md-code-bg-color);
+    border-radius: 0.1rem;
+    color: var(--md-code-fg-color);
+    font-size: 0.85em;
+    line-height: 1.4;
+    margin: 1.1764705882em 0 !important;
+    padding: 0.7720588235em 1.1764705882em;
+}
+
+/* The standard Sphinx translator does not add the inner <code> element that
+   Sphinx Immaterial normally styles. Apply the same box treatment directly to
+   highlighted <pre> elements while retaining the standard page structure. */
+.md-typeset .highlight > pre:not(:has(> code)) {
+    background-color: var(--md-code-bg-color);
+    border-radius: 0.1rem;
+    font-size: 0.85em;
+    margin: 1.1764705882em 0;
+    padding: 0.7720588235em 1.1764705882em;
+}
+
+/* Match Sphinx Immaterial's native, persistently visible copy control. */
+.md-typeset .highlight button.copybtn {
+    background: transparent;
+    border: 0;
+    color: var(--md-default-fg-color--light);
+    cursor: pointer;
+    height: 1.5em;
+    opacity: 1;
+    right: 0.5em;
+    top: 0.5em;
+    width: 1.5em;
+    z-index: 1;
+}
+
+.md-typeset .highlight button.copybtn:hover,
+.md-typeset .highlight button.copybtn:focus {
+    background: transparent;
+    color: var(--md-accent-fg-color);
+}
+
+.md-typeset .highlight button.copybtn svg {
+    height: 1.125em;
+    padding: 0;
+    stroke: currentColor;
+    width: 1.125em;
+}
+
+/* Very long, unbroken strings otherwise break out of their code box. */
 .md-typeset pre {
     overflow-x: auto;
 }

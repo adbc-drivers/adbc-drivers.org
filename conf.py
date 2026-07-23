@@ -50,6 +50,7 @@ extensions = [
     "ablog",
     "homepage_blog_cards",
     "myst_parser",
+    "sphinx_copybutton",
     "sphinx_design",
     "external_nav_links",
     "selective_html",
@@ -92,7 +93,6 @@ html_baseurl = "https://adbc-drivers.org/"
 html_use_directory_uris_for_index_pages = True
 html_theme_options = {
     "features": [
-        "content.code.copy",
         "navigation.tabs",
     ],
     "font": {
@@ -137,6 +137,12 @@ html_theme_options = {
     "repo_name": "adbc-drivers",
     "icon": {"repo": "fontawesome/brands/github"},
 }
+
+# Copy only entered commands from console transcripts, without their prompts.
+copybutton_prompt_text = r"(?:\$|#|>) "
+copybutton_prompt_is_regexp = True
+copybutton_only_copy_prompt_lines = True
+copybutton_remove_prompts = True
 
 # -- Options for Intersphinx -------------------------------------------------
 
@@ -339,6 +345,14 @@ class ExternalLinkHtmlTranslator(HTMLTranslator):
 def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
     app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
+
+    # sphinx-immaterial omits this legacy Sphinx global, but
+    # sphinx-copybutton 0.5.2 still reads it during startup.
+    app.add_js_file(
+        None,
+        body='window.DOCUMENTATION_OPTIONS = {URL_ROOT: ""};',
+        priority=400,
+    )
 
     # Register custom badge roles with Sphinx
     for variant in custom_badge_variants:
