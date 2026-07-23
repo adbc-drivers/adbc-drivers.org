@@ -377,6 +377,15 @@ def setup(app):
             return
 
         if show_blog_sidebar:
+            # Blog posts are intentionally orphaned from the main toctree, so
+            # sphinx-immaterial cannot infer that the Blog tab is their active
+            # top-level section. Mark the matching tab active while retaining
+            # the separate, purpose-built blog sidebar.
+            blog_index_url = context["pathto"](f"{blog_path}/index")
+            for item in navigation:
+                if item.url == blog_index_url:
+                    item.active = True
+                    break
             return
 
         has_subpages = any(item.active and item.children for item in navigation)
