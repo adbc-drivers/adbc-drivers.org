@@ -28,7 +28,6 @@ To give you a sense of how simple it is to use dbc, the following steps should w
 ### Install dbc
 
 ::::{tab-set}
-:class: dbc-install-tabs
 
 :::{tab-item} Linux/macOS shell
 ```console

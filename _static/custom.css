@@ -19,6 +19,7 @@
  ***********************************************************************/
 :root {
     --columnar: #434343;
+    --sd-fontsize-tabs-label: 1em;
 }
 
 /* Sphinx Design's default card border and shadow are black in dark mode,
@@ -74,10 +75,6 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 .sd-card-text .sd-btn {
     font-size: inherit;
     padding: 0;
-}
-
-.dbc-install-tabs > label {
-    font-size: inherit;
 }
 
 /* Fix text wrapping in highlighted code blocks. Very long, unbroken strings
