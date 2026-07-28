@@ -17,8 +17,13 @@
 
 # Changelog for DuckDB Quack Driver
 
-## v0.1.0-alpha.2 (2026-07-10)
+## v0.1.0-alpha.3 (2026-07-27)
 
+New features:
+
+- Bump DuckDB from `1.5.4` to `1.5.5`
+
+## v0.1.0-alpha.2 (2026-07-10)
 
 New features:
 
