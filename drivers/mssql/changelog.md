@@ -26,7 +26,7 @@ New features:
 
 Fixes:
 
-- Avoid potential panic in Go runtime 
+- Avoid potential panic in Go runtime
 
 ## v1.5.0 (2026-07-07)
 
