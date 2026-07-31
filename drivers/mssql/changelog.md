@@ -22,7 +22,7 @@
 New features:
 
 - Support dictionary/null binding
-- Implement trace propagation
+- Implement experimental trace propagation
 
 Fixes:
 
