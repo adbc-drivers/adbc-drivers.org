@@ -24,9 +24,6 @@ New features:
 - Support dictionary/null binding
 - Implement experimental trace propagation
 
-Fixes:
-
-- Avoid potential panic in Go runtime
 
 ## v1.5.0 (2026-07-07)
 
