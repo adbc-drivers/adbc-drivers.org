@@ -17,6 +17,14 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+## v1.6.0 (2026-07-30)
+
+New features:
+
+- Support dictionary/null binding
+- Implement experimental trace propagation
+
+
 ## v1.5.0 (2026-07-07)
 
 New features:

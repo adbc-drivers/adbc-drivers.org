@@ -17,6 +17,12 @@
 
 # Changelog for Trino Driver
 
+## v0.5.1 (2026-07-30)
+
+New features:
+
+- Update dependencies
+
 ## v0.5.0 (2026-07-06)
 
 New features:
