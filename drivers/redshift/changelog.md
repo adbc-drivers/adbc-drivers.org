@@ -17,6 +17,14 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.5.0 (2026-07-31)
+
+New features:
+
+- Support dictionary-encoded bind parameters and the Arrow null type
+- Make VARBYTE size configurable and increase default size for GeoArrow data staged as VARBYTE in bulk ingest
+- Support server-side statement cancellation
+
 ## v1.4.0 (2026-07-07)
 
 Fixes:
