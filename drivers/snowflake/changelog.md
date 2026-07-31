@@ -17,6 +17,13 @@
 
 # Changelog for ADBC Driver for Snowflake
 
+
+## v1.12.0 (2026-07-31)
+
+New features:
+
+- Optimize GetObjects metadata query performance
+
 ## v1.11.0 (2026-06-18)
 
 New features:
