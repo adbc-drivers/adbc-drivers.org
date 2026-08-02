@@ -21,9 +21,11 @@ import locale
 import shutil
 import sys
 from html import escape as escape_html
+from html import unescape as unescape_html
 from pathlib import Path
 from urllib.parse import urlparse
 
+import sphinxext.opengraph as opengraph
 from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
 from sphinx_design.icons import get_octicon
@@ -346,6 +348,23 @@ class ExternalLinkHtmlTranslator(HTMLTranslator):
 def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
     app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
+
+    # sphinxext-opengraph escapes the page description for the og:description
+    # meta tag, then draws that same string into the social card PNG, so a
+    # heading like "Installation & Quickstart" is drawn as "Installation &amp;
+    # Quickstart". Unescape it for the card only; the meta tag keeps its own
+    # correctly escaped copy.
+    def unescape_social_card_description(social_card_for_page):
+        def wrapper(*args, description, **kwargs):
+            return social_card_for_page(
+                *args, description=unescape_html(description), **kwargs
+            )
+
+        return wrapper
+
+    opengraph.social_card_for_page = unescape_social_card_description(
+        opengraph.social_card_for_page
+    )
 
     # sphinx-immaterial omits this legacy Sphinx global, but
     # sphinx-copybutton 0.5.2 still reads it during startup.
