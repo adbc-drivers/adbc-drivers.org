@@ -175,6 +175,7 @@ ogp_site_url = "https://adbc-drivers.org"
 ogp_site_name = "ADBC Driver Foundry"
 ogp_social_cards = {
     "image": "_static/opengraph-logo.png",
+    "image_mini": "_static/opengraph-blank.png",
     "line_color": "#434343",
 }
 
