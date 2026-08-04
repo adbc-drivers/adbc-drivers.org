@@ -15,7 +15,7 @@
 {}
 ---
 
-# Amazon Redshift Driver
+# Amazon Redshift
 
 :::{toctree}
 :maxdepth: 1
