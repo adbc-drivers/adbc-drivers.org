@@ -349,6 +349,44 @@ def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
     app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
 
+    # Give driver and key landing pages descriptive Open Graph titles without
+    # changing the shorter titles used for their page headings and browser tabs.
+    def configure_og_title(app, pagename, templatename, context, doctree):
+        title = {
+            "blog/index": "ADBC Drivers Blog",
+            "building-drivers/index": "Building ADBC Drivers",
+            "drivers/index": "Available ADBC Drivers",
+            "using-drivers/index": "Using ADBC Drivers",
+        }.get(pagename)
+
+        # Sphinx pagenames omit the file extension. Direct children of a driver
+        # directory therefore have the shape ``drivers/<driver>/<page>``.
+        parts = pagename.split("/")
+        if len(parts) == 3 and parts[0] == "drivers":
+            # The rendered title can contain HTML, so parse it exactly as
+            # sphinxext-opengraph does before using it as metadata text.
+            page_title, _ = opengraph.get_title(context["title"])
+            if parts[2] == "index":
+                # Guard against an upstream landing-page heading that already
+                # ends in "Driver" so the generated title does not repeat it.
+                system = page_title.removesuffix(" Driver")
+                title = f"ADBC Driver for {system}"
+            # Some changelog headings already contain "ADBC Driver". Checking
+            # the whole title prevents turning that into "ADBC ADBC Driver".
+            elif "ADBC" not in page_title and "Driver" in page_title:
+                title = page_title.replace("Driver", "ADBC Driver")
+
+        if title is None:
+            return
+
+        # Pages without source-level metadata expose this context value as None.
+        if context["meta"] is None:
+            context["meta"] = {}
+        context["meta"]["og:title"] = title
+
+    # sphinxext-opengraph reads the metadata at the default priority (500).
+    app.connect("html-page-context", configure_og_title, priority=400)
+
     # sphinxext-opengraph escapes the page description for the og:description
     # meta tag, then draws that same string into the social card PNG, so a
     # heading like "Installation & Quickstart" is drawn as "Installation &amp;
