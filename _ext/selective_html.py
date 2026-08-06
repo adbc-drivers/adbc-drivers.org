@@ -28,6 +28,7 @@ from sphinx.util.typing import ExtensionMetadata
 _BLOG_POST_DOCUMENT = re.compile(r"^blog/(?P<dated_path>\d{4}/\d{2}/\d{2}/[^/]+)$")
 _BLOG_POST_HTML_PATH = re.compile(r"^(?P<post>/blog/\d{4}/\d{2}/\d{2}/[^/]+)\.html$")
 _BLOG_ARCHIVE_YEAR = re.compile(r"^\d{4}$")
+_QUICKSTART_DOCUMENT = re.compile(r"^quickstarts/[^/]+/[^/]+$")
 _LEGACY_POST_LASTMOD_THROUGH = (2026, 7)
 
 
@@ -58,12 +59,12 @@ class SelectiveHTMLBuilder(StandaloneHTMLBuilder):
     name = "foundryhtml"
 
     def get_target_uri(self, docname: str, typ: str | None = None) -> str:
-        if _is_blog_post(docname):
+        if _is_blog_post(docname) or _QUICKSTART_DOCUMENT.fullmatch(docname):
             return quote(docname) + "/"
         return super().get_target_uri(docname, typ)
 
     def get_output_path(self, page_name: str, /) -> Path:
-        if _is_blog_post(page_name):
+        if _is_blog_post(page_name) or _QUICKSTART_DOCUMENT.fullmatch(page_name):
             return Path(
                 self.outdir,
                 *page_name.split("/"),

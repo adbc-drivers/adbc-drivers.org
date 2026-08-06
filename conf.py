@@ -54,6 +54,7 @@ extensions = [
     "myst_parser",
     "sphinx_copybutton",
     "sphinx_design",
+    "quickstarts",
     "external_nav_links",
     "selective_html",
     "sphinx_immaterial",

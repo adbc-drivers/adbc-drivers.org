@@ -54,6 +54,26 @@ Then visit <http://localhost:8000>.
 Note that the theme used does not always work well with incremental builds.
 You may need to remove `_build` and start again, especially when changing theme options.
 
+## Quickstart examples extension
+
+The `quickstarts` directive renders the examples available for a driver in the
+[ADBC Quickstarts repository](https://github.com/columnar-tech/adbc-quickstarts):
+
+```md
+:::{quickstarts} mysql
+:::
+```
+
+The extension clones the repository lazily into the Sphinx doctree directory
+and refreshes an existing checkout after one hour. If a refresh fails, it uses
+the stale checkout and emits a warning. The repository, ref, and refresh period
+can be changed with the `quickstarts_repository`, `quickstarts_ref`, and
+`quickstarts_cache_ttl` Sphinx configuration values.
+
+Each language card links to a generated source page under
+`/quickstarts/<vendor>/<language>/`. The page links to the example directory on
+GitHub at the exact commit displayed by the documentation build.
+
 ## Adding a blog post
 
 Blog posts are regular MyST Markdown documents stored at

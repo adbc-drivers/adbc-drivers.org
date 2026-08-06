@@ -24,6 +24,7 @@ build = "sphinx-build -b foundryhtml -E -a . _build -W"
 clean = "rm -rf _build"
 serve = "python -m http.server -d _build"
 pull = "python scripts/pull_driver_docs.py"
+test = "python -m unittest discover -s tests"
 
 [dependencies]
 python = ">=3.13.5,<3.14"
