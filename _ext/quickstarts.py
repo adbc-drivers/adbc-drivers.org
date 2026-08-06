@@ -35,9 +35,7 @@ from sphinx.util.typing import ExtensionMetadata
 from sphinx_design.shared import create_component
 
 LOGGER = getLogger(__name__)
-CLIENT_LIBRARIES_URL = (
-    "https://arrow.apache.org/adbc/current/client_libraries.html"
-)
+CLIENT_LIBRARIES_URL = "https://arrow.apache.org/adbc/current/client_libraries.html"
 LANGUAGE_ENTRYPOINTS = {
     "cpp": ("main.cpp", "cpp"),
     "csharp": ("Program.cs", "csharp"),
@@ -65,7 +63,9 @@ def _run_git(*args: str, cwd: Path | None = None) -> str:
         )
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired) as exc:
         detail = getattr(exc, "stderr", None) or str(exc)
-        raise ExtensionError(f"could not update ADBC quickstarts cache: {detail}") from exc
+        raise ExtensionError(
+            f"could not update ADBC quickstarts cache: {detail}"
+        ) from exc
     return result.stdout.strip()
 
 
@@ -140,7 +140,9 @@ def _load_metadata(checkout: Path) -> tuple[dict[str, str], dict[str, dict]]:
         languages = json.loads((data / "languages.json").read_text(encoding="utf-8"))
         databases = json.loads((data / "databases.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
-        raise ExtensionError(f"could not read ADBC quickstarts metadata: {exc}") from exc
+        raise ExtensionError(
+            f"could not read ADBC quickstarts metadata: {exc}"
+        ) from exc
     return languages, databases
 
 
@@ -176,7 +178,9 @@ def discover_examples(
         for language, display_name in languages.items():
             entrypoint = LANGUAGE_ENTRYPOINTS.get(language)
             if entrypoint is None:
-                LOGGER.warning("no quickstarts entrypoint is configured for %s", language)
+                LOGGER.warning(
+                    "no quickstarts entrypoint is configured for %s", language
+                )
                 continue
             directory = _example_directory(checkout, language, driver, vendor)
             if not directory.is_dir():
@@ -236,7 +240,9 @@ def _language_grid(
     grid += row
     for example in examples:
         pagename = _source_pagename(vendor, example["language"])
-        uri = directive.env.app.builder.get_relative_uri(directive.env.docname, pagename)
+        uri = directive.env.app.builder.get_relative_uri(
+            directive.env.docname, pagename
+        )
         link = nodes.reference(
             "",
             "",
@@ -264,21 +270,29 @@ def _language_grid(
     return grid
 
 
-def _dropdown(name: str, body: nodes.Node, opened: bool) -> nodes.container:
-    dropdown = create_component(
-        "dropdown",
-        opened=opened,
-        type="dropdown",
-        has_title=True,
-        icon=None,
-        chevron=None,
-        container_classes=["sd-mb-3"],
-        title_classes=[],
-        body_classes=[],
-    )
-    dropdown += nodes.rubric(name, name)
-    dropdown += body
-    return dropdown
+def _tab_set(
+    driver: str, groups: list[dict], grids: list[nodes.Node]
+) -> nodes.container:
+    tabs = create_component("tab-set", classes=["sd-tab-set"])
+    for group, grid in zip(groups, grids, strict=True):
+        item = create_component(
+            "tab-item",
+            classes=["sd-tab-item"],
+            selected=group["vendor"] == driver,
+        )
+        item += nodes.rubric(
+            group["vendor_name"],
+            group["vendor_name"],
+            classes=["sd-tab-label"],
+        )
+        content = create_component(
+            "tab-content",
+            classes=["sd-tab-content"],
+        )
+        content += grid
+        item += content
+        tabs += item
+    return tabs
 
 
 class QuickstartsDirective(SphinxDirective):
@@ -301,19 +315,18 @@ class QuickstartsDirective(SphinxDirective):
         repository = self.env.config.quickstarts_repository.removesuffix(".git")
         multiple_vendors = len(groups) > 1
         output = nodes.container(classes=["quickstarts"])
+        grids = [
+            _language_grid(self, group["vendor"], group["examples"]) for group in groups
+        ]
+        if multiple_vendors:
+            output += _tab_set(driver, groups, grids)
+        else:
+            output += grids[0]
         for group in groups:
-            grid = _language_grid(self, group["vendor"], group["examples"])
-            if multiple_vendors:
-                output += _dropdown(
-                    group["vendor_name"],
-                    grid,
-                    opened=group["vendor"] == driver,
-                )
-            else:
-                output += grid
-
             for example in group["examples"]:
-                relative_directory = example["directory"].relative_to(checkout).as_posix()
+                relative_directory = (
+                    example["directory"].relative_to(checkout).as_posix()
+                )
                 pagename = _source_pagename(group["vendor"], example["language"])
                 driver_name = databases[driver]["name"]
                 if group["vendor"] == driver:
@@ -326,9 +339,16 @@ class QuickstartsDirective(SphinxDirective):
                         f"{example['language_name']} quickstart for "
                         f"{group['vendor_name']} with the ADBC driver for {driver_name}"
                     )
+                description = (
+                    f"This example shows how to use the ADBC driver for {driver_name} "
+                    f"in {example['language_name']}"
+                )
+                if group["vendor"] != driver:
+                    description += f" with {group['vendor_name']}"
                 pages[pagename] = {
                     "docname": self.env.docname,
                     "title": title,
+                    "description": description + ".",
                     "source": example["source"].read_text(encoding="utf-8"),
                     "lexer": example["lexer"],
                     "github_url": (
@@ -359,14 +379,16 @@ def _collect_source_pages(app: Sphinx):
             page["source"], page["lexer"], location=pagename
         )
         github_link = nodes.paragraph()
+        introduction = nodes.paragraph("", page["description"])
         github_link += nodes.reference(
             "",
-            "View this example on GitHub",
+            "View the full example on GitHub",
             refuri=page["github_url"],
         )
         github_link += nodes.Text(".")
-        link_html = app.builder.render_partial(github_link)["fragment"]
-        body = f"<h1>{title}</h1>{link_html}{highlighted}"
+        prose = nodes.container("", introduction, github_link)
+        prose_html = app.builder.render_partial(prose)["fragment"]
+        body = f"<h1>{title}</h1>{prose_html}{highlighted}"
         yield pagename, {"title": title, "body": body}, "page.html"
 
 

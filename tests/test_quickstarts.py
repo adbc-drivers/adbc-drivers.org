@@ -117,8 +117,12 @@ class QuickstartsTest(unittest.TestCase):
         timestamp = self.repository / quickstarts._CACHE_TIMESTAMP
         timestamp.touch()
         modified = timestamp.stat().st_mtime
-        self.assertTrue(quickstarts._cache_is_fresh(self.repository, 3600, modified + 3599))
-        self.assertFalse(quickstarts._cache_is_fresh(self.repository, 3600, modified + 3600))
+        self.assertTrue(
+            quickstarts._cache_is_fresh(self.repository, 3600, modified + 3599)
+        )
+        self.assertFalse(
+            quickstarts._cache_is_fresh(self.repository, 3600, modified + 3600)
+        )
 
     def test_refresh_failure_uses_stale_checkout(self) -> None:
         doctrees = self.root / "stale-doctrees"
@@ -207,9 +211,9 @@ class QuickstartsTest(unittest.TestCase):
         self.assertEqual(0, app.statuscode)
 
         index = (output / "index.html").read_text(encoding="utf-8")
-        self.assertIn("<summary", index)
+        self.assertIn("sd-tab-label", index)
         self.assertIn("MariaDB", index)
-        self.assertIn('open="open"', index)
+        self.assertIn('checked="checked"', index)
         self.assertIn(
             f'href="{quickstarts.CLIENT_LIBRARIES_URL}"',
             index,
@@ -220,6 +224,11 @@ class QuickstartsTest(unittest.TestCase):
         self.assertTrue(generated.is_file())
         page = generated.read_text(encoding="utf-8")
         self.assertIn("Python quickstart with the ADBC driver for MySQL", page)
+        self.assertIn(
+            "This example shows how to use the ADBC driver for MySQL in Python.",
+            page,
+        )
+        self.assertIn("View the full example on GitHub", page)
         self.assertIn("print", page)
         self.assertIn(self.commit, page)
 
@@ -228,6 +237,11 @@ class QuickstartsTest(unittest.TestCase):
         )
         self.assertIn(
             "Python quickstart for MariaDB with the ADBC driver for MySQL",
+            mariadb,
+        )
+        self.assertIn(
+            "This example shows how to use the ADBC driver for MySQL in Python "
+            "with MariaDB.",
             mariadb,
         )
 
