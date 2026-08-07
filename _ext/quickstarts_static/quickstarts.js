@@ -126,15 +126,33 @@
     }
     dialog.classList.remove("quickstart-modal--visible");
     dialog.classList.add("quickstart-modal--closing");
-    const delay = window.matchMedia("(prefers-reduced-motion: reduce)").matches
-      ? 0
-      : 125;
-    window.setTimeout(() => {
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    let fallback;
+    const finishClosing = () => {
+      window.clearTimeout(fallback);
+      dialog.removeEventListener("transitionend", handleTransitionEnd);
       dialog.close();
       if (afterClose) {
         afterClose();
       }
-    }, delay);
+    };
+    const handleTransitionEnd = (event) => {
+      if (
+        event.target === dialog &&
+        event.pseudoElement === "" &&
+        event.propertyName === "opacity"
+      ) {
+        finishClosing();
+      }
+    };
+    if (reducedMotion) {
+      finishClosing();
+      return;
+    }
+    dialog.addEventListener("transitionend", handleTransitionEnd);
+    fallback = window.setTimeout(finishClosing, 200);
   };
 
   closeButton.addEventListener("click", () => closeDialog());
@@ -151,7 +169,7 @@
     dialog.classList.remove("quickstart-modal--closing");
     requestId += 1;
     if (trigger) {
-      trigger.focus();
+      trigger.focus({ preventScroll: true });
       trigger = null;
     }
   });
