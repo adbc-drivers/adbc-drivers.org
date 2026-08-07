@@ -12,7 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Render cached ADBC quickstart examples and their source listings."""
+"""
+Render cached ADBC quickstart examples and their source listings.
+
+The `quickstarts` directive renders the examples available for a driver from
+https://github.com/columnar-tech/adbc-quickstarts.
+
+The extension clones the repository lazily into the Sphinx doctree directory
+and refreshes an existing checkout after one hour. If a refresh fails, it uses
+the stale checkout and emits a warning. The repository, ref, and refresh period
+can be changed with the `quickstarts_repository`, `quickstarts_ref`, and
+`quickstarts_cache_ttl` Sphinx configuration values.
+
+Each language card links to a generated source page under
+`/drivers/<driver>/quickstarts/<vendor>/<language>/`. The page links to the
+example directory on GitHub at the exact commit displayed by the documentation
+build. In browsers with JavaScript enabled, an ordinary click opens the source
+listing and GitHub link in a modal with a copy button. The generated page
+remains the link target for crawlers, browsers without JavaScript, and modified
+clicks such as opening the example in a new tab.
+"""
 
 from __future__ import annotations
 
