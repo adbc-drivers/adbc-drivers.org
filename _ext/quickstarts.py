@@ -251,7 +251,7 @@ def _language_grid(
             "",
             nodes.strong("", example["language_name"]),
             refuri=uri,
-            classes=["sd-stretched-link"],
+            classes=["sd-stretched-link", "quickstart-modal-link"],
             internal=True,
         )
         body = create_component("card-body", ["sd-card-body", "sd-card-center"])
@@ -392,9 +392,12 @@ def _collect_source_pages(app: Sphinx):
             refuri=page["github_url"],
         )
         github_link += nodes.Text(".")
-        prose = nodes.container("", introduction, github_link)
-        prose_html = app.builder.render_partial(prose)["fragment"]
-        body = f"<h1>{title}</h1>{prose_html}{highlighted}"
+        introduction_html = app.builder.render_partial(introduction)["fragment"]
+        github_html = app.builder.render_partial(github_link)["fragment"]
+        modal_content = (
+            f'<div data-quickstart-modal-content="">{github_html}{highlighted}</div>'
+        )
+        body = f"<h1>{title}</h1>{introduction_html}{modal_content}"
         yield pagename, {"title": title, "body": body}, "page.html"
 
 
@@ -407,6 +410,12 @@ def _purge_pages(app: Sphinx, env, docname: str) -> None:
     }
 
 
+def _add_static_path(app: Sphinx, config) -> None:
+    static_path = str(Path(__file__).with_name("quickstarts_static"))
+    if static_path not in config.html_static_path:
+        config.html_static_path.append(static_path)
+
+
 def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value(
         "quickstarts_repository",
@@ -416,6 +425,9 @@ def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("quickstarts_ref", "main", "env")
     app.add_config_value("quickstarts_cache_ttl", 3600, "env", types={int})
     app.add_directive("quickstarts", QuickstartsDirective)
+    app.add_js_file("quickstarts.js", defer="defer")
+    app.add_css_file("quickstarts.css")
+    app.connect("config-inited", _add_static_path)
     app.connect("html-collect-pages", _collect_source_pages)
     app.connect("env-purge-doc", _purge_pages)
     return {

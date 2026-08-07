@@ -214,6 +214,11 @@ class QuickstartsTest(unittest.TestCase):
         self.assertIn("sd-tab-label", index)
         self.assertIn("MariaDB", index)
         self.assertIn('checked="checked"', index)
+        self.assertIn("quickstart-modal-link", index)
+        self.assertIn(
+            'href="drivers/mysql/quickstarts/mysql/python.html"',
+            index,
+        )
         self.assertIn(
             f'href="{quickstarts.CLIENT_LIBRARIES_URL}"',
             index,
@@ -231,6 +236,16 @@ class QuickstartsTest(unittest.TestCase):
         self.assertIn("View the full example on GitHub", page)
         self.assertIn("print", page)
         self.assertIn(self.commit, page)
+        modal_start = page.index('data-quickstart-modal-content=""')
+        modal_end = page.index("</div>", modal_start)
+        self.assertNotIn("This example shows how", page[modal_start:modal_end])
+        self.assertIn("View the full example on GitHub", page[modal_start:])
+        self.assertIn("print", page[modal_start:])
+
+        self.assertTrue((output / "_static/quickstarts.js").is_file())
+        self.assertTrue((output / "_static/quickstarts.css").is_file())
+        self.assertIn('src="_static/quickstarts.js?', index)
+        self.assertIn('href="_static/quickstarts.css?', index)
 
         mariadb = (output / "drivers/mysql/quickstarts/mariadb/python.html").read_text(
             encoding="utf-8"

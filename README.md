@@ -73,7 +73,10 @@ can be changed with the `quickstarts_repository`, `quickstarts_ref`, and
 Each language card links to a generated source page under
 `/drivers/<driver>/quickstarts/<vendor>/<language>/`. The page links to the
 example directory on GitHub at the exact commit displayed by the documentation
-build.
+build. In browsers with JavaScript enabled, an ordinary click opens the source
+listing and GitHub link in a modal with a copy button. The generated page
+remains the link target for crawlers, browsers without JavaScript, and modified
+clicks such as opening the example in a new tab.
 
 ## Adding a blog post
 
