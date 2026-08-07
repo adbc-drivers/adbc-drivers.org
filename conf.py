@@ -74,6 +74,7 @@ exclude_patterns = [
     "venv",
     ".venv",
     ".pixi",
+    ".pytest_cache",
     ".git",
     "generated",
     "README.md",

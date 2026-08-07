@@ -24,7 +24,7 @@ build = "sphinx-build -b foundryhtml -E -a . _build -W"
 clean = "rm -rf _build"
 serve = "python -m http.server -d _build"
 pull = "python scripts/pull_driver_docs.py"
-test = "python -m unittest discover -s tests"
+test = { cmd = "pytest", default-environment = "test" }
 
 [dependencies]
 python = ">=3.13.5,<3.14"
@@ -45,6 +45,7 @@ sphinx-immaterial = ">=0.13.9, <0.14"
 
 [environments]
 lint = ["lint"]
+test = ["test"]
 watch = ["default", "watch"]
 
 [feature.lint.dependencies]
@@ -52,6 +53,9 @@ pre-commit = "*"
 
 [feature.lint.tasks]
 pre-commit = "pre-commit run --all-files --color=always --show-diff-on-failure --verbose"
+
+[feature.test.dependencies]
+pytest = "*"
 
 [feature.watch.dependencies]
 sphinx-autobuild = ">=2024.10.3,<2025"
