@@ -220,7 +220,7 @@ class QuickstartsTest(unittest.TestCase):
         )
         self.assertIn(">ADBC client library</a> for your language", index)
 
-        generated = output / "quickstarts/mysql/python.html"
+        generated = output / "drivers/mysql/quickstarts/mysql/python.html"
         self.assertTrue(generated.is_file())
         page = generated.read_text(encoding="utf-8")
         self.assertIn("Python quickstart with the ADBC driver for MySQL", page)
@@ -232,7 +232,7 @@ class QuickstartsTest(unittest.TestCase):
         self.assertIn("print", page)
         self.assertIn(self.commit, page)
 
-        mariadb = (output / "quickstarts/mariadb/python.html").read_text(
+        mariadb = (output / "drivers/mysql/quickstarts/mariadb/python.html").read_text(
             encoding="utf-8"
         )
         self.assertIn(

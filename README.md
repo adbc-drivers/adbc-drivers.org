@@ -71,8 +71,9 @@ can be changed with the `quickstarts_repository`, `quickstarts_ref`, and
 `quickstarts_cache_ttl` Sphinx configuration values.
 
 Each language card links to a generated source page under
-`/quickstarts/<vendor>/<language>/`. The page links to the example directory on
-GitHub at the exact commit displayed by the documentation build.
+`/drivers/<driver>/quickstarts/<vendor>/<language>/`. The page links to the
+example directory on GitHub at the exact commit displayed by the documentation
+build.
 
 ## Adding a blog post
 

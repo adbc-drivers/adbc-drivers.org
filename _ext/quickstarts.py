@@ -214,12 +214,15 @@ def discover_examples(
     return groups
 
 
-def _source_pagename(vendor: str, language: str) -> str:
-    return f"quickstarts/{vendor}/{language}"
+def _source_pagename(driver: str, vendor: str, language: str) -> str:
+    return f"drivers/{driver}/quickstarts/{vendor}/{language}"
 
 
 def _language_grid(
-    directive: "QuickstartsDirective", vendor: str, examples: list[dict]
+    directive: "QuickstartsDirective",
+    driver: str,
+    vendor: str,
+    examples: list[dict],
 ) -> nodes.container:
     grid = create_component(
         "grid-container",
@@ -239,7 +242,7 @@ def _language_grid(
     )
     grid += row
     for example in examples:
-        pagename = _source_pagename(vendor, example["language"])
+        pagename = _source_pagename(driver, vendor, example["language"])
         uri = directive.env.app.builder.get_relative_uri(
             directive.env.docname, pagename
         )
@@ -316,7 +319,8 @@ class QuickstartsDirective(SphinxDirective):
         multiple_vendors = len(groups) > 1
         output = nodes.container(classes=["quickstarts"])
         grids = [
-            _language_grid(self, group["vendor"], group["examples"]) for group in groups
+            _language_grid(self, driver, group["vendor"], group["examples"])
+            for group in groups
         ]
         if multiple_vendors:
             output += _tab_set(driver, groups, grids)
@@ -327,7 +331,9 @@ class QuickstartsDirective(SphinxDirective):
                 relative_directory = (
                     example["directory"].relative_to(checkout).as_posix()
                 )
-                pagename = _source_pagename(group["vendor"], example["language"])
+                pagename = _source_pagename(
+                    driver, group["vendor"], example["language"]
+                )
                 driver_name = databases[driver]["name"]
                 if group["vendor"] == driver:
                     title = (

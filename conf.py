@@ -18,12 +18,13 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import locale
+import re
 import shutil
 import sys
 from html import escape as escape_html
 from html import unescape as unescape_html
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import sphinxext.opengraph as opengraph
 from docutils import nodes
@@ -430,8 +431,9 @@ def setup(app):
     app.connect("builder-inited", reset_last_updated_fmt)
 
     # With top-level navigation rendered as tabs, the left sidebar is useful
-    # only when the active section has child pages. Hide it for leaf sections,
-    # orphaned blog posts, and generated pages that are outside the toctree.
+    # only when the active section has child pages. Hide it for leaf sections
+    # and orphaned blog posts. Generated quickstart listings retain the
+    # navigation hierarchy of their driver page.
     def configure_section_navigation(app, pagename, templatename, context, doctree):
         blog = context.get("ablog")
         blog_path = getattr(blog, "blog_path", "blog")
@@ -459,6 +461,42 @@ def setup(app):
                 if item.url == blog_index_url:
                     item.active = True
                     break
+            return
+
+        quickstart = re.fullmatch(
+            r"drivers/(?P<driver>[^/]+)/quickstarts/[^/]+/[^/]+", pagename
+        )
+        if quickstart:
+            driver = quickstart.group("driver")
+            parent = f"drivers/{driver}/index"
+
+            # Generated source listings are not Sphinx documents, so the theme
+            # cannot locate them in the toctree itself. Build navigation as if
+            # the real driver parent were current, then rebase its links from
+            # the parent URL to this deeper generated URL.
+            from sphinx.util.osutil import relative_uri
+            from sphinx_immaterial.nav_adapt import _get_global_toc
+
+            generated_uri = app.builder.get_target_uri(pagename)
+            parent_uri = app.builder.get_target_uri(parent)
+            quickstart_navigation = _get_global_toc(
+                app,
+                parent,
+                collapse=app.config.html_theme_options.get("globaltoc_collapse", False),
+            )
+
+            def rebase_navigation(items):
+                for item in items:
+                    if item.url:
+                        destination = urlparse(urljoin(parent_uri, item.url))
+                        if not destination.netloc:
+                            item.url = relative_uri(generated_uri, destination.path)
+                            if destination.fragment:
+                                item.url += f"#{destination.fragment}"
+                    rebase_navigation(item.children)
+
+            rebase_navigation(quickstart_navigation)
+            navigation[:] = quickstart_navigation
             return
 
         has_subpages = any(item.active and item.children for item in navigation)

@@ -28,7 +28,7 @@ from sphinx.util.typing import ExtensionMetadata
 _BLOG_POST_DOCUMENT = re.compile(r"^blog/(?P<dated_path>\d{4}/\d{2}/\d{2}/[^/]+)$")
 _BLOG_POST_HTML_PATH = re.compile(r"^(?P<post>/blog/\d{4}/\d{2}/\d{2}/[^/]+)\.html$")
 _BLOG_ARCHIVE_YEAR = re.compile(r"^\d{4}$")
-_QUICKSTART_DOCUMENT = re.compile(r"^quickstarts/[^/]+/[^/]+$")
+_QUICKSTART_DOCUMENT = re.compile(r"^drivers/[^/]+/quickstarts(?:/[^/]+/[^/]+)?$")
 _LEGACY_POST_LASTMOD_THROUGH = (2026, 7)
 
 
