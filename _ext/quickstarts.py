@@ -24,13 +24,9 @@ the stale checkout and emits a warning. The repository, ref, and refresh period
 can be changed with the `quickstarts_repository`, `quickstarts_ref`, and
 `quickstarts_cache_ttl` Sphinx configuration values.
 
-Each language card links to a generated source page under
-`/drivers/<driver>/quickstarts/<vendor>/<language>/`. The page links to the
-example directory on GitHub at the exact commit displayed by the documentation
-build. In browsers with JavaScript enabled, an ordinary click opens the source
-listing and GitHub link in a modal with a copy button. The generated page
-remains the link target for crawlers, browsers without JavaScript, and modified
-clicks such as opening the example in a new tab.
+Examples are grouped into vendor and language tabs and rendered inline. Each
+listing links to its example directory at the exact commit displayed by the
+documentation build.
 """
 
 from __future__ import annotations
@@ -40,7 +36,6 @@ import shutil
 import subprocess
 import tempfile
 import time
-from html import escape
 from pathlib import Path
 from urllib.parse import quote
 
@@ -55,6 +50,7 @@ from sphinx_design.shared import create_component
 
 LOGGER = getLogger(__name__)
 CLIENT_LIBRARIES_URL = "https://arrow.apache.org/adbc/current/client_libraries.html"
+INTEGRATIONS_URL = "https://arrow.apache.org/adbc/current/integrations.html"
 LANGUAGE_ENTRYPOINTS = {
     "cpp": ("main.cpp", "cpp"),
     "csharp": ("Program.cs", "csharp"),
@@ -233,85 +229,108 @@ def discover_examples(
     return groups
 
 
-def _source_pagename(driver: str, vendor: str, language: str) -> str:
-    return f"drivers/{driver}/quickstarts/{vendor}/{language}"
+def _strip_copyright_header(source: str) -> str:
+    """Remove a recognized leading Apache copyright header."""
+    lines = source.splitlines(keepends=True)
+    if not lines:
+        return source
+
+    end = None
+    first = lines[0].lstrip()
+    if first.startswith(("# Copyright", "// Copyright")):
+        for index, line in enumerate(lines):
+            if "limitations under the License." in line:
+                end = index + 1
+                break
+    elif first.strip() == "/*" or first.startswith("/* Copyright"):
+        for index, line in enumerate(lines):
+            if "*/" in line:
+                end = index + 1
+                break
+
+    if end is None:
+        return source
+    header = "".join(lines[:end])
+    if "Copyright" not in header or "Licensed under the Apache License" not in header:
+        return source
+    while end < len(lines) and not lines[end].strip():
+        end += 1
+    return "".join(lines[end:])
 
 
-def _language_grid(
-    directive: "QuickstartsDirective",
-    driver: str,
-    vendor: str,
-    examples: list[dict],
-) -> nodes.container:
-    grid = create_component(
-        "grid-container",
-        ["sd-container-fluid", "sd-sphinx-override", "sd-mb-4", "grid-no-padding"],
-    )
-    row = create_component(
-        "grid-row",
-        [
-            "sd-row",
-            "sd-row-cols-1",
-            "sd-row-cols-xs-2",
-            "sd-row-cols-sm-3",
-            "sd-row-cols-md-4",
-            "sd-row-cols-lg-4",
-            "sd-g-2",
-        ],
-    )
-    grid += row
-    for example in examples:
-        pagename = _source_pagename(driver, vendor, example["language"])
-        uri = directive.env.app.builder.get_relative_uri(
-            directive.env.docname, pagename
-        )
-        link = nodes.reference(
-            "",
-            "",
-            nodes.strong("", example["language_name"]),
-            refuri=uri,
-            classes=["sd-stretched-link", "quickstart-modal-link"],
-            internal=True,
-        )
-        body = create_component("card-body", ["sd-card-body", "sd-card-center"])
-        body += nodes.paragraph("", "", link, classes=["sd-card-text"])
-        card = create_component(
-            "card",
-            [
-                "sd-card",
-                "sd-sphinx-override",
-                "sd-w-100",
-                "sd-shadow-sm",
-                "sd-card-hover",
-            ],
-        )
-        card += body
-        column = create_component("grid-item", ["sd-col", "sd-d-flex-column"])
-        column += card
-        row += column
-    return grid
+def _default_language(examples: list[dict]) -> str:
+    if any(example["language"] == "python" for example in examples):
+        return "python"
+    return examples[0]["language"]
 
 
-def _tab_set(
-    driver: str, groups: list[dict], grids: list[nodes.Node]
+def _language_tabs(
+    checkout: Path,
+    repository: str,
+    commit: str,
+    group: dict,
 ) -> nodes.container:
     tabs = create_component("tab-set", classes=["sd-tab-set"])
-    for group, grid in zip(groups, grids, strict=True):
+    default_language = _default_language(group["examples"])
+    for example in group["examples"]:
         item = create_component(
             "tab-item",
             classes=["sd-tab-item"],
-            selected=group["vendor"] == driver,
+            selected=example["language"] == default_language,
+        )
+        item += nodes.rubric(
+            example["language_name"],
+            example["language_name"],
+            classes=["sd-tab-label"],
+        )
+        content = create_component("tab-content", classes=["sd-tab-content"])
+        source = _strip_copyright_header(example["source"].read_text(encoding="utf-8"))
+        listing = nodes.literal_block(source, source)
+        listing["language"] = example["lexer"]
+        listing["classes"].append("quickstart-source")
+        content += listing
+
+        relative_directory = example["directory"].relative_to(checkout).as_posix()
+        github_url = (
+            f"{repository}/tree/{quote(commit, safe='')}/"
+            f"{quote(relative_directory, safe='/')}"
+        )
+        link_text = (
+            f"View the full {group['vendor_name']} quickstart for "
+            f"{example['language_name']} on the columnar-tech/adbc-quickstarts repo"
+        )
+        link = nodes.paragraph()
+        link += nodes.reference("", link_text, refuri=github_url)
+        content += link
+        item += content
+        tabs += item
+    return tabs
+
+
+def _default_vendor(driver: str, groups: list[dict]) -> str:
+    if any(group["vendor"] == driver for group in groups):
+        return driver
+    return groups[0]["vendor"]
+
+
+def _vendor_tabs(
+    driver: str, groups: list[dict], language_tabs: list[nodes.Node]
+) -> nodes.container:
+    tabs = create_component("tab-set", classes=["sd-tab-set"])
+    default_vendor = _default_vendor(driver, groups)
+    for group, languages in zip(groups, language_tabs, strict=True):
+        item = create_component(
+            "tab-item",
+            classes=["sd-tab-item"],
+            selected=group["vendor"] == default_vendor,
         )
         item += nodes.rubric(
             group["vendor_name"],
             group["vendor_name"],
             classes=["sd-tab-label"],
         )
-        content = create_component(
-            "tab-content",
-            classes=["sd-tab-content"],
-        )
-        content += grid
+        content = create_component("tab-content", classes=["sd-tab-content"])
+        content += languages
         item += content
         tabs += item
     return tabs
@@ -333,106 +352,33 @@ class QuickstartsDirective(SphinxDirective):
         if not groups:
             raise self.error(f"no quickstarts found for driver {driver!r}")
 
-        pages = getattr(self.env, "quickstarts_pages", {})
         repository = self.env.config.quickstarts_repository.removesuffix(".git")
         multiple_vendors = len(groups) > 1
         output = nodes.container(classes=["quickstarts"])
-        grids = [
-            _language_grid(self, driver, group["vendor"], group["examples"])
-            for group in groups
+        language_tabs = [
+            _language_tabs(checkout, repository, commit, group) for group in groups
         ]
         if multiple_vendors:
-            output += _tab_set(driver, groups, grids)
+            output += _vendor_tabs(driver, groups, language_tabs)
         else:
-            output += grids[0]
-        for group in groups:
-            for example in group["examples"]:
-                relative_directory = (
-                    example["directory"].relative_to(checkout).as_posix()
-                )
-                pagename = _source_pagename(
-                    driver, group["vendor"], example["language"]
-                )
-                driver_name = databases[driver]["name"]
-                if group["vendor"] == driver:
-                    title = (
-                        f"{example['language_name']} quickstart with the ADBC driver "
-                        f"for {driver_name}"
-                    )
-                else:
-                    title = (
-                        f"{example['language_name']} quickstart for "
-                        f"{group['vendor_name']} with the ADBC driver for {driver_name}"
-                    )
-                description = (
-                    f"This example shows how to use the ADBC driver for {driver_name} "
-                    f"in {example['language_name']}"
-                )
-                if group["vendor"] != driver:
-                    description += f" with {group['vendor_name']}"
-                pages[pagename] = {
-                    "docname": self.env.docname,
-                    "title": title,
-                    "description": description + ".",
-                    "source": example["source"].read_text(encoding="utf-8"),
-                    "lexer": example["lexer"],
-                    "github_url": (
-                        f"{repository}/tree/{quote(commit, safe='')}/"
-                        f"{quote(relative_directory, safe='/')}"
-                    ),
-                }
-        self.env.quickstarts_pages = pages
+            output += language_tabs[0]
 
         footer = nodes.paragraph()
-        footer += nodes.Text("…and more languages are supported! Find an ")
+        footer += nodes.Text("More languages are supported! Find an ")
         footer += nodes.reference(
             "",
             "ADBC client library",
             refuri=CLIENT_LIBRARIES_URL,
         )
-        footer += nodes.Text(" for your language.")
+        footer += nodes.Text(" for your language, or find an ")
+        footer += nodes.reference(
+            "",
+            "integration",
+            refuri=INTEGRATIONS_URL,
+        )
+        footer += nodes.Text(" for your data stack.")
         output += footer
         return [output]
-
-
-def _collect_source_pages(app: Sphinx):
-    if app.builder.format != "html":
-        return
-    for pagename, page in sorted(getattr(app.env, "quickstarts_pages", {}).items()):
-        title = escape(page["title"])
-        highlighted = app.builder.highlighter.highlight_block(
-            page["source"], page["lexer"], location=pagename
-        )
-        github_link = nodes.paragraph()
-        introduction = nodes.paragraph("", page["description"])
-        github_link += nodes.reference(
-            "",
-            "View the full example on GitHub",
-            refuri=page["github_url"],
-        )
-        github_link += nodes.Text(".")
-        introduction_html = app.builder.render_partial(introduction)["fragment"]
-        github_html = app.builder.render_partial(github_link)["fragment"]
-        modal_content = (
-            f'<div data-quickstart-modal-content="">{github_html}{highlighted}</div>'
-        )
-        body = f"<h1>{title}</h1>{introduction_html}{modal_content}"
-        yield pagename, {"title": title, "body": body}, "page.html"
-
-
-def _purge_pages(app: Sphinx, env, docname: str) -> None:
-    pages = getattr(env, "quickstarts_pages", {})
-    env.quickstarts_pages = {
-        pagename: page
-        for pagename, page in pages.items()
-        if page.get("docname") != docname
-    }
-
-
-def _add_static_path(app: Sphinx, config) -> None:
-    static_path = str(Path(__file__).with_name("quickstarts_static"))
-    if static_path not in config.html_static_path:
-        config.html_static_path.append(static_path)
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
@@ -444,11 +390,6 @@ def setup(app: Sphinx) -> ExtensionMetadata:
     app.add_config_value("quickstarts_ref", "main", "env")
     app.add_config_value("quickstarts_cache_ttl", 3600, "env", types={int})
     app.add_directive("quickstarts", QuickstartsDirective)
-    app.add_js_file("quickstarts.js", defer="defer")
-    app.add_css_file("quickstarts.css")
-    app.connect("config-inited", _add_static_path)
-    app.connect("html-collect-pages", _collect_source_pages)
-    app.connect("env-purge-doc", _purge_pages)
     return {
         "version": "0.1.0",
         "parallel_read_safe": False,

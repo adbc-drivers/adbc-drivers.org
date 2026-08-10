@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import json
+import re
 import subprocess
 import sys
 from pathlib import Path
@@ -66,9 +67,27 @@ def repository(tmp_path: Path) -> Path:
             }
         ),
     )
-    _write(repository / "python/mysql/mariadb/main.py", "print('maria')\n")
-    _write(repository / "python/mysql/mysql/main.py", "print('mysql')\n")
-    _write(repository / "go/mysql/mysql/main.go", "package main\n")
+    python_header = (
+        "# Copyright 2026 Columnar Technologies Inc.\n"
+        "#\n"
+        '# Licensed under the Apache License, Version 2.0 (the "License");\n'
+        "# limitations under the License.\n\n"
+    )
+    slash_header = (
+        "// Copyright 2026 Columnar Technologies Inc.\n"
+        "//\n"
+        '// Licensed under the Apache License, Version 2.0 (the "License");\n'
+        "// limitations under the License.\n\n"
+    )
+    _write(
+        repository / "python/mysql/mariadb/main.py",
+        f"{python_header}print('maria')\n",
+    )
+    _write(
+        repository / "python/mysql/mysql/main.py",
+        f"{python_header}# /// script\n# ///\n\nprint('mysql')\n",
+    )
+    _write(repository / "go/mysql/mysql/main.go", f"{slash_header}package main\n")
     _write(repository / "python/mysql/tidb/README.md", "Missing main file\n")
     _write(repository / "python/bigquery/main.py", "print('bigquery')\n")
     _git(repository, "init", "--initial-branch=main")
@@ -157,6 +176,74 @@ def test_cache_freshness(repository: Path) -> None:
     assert not quickstarts._cache_is_fresh(repository, 3600, modified + 3600)
 
 
+def test_default_language_prefers_python_without_reordering() -> None:
+    examples = [{"language": "go"}, {"language": "python"}]
+
+    assert quickstarts._default_language(examples) == "python"
+    assert [example["language"] for example in examples] == ["go", "python"]
+
+
+def test_default_language_falls_back_to_first_example() -> None:
+    examples = [{"language": "go"}, {"language": "rust"}]
+
+    assert quickstarts._default_language(examples) == "go"
+
+
+def test_default_vendor_prefers_driver_without_reordering() -> None:
+    groups = [{"vendor": "mariadb"}, {"vendor": "mysql"}]
+
+    assert quickstarts._default_vendor("mysql", groups) == "mysql"
+    assert [group["vendor"] for group in groups] == ["mariadb", "mysql"]
+
+
+def test_default_vendor_falls_back_to_first_group() -> None:
+    groups = [{"vendor": "mariadb"}, {"vendor": "tidb"}]
+
+    assert quickstarts._default_vendor("mysql", groups) == "mariadb"
+
+
+@pytest.mark.parametrize(
+    ("source", "expected"),
+    [
+        (
+            "# Copyright 2026 Example\n"
+            '# Licensed under the Apache License, Version 2.0 (the "License");\n'
+            "# limitations under the License.\n\n"
+            "# /// script\nprint('hello')\n",
+            "# /// script\nprint('hello')\n",
+        ),
+        (
+            "// Copyright 2026 Example\n"
+            '// Licensed under the Apache License, Version 2.0 (the "License");\n'
+            "// limitations under the License.\n\npackage main\n",
+            "package main\n",
+        ),
+        (
+            "/*\n"
+            " * Copyright 2026 Example\n"
+            ' * Licensed under the Apache License, Version 2.0 (the "License");\n'
+            " * limitations under the License.\n"
+            " */\n\nclass Example {}\n",
+            "class Example {}\n",
+        ),
+    ],
+)
+def test_strip_copyright_header(source: str, expected: str) -> None:
+    assert quickstarts._strip_copyright_header(source) == expected
+
+
+@pytest.mark.parametrize(
+    "source",
+    [
+        "#!/usr/bin/env python3\n# Copyright is discussed below\n",
+        "# Copyright 2026 Example\n# No license follows\n",
+        "/* An ordinary leading comment. */\nclass Example {}\n",
+    ],
+)
+def test_strip_copyright_header_preserves_unrecognized_source(source: str) -> None:
+    assert quickstarts._strip_copyright_header(source) == source
+
+
 def test_refresh_failure_uses_stale_checkout(
     repository: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -205,42 +292,52 @@ def test_initial_clone_failure_is_fatal(
         quickstarts.ensure_checkout(app)
 
 
-def test_sphinx_build_generates_tabs_and_source_pages(
+def test_sphinx_build_embeds_quickstarts_in_nested_tabs(
     repository: Path, sphinx_output: Path
 ) -> None:
     index = (sphinx_output / "index.html").read_text(encoding="utf-8")
     assert "sd-tab-label" in index
     assert "MariaDB" in index
-    assert 'checked="checked"' in index
-    assert "quickstart-modal-link" in index
-    assert 'href="drivers/mysql/quickstarts/mysql/python.html"' in index
+    assert "MySQL" in index
+    assert "Go" in index
+    assert "Python" in index
+    assert index.count('class="sd-tab-set') == 3
+    assert index.count('checked="checked"') == 3
+    labels = re.findall(r'<label class="sd-tab-label"[^>]*>\s*([^<]+)</label>', index)
+    assert labels == ["MariaDB", "Python", "MySQL", "Go", "Python"]
+    selected_labels = re.findall(
+        r'<input checked="checked"[^>]*>\s*'
+        r'<label class="sd-tab-label"[^>]*>\s*([^<]+)</label>',
+        index,
+    )
+    assert selected_labels == ["Python", "MySQL", "Python"]
+    assert "quickstart-source" in index
+    assert "print" in index
+    assert "maria" in index
+    assert "mysql" in index
+    assert '<span class="kn">package</span>' in index
+    assert "Copyright 2026 Columnar Technologies Inc." not in index
+    assert "Licensed under the Apache License" not in index
+    assert "# /// script" in index
+    assert (
+        "View the full MariaDB quickstart for Python on the "
+        "columnar-tech/adbc-quickstarts repo" in index
+    )
+    assert (
+        "View the full MySQL quickstart for Go on the "
+        "columnar-tech/adbc-quickstarts repo" in index
+    )
+    assert (
+        "View the full MySQL quickstart for Python on the "
+        "columnar-tech/adbc-quickstarts repo" in index
+    )
+    assert _git(repository, "rev-parse", "HEAD") in index
+    assert "python/mysql/mariadb" in index
+    assert "python/mysql/mysql" in index
+    assert "go/mysql/mysql" in index
     assert f'href="{quickstarts.CLIENT_LIBRARIES_URL}"' in index
     assert ">ADBC client library</a> for your language" in index
 
-    generated = sphinx_output / "drivers/mysql/quickstarts/mysql/python.html"
-    assert generated.is_file()
-    page = generated.read_text(encoding="utf-8")
-    assert "Python quickstart with the ADBC driver for MySQL" in page
-    assert "This example shows how to use the ADBC driver for MySQL in Python." in page
-    assert "View the full example on GitHub" in page
-    assert "print" in page
-    assert _git(repository, "rev-parse", "HEAD") in page
-    modal_start = page.index('data-quickstart-modal-content=""')
-    modal_end = page.index("</div>", modal_start)
-    assert "This example shows how" not in page[modal_start:modal_end]
-    assert "View the full example on GitHub" in page[modal_start:]
-    assert "print" in page[modal_start:]
-
-    assert (sphinx_output / "_static/quickstarts.js").is_file()
-    assert (sphinx_output / "_static/quickstarts.css").is_file()
-    assert 'src="_static/quickstarts.js?' in index
-    assert 'href="_static/quickstarts.css?' in index
-
-    mariadb = (
-        sphinx_output / "drivers/mysql/quickstarts/mariadb/python.html"
-    ).read_text(encoding="utf-8")
-    assert "Python quickstart for MariaDB with the ADBC driver for MySQL" in mariadb
-    assert (
-        "This example shows how to use the ADBC driver for MySQL in Python with "
-        "MariaDB." in mariadb
-    )
+    assert not (sphinx_output / "drivers/mysql/quickstarts").exists()
+    assert not (sphinx_output / "_static/quickstarts.js").exists()
+    assert not (sphinx_output / "_static/quickstarts.css").exists()

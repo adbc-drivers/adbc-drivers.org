@@ -131,6 +131,12 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     overflow-x: auto;
 }
 
+/* Keep inline quickstarts compact while leaving the full source available. */
+.md-typeset .quickstarts .quickstart-source pre {
+    max-height: 35em;
+    overflow: auto;
+}
+
 /* Let the site title wrap in the drawer. Otherwise our long site title
    truncates.
 */
