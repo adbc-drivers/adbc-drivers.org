@@ -58,9 +58,10 @@ Using the BigQuery driver requires some setup before you can connect:
 
 ## Connecting
 
-To connect, replace `my-gcp-project` and `my-gcp-dataset` in the quickstarts below with the appropriate values for your situation.
+To connect, replace `my-gcp-project` (and if needed, `bigquery-public-data`) in the quickstarts below with the appropriate values for your situation.
 
 :::{quickstarts} bigquery
+:highlight-text: my-gcp-project, bigquery-public-data
 :::
 
 ## Connection String Format

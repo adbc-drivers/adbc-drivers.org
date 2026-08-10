@@ -41,6 +41,7 @@ from urllib.parse import quote
 
 from docutils import nodes
 from docutils.parsers.rst import directives
+from highlight_text import apply_highlight_text, parse_highlight_text
 from sphinx.application import Sphinx
 from sphinx.errors import ExtensionError
 from sphinx.util.docutils import SphinxDirective
@@ -269,6 +270,7 @@ def _language_tabs(
     repository: str,
     commit: str,
     group: dict,
+    highlight_text: tuple[str, ...],
 ) -> nodes.container:
     tabs = create_component("tab-set", classes=["sd-tab-set"])
     default_language = _default_language(group["examples"])
@@ -288,6 +290,7 @@ def _language_tabs(
         listing = nodes.literal_block(source, source)
         listing["language"] = example["lexer"]
         listing["classes"].append("quickstart-source")
+        apply_highlight_text(listing, highlight_text)
         content += listing
 
         relative_directory = example["directory"].relative_to(checkout).as_posix()
@@ -342,7 +345,7 @@ class QuickstartsDirective(SphinxDirective):
     required_arguments = 1
     final_argument_whitespace = False
     has_content = False
-    option_spec: dict = {}
+    option_spec = {"highlight-text": parse_highlight_text}
 
     def run(self) -> list[nodes.Node]:
         driver = directives.unchanged_required(self.arguments[0]).strip().lower()
@@ -353,10 +356,12 @@ class QuickstartsDirective(SphinxDirective):
             raise self.error(f"no quickstarts found for driver {driver!r}")
 
         repository = self.env.config.quickstarts_repository.removesuffix(".git")
+        highlight_text = self.options.get("highlight-text", ())
         multiple_vendors = len(groups) > 1
         output = nodes.container(classes=["quickstarts"])
         language_tabs = [
-            _language_tabs(checkout, repository, commit, group) for group in groups
+            _language_tabs(checkout, repository, commit, group, highlight_text)
+            for group in groups
         ]
         if multiple_vendors:
             output += _vendor_tabs(driver, groups, language_tabs)
@@ -382,6 +387,7 @@ class QuickstartsDirective(SphinxDirective):
 
 
 def setup(app: Sphinx) -> ExtensionMetadata:
+    app.setup_extension("highlight_text")
     app.add_config_value(
         "quickstarts_repository",
         "https://github.com/columnar-tech/adbc-quickstarts.git",

@@ -23,7 +23,6 @@ from collections.abc import Iterable, Iterator
 from typing import Any
 
 from docutils import nodes
-from docutils.parsers.rst import directives
 from pygments.filter import Filter
 from pygments.formatters import HtmlFormatter
 from pygments.lexer import Lexer
@@ -48,6 +47,16 @@ def parse_highlight_text(argument: str) -> tuple[str, ...]:
         raise ValueError(f"invalid highlight-text value: {exc}") from exc
 
     return tuple(dict.fromkeys(value.strip() for value in values if value.strip()))
+
+
+def apply_highlight_text(
+    literal_block: nodes.literal_block, highlight_text: tuple[str, ...]
+) -> None:
+    """Configure a literal block to highlight the selected substrings."""
+    if highlight_text:
+        literal_block.setdefault("highlight_args", {})[_HIGHLIGHT_ARGUMENT] = (
+            highlight_text
+        )
 
 
 def _match_pattern(values: Iterable[str]) -> re.Pattern[str] | None:
@@ -76,7 +85,9 @@ class HighlightTextFilter(Filter):
             return
 
         source = "".join(value for _, value in tokens)
-        matches = [(match.start(), match.end()) for match in self.pattern.finditer(source)]
+        matches = [
+            (match.start(), match.end()) for match in self.pattern.finditer(source)
+        ]
         if not matches:
             yield from tokens
             return
@@ -105,9 +116,7 @@ class HighlightTextFilter(Filter):
                     for match_start, match_end in matches[match_index:index]
                 )
                 segment_type = (
-                    getattr(token_type, _HIGHLIGHT_TOKEN)
-                    if highlighted
-                    else token_type
+                    getattr(token_type, _HIGHLIGHT_TOKEN) if highlighted else token_type
                 )
                 yield segment_type, value[start - offset : end - offset]
 
@@ -201,9 +210,7 @@ class HighlightTextCodeBlock(CodeBlock):
                 else list(node.findall(nodes.literal_block))
             )
             for literal_block in literal_blocks:
-                literal_block.setdefault("highlight_args", {})[
-                    _HIGHLIGHT_ARGUMENT
-                ] = highlight_text
+                apply_highlight_text(literal_block, highlight_text)
 
         return result
 

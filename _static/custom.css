@@ -101,9 +101,7 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 
 /* Highlight configured substrings without replacing their syntax colors. */
 .md-typeset .highlight .highlight-text {
-    background-color: var(--md-typeset-mark-color);
-    -webkit-box-decoration-break: clone;
-    box-decoration-break: clone;
+    text-decoration: underline 0.2em dotted var(--sd-color-tabs-label-active);
 }
 
 /* Match Sphinx Immaterial's native, persistently visible copy control. */

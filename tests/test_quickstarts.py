@@ -129,7 +129,8 @@ def sphinx_output(tmp_path: Path, repository: Path) -> Path:
         source / "index.rst",
         (
             "Quickstarts\n===========\n\n"
-            ".. quickstarts:: mysql\n\n"
+            ".. quickstarts:: mysql\n"
+            "   :highlight-text: print, package\n\n"
             ".. toctree::\n\n"
             "   later\n"
         ),
@@ -315,7 +316,9 @@ def test_sphinx_build_embeds_quickstarts_in_nested_tabs(
     assert "print" in index
     assert "maria" in index
     assert "mysql" in index
-    assert '<span class="kn">package</span>' in index
+    assert index.count("highlight-text") == 3
+    assert '<span class="nb nb-HighlightText highlight-text">print</span>' in index
+    assert '<span class="kn kn-HighlightText highlight-text">package</span>' in index
     assert "Copyright 2026 Columnar Technologies Inc." not in index
     assert "Licensed under the Apache License" not in index
     assert "# /// script" in index
