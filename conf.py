@@ -432,8 +432,8 @@ def setup(app):
     app.connect("builder-inited", reset_last_updated_fmt)
 
     # With top-level navigation rendered as tabs, the left sidebar is useful
-    # only when the active section has child pages. Hide it for leaf sections
-    # and orphaned blog posts, and generated pages that are outside of the toctree.
+    # only when the active section has child pages. Hide it for leaf sections,
+    # orphaned blog posts, and generated pages that are outside the toctree.
     def configure_section_navigation(app, pagename, templatename, context, doctree):
         blog = context.get("ablog")
         blog_path = getattr(blog, "blog_path", "blog")
