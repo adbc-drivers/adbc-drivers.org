@@ -99,6 +99,13 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     padding: 0.7720588235em 1.1764705882em;
 }
 
+/* Highlight configured substrings without replacing their syntax colors. */
+.md-typeset .highlight .highlight-text {
+    background-color: var(--md-typeset-mark-color);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+}
+
 /* Match Sphinx Immaterial's native, persistently visible copy control. */
 .md-typeset .highlight button.copybtn {
     background: transparent;
