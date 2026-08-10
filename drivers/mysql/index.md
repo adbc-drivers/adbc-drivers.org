@@ -45,22 +45,11 @@ dbc install mysql
 
 ## Connecting
 
-To connect, edit the `uri` option below to match your environment and run the following:
-
-```python
-from adbc_driver_manager import dbapi
-
-conn = dbapi.connect(
-  driver="mysql",
-  db_kwargs = {
-    "uri": "mysql://root@localhost:3306/demo"
-  }
-)
-```
-
-Note: The example above is for Python using the [adbc-driver-manager](https://pypi.org/project/adbc-driver-manager) package but the process will be similar for other driver managers. See [adbc-quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+To connect, edit the `uri` option below to match your environment:
 
 :::{quickstarts} mysql
+:revision: b6bd31f658eee207301343bd007a16c934f8b269
+:highlight-text: root:my-secret-pw@tcp(localhost:3306)/sys, root:my-secret-pw@tcp(localhost:3306)/demo, root@tcp(localhost:4000)/test, root@tcp(localhost:33577)/test
 :::
 
 ### Connection String Format

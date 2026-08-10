@@ -81,7 +81,7 @@ def repository(tmp_path: Path) -> Path:
     )
     _write(
         repository / "python/mysql/mariadb/main.py",
-        f"{python_header}print('maria')\n",
+        f"{python_header}# historical snapshot\nprint('maria')\n",
     )
     _write(
         repository / "python/mysql/mysql/main.py",
@@ -102,11 +102,26 @@ def repository(tmp_path: Path) -> Path:
         "-m",
         "fixture",
     )
+    _write(
+        repository / "python/mysql/mariadb/main.py",
+        f"{python_header}# current snapshot\nprint('maria')\n",
+    )
+    _git(repository, "add", "python/mysql/mariadb/main.py")
+    _git(
+        repository,
+        "-c",
+        "user.name=Quickstarts Test",
+        "-c",
+        "user.email=quickstarts@example.invalid",
+        "commit",
+        "-m",
+        "current fixture",
+    )
     return repository
 
 
 @pytest.fixture
-def sphinx_output(tmp_path: Path, repository: Path) -> Path:
+def sphinx_output(tmp_path: Path, repository: Path) -> tuple[Path, Path, str]:
     source = tmp_path / "site"
     output = tmp_path / "output"
     doctrees = tmp_path / "doctrees"
@@ -119,7 +134,7 @@ def sphinx_output(tmp_path: Path, repository: Path) -> Path:
                 f"sys.path.insert(0, {str(REPOSITORY_ROOT / '_ext')!r})",
                 "extensions = ['sphinx_design', 'quickstarts']",
                 "html_theme = 'basic'",
-                f"quickstarts_repository = {str(repository)!r}",
+                f"quickstarts_repository = {repository.as_uri()!r}",
                 "quickstarts_ref = 'main'",
                 "quickstarts_cache_ttl = 3600",
             ]
@@ -130,6 +145,7 @@ def sphinx_output(tmp_path: Path, repository: Path) -> Path:
         (
             "Quickstarts\n===========\n\n"
             ".. quickstarts:: mysql\n"
+            f"   :revision: {_git(repository, 'rev-parse', 'HEAD^')}\n"
             "   :highlight-text: print, package\n\n"
             ".. toctree::\n\n"
             "   later\n"
@@ -148,12 +164,15 @@ def sphinx_output(tmp_path: Path, repository: Path) -> Path:
     )
     app.build(force_all=True)
     assert app.statuscode == 0
-    return output
+    return output, doctrees / "adbc-quickstarts", _git(repository, "rev-parse", "HEAD^")
 
 
 def test_discover_standalone_and_grouped_examples(repository: Path) -> None:
-    languages, databases = quickstarts._load_metadata(repository)
-    groups = quickstarts.discover_examples(repository, "mysql", languages, databases)
+    snapshot = quickstarts.GitSnapshot.load(
+        repository, _git(repository, "rev-parse", "HEAD")
+    )
+    languages, databases = quickstarts._load_metadata(snapshot)
+    groups = quickstarts.discover_examples(snapshot, "mysql", languages, databases)
 
     assert [group["vendor"] for group in groups] == ["mariadb", "mysql"]
     assert [example["language"] for example in groups[1]["examples"]] == [
@@ -161,12 +180,22 @@ def test_discover_standalone_and_grouped_examples(repository: Path) -> None:
         "python",
     ]
     standalone = quickstarts.discover_examples(
-        repository, "bigquery", languages, databases
+        snapshot, "bigquery", languages, databases
     )
-    assert (
-        standalone[0]["examples"][0]["source"].relative_to(repository).as_posix()
-        == "python/bigquery/main.py"
-    )
+    assert standalone[0]["examples"][0]["source"] == "python/bigquery/main.py"
+
+
+@pytest.mark.parametrize(
+    "revision",
+    ["abc1234", "g" * 40, "a" * 39, "a" * 41],
+)
+def test_parse_revision_rejects_non_full_shas(revision: str) -> None:
+    with pytest.raises(ValueError, match="full 40-character Git SHA"):
+        quickstarts.parse_revision(revision)
+
+
+def test_parse_revision_normalizes_full_sha() -> None:
+    assert quickstarts.parse_revision("A" * 40) == "a" * 40
 
 
 def test_cache_freshness(repository: Path) -> None:
@@ -293,10 +322,45 @@ def test_initial_clone_failure_is_fatal(
         quickstarts.ensure_checkout(app)
 
 
+def test_unavailable_revision_is_fatal(tmp_path: Path, repository: Path) -> None:
+    app = SimpleNamespace(
+        doctreedir=tmp_path / "missing-revision-doctrees",
+        config=SimpleNamespace(
+            quickstarts_repository=repository.as_uri(),
+            quickstarts_ref="main",
+            quickstarts_cache_ttl=3600,
+        ),
+    )
+
+    with pytest.raises(
+        quickstarts.ExtensionError,
+        match="could not fetch requested quickstarts revision",
+    ):
+        quickstarts.ensure_checkout(app, revision="0" * 40)
+
+
+def test_non_commit_revision_is_fatal(tmp_path: Path, repository: Path) -> None:
+    app = SimpleNamespace(
+        doctreedir=tmp_path / "blob-revision-doctrees",
+        config=SimpleNamespace(
+            quickstarts_repository=repository.as_uri(),
+            quickstarts_ref="main",
+            quickstarts_cache_ttl=3600,
+        ),
+    )
+    checkout, head = quickstarts.ensure_checkout(app)
+    blob = _git(repository, "rev-parse", "HEAD:python/mysql/mariadb/main.py")
+
+    with pytest.raises(quickstarts.ExtensionError, match="is not a commit"):
+        quickstarts.ensure_checkout(app, revision=blob)
+    assert _git(checkout, "rev-parse", "HEAD") == head
+
+
 def test_sphinx_build_embeds_quickstarts_in_nested_tabs(
-    repository: Path, sphinx_output: Path
+    repository: Path, sphinx_output: tuple[Path, Path, str]
 ) -> None:
-    index = (sphinx_output / "index.html").read_text(encoding="utf-8")
+    output, checkout, revision = sphinx_output
+    index = (output / "index.html").read_text(encoding="utf-8")
     assert "sd-tab-label" in index
     assert "MariaDB" in index
     assert "MySQL" in index
@@ -316,6 +380,8 @@ def test_sphinx_build_embeds_quickstarts_in_nested_tabs(
     assert "print" in index
     assert "maria" in index
     assert "mysql" in index
+    assert "historical snapshot" in index
+    assert "current snapshot" not in index
     assert index.count("highlight-text") == 3
     assert '<span class="nb nb-HighlightText highlight-text">print</span>' in index
     assert '<span class="kn kn-HighlightText highlight-text">package</span>' in index
@@ -334,13 +400,24 @@ def test_sphinx_build_embeds_quickstarts_in_nested_tabs(
         "View the full MySQL quickstart for Python on the "
         "columnar-tech/adbc-quickstarts repo" in index
     )
-    assert _git(repository, "rev-parse", "HEAD") in index
+    assert revision in index
+    assert _git(repository, "rev-parse", "HEAD") not in index
+    assert _git(checkout, "rev-parse", "HEAD") == _git(repository, "rev-parse", "HEAD")
+    assert _git(checkout, "rev-parse", "--is-shallow-repository") == "true"
+    assert (
+        _git(
+            checkout,
+            "rev-parse",
+            f"refs/adbc-quickstarts/revisions/{revision}",
+        )
+        == revision
+    )
     assert "python/mysql/mariadb" in index
     assert "python/mysql/mysql" in index
     assert "go/mysql/mysql" in index
     assert f'href="{quickstarts.CLIENT_LIBRARIES_URL}"' in index
     assert ">ADBC client library</a> for your language" in index
 
-    assert not (sphinx_output / "drivers/mysql/quickstarts").exists()
-    assert not (sphinx_output / "_static/quickstarts.js").exists()
-    assert not (sphinx_output / "_static/quickstarts.css").exists()
+    assert not (output / "drivers/mysql/quickstarts").exists()
+    assert not (output / "_static/quickstarts.js").exists()
+    assert not (output / "_static/quickstarts.css").exists()

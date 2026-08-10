@@ -32,10 +32,12 @@ documentation build.
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import tempfile
 import time
+from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import quote
 
@@ -65,9 +67,10 @@ LANGUAGE_ENTRYPOINTS = {
     "rust": ("src/main.rs", "rust"),
 }
 _CACHE_TIMESTAMP = ".adbc-quickstarts-refreshed"
+_REVISION = re.compile(r"[0-9a-fA-F]{40}")
 
 
-def _run_git(*args: str, cwd: Path | None = None) -> str:
+def _run_git_raw(*args: str, cwd: Path | None = None) -> str:
     try:
         result = subprocess.run(
             ["git", *args],
@@ -82,7 +85,47 @@ def _run_git(*args: str, cwd: Path | None = None) -> str:
         raise ExtensionError(
             f"could not update ADBC quickstarts cache: {detail}"
         ) from exc
-    return result.stdout.strip()
+    return result.stdout
+
+
+def _run_git(*args: str, cwd: Path | None = None) -> str:
+    return _run_git_raw(*args, cwd=cwd).strip()
+
+
+def parse_revision(argument: str) -> str:
+    """Require a full, unambiguous Git commit SHA."""
+    revision = directives.unchanged_required(argument).strip().lower()
+    if _REVISION.fullmatch(revision) is None:
+        raise ValueError("revision must be a full 40-character Git SHA")
+    return revision
+
+
+@dataclass(frozen=True)
+class GitSnapshot:
+    """Read files and directory structure from one commit without checkout."""
+
+    checkout: Path
+    revision: str
+    files: frozenset[str]
+
+    @classmethod
+    def load(cls, checkout: Path, revision: str) -> GitSnapshot:
+        listing = _run_git("ls-tree", "-r", "--name-only", revision, cwd=checkout)
+        return cls(checkout, revision, frozenset(listing.splitlines()))
+
+    def is_dir(self, path: str) -> bool:
+        prefix = path.rstrip("/") + "/"
+        return any(candidate.startswith(prefix) for candidate in self.files)
+
+    def is_file(self, path: str) -> bool:
+        return path in self.files
+
+    def read_text(self, path: str) -> str:
+        if not self.is_file(path):
+            raise ExtensionError(
+                f"quickstarts file {path!r} does not exist at {self.revision}"
+            )
+        return _run_git_raw("show", f"{self.revision}:{path}", cwd=self.checkout)
 
 
 def _is_valid_checkout(path: Path) -> bool:
@@ -126,8 +169,42 @@ def _clone_checkout(cache: Path, repository: str, ref: str) -> None:
             shutil.rmtree(temporary)
 
 
-def ensure_checkout(app: Sphinx, now: float | None = None) -> tuple[Path, str]:
-    """Return a usable checkout and its exact commit SHA."""
+def _has_commit(checkout: Path, revision: str) -> bool:
+    try:
+        _run_git("cat-file", "-e", f"{revision}^{{commit}}", cwd=checkout)
+    except ExtensionError:
+        return False
+    return True
+
+
+def _ensure_revision(checkout: Path, revision: str) -> str:
+    if not _has_commit(checkout, revision):
+        cache_ref = f"refs/adbc-quickstarts/revisions/{revision}"
+        try:
+            _run_git(
+                "fetch",
+                "--depth",
+                "1",
+                "origin",
+                f"{revision}:{cache_ref}",
+                cwd=checkout,
+            )
+        except ExtensionError as exc:
+            raise ExtensionError(
+                f"could not fetch requested quickstarts revision {revision}"
+            ) from exc
+
+    if not _has_commit(checkout, revision):
+        raise ExtensionError(
+            f"requested quickstarts revision {revision} is not a commit"
+        )
+    return _run_git("rev-parse", "--verify", f"{revision}^{{commit}}", cwd=checkout)
+
+
+def ensure_checkout(
+    app: Sphinx, now: float | None = None, *, revision: str | None = None
+) -> tuple[Path, str]:
+    """Return the latest checkout and selected commit without changing HEAD."""
     cache = Path(app.doctreedir) / "adbc-quickstarts"
     repository = app.config.quickstarts_repository
     ref = app.config.quickstarts_ref
@@ -147,15 +224,17 @@ def ensure_checkout(app: Sphinx, now: float | None = None) -> tuple[Path, str]:
 
     if not _is_valid_checkout(cache):
         raise ExtensionError("ADBC quickstarts cache is incomplete")
-    return cache, _run_git("rev-parse", "HEAD", cwd=cache)
+    head = _run_git("rev-parse", "HEAD", cwd=cache)
+    if revision is None or revision == head:
+        return cache, head
+    return cache, _ensure_revision(cache, revision)
 
 
-def _load_metadata(checkout: Path) -> tuple[dict[str, str], dict[str, dict]]:
-    data = checkout / ".github" / "data"
+def _load_metadata(snapshot: GitSnapshot) -> tuple[dict[str, str], dict[str, dict]]:
     try:
-        languages = json.loads((data / "languages.json").read_text(encoding="utf-8"))
-        databases = json.loads((data / "databases.json").read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
+        languages = json.loads(snapshot.read_text(".github/data/languages.json"))
+        databases = json.loads(snapshot.read_text(".github/data/databases.json"))
+    except json.JSONDecodeError as exc:
         raise ExtensionError(
             f"could not read ADBC quickstarts metadata: {exc}"
         ) from exc
@@ -174,15 +253,17 @@ def _vendors(driver: str, databases: dict[str, dict]) -> list[str]:
     )
 
 
-def _example_directory(checkout: Path, language: str, driver: str, vendor: str) -> Path:
-    nested = checkout / language / driver / vendor
-    if nested.is_dir():
+def _example_directory(
+    snapshot: GitSnapshot, language: str, driver: str, vendor: str
+) -> str:
+    nested = f"{language}/{driver}/{vendor}"
+    if snapshot.is_dir(nested):
         return nested
-    return checkout / language / vendor
+    return f"{language}/{vendor}"
 
 
 def discover_examples(
-    checkout: Path,
+    snapshot: GitSnapshot,
     driver: str,
     languages: dict[str, str],
     databases: dict[str, dict],
@@ -198,11 +279,11 @@ def discover_examples(
                     "no quickstarts entrypoint is configured for %s", language
                 )
                 continue
-            directory = _example_directory(checkout, language, driver, vendor)
-            if not directory.is_dir():
+            directory = _example_directory(snapshot, language, driver, vendor)
+            if not snapshot.is_dir(directory):
                 continue
-            source = directory / entrypoint[0]
-            if not source.is_file():
+            source = f"{directory}/{entrypoint[0]}"
+            if not snapshot.is_file(source):
                 LOGGER.warning(
                     "quickstart directory %s has no expected entrypoint %s",
                     directory,
@@ -266,7 +347,7 @@ def _default_language(examples: list[dict]) -> str:
 
 
 def _language_tabs(
-    checkout: Path,
+    snapshot: GitSnapshot,
     repository: str,
     commit: str,
     group: dict,
@@ -286,14 +367,14 @@ def _language_tabs(
             classes=["sd-tab-label"],
         )
         content = create_component("tab-content", classes=["sd-tab-content"])
-        source = _strip_copyright_header(example["source"].read_text(encoding="utf-8"))
+        source = _strip_copyright_header(snapshot.read_text(example["source"]))
         listing = nodes.literal_block(source, source)
         listing["language"] = example["lexer"]
         listing["classes"].append("quickstart-source")
         apply_highlight_text(listing, highlight_text)
         content += listing
 
-        relative_directory = example["directory"].relative_to(checkout).as_posix()
+        relative_directory = example["directory"]
         github_url = (
             f"{repository}/tree/{quote(commit, safe='')}/"
             f"{quote(relative_directory, safe='/')}"
@@ -345,13 +426,19 @@ class QuickstartsDirective(SphinxDirective):
     required_arguments = 1
     final_argument_whitespace = False
     has_content = False
-    option_spec = {"highlight-text": parse_highlight_text}
+    option_spec = {
+        "highlight-text": parse_highlight_text,
+        "revision": parse_revision,
+    }
 
     def run(self) -> list[nodes.Node]:
         driver = directives.unchanged_required(self.arguments[0]).strip().lower()
-        checkout, commit = ensure_checkout(self.env.app)
-        languages, databases = _load_metadata(checkout)
-        groups = discover_examples(checkout, driver, languages, databases)
+        checkout, commit = ensure_checkout(
+            self.env.app, revision=self.options.get("revision")
+        )
+        snapshot = GitSnapshot.load(checkout, commit)
+        languages, databases = _load_metadata(snapshot)
+        groups = discover_examples(snapshot, driver, languages, databases)
         if not groups:
             raise self.error(f"no quickstarts found for driver {driver!r}")
 
@@ -360,7 +447,7 @@ class QuickstartsDirective(SphinxDirective):
         multiple_vendors = len(groups) > 1
         output = nodes.container(classes=["quickstarts"])
         language_tabs = [
-            _language_tabs(checkout, repository, commit, group, highlight_text)
+            _language_tabs(snapshot, repository, commit, group, highlight_text)
             for group in groups
         ]
         if multiple_vendors:
