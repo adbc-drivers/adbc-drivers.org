@@ -17,6 +17,16 @@
 
 # Changelog for ADBC Driver for Snowflake
 
+## v1.13.0 (2026-08-18)
+
+## New Features
+
+- Add proxy-specific properties
+
+## Bug Fixes
+
+- Handle UUID data type in metadata paths
+- Bump the Go version to pick up CVE fixes
 
 ## v1.12.0 (2026-07-31)
 

@@ -17,6 +17,13 @@
 
 # Changelog for Trino Driver
 
+## v0.5.2 (2026-08-18)
+
+## Bug Fixes
+
+- Handle/test all timestamp precisions
+- Bump the Go version to pick up CVE fixes
+
 ## v0.5.1 (2026-07-30)
 
 New features:

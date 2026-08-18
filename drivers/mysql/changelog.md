@@ -17,6 +17,17 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+## v0.6.0 (2026-08-18)
+
+## New Features
+
+- Add transaction support
+
+## Bug Fixes
+
+- Handle/test all timestamp precisions
+- Skip MySQL session timezone for non-MySQL backends and test with Databend
+- Bump the Go version to pick up CVE fixes
 
 ## v0.5.0 (2026-07-10)
 

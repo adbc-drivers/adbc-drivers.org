@@ -17,6 +17,16 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.2.0 (2026-08-18)
+
+## New Features
+
+- Support Microsoft Fabric Lakehouse with Livy
+
+## Bug Fixes
+
+- Bump the Go version to pick up CVE fixes
+
 ## v0.1.0 (2026-07-20)
 
 New features:

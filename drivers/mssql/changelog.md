@@ -17,6 +17,12 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+## v1.6.1 (2026-08-18)
+
+Fixes:
+
+- Bump the Go version to pick up CVE fixes
+
 ## v1.6.0 (2026-07-30)
 
 New features:
