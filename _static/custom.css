@@ -161,7 +161,7 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 }
 
 .md-sidebar--primary .md-nav__item:has(
-    > .md-nav__link[href^="https://duckdb.org/docs/stable/clients/adbc"]
+    > .md-nav__link[href^="https://clickhouse.com/docs/chdb/install/adbc"]
 ) {
     border-top: 0.05rem solid var(--md-default-fg-color--lightest);
     margin-top: 0.55rem;
