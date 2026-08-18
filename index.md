@@ -275,6 +275,24 @@ Other drivers available on dbc from across the ADBC-verse:
 :gutter: 2
 
 ::::{grid-item-card}
+:link: https://clickhouse.com/docs/chdb/install/adbc
+:class-body: sd-card-with-icon
+**chDB**
+:::{image} _static/driver_icons/color/light_mode/chdb.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/chdb.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: https://duckdb.org/docs/stable/clients/adbc
 :class-body: sd-card-with-icon
 **DuckDB**

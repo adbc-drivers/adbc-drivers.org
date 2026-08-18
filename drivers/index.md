@@ -43,6 +43,7 @@ trino/index.md
 
 The following drivers are also installable with [dbc](https://docs.columnar.tech/dbc/), but their documentation is hosted elsewhere:
 
+- [chDB](https://clickhouse.com/docs/chdb/install/adbc)
 - [DuckDB](https://duckdb.org/docs/stable/clients/adbc)
 - [Flight SQL](https://arrow.apache.org/adbc/current/driver/flight_sql.html)
 - [PostgreSQL](https://arrow.apache.org/adbc/current/driver/postgresql.html)
@@ -55,6 +56,7 @@ The following drivers are also installable with [dbc](https://docs.columnar.tech
 :hidden:
 :maxdepth: 1
 
+chDB <https://clickhouse.com/docs/chdb/install/adbc>
 DuckDB <https://duckdb.org/docs/stable/clients/adbc>
 Flight SQL <https://arrow.apache.org/adbc/current/driver/flight_sql.html>
 PostgreSQL <https://arrow.apache.org/adbc/current/driver/postgresql.html>
