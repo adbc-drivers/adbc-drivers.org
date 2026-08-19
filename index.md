@@ -221,6 +221,13 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/presto/index
+:link-type: doc
+:class-body: sd-card-center
+**Presto**
+::::
+
+::::{grid-item-card}
 :link: drivers/singlestore/index
 :link-type: doc
 :class-body: sd-card-center
