@@ -17,6 +17,13 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.6.0 (2026-08-18)
+
+Fixes:
+
+- Bump the Go version to pick up CVE fixes
+- Report 0 affected rows instead of -1 for DDL statements
+
 ## v1.5.0 (2026-07-31)
 
 New features:
