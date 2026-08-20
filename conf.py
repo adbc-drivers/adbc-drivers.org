@@ -250,6 +250,9 @@ driver_header_links_config = {
     "mysql": [
         {"url": "https://github.com/adbc-drivers/mysql", "label": "GitHub"},
     ],
+    "presto": [
+        {"url": "https://github.com/adbc-drivers/presto", "label": "GitHub"},
+    ],
     "quack": [
         {"url": "https://github.com/adbc-drivers/quack", "label": "GitHub"},
     ],

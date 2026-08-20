@@ -33,6 +33,7 @@ datafusion/index.md
 exasol/index.md
 mssql/index.md
 mysql/index.md
+presto/index.md
 quack/index.md
 redshift/index.md
 singlestore/index.md
