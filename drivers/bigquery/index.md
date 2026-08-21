@@ -58,27 +58,16 @@ Using the BigQuery driver requires some setup before you can connect:
 
 ## Connecting
 
-To connect, replace `my-gcp-project` and `my-gcp-dataset` below with the appropriate values for your situation and run the following:
+To connect, replace `my-gcp-project` (and if needed, `bigquery-public-data`) in the quickstarts below with the appropriate values for your situation.
 
-```python
-from adbc_driver_manager import dbapi
-
-conn = dbapi.connect(
-  driver="bigquery",
-  db_kwargs={
-      "adbc.bigquery.sql.project_id": "my-gcp-project",
-      "adbc.bigquery.sql.dataset_id": "my-gcp-dataset"
-  }
-)
-```
-
-Note: The example above is for Python using the [adbc-driver-manager](https://pypi.org/project/adbc-driver-manager) package but the process will be similar for other driver managers. See [adbc-quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
-
-The driver supports connecting with individual options or connection strings.
+:::{quickstarts} bigquery
+:revision: b6bd31f658eee207301343bd007a16c934f8b269
+:highlight-text: my-gcp-project, bigquery-public-data
+:::
 
 ## Connection String Format
 
-BigQuery URI syntax:
+In addition to setting individual options, the driver supports connecting via URI:
 
 ```
 bigquery://[Host]:[Port]/ProjectID?OAuthType=[AuthValue]&[Key]=[Value]&[Key]=[Value]...

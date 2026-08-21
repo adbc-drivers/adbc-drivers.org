@@ -29,7 +29,9 @@
     --sd-color-shadow: rgba(255, 255, 255, 0.08);
 }
 
-/* Fixes for questionable choices in Material Design */
+/***********************************************************************
+ * Fixes for questionable choices in Material Design
+ ***********************************************************************/
 
 /* Header and drawer */
 .md-header__button.md-logo {
@@ -66,28 +68,6 @@
     display: table;
 }
 
-/* It can get confusing when there are a lot of columns in a type table and some rows are split instead of merged (because different backends have different types): show cell borders in this case */
-tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
-    border-right: 0.05rem solid var(--md-typeset-table-color);
-}
-
-/* Make sphinx-design and sphinx-immaterial play better */
-.sd-card-text .sd-btn {
-    font-size: inherit;
-    padding: 0;
-}
-
-/* Match a one-line code block while keeping the MSI instructions as prose. */
-.sd-tab-content > .installer-download {
-    background-color: var(--md-code-bg-color);
-    border-radius: 0.1rem;
-    color: var(--md-code-fg-color);
-    font-size: 0.85em;
-    line-height: 1.4;
-    margin: 1.1764705882em 0 !important;
-    padding: 0.7720588235em 1.1764705882em;
-}
-
 /* The standard Sphinx translator does not add the inner <code> element that
    Sphinx Immaterial normally styles. Apply the same box treatment directly to
    highlighted <pre> elements while retaining the standard page structure. */
@@ -97,6 +77,11 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     font-size: 0.85em;
     margin: 1.1764705882em 0;
     padding: 0.7720588235em 1.1764705882em;
+}
+
+/* Highlight configured substrings without replacing their syntax colors. */
+.md-typeset .highlight .highlight-text {
+    text-decoration: underline 0.1em dotted var(--sd-color-tabs-label-active);
 }
 
 /* Match Sphinx Immaterial's native, persistently visible copy control. */
@@ -129,6 +114,12 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
 /* Very long, unbroken strings otherwise break out of their code box. */
 .md-typeset pre {
     overflow-x: auto;
+}
+
+/* Keep inline quickstarts compact while leaving the full source available. */
+.md-typeset .quickstarts .quickstart-source pre {
+    max-height: 35em;
+    overflow: auto;
 }
 
 /* Let the site title wrap in the drawer. Otherwise our long site title
@@ -166,6 +157,27 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     border-top: 0.05rem solid var(--md-default-fg-color--lightest);
     margin-top: 0.55rem;
     padding-top: 0.35rem;
+}
+
+/***********************************************************************
+ * Fixes for Sphinx Design
+ ***********************************************************************/
+
+/* Make sphinx-design and sphinx-immaterial play better */
+.sd-card-text .sd-btn {
+    font-size: inherit;
+    padding: 0;
+}
+
+/* Match a one-line code block while keeping the MSI instructions as prose. */
+.sd-tab-content > .installer-download {
+    background-color: var(--md-code-bg-color);
+    border-radius: 0.1rem;
+    color: var(--md-code-fg-color);
+    font-size: 0.85em;
+    line-height: 1.4;
+    margin: 1.1764705882em 0 !important;
+    padding: 0.7720588235em 1.1764705882em;
 }
 
 /* Footer credits share the first row on wide screens. The trademark notice is
@@ -217,6 +229,11 @@ tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
     -webkit-mask-size: contain;
     mask-size: contain;
     width: 4.8rem;
+}
+
+/* It can get confusing when there are a lot of columns in a type table and some rows are split instead of merged (because different backends have different types): show cell borders in this case */
+tr.row-with-cell-borders td:not([class]):not(:first-child):not(:last-child) {
+    border-right: 0.05rem solid var(--md-typeset-table-color);
 }
 
 @media screen and (min-width: 45em) {
