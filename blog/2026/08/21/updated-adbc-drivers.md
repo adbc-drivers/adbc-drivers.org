@@ -22,14 +22,14 @@ orphan: true
   limitations under the License.
 -->
 
-# Updated ADBC drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, SAP HANA, Snowflake, and Trino
+# Updated ADBC drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, Snowflake, and Trino
 
 <p class="blog-post-meta">
   <time datetime="2026-08-21">August 21, 2026</time>
   <span class="blog-post-author">ADBC Drivers Contributors</span>
 </p>
 
-Today the ADBC Drivers Contributors released updates to drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, SAP HANA, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).[^private]
+Today the ADBC Drivers Contributors released updates to drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).[^private]
 
 ## Updated Drivers
 
@@ -61,10 +61,6 @@ Today the ADBC Drivers Contributors released updates to drivers for Apache Spark
 - Correct timestamp precision in ExecuteSchema and GetTableSchema
 - Bump the Go version and dependencies to address security vulnerabilities
 
-**[SAP HANA driver](https://docs.columnar.tech/drivers/sap-hana) version [0.1.0-alpha.3](https://docs.columnar.tech/drivers/sap-hana/v0.1.0-alpha.3)**
-
-- Bump the Go version and dependencies to address security vulnerabilities
-
 **[Snowflake driver](https://github.com/adbc-drivers/snowflake) version [1.13.0](https://adbc-drivers.org/drivers/snowflake/v1.13.0)**
 
 - Add proxy-specific properties
@@ -80,4 +76,4 @@ To learn more about any of these drivers, check out the [documentation](https://
 
 Bug reports and feature requests are welcome at the repositories linked above. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
 
-[^private]: The Oracle Database and SAP HANA drivers are available from Columnar's private driver registry and require `dbc auth login`. Because SAP HANA is currently available only as a prerelease, install it with `dbc install --pre sap-hana`.
+[^private]: The Oracle Database driver is available from Columnar's private driver registry and requires `dbc auth login`.
