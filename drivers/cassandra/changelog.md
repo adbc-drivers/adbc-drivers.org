@@ -15,7 +15,7 @@
 {}
 ---
 
-# Changelog for Presto Driver
+# Changelog for Apache Cassandra Driver
 
 ## v0.1.0-alpha.1 (2026-08-24)
 
