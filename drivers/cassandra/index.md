@@ -15,7 +15,7 @@
 {}
 ---
 
-# Cassandra
+# Apache Cassandra
 
 :::{toctree}
 :maxdepth: 1
