@@ -69,6 +69,25 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/cassandra/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**Apache Cassandra**
+:::{image} _static/driver_icons/color/light_mode/cassandra.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/cassandra.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: drivers/datafusion/index
 :link-type: doc
 :class-body: sd-card-with-icon
