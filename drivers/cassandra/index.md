@@ -15,7 +15,6 @@
 {}
 ---
 
-(driver-cassandra-prerelease)=
 # Cassandra
 
 :::{toctree}
