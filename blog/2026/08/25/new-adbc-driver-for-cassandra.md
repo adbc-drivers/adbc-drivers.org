@@ -31,8 +31,8 @@ orphan: true
 
 An alpha release of a new ADBC driver for [Apache Cassandra](https://cassandra.apache.org/) is available through [dbc](https://docs.columnar.tech/dbc/). Install version 0.1.0-alpha.1 with:
 
-```
-dbc install --pre cassandra
+```console
+$ dbc install --pre cassandra
 ```
 
 The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), table schema discovery, and prepared statements. It has been tested with Apache Cassandra 5.0 and DataStax Enterprise 6.9. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/cassandra/). This is a preview release, and more features are actively being developed, so stay tuned.
