@@ -232,6 +232,9 @@ driver_header_links_config = {
     "bigquery": [
         {"url": "https://github.com/adbc-drivers/bigquery", "label": "GitHub"},
     ],
+    "cassandra": [
+        {"url": "https://github.com/adbc-drivers/cassandra", "label": "GitHub"},
+    ],
     "clickhouse": [
         {"url": "https://github.com/ClickHouse/adbc_clickhouse", "label": "GitHub"},
     ],

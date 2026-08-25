@@ -27,6 +27,7 @@ Documentation for the following ADBC Driver Foundry drivers is hosted on this we
 :maxdepth: 1
 
 bigquery/index.md
+cassandra/index.md
 clickhouse/index.md
 databricks/index.md
 datafusion/index.md
