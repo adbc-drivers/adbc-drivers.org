@@ -75,13 +75,13 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 **Apache Cassandra**
 :::{image} _static/driver_icons/color/light_mode/cassandra.svg
 :class: only-light
-:width: 24px
+:width: 30px
 :align: center
 :alt:
 :::
 :::{image} _static/driver_icons/color/dark_mode/cassandra.svg
 :class: only-dark
-:width: 24px
+:width: 30px
 :align: center
 :alt:
 :::
@@ -197,8 +197,20 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::{grid-item-card}
 :link: drivers/exasol/index
 :link-type: doc
-:class-body: sd-card-center
+:class-body: sd-card-with-icon
 **Exasol**
+:::{image} _static/driver_icons/color/light_mode/exasol.svg
+:class: only-light
+:width: 22px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/exasol.svg
+:class: only-dark
+:width: 22px
+:align: center
+:alt:
+:::
 ::::
 
 ::::{grid-item-card}
@@ -261,8 +273,20 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::{grid-item-card}
 :link: drivers/singlestore/index
 :link-type: doc
-:class-body: sd-card-center
+:class-body: sd-card-with-icon
 **SingleStore**
+:::{image} _static/driver_icons/color/light_mode/singlestore.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/singlestore.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
 ::::
 
 ::::{grid-item-card}
