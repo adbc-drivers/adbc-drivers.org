@@ -101,6 +101,7 @@ extensions = [
     "sphinxext.opengraph",
     "driver_titles",
     "driver_header_links",
+    "structured_data",
 ]
 
 templates_path = ["_templates"]

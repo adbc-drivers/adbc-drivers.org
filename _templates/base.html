@@ -20,6 +20,9 @@
 {% if canonical_url %}
 <link rel="canonical" href="{{ canonical_url|e }}">
 {% endif %}
+{% if structured_data_json %}
+<script type="application/ld+json">{{ structured_data_json|safe }}</script>
+{% endif %}
 {{- metatags }}
 <script src="{{ pathto('_static/domain-redirect.js', 1) }}"></script>
 {% endblock %}
