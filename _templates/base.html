@@ -17,6 +17,9 @@
 
 {% block site_meta %}
 {{ super() }}
+{% if canonical_url %}
+<link rel="canonical" href="{{ canonical_url|e }}">
+{% endif %}
 {{- metatags }}
 <script src="{{ pathto('_static/domain-redirect.js', 1) }}"></script>
 {% endblock %}
