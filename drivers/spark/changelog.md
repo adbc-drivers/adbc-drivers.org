@@ -27,6 +27,7 @@
 
 - Bump the Go version to pick up CVE fixes
 
+(spark-v0-1-0)=
 ## v0.1.0 (2026-07-20)
 
 New features:

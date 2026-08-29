@@ -49,6 +49,7 @@ Fixes:
 
 - Restore support for SMALLDATETIME, IMAGE, UNIQUEIDENTIFIER, and XML types
 
+(mssql-v1-4-0)=
 ## v1.4.0 (2026-05-19)
 
 New features:

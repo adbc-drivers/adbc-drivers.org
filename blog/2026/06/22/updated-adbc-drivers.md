@@ -33,7 +33,7 @@ Today the ADBC Drivers Contributors released updated drivers for BigQuery and Or
 
 ## Updated Drivers
 
-**[BigQuery driver](https://github.com/adbc-drivers/bigquery) version [1.12.0](https://adbc-drivers.org/drivers/bigquery/v1.12.0)**
+**[BigQuery ADBC driver](https://github.com/adbc-drivers/bigquery) version [1.12.0](/drivers/bigquery/v1.12.0.md)**
 
 - Make option names more consistent (allow `bigquery.foo` in addition to `adbc.bigquery.sql.foo`)
 - Add query statistics to the schema metadata of the result
@@ -44,7 +44,7 @@ Today the ADBC Drivers Contributors released updated drivers for BigQuery and Or
 - Improve error handling around authentication
 - Handle dry-run queries properly instead of erroring
 
-**Oracle Database driver version [0.6.0](https://docs.columnar.tech/drivers/oracle/v0.6.0)**
+**Oracle Database ADBC driver version [0.6.0](https://docs.columnar.tech/drivers/oracle/v0.6.0)**
 
 :::{note}
 The default execution mode will become `batch` in the next minor version (v0.7.0) and the `row` option will be removed the following minor version (v0.8.0).
@@ -57,7 +57,7 @@ The default execution mode will become `batch` in the next minor version (v0.7.0
 - Retrieve the result of `DBMS_SQL.RETURN_RESULT`
 - Allow setting various options on initial connection
 
-To learn more about how to use the drivers, check out the [documentation](https://adbc-drivers.org/) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+To learn more about how to use the drivers, check out the [documentation](/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome at the repositories linked above. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
 

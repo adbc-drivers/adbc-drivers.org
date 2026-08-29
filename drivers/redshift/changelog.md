@@ -38,6 +38,7 @@ Fixes:
 
 - Correctly query decimal values whose decimal representation ended in multiple zeroes
 
+(redshift-v1-3-0)=
 ## v1.3.0 (2026-05-25)
 
 New features:

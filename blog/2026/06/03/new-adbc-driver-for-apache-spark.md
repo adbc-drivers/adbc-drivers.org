@@ -31,7 +31,7 @@ orphan: true
 
 A beta release of a new ADBC driver for [Apache Spark](https://spark.apache.org) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install spark --pre` to try it out today.
 
-The driver supports query execution, bulk ingestion, and catalog metadata retrieval. It can connect via the HiveServer2 Thrift protocol (either over TCP, or HTTP/HTTPS), Spark Connect, or Apache Livy. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/spark/). This is a preview release, and more features are actively being developed, so stay tuned.
+The driver supports query execution, bulk ingestion, and catalog metadata retrieval. It can connect via the HiveServer2 Thrift protocol (either over TCP, or HTTP/HTTPS), Spark Connect, or Apache Livy. See the [ADBC Driver for Apache Spark documentation](/drivers/spark/index.md). This is a preview release, and more features are actively being developed, so stay tuned.
 
 The driver was developed by the ADBC Driver Foundry and is implemented in Go.
 

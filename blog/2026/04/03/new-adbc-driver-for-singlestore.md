@@ -31,7 +31,7 @@ orphan: true
 
 A beta release of a new ADBC driver for [SingleStore](https://www.singlestore.com/) is now available via [dbc](https://docs.columnar.tech/dbc/). If you have [dbc 0.2.0](https://columnar.tech/blog/announcing-dbc-0.2.0) or newer installed, run `dbc install singlestore --pre` to try it out today.
 
-The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, prepared statements, and transactions. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/singlestore/). This is a beta release, and more features are actively being developed, so stay tuned.
+The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, prepared statements, and transactions. See the [ADBC Driver for SingleStore documentation](/drivers/singlestore/index.md). This is a beta release, and more features are actively being developed, so stay tuned.
 
 The driver was developed by SingleStore, is implemented in Go, and uses the MySQL wire protocol to connect. To get started, provide a connection URI using the [Go MySQL Driver DSN format](https://pkg.go.dev/github.com/go-sql-driver/mysql#readme-dsn-data-source-name) with a `singlestore://` scheme:
 

@@ -35,7 +35,7 @@ An alpha release of a new ADBC driver for [Apache Cassandra](https://cassandra.a
 $ dbc install --pre cassandra
 ```
 
-The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), table schema discovery, and prepared statements. It has been tested with Apache Cassandra 5.0 and DataStax Enterprise 6.9. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/cassandra/). This is a preview release, and more features are actively being developed, so stay tuned.
+The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), table schema discovery, and prepared statements. It has been tested with Apache Cassandra 5.0 and DataStax Enterprise 6.9. See the [ADBC Driver for Apache Cassandra documentation](/drivers/cassandra/index.md). This is a preview release, and more features are actively being developed, so stay tuned.
 
 The driver was developed by the ADBC Driver Foundry, is implemented in Go, and is built on the [Apache Cassandra GoCQL driver](https://github.com/apache/cassandra-gocql-driver). It supports authentication, multiple contact points, configurable consistency and paging, and TLS connections, including custom CA certificates and mutual TLS.
 

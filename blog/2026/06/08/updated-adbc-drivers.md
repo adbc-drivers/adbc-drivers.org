@@ -33,7 +33,7 @@ Today the ADBC Drivers Contributors released updated drivers for Apache DataFusi
 
 ## Updated Drivers
 
-**[Apache DataFusion driver](https://github.com/adbc-drivers/datafusion) version [0.25.0](https://adbc-drivers.org/drivers/datafusion/v0.25.0)**
+**[Apache DataFusion ADBC driver](https://github.com/adbc-drivers/datafusion) version [0.25.0](/drivers/datafusion/v0.25.0.md)**
 
 - Enable direct querying of HTTP/S3/etc. URIs and local files and directories in the same way that datafusion-cli does. Example:
 
@@ -44,16 +44,16 @@ Today the ADBC Drivers Contributors released updated drivers for Apache DataFusi
     LIMIT 5;
   ```
 
-**[Exasol driver](https://github.com/exasol-labs/exarrow-rs) version [0.12.6](https://adbc-drivers.org/drivers/exasol/v0.12.6)**
+**[Exasol ADBC driver](https://github.com/exasol-labs/exarrow-rs) version [0.12.6](/drivers/exasol/v0.12.6.md)**
 
 - Update dependencies with security advisories
 - Various bug fixes
 
-**[Trino driver](https://github.com/adbc-drivers/trino) version [0.4.0](https://adbc-drivers.org/drivers/trino/v0.4.0)**
+**[Trino ADBC driver](https://github.com/adbc-drivers/trino) version [0.4.0](/drivers/trino/v0.4.0.md)**
 
 - Add `trino.statement.last_query_id` option to retrieve the query ID
 - Support GetStatistics and a target catalog/schema for bulk ingest
 
-To learn more about how to use the drivers, check out the [documentation](https://adbc-drivers.org/) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+To learn more about how to use the drivers, check out the [documentation](/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome at the repositories linked above. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).

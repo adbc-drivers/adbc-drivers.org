@@ -33,6 +33,6 @@ Today the ADBC Drivers Contributors released an updated driver for Trino, versio
 
 Version 0.5.0 adds support for `ARRAY` columns and improves connectivity by adding support for TLS connections and validation over TLS.
 
-For more details, see the [full changelog](https://adbc-drivers.org/drivers/trino/changelog#v0-5-0-2026-07-06). To learn more about how to use the driver, check out the [documentation](https://adbc-drivers.org/drivers/trino/v0.5.0) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+For more details, see the [full changelog](trino-v0-5-0). To learn more about how to use the driver, check out the [documentation](/drivers/trino/v0.5.0.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome through GitHub Issues in the [`adbc-drivers/trino` repository](https://github.com/adbc-drivers/trino). You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).

@@ -19,6 +19,7 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+(exasol-v0-13-0)=
 ## v0.13.0 (2026-07-06)
 
 Fixes:
@@ -50,6 +51,7 @@ New features:
 - Directly upload Parquet data when importing (instead of converting to CSV)
   - Issue `OPEN SCHEMA` if a schema is present in the connection URI (`exasol://u:p@localhost:8563/my_schema`)
 
+(exasol-v0-9-0)=
 ## v0.9.0 (2026-04-16)
 
 New features:

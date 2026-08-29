@@ -33,6 +33,6 @@ Today the ADBC Drivers Contributors released an updated driver for Apache Spark,
 
 Version 0.1.0 implements GetTableSchema and adds an option to set the catalog on initial connect, along with other bug fixes.
 
-For more details, see the [full changelog](https://adbc-drivers.org/drivers/spark/changelog#v0-1-0-2026-07-20). To learn more about how to use the driver, check out the [documentation](https://adbc-drivers.org/drivers/spark/v0.1.0) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+For more details, see the [full changelog](spark-v0-1-0). To learn more about how to use the driver, check out the [documentation](/drivers/spark/v0.1.0.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome through GitHub Issues in the [`adbc-drivers/spark` repository](https://github.com/adbc-drivers/spark). You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
