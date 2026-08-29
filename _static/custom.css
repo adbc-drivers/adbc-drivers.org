@@ -473,6 +473,19 @@ section:has(> .driver-header-links) > h1 {
     max-width: calc(100% - 32px);
 }
 
+/* Keep the system name visually dominant while the complete, descriptive H1
+remains available to readers, assistive technology, and search engines. */
+.md-content h1 > .driver-title-kicker {
+    color: var(--md-default-fg-color--lighter);
+    display: block;
+    font-size: 0.42em;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+    text-transform: uppercase;
+}
+
 /* The header links stay fixed on the right */
 section > .driver-header-links {
     display: flex;

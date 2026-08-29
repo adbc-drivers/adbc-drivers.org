@@ -21,6 +21,16 @@
 <script src="{{ pathto('_static/domain-redirect.js', 1) }}"></script>
 {% endblock %}
 
+{# Driver landing pages need a descriptive browser title without repeating that
+   long title in the theme's compact top header. #}
+{% block htmltitle %}
+{% if driver_landing_browser_title %}
+<title>{{ driver_landing_browser_title }}</title>
+{% else %}
+{{ super() }}
+{% endif %}
+{% endblock %}
+
 {% block site_nav %}
 {% if show_blog_sidebar %}
   <div class="md-sidebar md-sidebar--primary blog-sidebar-shell">
