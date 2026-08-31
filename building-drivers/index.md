@@ -117,7 +117,7 @@ The Foundry provides a validation suite at [adbc-drivers/validation](https://git
 
 Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps your database's column types to Arrow data types and vice versa.
 
-If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [adbc-drivers.org](https://adbc-drivers.org).
+If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [adbc-drivers.org](/index.md).
 
 #### Bootstrapping
 

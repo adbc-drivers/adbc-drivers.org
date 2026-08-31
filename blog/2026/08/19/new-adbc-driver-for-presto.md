@@ -31,7 +31,7 @@ orphan: true
 
 An alpha release of a new ADBC driver for [Presto](https://prestodb.io/) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install --pre presto` to try version 0.1.0-alpha.1 today.
 
-The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), catalog metadata retrieval, table schema discovery, and prepared statements. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/presto/). This is a preview release, and more features are actively being developed, so stay tuned.
+The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), catalog metadata retrieval, table schema discovery, and prepared statements. See the [ADBC Driver for Presto documentation](/drivers/presto/index.md). This is a preview release, and more features are actively being developed, so stay tuned.
 
 The driver was developed by the ADBC Driver Foundry, is implemented in Go, and is built on the [Presto Go client](https://github.com/prestodb/presto-go-client). It supports HTTP and HTTPS connections, including custom CA certificates and mutual TLS, and passes unrecognized connection parameters to Presto as session properties.
 

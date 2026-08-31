@@ -31,7 +31,7 @@ orphan: true
 
 A new ADBC driver for [Apache DataFusion](https://datafusion.apache.org) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install datafusion` to try it out today.
 
-The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, and prepared statements. Documentation can be found at [adbc-drivers.org](https://adbc-drivers.org/drivers/datafusion/). The driver was developed in Rust by the ADBC Driver Foundry based on the driver originally available from `apache/arrow-adbc`, but has been extended with new features and bug fixes.
+The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, and prepared statements. See the [ADBC Driver for DataFusion documentation](/drivers/datafusion/index.md). The driver was developed in Rust by the ADBC Driver Foundry based on the driver originally available from `apache/arrow-adbc`, but has been extended with new features and bug fixes.
 
 As DataFusion is embedded, you can use the driver without any need for a connection string. For example, load it in Python with `adbc-driver-manager`:
 

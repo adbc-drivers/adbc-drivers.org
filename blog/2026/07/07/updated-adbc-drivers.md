@@ -33,21 +33,21 @@ Today the ADBC Drivers Contributors released updated drivers for Amazon Redshift
 
 ## Updated Drivers
 
-**[Amazon Redshift driver](https://github.com/adbc-drivers/amazon) version [1.4.0](https://adbc-drivers.org/drivers/redshift/v1.4.0)**
+**[Amazon Redshift ADBC driver](https://github.com/adbc-drivers/amazon) version [1.4.0](/drivers/redshift/v1.4.0.md)**
 
 - Correctly query decimal values whose decimal representation ended in multiple zeroes
 
-**[Apache DataFusion driver](https://github.com/adbc-drivers/datafusion) version [0.26.0](https://adbc-drivers.org/drivers/datafusion/v0.26.0)**
+**[Apache DataFusion ADBC driver](https://github.com/adbc-drivers/datafusion) version [0.26.0](/drivers/datafusion/v0.26.0.md)**
 
 - Implement `ExecutePartitions` and `ReadPartition`
 
-**[Microsoft SQL Server driver](https://github.com/adbc-drivers/microsoft) version [1.5.0](https://adbc-drivers.org/drivers/mssql/v1.5.0)**
+**[Microsoft SQL Server ADBC driver](https://github.com/adbc-drivers/microsoft) version [1.5.0](/drivers/mssql/v1.5.0.md)**
 
 - Add support for Microsoft Fabric Data Warehouse, including ingest support, OneLake support, `INSERT BULK`, and compatibility improvements
 - Add support for querying, binding, and ingesting `SQL_VARIANT`
 - **Breaking change:** `geoarrow.wkb` ingest now uses `GEOGRAPHY` only when an SRID and `"edges":"spherical"` are defined; see `mssql.ingest.geo_type`
 - Fix typos in `INSERT BULK` support
 
-To learn more about how to use the drivers, check out the [documentation](https://adbc-drivers.org/) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+To learn more about how to use the drivers, check out the [documentation](/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome at the repositories linked above. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).

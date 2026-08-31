@@ -39,6 +39,6 @@ Version 1.3.0 has several improvements and bug fixes, including:
 - Pass through credentials when executing COPY in bulk ingest
 - Map Arrow strings to VARCHAR(MAX) in bulk ingest instead of TEXT
 
-For more details, see the [full changelog](https://adbc-drivers.org/drivers/redshift/changelog#v1-3-0-2026-05-25). To learn more about how to use the driver, check out the [documentation](https://adbc-drivers.org/drivers/redshift/v1.3.0) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
+For more details, see the [full changelog](redshift-v1-3-0). To learn more about how to use the driver, check out the [documentation](/drivers/redshift/v1.3.0.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome through GitHub Issues in the [`adbc-drivers/redshift` repository](https://github.com/adbc-drivers/redshift). You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).

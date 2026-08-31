@@ -18,12 +18,13 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
 import locale
+import re
 import shutil
 import sys
 from html import escape as escape_html
 from html import unescape as unescape_html
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import urljoin, urlparse
 
 import sphinxext.opengraph as opengraph
 from docutils import nodes
@@ -34,6 +35,44 @@ from sphinx_design.icons import get_octicon
 # the locale of the machine running the build. Keep the English-language site
 # output deterministic while leaving every other locale category untouched.
 locale.setlocale(locale.LC_TIME, "C")
+
+
+def get_current_driver_version_docs() -> frozenset[str]:
+    """Return the versioned documents duplicated by driver landing pages."""
+    current_docs = set()
+    drivers_dir = Path(__file__).parent / "drivers"
+
+    for index_path in drivers_dir.glob("*/index.md"):
+        content = index_path.read_text(encoding="utf-8")
+        match = re.search(
+            r"Driver Version\|(?P<version>v?\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)",
+            content,
+        )
+        if match is None:
+            continue
+
+        # The badge is the source of truth for the version copied into index.md.
+        # Sorting filenames would get subtle cases such as prereleases wrong.
+        version = match.group("version")
+        if not version.startswith("v"):
+            version = f"v{version}"
+
+        version_path = index_path.with_name(f"{version}.md")
+        if not version_path.exists():
+            raise ValueError(
+                f"{index_path} identifies {version} as current, but "
+                f"{version_path} does not exist"
+            )
+
+        current_docs.add(f"drivers/{index_path.parent.name}/{version}")
+
+    return frozenset(current_docs)
+
+
+# Each drivers/<name>/ landing page contains the same documentation as the
+# latest version-specific page. Keep both URLs working, but tell search engines
+# to treat the landing page as the main one.
+CURRENT_DRIVER_VERSION_DOCS = get_current_driver_version_docs()
 
 # Add _ext directory to Python path for custom extensions
 sys.path.insert(0, str(Path(__file__).parent / "_ext"))
@@ -60,7 +99,9 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx_sitemap",
     "sphinxext.opengraph",
+    "driver_titles",
     "driver_header_links",
+    "structured_data",
 ]
 
 templates_path = ["_templates"]
@@ -196,6 +237,7 @@ sitemap_excludes = [
     "blog/author/*.html",
     "blog/drafts.html",
     "blog/[0-9][0-9][0-9][0-9].html",
+    *(f"{docname}.html" for docname in sorted(CURRENT_DRIVER_VERSION_DOCS)),
 ]
 sitemap_show_lastmod = True
 
@@ -355,44 +397,6 @@ def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
     app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
 
-    # Give driver and key landing pages descriptive Open Graph titles without
-    # changing the shorter titles used for their page headings and browser tabs.
-    def configure_og_title(app, pagename, templatename, context, doctree):
-        title = {
-            "blog/index": "ADBC Drivers Blog",
-            "building-drivers/index": "Building ADBC Drivers",
-            "drivers/index": "Available ADBC Drivers",
-            "using-drivers/index": "Using ADBC Drivers",
-        }.get(pagename)
-
-        # Sphinx pagenames omit the file extension. Direct children of a driver
-        # directory therefore have the shape ``drivers/<driver>/<page>``.
-        parts = pagename.split("/")
-        if len(parts) == 3 and parts[0] == "drivers":
-            # The rendered title can contain HTML, so parse it exactly as
-            # sphinxext-opengraph does before using it as metadata text.
-            page_title, _ = opengraph.get_title(context["title"])
-            if parts[2] == "index":
-                # Guard against an upstream landing-page heading that already
-                # ends in "Driver" so the generated title does not repeat it.
-                system = page_title.removesuffix(" Driver")
-                title = f"ADBC Driver for {system}"
-            # Some changelog headings already contain "ADBC Driver". Checking
-            # the whole title prevents turning that into "ADBC ADBC Driver".
-            elif "ADBC" not in page_title and "Driver" in page_title:
-                title = page_title.replace("Driver", "ADBC Driver")
-
-        if title is None:
-            return
-
-        # Pages without source-level metadata expose this context value as None.
-        if context["meta"] is None:
-            context["meta"] = {}
-        context["meta"]["og:title"] = title
-
-    # sphinxext-opengraph reads the metadata at the default priority (500).
-    app.connect("html-page-context", configure_og_title, priority=400)
-
     # sphinxext-opengraph escapes the page description for the og:description
     # meta tag, then draws that same string into the social card PNG, so a
     # heading like "Installation & Quickstart" is drawn as "Installation &amp;
@@ -417,6 +421,33 @@ def setup(app):
         body='window.DOCUMENTATION_OPTIONS = {URL_ROOT: ""};',
         priority=400,
     )
+
+    def configure_canonical_url(app, pagename, templatename, context, doctree):
+        if app.builder.format != "html" or not app.config.html_baseurl:
+            return
+
+        canonical_pagename = pagename
+        if pagename in CURRENT_DRIVER_VERSION_DOCS:
+            driver_dir = pagename.rsplit("/", 1)[0]
+            canonical_pagename = f"{driver_dir}/index"
+
+        canonical_url = urljoin(
+            app.config.html_baseurl,
+            app.builder.get_target_uri(canonical_pagename),
+        )
+        context["canonical_url"] = canonical_url
+
+        # sphinxext-opengraph normally derives og:url from the page being
+        # rendered. Use the value above so social metadata and the canonical
+        # link always identify the same URL, including for duplicate snapshots.
+        metadata = context.get("meta")
+        if metadata is None:
+            metadata = {}
+            context["meta"] = metadata
+        metadata["og:url"] = canonical_url
+
+    # Run before sphinxext-opengraph consumes the page metadata.
+    app.connect("html-page-context", configure_canonical_url, priority=400)
 
     # Register custom badge roles with Sphinx
     for variant in custom_badge_variants:
