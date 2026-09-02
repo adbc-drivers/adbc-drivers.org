@@ -22,13 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
-v0.26.1 <v0.26.1.md>
+v0.27.0 <v0.27.0.md>
 v0.26.0 <v0.26.0.md>
 v0.25.0 <v0.25.0.md>
 v0.24.1 <v0.24.1.md>
 :::
 
-[{badge-primary}`Driver Version|v0.26.1`](#driver-datafusion-v0.26.1 "Permalink") {badge-secondary}`Release Date|2026-09-01` {badge-success}`Tested With|Apache DataFusion 55`
+[{badge-primary}`Driver Version|v0.27.0`](#driver-datafusion-v0.27.0 "Permalink") {badge-secondary}`Release Date|2026-09-02` {badge-success}`Tested With|Apache DataFusion 55`
 
 This driver provides access to [Apache DataFusion][datafusion].
 

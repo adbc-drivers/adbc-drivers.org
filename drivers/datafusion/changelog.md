@@ -18,7 +18,7 @@
 # Changelog for ADBC Driver for Apache DataFusion
 
 
-## v0.26.1 (2026-09-01)
+## v0.27.0 (2026-09-02)
 
 ## New Features
 
@@ -26,7 +26,7 @@
 
 ## Bug Fixes
 
-- cast bind parameters to the expected type
+- Cast bind parameters to the expected type
 
 ## v0.26.0 (2026-07-07)
 
