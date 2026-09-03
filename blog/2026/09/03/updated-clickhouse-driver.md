@@ -1,6 +1,6 @@
 ---
 blogpost: true
-date: 2026-09-02
+date: 2026-09-03
 author: ADBC Drivers Contributors
 hide-toc: true
 orphan: true
@@ -25,7 +25,7 @@ orphan: true
 # Updated ADBC driver for ClickHouse
 
 <p class="blog-post-meta">
-  <time datetime="2026-09-02">September 2, 2026</time>
+  <time datetime="2026-09-03">September 3, 2026</time>
   <span class="blog-post-author">ADBC Drivers Contributors</span>
 </p>
 
