@@ -24,11 +24,6 @@ orphan: true
 
 # Faster ADBC drivers for BigQuery, MySQL, SQL Server, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-02-19">February 19, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for four database systems, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install <driver>` to get the latest version.
 
 ## Updated Drivers

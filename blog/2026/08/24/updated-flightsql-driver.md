@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC Driver for Arrow Flight SQL
 
-<p class="blog-post-meta">
-  <time datetime="2026-08-24">August 24, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Version 1.12.1 of the ADBC driver for Apache Arrow Flight SQL is now in the [ADBC driver registry](https://dbc-cdn.columnar.tech) and installable immediately via [dbc](https://docs.columnar.tech/dbc/). To install or update, just run:
 
 ```console

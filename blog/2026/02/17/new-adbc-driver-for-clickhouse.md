@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for ClickHouse
 
-<p class="blog-post-meta">
-  <time datetime="2026-02-17">February 17, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 The ADBC Drivers Contributors are excited to announce a preview version of a new driver for [ClickHouse](https://clickhouse.com/). The driver is available immediately via [dbc](https://docs.columnar.tech/dbc/). If you have [dbc 0.2.0](https://columnar.tech/blog/announcing-dbc-0.2.0) or newer installed, run `dbc install clickhouse --pre` to try it out today.
 
 The driver supports querying data and can insert Arrow data using an appropriately formatted `INSERT` query. Full ADBC bulk ingestion support is not yet available. See the [ADBC Driver for ClickHouse documentation](/drivers/clickhouse/index.md). This is a preview release, and more features are actively being developed, so stay tuned.

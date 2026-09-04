@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for Apache Spark
 
-<p class="blog-post-meta">
-  <time datetime="2026-06-03">June 03, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 A beta release of a new ADBC driver for [Apache Spark](https://spark.apache.org) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install spark --pre` to try it out today.
 
 The driver supports query execution, bulk ingestion, and catalog metadata retrieval. It can connect via the HiveServer2 Thrift protocol (either over TCP, or HTTP/HTTPS), Spark Connect, or Apache Livy. See the [ADBC Driver for Apache Spark documentation](/drivers/spark/index.md). This is a preview release, and more features are actively being developed, so stay tuned.
