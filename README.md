@@ -64,9 +64,9 @@ source path intentionally produces a clean date-based public URL, such as
 the post's former root-level `.html` and trailing-slash URLs so existing links
 continue to work.
 
-Use an existing post as the template so the author/date byline and page options
-remain consistent. Ensure that `hide-toc: true` and `orphan: true` are included
-in the YAML.
+The author and date byline is generated from the front matter. Use an existing
+post as the template so the page options remain consistent. Ensure that
+`hide-toc: true` and `orphan: true` are included in the YAML.
 
 ## Domains
 

@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Apache Spark, BigQuery, Databricks, DuckDB Quack, MySQL, and Oracle Database
 
-<p class="blog-post-meta">
-  <time datetime="2026-07-16">July 16, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updates to drivers for Apache Spark, BigQuery, Databricks, DuckDB Quack, MySQL, and Oracle Database. All are available now via [dbc](https://docs.columnar.tech/dbc/).
 
 ## Updated Drivers

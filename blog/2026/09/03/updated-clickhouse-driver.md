@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC driver for ClickHouse
 
-<p class="blog-post-meta">
-  <time datetime="2026-09-03">September 3, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released an updated driver for ClickHouse, version 0.1.1, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install clickhouse` to get the latest version.
 
 Version 0.1.1 has several improvements and bug fixes, including:

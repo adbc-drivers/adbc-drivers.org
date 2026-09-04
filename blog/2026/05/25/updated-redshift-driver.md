@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC driver for Redshift
 
-<p class="blog-post-meta">
-  <time datetime="2026-05-25">May 25, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released an updated driver for Amazon Redshift, version 1.3.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install redshift` to get the latest version.
 
 Version 1.3.0 has several improvements and bug fixes, including:

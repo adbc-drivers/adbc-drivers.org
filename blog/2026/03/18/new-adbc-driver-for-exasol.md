@@ -24,11 +24,6 @@ orphan: true
 
 # New ADBC driver for Exasol
 
-<p class="blog-post-meta">
-  <time datetime="2026-03-18">March 18, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 The ADBC driver for [Exasol](https://www.exasol.com/), version 0.7.0, is now available via [dbc](https://docs.columnar.tech/dbc/). Just `dbc install exasol` to get the latest version.
 
 The driver supports query execution and inspecting the catalog (GetObjects, GetTableSchema, etc.); features like bulk ingestion and bind parameters are in the works. See the [ADBC Driver for Exasol documentation](/drivers/exasol/index.md). The Exasol Labs community is still working on adding more features and tuning performance, so check back for updates.

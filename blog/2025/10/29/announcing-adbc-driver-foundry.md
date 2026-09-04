@@ -24,11 +24,6 @@ orphan: true
 
 # Announcing the ADBC Driver Foundry
 
-<p class="blog-post-meta">
-  <time datetime="2025-10-29">October 29, 2025</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 ADBC (Arrow Database Connectivity) is at an inflection point. Launched in 2022 as a subproject of Apache Arrow, ADBC is a modern data connectivity standard built to accelerate and simplify data access for analytics applications. Leading companies including Databricks, dbt Labs, Microsoft, and Snowflake are building with ADBC.
 
 Today, the project is a bustling construction site. The foundations—ADBC’s core specifications and libraries—have solidified. The focus has shifted to building the superstructure: the drivers that connect ADBC to a wide array of databases, query engines, and data platforms. But as driver development has scaled up, there has been little scaffolding to support contributors. Driver work has funneled through the same central repository that houses ADBC’s core components, straining the small group of Apache Arrow maintainers who can review and merge contributions. The result has been slow reviews, mounting frustration, and a mismatch between the centralized privilege model of Apache projects and the inherently federated nature of driver development.

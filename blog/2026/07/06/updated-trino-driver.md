@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC driver for Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-07-06">July 06, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released an updated driver for Trino, version 0.5.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install trino` to get the latest version.
 
 Version 0.5.0 adds support for `ARRAY` columns and improves connectivity by adding support for TLS connections and validation over TLS.

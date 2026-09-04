@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for Apache Cassandra
 
-<p class="blog-post-meta">
-  <time datetime="2026-08-25">August 25, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 An alpha release of a new ADBC driver for [Apache Cassandra](https://cassandra.apache.org/) is available through [dbc](https://docs.columnar.tech/dbc/). Install version 0.1.0-alpha.1 with:
 
 ```console

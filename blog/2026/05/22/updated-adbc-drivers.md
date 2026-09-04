@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for ClickHouse and SQL Server
 
-<p class="blog-post-meta">
-  <time datetime="2026-05-22">May 22, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for ClickHouse and Microsoft SQL Server, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install mssql` or `dbc install clickhouse --pre` to get the latest version.
 
 ## Updated Drivers
