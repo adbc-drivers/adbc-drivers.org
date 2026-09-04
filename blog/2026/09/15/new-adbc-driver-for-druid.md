@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for Apache Druid
 
-<p class="blog-post-meta">
-  <time datetime="2026-09-15">September 15, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 An alpha release of a new ADBC driver for [Apache Druid](https://druid.apache.org/) is available through [dbc](https://docs.columnar.tech/dbc/). Install version 0.1.0-alpha.1 with:
 
 ```console

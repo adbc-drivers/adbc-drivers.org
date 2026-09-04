@@ -89,6 +89,7 @@ author = "ADBC Drivers Contributors"
 
 extensions = [
     "ablog",
+    "blog_post_meta",
     "homepage_blog_cards",
     "myst_parser",
     "sphinx_copybutton",

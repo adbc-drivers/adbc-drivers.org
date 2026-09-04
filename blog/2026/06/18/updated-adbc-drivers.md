@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Exasol, MySQL, and Snowflake
 
-<p class="blog-post-meta">
-  <time datetime="2026-06-18">June 18, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for Exasol, MySQL, and Snowflake, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install [exasol|mysql|snowflake]` to get the latest version.
 
 ## Updated Drivers

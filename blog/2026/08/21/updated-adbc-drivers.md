@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, Snowflake, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-08-21">August 21, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updates to drivers for Apache Spark, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle Database, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).[^private]
 
 ## Updated Drivers

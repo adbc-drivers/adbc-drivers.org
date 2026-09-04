@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for SQL Server and Snowflake
 
-<p class="blog-post-meta">
-  <time datetime="2026-01-12">January 12, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for two database systems, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install <driver>` to get the latest version.
 
 ## Updated Drivers

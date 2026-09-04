@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for Presto
 
-<p class="blog-post-meta">
-  <time datetime="2026-08-19">August 19, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 An alpha release of a new ADBC driver for [Presto](https://prestodb.io/) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install --pre presto` to try version 0.1.0-alpha.1 today.
 
 The driver supports query execution, bind parameters, bulk ingestion (create, append, create-or-append, and replace modes), catalog metadata retrieval, table schema discovery, and prepared statements. See the [ADBC Driver for Presto documentation](/drivers/presto/index.md). This is a preview release, and more features are actively being developed, so stay tuned.

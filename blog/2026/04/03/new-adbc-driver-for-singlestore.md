@@ -24,11 +24,6 @@ orphan: true
 
 # Preview of a new ADBC driver for SingleStore
 
-<p class="blog-post-meta">
-  <time datetime="2026-04-03">April 03, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 A beta release of a new ADBC driver for [SingleStore](https://www.singlestore.com/) is now available via [dbc](https://docs.columnar.tech/dbc/). If you have [dbc 0.2.0](https://columnar.tech/blog/announcing-dbc-0.2.0) or newer installed, run `dbc install singlestore --pre` to try it out today.
 
 The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, prepared statements, and transactions. See the [ADBC Driver for SingleStore documentation](/drivers/singlestore/index.md). This is a beta release, and more features are actively being developed, so stay tuned.

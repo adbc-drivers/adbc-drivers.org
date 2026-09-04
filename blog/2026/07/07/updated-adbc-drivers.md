@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Amazon Redshift, Apache DataFusion, and Microsoft SQL Server
 
-<p class="blog-post-meta">
-  <time datetime="2026-07-07">July 07, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for Amazon Redshift, Apache DataFusion, and Microsoft SQL Server, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install [redshift|datafusion|mssql]` to get the latest version.
 
 ## Updated Drivers

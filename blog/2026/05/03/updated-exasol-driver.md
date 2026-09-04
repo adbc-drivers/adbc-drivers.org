@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC driver for Exasol
 
-<p class="blog-post-meta">
-  <time datetime="2026-05-03">May 03, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released an updated driver for Exasol, version 0.12.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install exasol` to get the latest version.
 
 This release rolls up the 0.10.x and 0.11.x versions, with a variety of improvements, including defaulting to the TCP protocol instead of WebSockets for better performance. For more details, see the [full changelog](/drivers/exasol/changelog.md). To learn more about how to use the driver, check out the [ADBC Driver for Exasol documentation](/drivers/exasol/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
