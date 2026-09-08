@@ -15,7 +15,6 @@
 {}
 ---
 
-(driver-presto-prerelease)=
 # Presto
 
 :::{toctree}
