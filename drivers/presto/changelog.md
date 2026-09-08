@@ -17,6 +17,20 @@
 
 # Changelog for Presto Driver
 
+
+## v0.1.0-alpha.2 (2026-09-08)
+
+<!-- NOTE: The items below have been automatically extracted from GitHub release body. Consider each item carefully and rewrite or improve any that aren't clear enough. Remove this comment before committing. -->
+
+
+## New Features
+
+- initial ADBC driver for Presto
+
+## Bug Fixes
+
+- fix docker setup, validation suite tests, update workflow and dependencies
+
 ## v0.1.0-alpha.1 (2026-08-19)
 
 - Initial release
