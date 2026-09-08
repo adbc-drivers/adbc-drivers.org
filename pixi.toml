@@ -56,4 +56,4 @@ pre-commit = "pre-commit run --all-files --color=always --show-diff-on-failure -
 sphinx-autobuild = ">=2024.10.3,<2025"
 
 [feature.watch.tasks]
-watch = "sphinx-autobuild -b foundryhtml -E -a . _build"
+watch = "sphinx-autobuild -b foundryhtml . _build"

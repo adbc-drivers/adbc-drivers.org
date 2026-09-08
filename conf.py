@@ -30,6 +30,7 @@ import sphinxext.opengraph as opengraph
 from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
 from sphinx_design.icons import get_octicon
+from sphinx_immaterial.custom_admonitions import CustomAdmonitionDirective
 
 # ABlog formats month names with ``datetime.strftime``, which otherwise uses
 # the locale of the machine running the build. Keep the English-language site
@@ -106,6 +107,7 @@ extensions = [
 
 templates_path = ["_templates"]
 exclude_patterns = [
+    ".pytest_cache",
     ".worktrees",
     "_build",
     "Thumbs.db",
@@ -221,6 +223,17 @@ ogp_social_cards = {
     "image_mini": "_static/opengraph-blank.png",
     "line_color": "#434343",
 }
+
+# -- Options for sphinx-immaterial -------------------------------------------
+
+sphinx_immaterial_custom_admonitions = [
+    {
+        "name": "workinprogress",
+        "title": "Work In Progress",
+        "icon": "fontawesome/solid/person-digging",
+        "color": "#ff9100",
+    },
+]
 
 # -- Options for sphinx-sitemap ----------------------------------------------
 
@@ -396,6 +409,24 @@ class ExternalLinkHtmlTranslator(HTMLTranslator):
 def setup(app):
     app.set_translator("html", ExternalLinkHtmlTranslator)
     app.set_translator("foundryhtml", ExternalLinkHtmlTranslator)
+
+    # Custom admonitions can convey their message through the title alone.
+    # Keep the theme's content requirement for other admonitions.
+    original_assert_has_content = CustomAdmonitionDirective.assert_has_content
+
+    def allow_empty_custom_admonitions(app, config):
+        def assert_has_content(directive):
+            config = directive.state.document.settings.env.config
+            custom_names = {
+                admonition.name
+                for admonition in config.sphinx_immaterial_custom_admonitions
+            }
+            if directive.name not in custom_names:
+                original_assert_has_content(directive)
+
+        CustomAdmonitionDirective.assert_has_content = assert_has_content
+
+    app.connect("config-inited", allow_empty_custom_admonitions, priority=600)
 
     # sphinxext-opengraph escapes the page description for the og:description
     # meta tag, then draws that same string into the social card PNG, so a
