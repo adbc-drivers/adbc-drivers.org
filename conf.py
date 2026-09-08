@@ -106,6 +106,7 @@ extensions = [
 
 templates_path = ["_templates"]
 exclude_patterns = [
+    ".pytest_cache",
     ".worktrees",
     "_build",
     "Thumbs.db",
