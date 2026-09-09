@@ -17,6 +17,12 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.2.1 (2026-09-09)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v0.2.0 (2026-08-18)
 
 ## New Features

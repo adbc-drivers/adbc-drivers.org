@@ -17,6 +17,17 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.7.0 (2026-09-09)
+
+New features:
+
+- Cache AWS Identity Center browser authentication tokens on disk to reduce repeated browser prompts across connections and processes
+
+Fixes:
+
+- Fix `redshift.connect_timeout` and `redshift.connect_timeout_ms` being incorrectly reported as unknown options
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v1.6.0 (2026-08-18)
 
 Fixes:
