@@ -297,6 +297,31 @@ After making a repository public:
 - Enable approvers in environments.
 - In Settings > Actions, check that "Approval for running fork pull request workflows from contributors" is set to "Require approval for all external contributors" (this should be the default).
 
+## Co-promotion
+
+Once a driver is ready for release, the Foundry maintainers, Columnar, and the database vendor or project typically work together to promote it. The parties usually coordinate the timing of the release and announcements to generate as much interest as possible, with documentation and examples ready for users to get started. Typical steps are listed below.
+
+### Driver Foundry Maintainers / Columnar
+
+- Add driver usage examples to the [ADBC quickstarts repository](https://github.com/columnar-tech/adbc-quickstarts).
+- Add the driver to the official [ADBC documentation](https://arrow.apache.org/adbc/current/driver/index.html).
+- Publish driver documentation to the [ADBC Driver Foundry docs](../drivers/index.md).
+- Publish an announcement post to the [ADBC Driver Foundry blog](../blog/index.md).
+- Add the driver to the [dbc docs](https://docs.columnar.tech/dbc/) and [databow docs](https://docs.columnar.tech/databow/).
+- Add the driver to the [dbc configurator](https://columnar.tech/dbc/).
+- Add the driver to the [Awesome ADBC repository](https://github.com/columnar-tech/awesome-adbc).
+- Announce the driver in the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
+- Publish announcement posts to Columnar's [LinkedIn](https://www.linkedin.com/company/columnar-tech/), [X](https://x.com/columnar_tech), and [Bluesky](https://bsky.app/profile/columnar.tech) accounts.
+- Privately notify downstream ADBC partners about the new driver.
+
+### Database Vendor / Project
+
+- Add the driver to the product documentation. For example, see [ClickHouse's ADBC documentation](https://clickhouse.com/docs/concepts/features/interfaces/adbc).
+- Publish an announcement post to the company or project blog. For example, see [ClickHouse's driver announcement](https://clickhouse.com/blog/introducing-the-clickhouse-adbc-driver).
+- Publish announcement posts to company or project social media accounts. For example, see ClickHouse's posts on [X](https://x.com/clickhousedb/status/2075656340265967986) and [LinkedIn](https://lnkd.in/p/grWFS__P).
+- Announce the driver in the company's or project's community Slack, Discord, or other community channels.
+- Add an ADBC connection guide or option to the product UI, alongside JDBC/ODBC driver information and connection strings.
+
 ## FAQ
 
 ### Why not under apache/arrow-adbc?
