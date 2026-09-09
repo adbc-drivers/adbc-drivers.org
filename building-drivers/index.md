@@ -17,6 +17,13 @@
 
 # Building Drivers
 
+:::{toctree}
+:maxdepth: 1
+:hidden:
+
+style-guide.md
+:::
+
 :::{warning}
 **This guide is a work in progress.**
 :::
