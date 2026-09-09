@@ -22,10 +22,11 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|v0.1.0-alpha.1` {badge-secondary}`Release Date|2026-08-19` {badge-success}`Tested With|Presto 0.298`
+{badge-primary}`Driver Version|v0.1.0-alpha.2` {badge-secondary}`Release Date|2026-09-08` {badge-success}`Tested With|Presto 0.295`
 
 :::{warning}
 This is documentation for a prerelease version.
@@ -509,7 +510,7 @@ DECIMAL
 </td>
 <td style="text-align: center;">
 
-DECIMAL, NUMERIC ⚠️ [^2]
+DECIMAL ⚠️ [^2]
 
 </td>
 </tr>
@@ -812,7 +813,7 @@ TIMESTAMP(6) WITH TIME ZONE [^3]
 
 This driver was tested on:
 
-- Presto `Presto 0.298.1-9e1b45f`
+- Presto `Presto 0.299-7d50721`
 
 [^1]: Due to [presto-go-client#102](https://github.com/prestodb/presto-go-client/issues/102), the maximum integer value that can be decoded is 9223372036854774784.
 [^2]: Negative scales are not supported

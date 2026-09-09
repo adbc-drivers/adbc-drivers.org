@@ -17,6 +17,13 @@
 
 # Changelog for Trino Driver
 
+
+## v0.5.3 (2026-09-08)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v0.5.2 (2026-08-18)
 
 ## Bug Fixes

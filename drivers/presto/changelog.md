@@ -17,6 +17,13 @@
 
 # Changelog for Presto Driver
 
+
+## v0.1.0-alpha.2 (2026-09-08)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v0.1.0-alpha.1 (2026-08-19)
 
 - Initial release

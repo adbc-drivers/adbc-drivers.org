@@ -17,6 +17,13 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+
+## v0.6.1 (2026-09-08)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v0.6.0 (2026-08-18)
 
 ## New Features
