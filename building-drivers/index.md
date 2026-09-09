@@ -324,6 +324,12 @@ Once a driver is ready for release, the Foundry maintainers, Columnar, and the d
 
 ## FAQ
 
+### What is the relationship between Columnar and the ADBC Driver Foundry?
+
+The ADBC Driver Foundry is a [community project](../blog/2025/10/29/announcing-adbc-driver-foundry.md) bringing together developers from many companies and open source projects who share responsibility for its governance. Each driver has its own maintainers, who guide its development.
+
+[Columnar](https://columnar.tech) financially supports the Foundry and hosts its infrastructure. Members of Columnar's staff administer that infrastructure and currently do most of the shared support work described in this guide, including maintaining tooling, onboarding drivers, and supporting testing, packaging, and distribution.
+
 ### Why not under apache/arrow-adbc?
 
 [apache/arrow-adbc](https://github.com/apache/arrow-adbc) is under the Apache Software Foundation, and the maintenance is shared with the broader Apache Arrow project. That creates problems for driver developers and for the Arrow maintainers. For contributors focusing on particular drivers, granting them privileges for their particular projects is difficult or impossible, and the road to maintainership requires demonstrating contributions to the Arrow project as a whole. And for the Arrow maintainers, reviewing contributions and releasing drivers adds to the already large workload of a relatively small group. The Foundry solves this mismatch between the centralized privilege model of Apache projects and the federated nature of driver development.
