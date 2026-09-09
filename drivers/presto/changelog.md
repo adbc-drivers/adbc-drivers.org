@@ -20,8 +20,9 @@
 
 ## v0.1.0-alpha.2 (2026-09-08)
 
-<!-- NOTE: The items below have been automatically extracted from GitHub release body. Consider each item carefully and rewrite or improve any that aren't clear enough. Remove this comment before committing. -->
+## Bug Fixes
 
+- Update dependencies to pick up CVE fixes and bump the Go version
 
 ## New Features
 

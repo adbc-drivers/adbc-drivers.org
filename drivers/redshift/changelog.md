@@ -17,12 +17,6 @@
 
 # Changelog for Amazon Redshift Driver
 
-## v1.6.1 (2026-09-08)
-
-Fixes:
-
-- Bump the Go version to pick up CVE fixes and update dependencies
-
 ## v1.6.0 (2026-08-18)
 
 Fixes:

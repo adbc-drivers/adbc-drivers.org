@@ -22,7 +22,6 @@
 :hidden:
 
 Changelog <changelog.md>
-v1.6.1 <v1.6.1.md>
 v1.6.0 <v1.6.0.md>
 v1.5.0 <v1.5.0.md>
 v1.4.0 <v1.4.0.md>
@@ -32,7 +31,7 @@ v1.1.0 <v1.1.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.6.1`](#driver-redshift-v1.6.1 "Permalink") {badge-secondary}`Release Date|2026-09-08` {badge-success}`Tested With|Amazon Redshift aws`
+[{badge-primary}`Driver Version|v1.6.0`](#driver-redshift-v1.6.0 "Permalink") {badge-secondary}`Release Date|2026-08-18` {badge-success}`Tested With|Amazon Redshift aws`
 
 This driver provides access to [Amazon Redshift][redshift]{target="_blank"}
 (commonly referred to as just "Redshift").
@@ -471,9 +470,9 @@ string
 
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
-<col span="1" style="width: 25%;">
-<col span="1" style="width: 37.5%;">
-<col span="1" style="width: 37.5%;">
+<col span="1" style="width: 50.0%;">
+<col span="1" style="width: 25.0%;">
+<col span="1" style="width: 25.0%;">
 </colgroup>
 <thead>
 <tr>
@@ -1004,7 +1003,6 @@ TIMESTAMPTZ
 
 To see documentation for previous versions of this driver, see the following:
 
-- [v1.6.0](./v1.6.0.md)
 - [v1.5.0](./v1.5.0.md)
 - [v1.4.0](./v1.4.0.md)
 - [v1.3.0](./v1.3.0.md)

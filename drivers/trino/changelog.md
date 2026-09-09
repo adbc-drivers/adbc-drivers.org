@@ -22,7 +22,7 @@
 
 ## Bug Fixes
 
-- Bump the Go version to pick up CVE fixes and update dependencies
+- Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v0.5.2 (2026-08-18)
 
