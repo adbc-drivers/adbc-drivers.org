@@ -24,14 +24,6 @@
 
 - Update dependencies to pick up CVE fixes and bump the Go version
 
-## New Features
-
-- initial ADBC driver for Presto
-
-## Bug Fixes
-
-- fix docker setup, validation suite tests, update workflow and dependencies
-
 ## v0.1.0-alpha.1 (2026-08-19)
 
 - Initial release
