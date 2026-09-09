@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.7.0 <v1.7.0.md>
 v1.6.0 <v1.6.0.md>
 v1.5.0 <v1.5.0.md>
 v1.4.0 <v1.4.0.md>

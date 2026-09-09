@@ -25,8 +25,8 @@ Changelog <changelog.md>
 v0.2.1 <v0.2.1.md>
 v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
-v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
+v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 :::
 
 [{badge-primary}`Driver Version|v0.2.1`](#driver-spark-v0.2.1 "Permalink") {badge-secondary}`Release Date|2026-09-09` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
@@ -861,5 +861,14 @@ This driver was tested on:
 - Apache Spark `4.0.3 322ddd90b63c5d299427b7e32e255e25736db7ee (Spark Connect)`
 
 - Apache Spark `4.1.2 f0bb2e6a47d0ebda424ffd633fcea8644a597954 (Spark Connect)`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.2.0](./v0.2.0.md)
+- [v0.1.0](./v0.1.0.md)
+- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
+- [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
 
 [spark]: https://spark.apache.org/

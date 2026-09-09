@@ -23,7 +23,7 @@
 ## New Features
 
 - Add Cassandra vector column support
-- Add ScyllaDB validation coverage.
+- Add ScyllaDB validation coverage
 
 ## Bug Fixes
 

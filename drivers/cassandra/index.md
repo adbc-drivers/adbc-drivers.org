@@ -15,7 +15,6 @@
 {}
 ---
 
-(driver-cassandra-prerelease)=
 # Apache Cassandra
 
 :::{toctree}
@@ -1168,6 +1167,12 @@ This driver was tested on:
 - DataStax Enterprise `4.0.0.6925`
 
 - ScyllaDB `3.0.8`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.1.0-alpha.1](./v0.1.0-alpha.1.md)
 
 [^1]: The order of entries within a map value is not deterministic: the underlying gocql driver unmarshals a CQL map into a Go map, whose iteration order is randomized. All keys and values are returned correctly, but two identical queries may return a map's entries in a different order.
 [^2]: The driver can only bind CQL collections or vectors of float from Arrow float32 elements. Libraries such as PyArrow infer Python floating-point values as Arrow float64 by default; those inferred values cannot be bound directly.
