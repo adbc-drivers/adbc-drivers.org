@@ -17,6 +17,13 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+## v1.6.2 (2026-09-10)
+
+Fixes:
+
+- Prevent excessive memory allocation when parsing malformed GeoArrow WKB values
+- Update dependencies to pick up CVE fixes and bump the Go version
+
 ## v1.6.1 (2026-08-18)
 
 Fixes:
