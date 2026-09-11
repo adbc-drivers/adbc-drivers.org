@@ -17,6 +17,25 @@
 
 # Changelog for BigQuery Driver
 
+## v1.13.0 (2026-09-10)
+
+New features:
+
+- Return hidden datasets from GetObjects
+- Add normalized BigQuery job statistics keys to result set schema metadata
+- Skip inaccessible tables in GetObjects
+- Include links to BigQuery jobs in error messages
+- Map Google Cloud API errors to more specific ADBC status codes
+- Add `BIGQUERY:query_id` to result set schema metadata
+- Support SCRIPT queries that return result sets
+
+Fixes:
+
+- Exclude hidden datasets from GetStatistics
+- Cancel server-side BigQuery jobs when statement execution is cancelled or result reading stops early
+- Restrict statement cancellation to active execution
+- Apply polling backoff consistently while waiting for jobs
+- Allow empty impersonation delegate and scope values
 
 ## v1.12.2 (2026-08-25)
 
