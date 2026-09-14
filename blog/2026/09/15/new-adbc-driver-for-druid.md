@@ -55,7 +55,7 @@ connection = dbapi.connect(
     db_kwargs={"uri": "druid://localhost:8888?tls=false"},
 )
 cursor = connection.cursor()
-cursor.execute("SELECT channel, page, added FROM wikipedia LIMIT 10")
+cursor.execute("SELECT * FROM my_table")
 table = cursor.fetch_arrow_table()
 ```
 
