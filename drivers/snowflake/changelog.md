@@ -17,6 +17,18 @@
 
 # Changelog for ADBC Driver for Snowflake
 
+## v1.14.0 (2026-09-14)
+
+New features:
+
+- Add `adbc.snowflake.sql.client_option.validate_default_parameters` option to control validation of default connection parameters
+
+Fixes:
+
+- Preserve Snowflake timestamp scale in Arrow and JSON query results
+- Detect incompatible source and target schemas during append bulk ingest
+- Avoid a potential panic when escaping LIKE patterns
+
 ## v1.13.0 (2026-08-18)
 
 ## New Features
