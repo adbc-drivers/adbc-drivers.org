@@ -15,7 +15,6 @@
 {}
 ---
 
-(driver-druid-prerelease)=
 # Apache Druid
 
 :::{toctree}
