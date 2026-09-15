@@ -106,6 +106,7 @@ extensions = [
 
 templates_path = ["_templates"]
 exclude_patterns = [
+    ".pytest_cache",
     ".worktrees",
     "_build",
     "Thumbs.db",
@@ -285,6 +286,9 @@ driver_header_links_config = {
     ],
     "datafusion": [
         {"url": "https://github.com/adbc-drivers/datafusion", "label": "GitHub"},
+    ],
+    "druid": [
+        {"url": "https://github.com/adbc-drivers/druid", "label": "GitHub"},
     ],
     "exasol": [
         {"url": "https://github.com/adbc-drivers/exasol", "label": "GitHub"},

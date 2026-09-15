@@ -100,6 +100,25 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/druid/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**Apache Druid**
+:::{image} _static/driver_icons/color/light_mode/druid.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/druid.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: drivers/spark/index
 :link-type: doc
 :class-body: sd-card-with-icon
