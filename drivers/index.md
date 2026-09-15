@@ -31,6 +31,7 @@ cassandra/index.md
 clickhouse/index.md
 databricks/index.md
 datafusion/index.md
+druid/index.md
 exasol/index.md
 mssql/index.md
 mysql/index.md
