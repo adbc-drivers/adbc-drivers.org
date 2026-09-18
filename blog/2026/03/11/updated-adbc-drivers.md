@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for BigQuery, MySQL, Oracle Database, Redshift, SQL Server, Snowflake, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-03-11">March 11, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for six database systems, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install <driver>` to get the latest version.
 
 ## Updated Drivers

@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Microsoft SQL Server, MySQL/MariaDB, Oracle Database, Presto, Snowflake, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-09-14">September 14, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updates to drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Microsoft SQL Server, MySQL/MariaDB, Oracle Database, Presto, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).[^private]
 
 ## Updated Drivers

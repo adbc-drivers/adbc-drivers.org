@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Apache DataFusion, Exasol, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-06-08">June 08, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for Apache DataFusion, Exasol, and Trino, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install [datafusion|exasol|trino]` to get the latest version.
 
 ## Updated Drivers

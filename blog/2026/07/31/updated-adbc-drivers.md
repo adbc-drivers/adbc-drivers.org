@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for Amazon Redshift, Microsoft SQL Server, Snowflake, and Trino
 
-<p class="blog-post-meta">
-  <time datetime="2026-07-31">July 31, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updates to drivers for Amazon Redshift, Microsoft SQL Server, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).
 
 ## Updated Drivers

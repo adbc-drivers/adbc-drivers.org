@@ -24,11 +24,6 @@ orphan: true
 
 # New ADBC driver for Apache DataFusion
 
-<p class="blog-post-meta">
-  <time datetime="2026-05-27">May 27, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 A new ADBC driver for [Apache DataFusion](https://datafusion.apache.org) is now available via [dbc](https://docs.columnar.tech/dbc/). Run `dbc install datafusion` to try it out today.
 
 The driver supports query execution, bulk ingestion (create, append, and replace modes), catalog metadata retrieval, and prepared statements. See the [ADBC Driver for DataFusion documentation](/drivers/datafusion/index.md). The driver was developed in Rust by the ADBC Driver Foundry based on the driver originally available from `apache/arrow-adbc`, but has been extended with new features and bug fixes.

@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC driver for Apache Spark
 
-<p class="blog-post-meta">
-  <time datetime="2026-07-20">July 20, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released an updated driver for Apache Spark, version 0.1.0, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install spark` to get the latest version — no `--pre` flag needed, as this is the driver's first release out of alpha/beta.
 
 Version 0.1.0 implements GetTableSchema and adds an option to set the catalog on initial connect, along with other bug fixes.

@@ -24,11 +24,6 @@ orphan: true
 
 # Updated ADBC drivers for BigQuery and Oracle Database
 
-<p class="blog-post-meta">
-  <time datetime="2026-06-22">June 22, 2026</time>
-  <span class="blog-post-author">ADBC Drivers Contributors</span>
-</p>
-
 Today the ADBC Drivers Contributors released updated drivers for BigQuery and Oracle Database, available immediately via [dbc](https://docs.columnar.tech/dbc/). To update, just `dbc install [bigquery|oracle]` to get the latest version[^trial].
 
 ## Updated Drivers
