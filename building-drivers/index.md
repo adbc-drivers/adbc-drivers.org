@@ -17,8 +17,17 @@
 
 # Building Drivers
 
-:::{warning}
-**This guide is a work in progress.**
+:::{toctree}
+:maxdepth: 1
+:hidden:
+
+style-guide.md
+build-system.md
+shared-library-requirements.md
+common-footguns.md
+:::
+
+:::{workinprogress}
 :::
 
 In ADBC's first years, only a handful of drivers existed. Most were built by a small group of core developers within the Apache Arrow project, and a few by independent community members. Then ADBC went mainstream, and demand for new drivers exploded. At the same time, the vendors behind the databases, query engines, and data platforms that ADBC connects to wanted an active role in the direction and maintenance of their own drivers. The centralized Apache Software Foundation governance model was ill-suited to both: it funneled every contribution through the small group of core maintainers who could review and merge it, and it gave vendors no real ownership of the drivers that carried their names.
