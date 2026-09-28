@@ -32,7 +32,7 @@ ADBC option keys should follow this format:
 vendor[.components].option
 ```
 
-Rationale: the `vendor.` prefix differentiates the option from other drivers' options and from those defined by ADBC itself. The ADBC spec uses unprefixed option names (like `uri`) so this prevents conflicts.
+Rationale: the `vendor.` prefix differentiates the option from other drivers' options and from those defined by ADBC itself. The ADBC spec uses the `adbc.` prefix[^adbc-prefix], so custom option names should avoid using the same prefix to avoid confusion.
 
 ADBC option keys should follow these rules:
 
@@ -43,6 +43,8 @@ Examples:
 
 - ❌ `adbc.bigquery.sql.endpoint`—setting the API endpoint has nothing to do with SQL, and we already know this is an ADBC driver.
 - ✔️ `bigquery.endpoint`
+
+[^adbc-prefix]: There are exceptions, e.g. connection options like `uri` tend not to use prefixes.
 
 ### Schema Metadata Key Naming
 
