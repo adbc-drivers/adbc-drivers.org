@@ -17,7 +17,14 @@
 
 # Changelog for Exasol Driver
 
-For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
+(exasol-v0-16-0)=
+## v0.16.0 (2026-10-05)
+
+Fixes:
+
+- Enforce configured query timeouts on the server instead of the client, preventing
+  a timed-out client from leaving the connection out of sync with the server. When
+  no timeout is configured, Exasol's server-side `QUERY_TIMEOUT` applies.
 
 (exasol-v0-13-0)=
 ## v0.13.0 (2026-07-06)
