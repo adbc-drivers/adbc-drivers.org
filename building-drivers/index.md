@@ -360,15 +360,15 @@ Drivers that do not quite meet these requirements but want to make an initial re
 
 ### After I build my driver, how does it become available with dbc?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### Who is responsible for releasing?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### Who is responsible for responding to issues?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### What's the best language for writing drivers?
 
