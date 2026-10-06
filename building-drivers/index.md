@@ -59,7 +59,7 @@ Your code can live in a repo in the [adbc-drivers](https://github.com/adbc-drive
 At a high level, here's what the process looks like to go from zero to a fully released and dbc-installable driver.
 
 1. File an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding). Fill in the template describing the driver you want to build or contribute.
-2. A Foundry administrator creates a repo for your driver in the adbc-drivers organization.
+2. A Foundry administrator creates a repo (or build-only repo) for your driver in the adbc-drivers organization.
 3. A Foundry administrator adds templates with common workflows, CI, and validation.
 4. They invite members of your team and give you appropriate access.
 5. You develop the driver as you see fit.
