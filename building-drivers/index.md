@@ -44,6 +44,7 @@ Concretely, the Foundry provides:
 - A flexible and extensible driver validation suite to help you test and document your driver's capabilities
 - A place to host documentation for your driver (this website)
 
+(building-drivers-contact)=
 If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w) or to file an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding).
 
 ## Repository Modes
@@ -180,7 +181,7 @@ It is recommended to generate the documentation from a full run of the test suit
 
 ### Benchmarks & Performance Testing
 
-We are working on infrastructure for benchmarking. Please talk to us if you would like to learn more.
+We are working on infrastructure for benchmarking. Please {ref}`talk to us <building-drivers-contact>` if you would like to learn more.
 
 ### CI, Build, and Release
 
@@ -214,7 +215,7 @@ If you include a `compose.yaml`, you can run tests/validation against a containe
 
 Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license). If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>` and build your driver in Rust, this will be enforced for you by [cargo-about](https://embarkstudios.github.io/cargo-about/).
 
-If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please talk with us.
+If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please {ref}`talk with us <building-drivers-contact>`.
 
 For Apache-licensed repositories:
 
@@ -252,7 +253,7 @@ For Apache-licensed repositories:
 
 If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>`, then pushing a tag will trigger a build-test-release that ends with a new release on GitHub containing packages that we can then upload to the CDN. Otherwise, you will need to generate appropriate packages yourself; you can see the [packaging script](https://github.com/adbc-drivers/dev/blob/main/adbc_drivers_dev/package.py) as a reference for the format. You will also need to generate a `manifest.toml` and ideally a documentation page (again, all of this is handled by the standard CI workflows).
 
-Once you have a GitHub release with the expected formats, let a Foundry administrator know so we can check the release and upload it to the dbc CDN.
+Once you have a GitHub release with the expected formats, {ref}`let a Foundry administrator know <building-drivers-contact>` so we can check the release and upload it to the dbc CDN.
 
 ### Repository Standards
 
