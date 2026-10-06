@@ -100,7 +100,7 @@ Components:
 (building-drivers-internal-tooling)=
 ### Internal Tooling/Templating
 
-The Foundry maintains a set of scripts that are used to build, test, and release the drivers. We ask that your driver include these scripts, even if you do not make use of them yourself, as they prepare artifacts in the right format and help us amortize maintenance across all the drivers. (For example, they build Linux drivers in a container to ensure they don't depend on too new of a glibc.)
+The Foundry maintains a set of scripts that are used to build, test, and release the drivers. We ask that your driver include these scripts, even if you do not make use of them yourself, as they prepare artifacts in the right format and help us amortize maintenance across all the drivers. (For example, they build Linux drivers in a container to ensure they don't depend on a glibc that's too new.)
 
 These scripts are all invoked through [pixi](https://pixi.prefix.dev/latest/). We also maintain a tool in [adbc-drivers/dev](https://github.com/adbc-drivers/dev) that templates out common GitHub Actions workflows and the pixi config itself, so that you do not have to update this yourself. It can be run as follows (using [uv](https://docs.astral.sh/uv/)):
 
