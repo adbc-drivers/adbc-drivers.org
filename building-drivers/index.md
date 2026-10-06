@@ -41,9 +41,10 @@ Concretely, the Foundry provides:
 - A home for your drivers in our [adbc-drivers](https://github.com/adbc-drivers) GitHub organization
 - Well-tested and feature complete SDKs for building drivers in a variety of languages
 - Ready to run CI workflows for building, testing, and releasing drivers on all major platforms
-- A flexible and extensible driver validation suite to help you test and document your drivers capabilities
+- A flexible and extensible driver validation suite to help you test and document your driver's capabilities
 - A place to host documentation for your driver (this website)
 
+(building-drivers-contact)=
 If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w) or to file an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding).
 
 ## Repository Modes
@@ -59,7 +60,7 @@ Your code can live in a repo in the [adbc-drivers](https://github.com/adbc-drive
 At a high level, here's what the process looks like to go from zero to a fully released and dbc-installable driver.
 
 1. File an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding). Fill in the template describing the driver you want to build or contribute.
-2. A Foundry administrator creates a repo for your driver in the adbc-drivers organization.
+2. A Foundry administrator creates a repo (or build-only repo) for your driver in the adbc-drivers organization.
 3. A Foundry administrator adds templates with common workflows, CI, and validation.
 4. They invite members of your team and give you appropriate access.
 5. You develop the driver as you see fit.
@@ -99,7 +100,7 @@ Components:
 (building-drivers-internal-tooling)=
 ### Internal Tooling/Templating
 
-The Foundry maintains a set of scripts that are used to build, test, and release the drivers. We ask that your driver include these scripts, even if you do not make use of them yourself, as they prepare artifacts in the right format and help us amortize maintenance across all the drivers. (For example, they build Linux drivers in a container to ensure they don't depend on too new of a glibc.)
+The Foundry maintains a set of scripts that are used to build, test, and release the drivers. We ask that your driver include these scripts, even if you do not make use of them yourself, as they prepare artifacts in the right format and help us amortize maintenance across all the drivers. (For example, they build Linux drivers in a container to ensure they don't depend on a glibc that's too new.)
 
 These scripts are all invoked through [pixi](https://pixi.prefix.dev/latest/). We also maintain a tool in [adbc-drivers/dev](https://github.com/adbc-drivers/dev) that templates out common GitHub Actions workflows and the pixi config itself, so that you do not have to update this yourself. It can be run as follows (using [uv](https://docs.astral.sh/uv/)):
 
@@ -126,7 +127,7 @@ The Foundry provides a validation suite at [adbc-drivers/validation](https://git
 
 Specifically, the validation suite is a [pytest](https://docs.pytest.org/en/stable/) test suite designed to be overridden and customized for your particular driver. It loads the driver shared library, tests different driver features like the metadata catalog, and runs a series of queries and bulk ingest operations. The test suite records the results and asserts that the expected Arrow data types, result data, etc. are received. This tests both feature completeness and correctness. The results are used to generate documentation showing users supported features and how the driver maps your database's column types to Arrow data types and vice versa.
 
-If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We the Foundry administrators ask that you run this suite so that we can include the documentation on [adbc-drivers.org](/index.md).
+If you use the standard CI pipelines described below, then this suite will be run for each PR and release, and the generated documentation will be included in the release artifacts. We ask that you run this suite so that we can include the documentation on [adbc-drivers.org](/index.md).
 
 #### Bootstrapping
 
@@ -180,7 +181,7 @@ It is recommended to generate the documentation from a full run of the test suit
 
 ### Benchmarks & Performance Testing
 
-We are working on infrastructure for benchmarking. Please talk to us if you would like to learn more.
+We are working on infrastructure for benchmarking. Please {ref}`talk to us <building-drivers-contact>` if you would like to learn more.
 
 ### CI, Build, and Release
 
@@ -214,7 +215,7 @@ If you include a `compose.yaml`, you can run tests/validation against a containe
 
 Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license). If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>` and build your driver in Rust, this will be enforced for you by [cargo-about](https://embarkstudios.github.io/cargo-about/).
 
-If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please talk with us.
+If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please {ref}`talk with us <building-drivers-contact>`.
 
 For Apache-licensed repositories:
 
@@ -252,7 +253,7 @@ For Apache-licensed repositories:
 
 If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>`, then pushing a tag will trigger a build-test-release that ends with a new release on GitHub containing packages that we can then upload to the CDN. Otherwise, you will need to generate appropriate packages yourself; you can see the [packaging script](https://github.com/adbc-drivers/dev/blob/main/adbc_drivers_dev/package.py) as a reference for the format. You will also need to generate a `manifest.toml` and ideally a documentation page (again, all of this is handled by the standard CI workflows).
 
-Once you have a GitHub release with the expected formats, let a Foundry administrator know so we can check the release and upload it to the dbc CDN.
+Once you have a GitHub release with the expected formats, {ref}`let a Foundry administrator know <building-drivers-contact>` so we can check the release and upload it to the dbc CDN.
 
 ### Repository Standards
 
@@ -359,15 +360,15 @@ Drivers that do not quite meet these requirements but want to make an initial re
 
 ### After I build my driver, how does it become available with dbc?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### Who is responsible for releasing?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### Who is responsible for responding to issues?
 
-[TODO](https://github.com/adbc-drivers/docs.adbc-drivers.org/issues/97)
+[TODO](https://github.com/adbc-drivers/adbc-drivers.org/issues/97)
 
 ### What's the best language for writing drivers?
 
