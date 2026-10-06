@@ -19,7 +19,7 @@
 ## Reporting Issues
 
 Please file issues on the GitHub issue tracker:
-https://github.com/adbc-drivers/docs.adbc-drivers.org/issues
+https://github.com/adbc-drivers/adbc-drivers.org/issues
 
 > [!TIP]
 >
@@ -31,7 +31,7 @@ https://github.com/adbc-drivers/docs.adbc-drivers.org/issues
 
 Potential security vulnerabilities should be reported to
 [security@adbc-drivers.org](mailto:security@adbc-drivers.org) instead.  See
-[SECURITY.md](https://github.com/adbc-drivers/docs.adbc-drivers.org?tab=security-ov-file#readme).
+[SECURITY.md](https://github.com/adbc-drivers/adbc-drivers.org?tab=security-ov-file#readme).
 
 ## Opening a Pull Request
 
@@ -75,4 +75,4 @@ to see the available tasks.
 
 ## Code of Conduct
 
-Contributors are expected to follow our [Code of Conduct](https://github.com/adbc-drivers/docs.adbc-drivers.org?tab=coc-ov-file).
+Contributors are expected to follow our [Code of Conduct](https://github.com/adbc-drivers/adbc-drivers.org?tab=coc-ov-file).
