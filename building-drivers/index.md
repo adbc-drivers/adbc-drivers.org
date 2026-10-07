@@ -44,6 +44,7 @@ Concretely, the Foundry provides:
 - A flexible and extensible driver validation suite to help you test and document your driver's capabilities
 - A place to host documentation for your driver (this website)
 
+(building-drivers-contact)=
 If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to start a [Discussion on GitHub](https://github.com/orgs/adbc-drivers/discussions), join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w), or send us an email at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
 
 ## Repository Modes
