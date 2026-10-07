@@ -45,7 +45,7 @@ Concretely, the Foundry provides:
 - A place to host documentation for your driver (this website)
 
 (building-drivers-contact)=
-If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w) or to file an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding).
+If you're interested in building a driver with the Foundry, continue reading to understand the process. If you have any questions, we encourage you to start a [Discussion on GitHub](https://github.com/orgs/adbc-drivers/discussions), join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w), or send us an email at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org).
 
 ## Repository Modes
 
@@ -59,8 +59,11 @@ Your code can live in a repo in the [adbc-drivers](https://github.com/adbc-drive
 
 At a high level, here's what the process looks like to go from zero to a fully released and dbc-installable driver.
 
-1. File an issue at [adbc-drivers/onboarding](https://github.com/adbc-drivers/onboarding). Fill in the template describing the driver you want to build or contribute.
-2. A Foundry administrator creates a repo (or build-only repo) for your driver in the adbc-drivers organization.
+1. Get in touch to let us know what driver you want to build:
+    - Start a [Discussion on GitHub](https://github.com/orgs/adbc-drivers/discussions)
+    - Join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w)
+    - Email us at [hello@adbc-drivers.org](mailto:hello@adbc-drivers.org)
+2. A Foundry administrator creates a repo for your driver in the adbc-drivers organization.
 3. A Foundry administrator adds templates with common workflows, CI, and validation.
 4. They invite members of your team and give you appropriate access.
 5. You develop the driver as you see fit.
