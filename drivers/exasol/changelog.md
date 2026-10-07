@@ -19,6 +19,15 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+(exasol-v0-16-0)=
+## v0.16.0 (2026-10-05)
+
+Fixes:
+
+- Remove the default 300-second client-side query timeout. Configured query timeouts
+  are now enforced by Exasol; otherwise, the server's `QUERY_TIMEOUT` setting
+  applies.
+
 (exasol-v0-13-0)=
 ## v0.13.0 (2026-07-06)
 
