@@ -15,7 +15,6 @@
 {}
 ---
 
-(driver-presto-prerelease)=
 # Presto
 
 :::{toctree}
@@ -23,8 +22,8 @@
 :hidden:
 
 Changelog <changelog.md>
-v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
+v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
@@ -42,7 +41,7 @@ open-source distributed SQL query engine.
 The Presto driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install presto
+dbc install --pre presto
 ```
 
 ## Connecting
