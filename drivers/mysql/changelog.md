@@ -17,6 +17,16 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+## v0.7.0 (2026-10-09)
+
+## New Features
+
+- Handle prepared unsigned bigint
+
+## Bug Fixes
+
+- Accept target database via catalog
+- Update dependencies to pick up CVE fixes
 
 ## v0.6.1 (2026-09-08)
 
