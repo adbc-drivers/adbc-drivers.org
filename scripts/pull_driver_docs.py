@@ -114,11 +114,23 @@ def get_all_versions_from_filesystem(driver_dir: Path) -> list[str]:
 
     # Sort by semantic version (newest first)
     def version_key(v: str) -> tuple:
-        # Extract just the numeric part for sorting (v1.2.3-rc1 -> 1.2.3)
-        match = re.match(r"^v(\d+)\.(\d+)\.(\d+)", v)
-        if match:
-            return tuple(int(p) for p in match.groups())
-        return (0, 0, 0)  # Fallback for malformed versions
+        match = re.match(r"^v(\d+)\.(\d+)\.(\d+)(?:-([^+]+))?", v)
+        if not match:
+            return (0, 0, 0, False, ())  # Fallback for malformed versions
+
+        core = tuple(int(p) for p in match.groups()[:3])
+        prerelease = match.group(4)
+        # Numeric identifiers sort numerically and before text identifiers.
+        prerelease_key = (
+            tuple(
+                (0, int(part)) if part.isdigit() else (1, part)
+                for part in prerelease.split(".")
+            )
+            if prerelease
+            else ()
+        )
+        # A final release sorts above its prereleases; build metadata is ignored.
+        return (*core, prerelease is None, prerelease_key)
 
     return sorted(versions, key=version_key, reverse=True)
 
@@ -165,7 +177,7 @@ def build_previous_versions_section(
 def update_previous_versions_section(
     content: str, all_versions: list[str], current_version: str
 ) -> str:
-    """Replace Previous Versions section in content with filesystem-based list."""
+    """Replace or insert Previous Versions using the filesystem-based list."""
     lines = content.split("\n")
 
     # Find Previous Versions section
@@ -175,35 +187,34 @@ def update_previous_versions_section(
     for i, line in enumerate(lines):
         if line.startswith("## Previous Versions"):
             prev_versions_start = i
-            # Find the end (next ## heading or footnotes or end of file)
+            # Find the end (next heading, reference definition, or end of file).
+            prev_versions_end = len(lines)
             for j in range(i + 1, len(lines)):
-                if lines[j].startswith("##") or lines[j].startswith("[^"):
+                if lines[j].startswith("##") or re.match(r"^\[[^\]]+\]:", lines[j]):
                     prev_versions_end = j
                     break
-            if prev_versions_end == -1:
-                # Section goes to end of file, but stop before footnotes
-                for j in range(len(lines) - 1, i, -1):
-                    if (
-                        lines[j].strip()
-                        and not lines[j].startswith("[^")
-                        and not lines[j].startswith("[")
-                    ):
-                        prev_versions_end = j + 1
-                        break
             break
 
     if prev_versions_start != -1:
         new_prev_section = build_previous_versions_section(
             all_versions, current_version
         )
-        if prev_versions_end != -1:
-            lines = (
-                lines[:prev_versions_start]
-                + new_prev_section
-                + lines[prev_versions_end:]
-            )
-        else:
-            lines = lines[:prev_versions_start] + new_prev_section
+        lines = (
+            lines[:prev_versions_start] + new_prev_section + lines[prev_versions_end:]
+        )
+    elif any(version != current_version for version in all_versions):
+        # Keep footnotes and reference definitions after the new section.
+        insert_pos = next(
+            (i for i, line in enumerate(lines) if re.match(r"^\[[^\]]+\]:", line)),
+            len(lines),
+        )
+        before = lines[:insert_pos]
+        while before and not before[-1].strip():
+            before.pop()
+        new_prev_section = build_previous_versions_section(
+            all_versions, current_version
+        )
+        lines = before + [""] + new_prev_section + lines[insert_pos:]
 
     return "\n".join(lines)
 
@@ -576,6 +587,14 @@ def main():
 
     # Read the downloaded content
     new_content = temp_md.read_text()
+
+    # Give prerelease snapshots unique anchors before generating either page.
+    new_content = re.sub(
+        rf"^\(driver-{re.escape(repo_name)}-prerelease\)=$",
+        f"(driver-{repo_name}-{version})=",
+        new_content,
+        flags=re.MULTILINE,
+    )
 
     # Copy to version-specific file first (so it appears in filesystem)
     print(f"Copying {repo_name}.md -> {version}.md...")
