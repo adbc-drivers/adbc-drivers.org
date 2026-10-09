@@ -18,6 +18,17 @@
 # Changelog for Trino Driver
 
 
+
+## v0.6.0 (2026-10-09)
+
+## New Features
+
+- Support transactions
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.5.3 (2026-09-08)
 
 ## Bug Fixes
