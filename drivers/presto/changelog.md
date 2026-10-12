@@ -29,10 +29,6 @@
 
 - Update dependencies to pick up CVE fixes
 
-## Documentation Updates
-
-- Document connection options
-
 ## v0.1.0-alpha.2 (2026-09-08)
 
 ## Bug Fixes

@@ -21,11 +21,11 @@
 
 ## New Features
 
-- Handle prepared unsigned bigint
+- Support reading `BIGINT UNSIGNED` values above the signed 64-bit maximum through prepared statements
 
 ## Bug Fixes
 
-- Accept target database via catalog
+- Accept target database via catalog for bulk ingestion
 - Update dependencies to pick up CVE fixes
 
 ## v0.6.1 (2026-09-08)

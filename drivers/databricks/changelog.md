@@ -23,6 +23,7 @@
 ## New Features
 
 - Support named query parameters
+- Support decimal data types
 
 ## Bug Fixes
 
