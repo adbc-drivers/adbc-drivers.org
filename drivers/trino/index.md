@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.6.0 <v0.6.0.md>
 v0.5.3 <v0.5.3.md>
 v0.5.2 <v0.5.2.md>
 v0.5.1 <v0.5.1.md>
@@ -33,7 +34,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.5.3`](#driver-trino-v0.5.3 "Permalink") {badge-secondary}`Release Date|2026-09-08` {badge-success}`Tested With|Trino 483`
+[{badge-primary}`Driver Version|v0.6.0`](#driver-trino-v0.6.0 "Permalink") {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|Trino 483`
 
 This driver provides access to [Trino][trino], a free and
 open-source distributed SQL query engine.
@@ -54,10 +55,8 @@ To use the driver, provide a Trino connection string as the `uri` option. The dr
 from adbc_driver_manager import dbapi
 
 dbapi.connect(
-  driver="trino",
-  db_kwargs={
-      "uri": "http://user@localhost:8080?catalog=tcph&schema=tiny"
-  }
+    driver="trino",
+    db_kwargs={"uri": "http://user@localhost:8080?catalog=tcph&schema=tiny"},
 )
 ```
 
@@ -197,7 +196,7 @@ The driver also supports the Trino DSN format (see [Go Trino Client documentatio
     </tr>
     <tr>
       <td colspan="2">Transactions</td>
-      <td colspan="1" style="text-align: center;">❌</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
   </tbody>
 </table>
@@ -969,6 +968,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.5.3](./v0.5.3.md)
 - [v0.5.2](./v0.5.2.md)
 - [v0.5.1](./v0.5.1.md)
 - [v0.5.0](./v0.5.0.md)

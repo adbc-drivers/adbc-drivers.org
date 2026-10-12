@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.7.0 <v0.7.0.md>
 v0.6.1 <v0.6.1.md>
 v0.6.0 <v0.6.0.md>
 v0.5.0 <v0.5.0.md>
@@ -32,7 +33,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.6.1`](#driver-mysql-v0.6.1 "Permalink") {badge-secondary}`Release Date|2026-09-08` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|MariaDB 12.2` {badge-success}`Tested With|Databend 12.2`
+[{badge-primary}`Driver Version|v0.7.0`](#driver-mysql-v0.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|MariaDB 12.2` {badge-success}`Tested With|Databend 12.2`
 
 This driver provides access to [MySQL][mysql] and [MariaDB][mariadb], free and
 open-source relational database management systems.
@@ -53,10 +54,7 @@ To connect, edit the `uri` option below to match your environment and run the fo
 from adbc_driver_manager import dbapi
 
 conn = dbapi.connect(
-  driver="mysql",
-  db_kwargs = {
-    "uri": "mysql://root@localhost:3306/demo"
-  }
+    driver="mysql", db_kwargs={"uri": "mysql://root@localhost:3306/demo"}
 )
 ```
 
@@ -166,7 +164,8 @@ Examples:
     </tr>
     <tr>
       <td>Target Catalog</td>
-      <td colspan="3" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Target Schema</td>
@@ -217,6 +216,10 @@ Examples:
     </tr>
   </tbody>
 </table>
+
+### Catalog and Schema Support
+
+MySQL only has databases. The driver treats MySQL databases as catalogs and leaves schemas empty. To explicitly specify the database name when querying the catalog, bulk ingesting, or in other operations, pass it as the ADBC catalog.
 
 ### Types
 
@@ -1254,6 +1257,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.6.1](./v0.6.1.md)
 - [v0.6.0](./v0.6.0.md)
 - [v0.5.0](./v0.5.0.md)
 - [v0.4.0](./v0.4.0.md)

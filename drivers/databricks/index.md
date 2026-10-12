@@ -1,5 +1,5 @@
 ---
-# Copyright (c) 2025 ADBC Drivers Contributors
+# Copyright (c) 2026 ADBC Drivers Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,11 +22,12 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.2.0 <v0.2.0.md>
 v0.1.3 <v0.1.3.md>
 v0.1.2 <v0.1.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.1.3`](#driver-databricks-v0.1.3 "Permalink") {badge-secondary}`Release Date|2026-07-15` {badge-success}`Tested With|Databricks 17`
+[{badge-primary}`Driver Version|v0.2.0`](#driver-databricks-v0.2.0 "Permalink") {badge-success}`Tested With|Databricks 17`
 
 This driver provides access to [Databricks][databricks], a
 cloud-based platform for data analytics.
@@ -52,10 +53,10 @@ To connect, edit the `uri` option below to match your environment and run the fo
 from adbc_driver_manager import dbapi
 
 conn = dbapi.connect(
-  driver="databricks",
-  db_kwargs = {
-    "uri": "databricks://token:dapi1234abcd5678efgh@dbc-a1b2345c-d6e7.cloud.databricks.com:443/sql/protocolv1/o/1234567890123456/1234-567890-abcdefgh"
-  }
+    driver="databricks",
+    db_kwargs={
+        "uri": "databricks://token:dapi1234abcd5678efgh@dbc-a1b2345c-d6e7.cloud.databricks.com:443/sql/protocolv1/o/1234567890123456/1234-567890-abcdefgh"
+    },
 )
 ```
 
@@ -228,7 +229,7 @@ Examples:
 * - INT
   - int32
 * - NUMERIC
-  - ❌
+  - decimal128
 * - REAL
   - float
 * - SMALLINT
@@ -256,12 +257,9 @@ Examples:
   </tr>
 <tr>
   <td>binary</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -270,12 +268,9 @@ VARBINARY
 </tr>
 <tr>
   <td>binary_view</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -284,12 +279,9 @@ VARBINARY
 </tr>
 <tr>
   <td>bool</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 BOOLEAN
 
@@ -298,12 +290,9 @@ BOOLEAN
 </tr>
 <tr>
   <td>date32[day]</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATE
 
@@ -316,19 +305,16 @@ DATE
 
 <td colspan="2" style="text-align: center;">
 
-❌
+NUMERIC
 
 </td>
 
 </tr>
 <tr>
   <td>double</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DOUBLE PRECISION
 
@@ -337,12 +323,9 @@ DOUBLE PRECISION
 </tr>
 <tr>
   <td>fixed_size_binary</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -351,12 +334,9 @@ VARBINARY
 </tr>
 <tr>
   <td>float</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 REAL
 
@@ -367,7 +347,7 @@ REAL
   <td>halffloat</td>
 <td style="text-align: center;">
 
-❌
+REAL
 
 </td>
 <td style="text-align: center;">
@@ -379,12 +359,9 @@ REAL
 </tr>
 <tr>
   <td>int16</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 SMALLINT
 
@@ -393,12 +370,9 @@ SMALLINT
 </tr>
 <tr>
   <td>int32</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 INT
 
@@ -407,12 +381,9 @@ INT
 </tr>
 <tr>
   <td>int64</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 BIGINT
 
@@ -421,12 +392,9 @@ BIGINT
 </tr>
 <tr>
   <td>large_binary</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -435,12 +403,9 @@ VARBINARY
 </tr>
 <tr>
   <td>large_string</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -449,12 +414,9 @@ VARCHAR
 </tr>
 <tr>
   <td>string</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -463,12 +425,9 @@ VARCHAR
 </tr>
 <tr>
   <td>string_view</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -535,7 +494,7 @@ VARCHAR
   <td>timestamp[ms]</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(3)
 
 </td>
 <td style="text-align: center;">
@@ -549,7 +508,7 @@ TIMESTAMP_NTZ
   <td>timestamp[ms] (with time zone)</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(3) WITH TIME ZONE
 
 </td>
 <td style="text-align: center;">
@@ -563,7 +522,7 @@ TIMESTAMP
   <td>timestamp[ns]</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(9)
 
 </td>
 <td style="text-align: center;">
@@ -577,7 +536,7 @@ TIMESTAMP_NTZ
   <td>timestamp[ns] (with time zone)</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(9) WITH TIME ZONE
 
 </td>
 <td style="text-align: center;">
@@ -591,7 +550,7 @@ TIMESTAMP
   <td>timestamp[s]</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(0)
 
 </td>
 <td style="text-align: center;">
@@ -605,7 +564,7 @@ TIMESTAMP_NTZ
   <td>timestamp[s] (with time zone)</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(0) WITH TIME ZONE
 
 </td>
 <td style="text-align: center;">
@@ -617,12 +576,9 @@ TIMESTAMP
 </tr>
 <tr>
   <td>timestamp[us]</td>
-<td style="text-align: center;">
 
-❌
 
-</td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP(6)
 
@@ -633,7 +589,7 @@ TIMESTAMP(6)
   <td>timestamp[us] (with time zone)</td>
 <td style="text-align: center;">
 
-❌
+TIMESTAMP(6) WITH TIME ZONE
 
 </td>
 <td style="text-align: center;">
@@ -649,13 +605,15 @@ TIMESTAMP
 
 This driver was tested on the following versions of Databricks:
 
-- 2026.20
+- 2026.39
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.1.3](./v0.1.3.md)
 - [v0.1.2](./v0.1.2.md)
+
 
 
 

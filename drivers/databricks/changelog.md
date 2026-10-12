@@ -17,6 +17,18 @@
 
 # Changelog for Databricks Driver
 
+
+## v0.2.0 (2026-10-09)
+
+## New Features
+
+- Support named query parameters
+- Support decimal data types
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.1.3 (2026-07-15)
 
 Fixes:
