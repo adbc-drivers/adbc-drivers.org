@@ -306,6 +306,9 @@ driver_header_links_config = {
     "exasol": [
         {"url": "https://github.com/adbc-drivers/exasol", "label": "GitHub"},
     ],
+    "firebolt": [
+        {"url": "https://github.com/adbc-drivers/firebolt", "label": "GitHub"},
+    ],
     "mssql": [
         {"url": "https://github.com/adbc-drivers/mssql", "label": "GitHub"},
     ],

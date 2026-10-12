@@ -1,0 +1,671 @@
+---
+# Copyright (c) 2026 ADBC Drivers Contributors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+{}
+---
+
+# Firebolt
+
+:::{toctree}
+:maxdepth: 1
+:hidden:
+
+Changelog <changelog.md>
+v0.2.0 <v0.2.0.md>
+:::
+
+[{badge-primary}`Driver Version|0.2.0`](#driver-firebolt-0.2.0 "Permalink") {badge-secondary}`Release Date|2026-10-12` {badge-success}`Tested With|Firebolt 5.0.0`
+
+This driver provides ADBC access to Firebolt's HTTP query interface.
+
+## Feature & Type Support
+
+<table class="docutils data align-default" style="width: 100%">
+  <colgroup>
+    <col span="1" style="width: 25%;">
+    <col span="1" style="width: 25%;">
+    <col span="1" style="width: 50.0%;">
+  </colgroup>
+  <thead>
+    <tr>
+      <th colspan="2">Feature</th>
+      <th style="text-align: center;">Firebolt</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2">Bind Parameters</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td rowspan="8">Bulk Ingestion</td>
+      <td>Create</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Append</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Create/Append</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Replace</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Temporary Table</td>
+      <td colspan="1" style="text-align: center;">❌</td>
+    </tr>
+    <tr>
+      <td>Target Catalog</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Target Schema</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>Non-nullable fields are marked NOT NULL</td>
+      <td colspan="1" style="text-align: center;">❌</td>
+    </tr>
+    <tr>
+      <td rowspan="4">Catalog (GetObjects)</td>
+      <td>depth=catalogs</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>depth=db_schemas</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>depth=tables</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td>depth=columns (all)</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td colspan="2">Get Parameter Schema</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td colspan="2">Get Table Schema</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td colspan="2">Prepared Statements</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
+      <td colspan="2">Transactions</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+  </tbody>
+</table>
+
+### Types
+
+#### Database to Arrow
+
+<table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 50.0%;">
+<col span="1" style="width: 50.0%;">
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: left; vertical-align: middle;">Database Type</th>
+<th style="text-align: center;">Firebolt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+
+BIGINT
+
+</td>
+<td style="text-align: center;">
+
+int64
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+BOOLEAN
+
+</td>
+<td style="text-align: center;">
+
+bool
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+BYTEA
+
+</td>
+<td style="text-align: center;">
+
+binary
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+DATE
+
+</td>
+<td style="text-align: center;">
+
+date32[day]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+DOUBLE PRECISION
+
+</td>
+<td style="text-align: center;">
+
+double
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+INT
+
+</td>
+<td style="text-align: center;">
+
+int32
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+NUMERIC
+
+</td>
+<td style="text-align: center;">
+
+decimal128
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
+
+float
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP
+
+</td>
+<td style="text-align: center;">
+
+timestamp[us]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP WITH TIME ZONE
+
+</td>
+<td style="text-align: center;">
+
+timestamp[us] (with time zone)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP(p) (4 &lt;= p &lt;= 6)
+
+</td>
+<td style="text-align: center;">
+
+timestamp[us]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP(p) (4 &lt;= p &lt;= 6) WITH TIME ZONE
+
+</td>
+<td style="text-align: center;">
+
+timestamp[us] (with time zone)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+VARCHAR
+
+</td>
+<td style="text-align: center;">
+
+string
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Arrow to Database
+
+<table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 37.5%;">
+<col span="1" style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
+<th colspan="2" style="text-align: center;">Firebolt Type</th>
+</tr>
+<tr>
+<th style="text-align: center;">Bind</th>
+<th style="text-align: center;">Ingest</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+binary
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+binary_view
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+bool
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+BOOLEAN
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+date32[day]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+DATE
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+decimal128
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+NUMERIC
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+double
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+DOUBLE PRECISION
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+fixed_size_binary
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+float
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+REAL
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+halffloat
+
+</td>
+<td style="text-align: center;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+int16
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+<td style="text-align: center;">
+
+SMALLINT
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+int32
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+INT
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+int64
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+BIGINT
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+large_binary
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+large_string
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARCHAR
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+string
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARCHAR
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+string_view
+
+</td>
+<td style="text-align: center;">
+
+VARCHAR
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[ms]
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(3)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[ms] (with time zone)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6) WITH TIME ZONE
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(3) WITH TIME ZONE
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[ns]
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(9)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[ns] (with time zone)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6) WITH TIME ZONE
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(9) WITH TIME ZONE
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[s]
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(0)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[s] (with time zone)
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(6) WITH TIME ZONE
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP(0) WITH TIME ZONE
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[us]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP(6)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[us] (with time zone)
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP(6) WITH TIME ZONE
+
+</td>
+</tr>
+</tbody>
+</table>
+
+
+
+## Compatibility
+
+This driver was tested on:
+
+- Firebolt `5.0.0-pre.0.20260927210425.e91cd5bd17f8`

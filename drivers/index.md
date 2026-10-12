@@ -33,6 +33,7 @@ databricks/index.md
 datafusion/index.md
 druid/index.md
 exasol/index.md
+firebolt/index.md
 mssql/index.md
 mysql/index.md
 presto/index.md
