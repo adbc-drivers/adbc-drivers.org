@@ -24,6 +24,31 @@ This style guide provides miscellaneous recommendations for building drivers tha
 
 ## Naming Conventions
 
+### Error Message Strings
+
+Use the format
+
+```
+[driver] message
+```
+
+Preferably,
+
+```
+[driver] could not foo: bar
+```
+
+We recommend that:
+
+- `[driver]` should match the driver slug (e.g. used to install and load the driver).
+- Try to balance details with brevity.
+
+This gives the user context:
+
+- What driver failed? (They may be using multiple drivers)
+- What was the driver trying to do? (This helps developers track down where in the code the failure stems from)
+- What was the upstream vendor's original error message?
+
 ### Option Naming
 
 ADBC option keys should follow this format:
@@ -78,7 +103,13 @@ Rationale: ADBC driver managers generally can infer the driver name from the URI
 
 ## Behavioral Conventions
 
-- Connections should be secure by default: TLS (or the equivalent) should be opt-out, not opt-in.
+Connections should be secure by default: TLS (or the equivalent) should be opt-out, not opt-in.
+
+Use Arrow's [canonical extension types](https://arrow.apache.org/docs/format/CanonicalExtensions.html) and other well-known extension types unless there is a well-justified and documented reason to make an exception. Examples:
+- Geospatial (geometry, geography) should prefer `geoarrow.wkb` or `geoarrow.wkt` extension types.
+- JSON should use `arrow.json`.
+- UUID should use `arrow.uuid`.
+- Variant types (and similar types, like Redshift's SUPER type) should use `arrow.parquet.variant`.
 
 ### Common Options
 
