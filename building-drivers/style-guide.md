@@ -22,8 +22,10 @@
 
 This style guide provides miscellaneous recommendations for building drivers that aren't quite part of the API contract, but which are meant to ensure a consistent "look-and-feel" for drivers. This page is meant both for humans and for agents. Agents can use this during code review and development to ensure drivers follow existing conventions.
 
+(style.naming)=
 ## Naming Conventions
 
+(style.naming.errors)=
 ### Error Message Strings
 
 Use the format
@@ -49,6 +51,7 @@ This gives the user context:
 - What was the driver trying to do? (This helps developers track down where in the code the failure stems from)
 - What was the upstream vendor's original error message?
 
+(style.naming.options)=
 ### Option Naming
 
 ADBC option keys should follow this format:
@@ -71,6 +74,7 @@ Examples:
 
 [^adbc-prefix]: There are exceptions, e.g. connection options like `uri` tend not to use prefixes.
 
+(style.naming.schema-metadata)=
 ### Schema Metadata Key Naming
 
 In metadata of Arrow schemas and fields, keys should follow the Arrow convention [^arrow-metadata-key-convention]:
@@ -86,6 +90,7 @@ Examples:
 
 [^arrow-metadata-key-convention]: While not explicitly documented, it is implied in https://arrow.apache.org/docs/format/Columnar.html#custom-application-metadata and in existing usage.
 
+(style.uris)=
 ## Connection URIs
 
 Drivers should support connecting via URI in addition to the native connection string format of the vendor and/or connecting by setting a list of options (in lieu of a single connection string).
@@ -101,19 +106,29 @@ Such URIs should follow these rules:
 
 Rationale: ADBC driver managers generally can infer the driver name from the URI option, if given, so supporting URIs makes it easy for users to get started without having to specify more options to name the specific driver.
 
+(style.behavior)=
 ## Behavioral Conventions
 
-Connections should be secure by default: TLS (or the equivalent) should be opt-out, not opt-in.
+[{anchor}`§ <style.behavior.tls-by-default>`] Connections should be secure by default: TLS (or the equivalent) should be opt-out, not opt-in.
 
-Use Arrow's [canonical extension types](https://arrow.apache.org/docs/format/CanonicalExtensions.html) and other well-known extension types unless there is a well-justified and documented reason to make an exception. Examples:
+[{anchor}`§ <style.behavior.use-extension-types>`] Use Arrow's [canonical extension types](https://arrow.apache.org/docs/format/CanonicalExtensions.html) and other well-known extension types unless there is a well-justified and documented reason to make an exception. Examples:
 - Geospatial (geometry, geography) should prefer `geoarrow.wkb` or `geoarrow.wkt` extension types.
 - JSON should use `arrow.json`.
 - UUID should use `arrow.uuid`.
 - Variant types (and similar types, like Redshift's SUPER type) should use `arrow.parquet.variant`.
 
+(style.behavior.common-options)=
 ### Common Options
 
 Certain options tend to reocur, but are not part of the ADBC specification. They should have generally consistent names and option values:
 
+<!-- vendor.ingest.allow_unsafe_casts -->
+<!-- vendor.query.foobar_type -->
+
 :::{workinprogress}
 :::
+
+(style.testing)=
+## Testing Conventions
+
+[{anchor}`§ <style.testing.unprivileged>`] Validation should be run with an unprivileged user account, not an administrator account; especially with agentic development, it's easy to accidentally implement features in terms of system tables/views that a user would not reasonably have access to.

@@ -54,6 +54,30 @@ Then visit <http://localhost:8000>.
 Note that the theme used does not always work well with incremental builds.
 You may need to remove `_build` and start again, especially when changing theme options.
 
+## Inline anchors
+
+Use the `anchor` role to create an inline self-link with a label that other
+pages can reference:
+
+```markdown
+Text containing {anchor}`user-supplied-text <foo>`.
+
+On another page: {ref}`foo` or {ref}`Custom caption <foo>`.
+```
+
+The anchor renders the equivalent of
+`<a id="foo" href="#foo">user-supplied-text</a>`. A reference without an explicit
+caption uses the anchor's displayed text. The shorthand form uses `foo` as
+both the label and displayed text:
+
+```markdown
+Text containing {anchor}`foo`.
+```
+
+Labels must be unique across the documentation and follow Sphinx's normal
+label normalization. Displayed text is plain text; nested formatting is not
+supported.
+
 ## Adding a blog post
 
 Blog posts are regular MyST Markdown documents stored at
