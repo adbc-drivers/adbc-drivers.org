@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.8.0 <v1.8.0.md>
 v1.7.0 <v1.7.0.md>
 v1.6.0 <v1.6.0.md>
 v1.5.0 <v1.5.0.md>
@@ -32,7 +33,7 @@ v1.1.0 <v1.1.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.7.0`](#driver-redshift-v1.7.0 "Permalink") {badge-secondary}`Release Date|2026-09-09` {badge-success}`Tested With|Amazon Redshift aws`
+[{badge-primary}`Driver Version|v1.8.0`](#driver-redshift-v1.8.0 "Permalink") {badge-secondary}`Release Date|2026-10-13` {badge-success}`Tested With|Amazon Redshift aws`
 
 This driver provides access to [Amazon Redshift][redshift]{target="_blank"}
 (commonly referred to as just "Redshift").
@@ -60,17 +61,14 @@ dbapi.connect(
     driver="redshift",
     db_kwargs={
         "uri": "postgresql://localhost:5439",
-        #"uri": "postgresql://<cluster hostname>:<cluster port>", # for direct connection
-
-        "redshift.cluster_type": "redshift-serverless", # for Redshift Serverless
-        #"redshift.cluster_type": "redshift-iam", # for Redshift Provisioned with IAM auth
-        #"redshift.cluster_type": "redshift", # for Redshift Provisioned with user/password auth
-
-        "redshift.workgroup_name": "<WORKGROUP_NAME>", # for Redshift Serverless
-        #"redshift.cluster_identifier": "<CLUSTER IDENTIFIER>", # for Redshift Provisioned
-
+        # "uri": "postgresql://<cluster hostname>:<cluster port>", # for direct connection
+        "redshift.cluster_type": "redshift-serverless",  # for Redshift Serverless
+        # "redshift.cluster_type": "redshift-iam", # for Redshift Provisioned with IAM auth
+        # "redshift.cluster_type": "redshift", # for Redshift Provisioned with user/password auth
+        "redshift.workgroup_name": "<WORKGROUP_NAME>",  # for Redshift Serverless
+        # "redshift.cluster_identifier": "<CLUSTER IDENTIFIER>", # for Redshift Provisioned
         "redshift.db_name": "sample_data_dev",
-    }
+    },
 )
 ```
 
@@ -1000,10 +998,15 @@ TIMESTAMPTZ
 </tbody>
 </table>
 
+### Caveats
+
+- Temporary tables are shown in GetObjects, however, the order of the columns of these tables is not guaranteed to be correct. Also, less column/table metadata is returned.
+
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.7.0](./v1.7.0.md)
 - [v1.6.0](./v1.6.0.md)
 - [v1.5.0](./v1.5.0.md)
 - [v1.4.0](./v1.4.0.md)

@@ -17,6 +17,22 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+## v1.7.0 (2026-10-13)
+
+New features:
+
+- Add `mssql.query.datetimeoffset_type` option to return DATETIMEOFFSET as `arrow.timestamp_with_offset`, preserving the original UTC offset
+- Add `mssql.query.datetimeoffset_precision` option to choose between preserving the full date range and fractional-second precision
+- Support binding and ingesting `arrow.timestamp_with_offset` as DATETIMEOFFSET (Fabric Data Warehouse does not support DATETIMEOFFSET columns)
+
+Fixes:
+
+- Restore support for querying DATETIMEOFFSET as `timestamp[us, tz=UTC]` by default
+- Correct UUID byte order when reading, binding, and ingesting UNIQUEIDENTIFIER values
+- Fix GetObjects metadata queries for other catalogs and avoid errors for inaccessible catalogs
+- Honor `mssql.ingest.method` when set on a connection
+- Update dependencies to pick up CVE fixes
+
 ## v1.6.2 (2026-09-10)
 
 Fixes:

@@ -17,6 +17,18 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.8.0 (2026-10-13)
+
+New features:
+
+- Include temporary tables in GetObjects results
+- Support fetching a new IdP access token for each connection using a configurable token endpoint
+
+Fixes:
+
+- Fix IdP token authentication failing with a "failed to authenticate" error
+- Update dependencies to pick up CVE fixes
+
 ## v1.7.0 (2026-09-09)
 
 New features:
