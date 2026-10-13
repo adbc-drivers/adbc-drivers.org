@@ -37,6 +37,7 @@ sphinx-sitemap = ">=2.6.0,<3"
 sphinxext-opengraph = ">=0.12.0,<0.13"
 linkify-it-py = ">=2.0.3,<3"
 matplotlib = ">=3.10.6,<4"
+sphinx-llm = ">=1.1.0,<2"
 
 [pypi-dependencies]
 ablog = ">=0.11.13, <0.12"
