@@ -93,6 +93,7 @@ extensions = [
     "blog_post_meta",
     "homepage_blog_cards",
     "myst_parser",
+    "inline_anchor",
     "sphinx_copybutton",
     "sphinx_design",
     "external_nav_links",
