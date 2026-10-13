@@ -100,6 +100,7 @@ extensions = [
     "selective_html",
     "sphinx_immaterial",
     "sphinx.ext.intersphinx",
+    "sphinx_llm.txt",
     "sphinx_sitemap",
     "sphinxext.opengraph",
     "driver_titles",
@@ -235,6 +236,14 @@ sphinx_immaterial_custom_admonitions = [
         "icon": "fontawesome/solid/person-digging",
         "color": "#ff9100",
     },
+]
+
+# -- Options for sphinx-llm --------------------------------------------------
+
+llms_txt_suppress_unknown_node_warnings = [
+    "admonition",
+    "BlogPostMeta",
+    "PassthroughTextElement",
 ]
 
 # -- Options for sphinx-sitemap ----------------------------------------------
