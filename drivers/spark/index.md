@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.2.2 <v0.2.2.md>
 v0.2.1 <v0.2.1.md>
 v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
@@ -29,7 +30,7 @@ v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.2.1`](#driver-spark-v0.2.1 "Permalink") {badge-secondary}`Release Date|2026-09-09` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
+[{badge-primary}`Driver Version|v0.2.2`](#driver-spark-v0.2.2 "Permalink") {badge-secondary}`Release Date|2026-10-14` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
 
 This driver provides access to [Apache Spark][spark] (commonly referred to
 as just "Spark").
@@ -54,10 +55,8 @@ To use the driver, provide a connection string as the `uri` option.
 from adbc_driver_manager import dbapi
 
 dbapi.connect(
-  driver="spark",
-  db_kwargs={
-      "uri": "spark://localhost:10000?auth_type=plain&api=thrift%2Bbinary"
-  }
+    driver="spark",
+    db_kwargs={"uri": "spark://localhost:10000?auth_type=plain&api=thrift%2Bbinary"},
 )
 ```
 
@@ -835,6 +834,16 @@ TIMESTAMP(6) WITH TIME ZONE
 </tbody>
 </table>
 
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.2.1](./v0.2.1.md)
+- [v0.2.0](./v0.2.0.md)
+- [v0.1.0](./v0.1.0.md)
+- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
+- [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
+
 [^1]: The HiveServer2 backend mangles binary values
 [^2]: In our testing, the Livy SQL backend loses fractional seconds when returning timestamp values
 [^3]: The Livy backend does not support TIMESTAMP_NTZ
@@ -852,7 +861,7 @@ This driver was tested on:
 
 - Apache Spark `3.5.8 5a48a37b2dbd7b51e3640cd1d947438459556cc6 (Apache Livy)`
 
-- Apache Spark `4.0.2 32dd9decae988c1c33a5b0b2c24d2aaef6ef6daa (Spark Connect)`
+- Apache Spark `4.0.2 10f33deed4f2f65836382f1efe4e9388b8b7e7cd (Spark Connect)`
 
 - Apache Spark `4.0.3 (HiveServer2+HTTP)`
 
@@ -861,14 +870,5 @@ This driver was tested on:
 - Apache Spark `4.0.3 322ddd90b63c5d299427b7e32e255e25736db7ee (Spark Connect)`
 
 - Apache Spark `4.1.2 f0bb2e6a47d0ebda424ffd633fcea8644a597954 (Spark Connect)`
-
-## Previous Versions
-
-To see documentation for previous versions of this driver, see the following:
-
-- [v0.2.0](./v0.2.0.md)
-- [v0.1.0](./v0.1.0.md)
-- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
-- [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
 
 [spark]: https://spark.apache.org/
