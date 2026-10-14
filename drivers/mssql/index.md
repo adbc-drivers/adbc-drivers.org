@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.7.0 <v1.7.0.md>
 v1.6.2 <v1.6.2.md>
 v1.6.1 <v1.6.1.md>
 v1.6.0 <v1.6.0.md>
@@ -39,7 +40,7 @@ v1.0.0 <v1.0.0.md>
 This project is not associated with Microsoft.
 :::
 
-[{badge-primary}`Driver Version|v1.6.2`](#driver-mssql-v1.6.2 "Permalink") {badge-secondary}`Release Date|2026-09-10` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
+[{badge-primary}`Driver Version|v1.7.0`](#driver-mssql-v1.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-13` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
 
 This driver provides access to [Microsoft SQL Server][mssql].
 
@@ -307,6 +308,74 @@ DATETIME2
 <td colspan="2" style="text-align: center;">
 
 timestamp[us] (with time zone)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+DATETIMEOFFSET(0)
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;arrow.timestamp_with_offset&gt;, timestamp[s] (with time zone), timestamp[us] (with time zone) [^1]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+DATETIMEOFFSET(7)
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;arrow.timestamp_with_offset&gt;, timestamp[ns] (with time zone), timestamp[us] (with time zone) ⚠️ [^1]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+DATETIMEOFFSET(p) (1 &lt;= p &lt;= 3)
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;arrow.timestamp_with_offset&gt;, timestamp[ms] (with time zone), timestamp[us] (with time zone) [^1]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+DATETIMEOFFSET(p) (4 &lt;= p &lt;= 6)
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;arrow.timestamp_with_offset&gt;, timestamp[us] (with time zone) [^1]
+
+</td>
+<td style="text-align: center;">
+
+❌
 
 </td>
 </tr>
@@ -633,7 +702,7 @@ TIME
 </td>
 <td colspan="2" style="text-align: center;">
 
-time64[ns] ⚠️ [^1]
+time64[ns] ⚠️ [^2]
 
 </td>
 </tr>
@@ -885,7 +954,7 @@ VARBINARY
 </td>
 <td style="text-align: center;">
 
-VARBINARY(MAX) ⚠️ [^3] [^4]
+VARBINARY(MAX) ⚠️ [^4] [^5]
 
 </td>
 </tr>
@@ -926,7 +995,7 @@ DECIMAL
 </td>
 <td style="text-align: center;">
 
-DECIMAL ⚠️ [^5]
+DECIMAL ⚠️ [^6]
 
 </td>
 <td style="text-align: center;">
@@ -936,7 +1005,7 @@ DECIMAL
 </td>
 <td style="text-align: center;">
 
-DECIMAL ⚠️ [^5]
+DECIMAL ⚠️ [^6]
 
 </td>
 </tr>
@@ -964,6 +1033,35 @@ DOUBLE PRECISION
 <td style="text-align: center;">
 
 FLOAT
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+extension&lt;arrow.timestamp_with_offset&gt;
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+DATETIMEOFFSET
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+extension&lt;arrow.uuid&gt;
+
+</td>
+<td colspan="4" style="text-align: center;">
+
+UNIQUEIDENTIFIER
 
 </td>
 </tr>
@@ -1212,7 +1310,7 @@ VARCHAR(MAX)
 </td>
 <td style="text-align: center;">
 
-VARCHAR ⚠️ [^3] [^6]
+VARCHAR ⚠️ [^4] [^7]
 
 </td>
 </tr>
@@ -1361,17 +1459,17 @@ timestamp[ns]
 </td>
 <td colspan="2" style="text-align: center;">
 
-DATETIME2 [^2]
+DATETIME2 [^3]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2(6) [^2]
+DATETIME2(6) [^3]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2(6) [^7]
+DATETIME2(6) [^8]
 
 </td>
 </tr>
@@ -1383,17 +1481,17 @@ timestamp[ns] (with time zone)
 </td>
 <td colspan="2" style="text-align: center;">
 
-DATETIME2 [^2]
+DATETIME2 [^3]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2(6) [^2]
+DATETIME2(6) [^3]
 
 </td>
 <td style="text-align: center;">
 
-DATETIME2(6) [^7]
+DATETIME2(6) [^8]
 
 </td>
 </tr>
@@ -1601,10 +1699,34 @@ You may want to authenticate with a service principal, e.g. in a pipeline. In ge
     "https://api.fabric.microsoft.com/v1/workspaces/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/items"
   #                                                 ^ substitute your workspace GUID here
   ```
+- This step must be performed periodically or the service principal will appear to "lose" permissions.
 
 ## Options
 
 ### Options Affecting Queries
+
+These options can be set on a database, connection, or statement. New connections
+inherit the database options, and new statements inherit the connection options.
+
+`mssql.query.datetimeoffset_type`
+: **Values:** `timestamp` or `timestamp_with_offset`. **Default:** `timestamp`
+
+  Selects the Arrow representation of DATETIMEOFFSET query results.
+
+  - `timestamp`: return a timestamp in UTC, without retaining the original offset.
+  - `timestamp_with_offset`: return the `arrow.timestamp_with_offset` extension type, containing a UTC timestamp and the original offset in minutes.
+
+`mssql.query.datetimeoffset_precision`
+: **Values:** `preserve_range` or `preserve_precision`. **Default:** `preserve_range`
+
+  Selects the timestamp unit for both DATETIMEOFFSET representations.
+
+  - `preserve_range`: use microseconds to retain the full date range (years 1 through 9999). Fractional precision beyond microseconds is truncated.
+  - `preserve_precision`: use seconds for DATETIMEOFFSET(0), milliseconds for DATETIMEOFFSET(1–3), microseconds for DATETIMEOFFSET(4–6), and nanoseconds for DATETIMEOFFSET(7).
+
+  With `preserve_precision`, DATETIMEOFFSET(7) has a reduced date range. Values
+  outside the Arrow nanosecond timestamp range return an error; use
+  `preserve_range` to read those values.
 
 `mssql.query.large_text_type`
 : **Values:** `string`, `string_view`, or `large_string`. **Default:** `string`
@@ -1617,12 +1739,12 @@ You may want to authenticate with a service principal, e.g. in a pipeline. In ge
 ### Options Affecting Bulk Ingest
 
 `mssql.ingest.method`
-: **Values:** `auto`, `insertbulk`, or `parquet`. **Default:** `auto`
+: **Values:** `auto`, `insert_bulk`, or `parquet`. **Default:** `auto`
 
   Select how to bulk insert data.
 
-  - `auto`: use `parquet` for Fabric Data Warehouse, else `insertbulk`
-  - `insertbulk`: use `INSERT BULK`. Support for this is [in preview](https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Bulk-Copy-API-for-faster-ingestion-in-Fabric-Data/ba-p/5195627) for Fabric Data Warehouse.
+  - `auto`: use `parquet` for Fabric Data Warehouse, else `insert_bulk`
+  - `insert_bulk`: use `INSERT BULK`. Support for this is [in preview](https://community.fabric.microsoft.com/t5/Fabric-Updates-Blog/Using-Bulk-Copy-API-for-faster-ingestion-in-Fabric-Data/ba-p/5195627) for Fabric Data Warehouse.
   - `parquet`: upload Parquet files to a storage container and then copy them into the target table. Only supported on Fabric Data Warehouse.
 
   In our testing, uploading Parquet is faster than using `INSERT BULK`. But for small-ish datasets, `INSERT BULK` may have acceptable performance, and is easier to set up.
@@ -1649,6 +1771,9 @@ You may want to authenticate with a service principal, e.g. in a pipeline. In ge
   target table when ingesting into Microsoft Fabric Data Warehouse. Has no
   effect when ingesting into Microsoft SQL Server (which uses `INSERT
   BULK`).
+
+  For batches containing `arrow.uuid` columns, the driver uses `openrowset`
+  regardless of this option to convert the staged binary values to UNIQUEIDENTIFIER.
 
   In some basic testing, we have not found any difference between these methods.
 
@@ -1677,14 +1802,15 @@ This driver was tested on:
 
 - Microsoft SQL Server `12.0.2000.8 SQL Azure`
 
-- Microsoft SQL Server `16.0.4275.2 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `16.0.4305.5 Enterprise Evaluation Edition (64-bit)`
 
-- Microsoft SQL Server `17.0.4085.5 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `17.0.5015.4 Enterprise Evaluation Edition (64-bit)`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.6.2](./v1.6.2.md)
 - [v1.6.1](./v1.6.1.md)
 - [v1.6.0](./v1.6.0.md)
 - [v1.5.0](./v1.5.0.md)
@@ -1696,12 +1822,13 @@ To see documentation for previous versions of this driver, see the following:
 - [v1.1.0](./v1.1.0.md)
 - [v1.0.0](./v1.0.0.md)
 
-[^1]: while the documentation claims 7 digits of precision, the client only receives 6
-[^2]: Values rounded to microsecond precision
-[^3]: arrow-go cannot write view types to Parquet
-[^4]: binary_view is not supported
-[^5]: Negative scales are not supported
-[^6]: string_view is not supported
-[^7]: The driver will refuse to truncate nanoseconds to microseconds by default
+[^1]: DATETIMEOFFSET result types depend on `mssql.query.datetimeoffset_type` and `mssql.query.datetimeoffset_precision`. The default is `timestamp[us, tz=UTC]`; nanosecond precision has a reduced date range. See [Options Affecting Queries](#options-affecting-queries).
+[^2]: while the documentation claims 7 digits of precision, the client only receives 6
+[^3]: Values rounded to microsecond precision
+[^4]: arrow-go cannot write view types to Parquet
+[^5]: binary_view is not supported
+[^6]: Negative scales are not supported
+[^7]: string_view is not supported
+[^8]: The driver will refuse to truncate nanoseconds to microseconds by default
 
 [mssql]: https://www.microsoft.com/sql-server
