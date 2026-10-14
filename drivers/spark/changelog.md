@@ -17,6 +17,13 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.2.2 (2026-10-14)
+
+## Bug Fixes
+
+- Map Spark Connect gRPC errors to the correct ADBC status codes
+- Update dependencies to pick up CVE fixes
+
 ## v0.2.1 (2026-09-09)
 
 ## Bug Fixes

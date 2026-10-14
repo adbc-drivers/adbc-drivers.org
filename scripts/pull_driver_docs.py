@@ -203,11 +203,15 @@ def update_previous_versions_section(
             lines[:prev_versions_start] + new_prev_section + lines[prev_versions_end:]
         )
     elif any(version != current_version for version in all_versions):
-        # Keep footnotes and reference definitions after the new section.
-        insert_pos = next(
-            (i for i, line in enumerate(lines) if re.match(r"^\[[^\]]+\]:", line)),
-            len(lines),
-        )
+        # Insert before trailing definitions, not footnotes followed by content.
+        insert_pos = len(lines)
+        for i in range(len(lines) - 1, -1, -1):
+            line = lines[i]
+            if re.match(r"^\[[^\]]+\]:", line):
+                insert_pos = i
+            elif line.strip() and not line.startswith((" ", "\t")):
+                break
+            # Blank and indented lines may continue a reference or footnote.
         before = lines[:insert_pos]
         while before and not before[-1].strip():
             before.pop()
