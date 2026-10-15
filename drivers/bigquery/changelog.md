@@ -22,12 +22,12 @@
 New features:
 
 - Add `bigquery.user_agent` option to customize the user agent
-- Add experimental support for optional job creation with inline Arrow results
+- Add experimental support for optional job creation with Arrow result format
 - Return additional BigQuery table metadata
 
 Fixes:
 
-- Handle scripts that return no results when job creation is optional
+- Handle scripts that return no results in optional job mode
 - Map REST API 403 access denials to the UNAUTHORIZED status code
 - Correct Arrow extension metadata for `ARRAY<GEOGRAPHY>` results
 - Preserve JSON extension metadata in inline Arrow results when job creation is optional
