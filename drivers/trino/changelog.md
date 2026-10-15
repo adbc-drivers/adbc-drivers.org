@@ -17,9 +17,6 @@
 
 # Changelog for Trino Driver
 
-
-
-
 ## v0.6.1 (2026-10-15)
 
 ## Bug Fixes

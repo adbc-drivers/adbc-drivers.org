@@ -27,13 +27,10 @@ New features:
 
 Fixes:
 
-- Handle scripts that return no results in optional job mode
 - Map REST API 403 access denials to the UNAUTHORIZED status code
 - Correct Arrow extension metadata for `ARRAY<GEOGRAPHY>` results
-- Preserve JSON extension metadata in inline Arrow results when job creation is optional
 - Refresh impersonated credentials automatically when `bigquery.impersonate.lifetime` is unset
 - Skip tables that return 404 errors in GetObjects
-- Bundle timezone data in shared libraries
 
 ## v1.13.0 (2026-09-10)
 

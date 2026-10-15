@@ -28,7 +28,6 @@ Fixes:
 
 - Handle backslashes correctly in GetObjects filters
 - Limit prefetching based on the number of unconsumed result streams
-- Bundle timezone data in shared libraries
 
 ## v1.14.0 (2026-09-14)
 
