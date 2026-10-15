@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.6.1 <v0.6.1.md>
 v0.6.0 <v0.6.0.md>
 v0.5.3 <v0.5.3.md>
 v0.5.2 <v0.5.2.md>
@@ -34,7 +35,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.6.0`](#driver-trino-v0.6.0 "Permalink") {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|Trino 483`
+[{badge-primary}`Driver Version|v0.6.1`](#driver-trino-v0.6.1 "Permalink") {badge-secondary}`Release Date|2026-10-15` {badge-success}`Tested With|Trino 483`
 
 This driver provides access to [Trino][trino], a free and
 open-source distributed SQL query engine.
@@ -968,6 +969,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.6.0](./v0.6.0.md)
 - [v0.5.3](./v0.5.3.md)
 - [v0.5.2](./v0.5.2.md)
 - [v0.5.1](./v0.5.1.md)

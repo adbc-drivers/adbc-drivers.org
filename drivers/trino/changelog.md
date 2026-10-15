@@ -19,6 +19,13 @@
 
 
 
+
+## v0.6.1 (2026-10-15)
+
+## Bug Fixes
+
+- Bundle timezone data in shared libraries
+
 ## v0.6.0 (2026-10-09)
 
 ## New Features
