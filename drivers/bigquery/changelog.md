@@ -17,6 +17,21 @@
 
 # Changelog for BigQuery Driver
 
+## v1.14.0 (2026-10-15)
+
+New features:
+
+- Add `bigquery.user_agent` option to customize the user agent
+- Add experimental support for optional job creation with Arrow result format
+- Return additional BigQuery table metadata
+
+Fixes:
+
+- Map REST API 403 access denials to the UNAUTHORIZED status code
+- Correct Arrow extension metadata for `ARRAY<GEOGRAPHY>` results
+- Refresh impersonated credentials automatically when `bigquery.impersonate.lifetime` is unset
+- Skip tables that return 404 errors in GetObjects
+
 ## v1.13.0 (2026-09-10)
 
 New features:

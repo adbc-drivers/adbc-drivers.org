@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.15.0 <v1.15.0.md>
 v1.14.0 <v1.14.0.md>
 v1.13.0 <v1.13.0.md>
 v1.12.0 <v1.12.0.md>
@@ -31,7 +32,7 @@ v1.10.1 <v1.10.1.md>
 v1.10.0 <v1.10.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.14.0`](#driver-snowflake-v1.14.0 "Permalink") {badge-secondary}`Release Date|2026-09-14` {badge-success}`Tested With|Snowflake 10`
+[{badge-primary}`Driver Version|v1.15.0`](#driver-snowflake-v1.15.0 "Permalink") {badge-secondary}`Release Date|2026-10-15` {badge-success}`Tested With|Snowflake 10`
 
 This driver provides access to [Snowflake][snowflake], a cloud-based data warehouse platform.
 
@@ -1112,6 +1113,11 @@ TIMESTAMP_LTZ(6)
 
 ### Connection Options
 
+`adbc.connection.get_objects.match_exactly`
+: **Type:** boolean. **Default:** false
+
+  Match GetObjects filters literally and case-sensitively; may improve performance, especially if your namespace names contain underscores.
+
 `adbc.snowflake.sql.account`
 : **Type:** string
 
@@ -1211,6 +1217,17 @@ TIMESTAMP_LTZ(6)
   Login retry timeout, excluding network round trip and reading the HTTP
   response. Uses Go's [`time.ParseDuration`](https://pkg.go.dev/time#ParseDuration)
   format; negative values are treated as their absolute value.
+
+`adbc.snowflake.sql.client_option.max_retry_count`
+: **Type:** non-negative integer. **Default:** 7
+
+  The maximum number of times each HTTP request is retried after a retryable
+  failure, such as an HTTP 503. The count is per request; 7 retries allow up to
+  8 attempts. An unset value or `0` keeps the gosnowflake default of 7.
+
+  Retries stop when either this count or the applicable `request_timeout` or
+  `login_timeout` expires. To retry for a time budget rather than a practical
+  count limit, set a high retry count together with the applicable timeout.
 
 `adbc.snowflake.sql.client_option.ocsp_fail_open_mode`
 : **Type:** boolean. **Default:** true (fail-open)
@@ -1351,8 +1368,8 @@ TIMESTAMP_LTZ(6)
 `adbc.snowflake.rpc.prefetch_concurrency`
 : **Type:** int. **Default:** 5
 
-  The max number of result streams to fetch in parallel. Each stream buffers up
-  to `adbc.rpc.result_queue_size` batches.
+  The max number of result streams to prefetch. Each stream queues up to
+  `adbc.rpc.result_queue_size` batches. A new stream will not be prefetched until another stream has been consumed.
 
   Can be set on the statement.
 
@@ -1448,12 +1465,12 @@ TIMESTAMP_LTZ(6)
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.14.0](./v1.14.0.md)
 - [v1.13.0](./v1.13.0.md)
 - [v1.12.0](./v1.12.0.md)
 - [v1.11.0](./v1.11.0.md)
 - [v1.10.3](./v1.10.3.md)
 - [v1.10.1](./v1.10.1.md)
 - [v1.10.0](./v1.10.0.md)
-
 
 [snowflake]: https://www.snowflake.com/

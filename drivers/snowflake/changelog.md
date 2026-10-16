@@ -17,6 +17,18 @@
 
 # Changelog for ADBC Driver for Snowflake
 
+## v1.15.0 (2026-10-15)
+
+New features:
+
+- Add `adbc.connection.get_objects.match_exactly` option to disable wildcard matching in GetObjects filters
+- Add `adbc.snowflake.sql.client_option.max_retry_count` option to control the maximum number of retries per HTTP request
+
+Fixes:
+
+- Handle backslashes correctly in GetObjects filters
+- Limit prefetching based on the number of unconsumed result streams
+
 ## v1.14.0 (2026-09-14)
 
 New features:
