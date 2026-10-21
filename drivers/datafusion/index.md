@@ -22,13 +22,14 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.28.0 <v0.28.0.md>
 v0.27.0 <v0.27.0.md>
 v0.26.0 <v0.26.0.md>
 v0.25.0 <v0.25.0.md>
 v0.24.1 <v0.24.1.md>
 :::
 
-[{badge-primary}`Driver Version|v0.27.0`](#driver-datafusion-v0.27.0 "Permalink") {badge-secondary}`Release Date|2026-09-02` {badge-success}`Tested With|Apache DataFusion 55`
+[{badge-primary}`Driver Version|v0.28.0`](#driver-datafusion-v0.28.0 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Apache DataFusion 55`
 
 This driver provides access to [Apache DataFusion][datafusion].
 
@@ -449,9 +450,9 @@ string, string_view ⚠️ [^3]
 
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
-<col span="1" style="width: 50.0%;">
-<col span="1" style="width: 25.0%;">
-<col span="1" style="width: 25.0%;">
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 37.5%;">
+<col span="1" style="width: 37.5%;">
 </colgroup>
 <thead>
 <tr>
@@ -919,15 +920,15 @@ It is possible to customize the embedded DataFusion by depending on this crate, 
 
 This driver was tested on:
 
-- Apache DataFusion `55.0.0`
+- Apache DataFusion `55.2.0`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.27.0](./v0.27.0.md)
 - [v0.26.0](./v0.26.0.md)
 - [v0.25.0](./v0.25.0.md)
 - [v0.24.1](./v0.24.1.md)
-
 
 [datafusion]: https://datafusion.apache.org/
