@@ -1,5 +1,5 @@
 ---
-# Copyright (c) 2025 ADBC Drivers Contributors
+# Copyright (c) 2026 ADBC Drivers Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.7.1 <v1.7.1.md>
 v1.7.0 <v1.7.0.md>
 v1.6.2 <v1.6.2.md>
 v1.6.1 <v1.6.1.md>
@@ -40,7 +41,7 @@ v1.0.0 <v1.0.0.md>
 This project is not associated with Microsoft.
 :::
 
-[{badge-primary}`Driver Version|v1.7.0`](#driver-mssql-v1.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-13` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
+[{badge-primary}`Driver Version|v1.7.1`](#driver-mssql-v1.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
 
 This driver provides access to [Microsoft SQL Server][mssql].
 
@@ -1713,20 +1714,16 @@ inherit the database options, and new statements inherit the connection options.
 
   Selects the Arrow representation of DATETIMEOFFSET query results.
 
-  - `timestamp`: return a timestamp in UTC, without retaining the original offset.
-  - `timestamp_with_offset`: return the `arrow.timestamp_with_offset` extension type, containing a UTC timestamp and the original offset in minutes.
+  - `timestamp`: return a timestamp adjusted to UTC, without retaining the original offset.
+  - `timestamp_with_offset`: return the [`arrow.timestamp_with_offset` extension type](https://arrow.apache.org/docs/format/CanonicalExtensions.html#timestamp-with-offset), containing a UTC timestamp and the original offset in minutes.
 
 `mssql.query.datetimeoffset_precision`
 : **Values:** `preserve_range` or `preserve_precision`. **Default:** `preserve_range`
 
-  Selects the timestamp unit for both DATETIMEOFFSET representations.
+  Selects the timestamp unit for DATETIMEOFFSET.
 
   - `preserve_range`: use microseconds to retain the full date range (years 1 through 9999). Fractional precision beyond microseconds is truncated.
-  - `preserve_precision`: use seconds for DATETIMEOFFSET(0), milliseconds for DATETIMEOFFSET(1–3), microseconds for DATETIMEOFFSET(4–6), and nanoseconds for DATETIMEOFFSET(7).
-
-  With `preserve_precision`, DATETIMEOFFSET(7) has a reduced date range. Values
-  outside the Arrow nanosecond timestamp range return an error; use
-  `preserve_range` to read those values.
+  - `preserve_precision`: use seconds for DATETIMEOFFSET(0), milliseconds for DATETIMEOFFSET(1–3), microseconds for DATETIMEOFFSET(4–6), and nanoseconds for DATETIMEOFFSET(7). However, for DATETIMEOFFSET(7), the full range of dates cannot be represented, and values outside that range will raise an error.
 
 `mssql.query.large_text_type`
 : **Values:** `string`, `string_view`, or `large_string`. **Default:** `string`
@@ -1810,6 +1807,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.7.0](./v1.7.0.md)
 - [v1.6.2](./v1.6.2.md)
 - [v1.6.1](./v1.6.1.md)
 - [v1.6.0](./v1.6.0.md)

@@ -17,25 +17,32 @@
 
 # Changelog for ADBC Driver for Snowflake
 
+## v1.15.1 (2026-10-21)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v1.15.0 (2026-10-15)
 
-New features:
+## New Features
 
 - Add `adbc.connection.get_objects.match_exactly` option to disable wildcard matching in GetObjects filters
 - Add `adbc.snowflake.sql.client_option.max_retry_count` option to control the maximum number of retries per HTTP request
 
-Fixes:
+## Bug Fixes
 
 - Handle backslashes correctly in GetObjects filters
 - Limit prefetching based on the number of unconsumed result streams
+- Update dependencies to pick up CVE fixes
 
 ## v1.14.0 (2026-09-14)
 
-New features:
+## New Features
 
 - Add `adbc.snowflake.sql.client_option.validate_default_parameters` option to control validation of default connection parameters
 
-Fixes:
+## Bug Fixes
 
 - Preserve Snowflake timestamp scale in Arrow and JSON query results
 - Detect incompatible source and target schemas during append bulk ingest
@@ -54,13 +61,13 @@ Fixes:
 
 ## v1.12.0 (2026-07-31)
 
-New features:
+## New Features
 
 - Optimize GetObjects metadata query performance
 
 ## v1.11.0 (2026-06-18)
 
-New features:
+## New Features
 
 - Support binding Arrow float16, timestamp, decimal, and binary parameters
 - Support specifying the target catalog/schema in bulk ingest
@@ -74,7 +81,7 @@ New features:
 - Support queries that invoke stored procedures via `CALL`
 - Improve GetObjects performance
 
-Fixes:
+## Bug Fixes
 
 - Bump the Go version to pick up CVE fixes
 - Fix a panic in the record reader if the bind parameter schema did not match the data
@@ -83,24 +90,24 @@ Fixes:
 
 ## v1.10.3 (2026-03-10)
 
-Fixes:
+## Bug Fixes
 
 - Bump the Go version to pick up CVE fixes
 
 ## v1.10.1 (2026-01-11)
 
-Fixes:
+## Bug Fixes
 
 - Avoid potential deadlocks in the reader
 
 ## v1.10.0 (2026-01-07)
 
-New features:
+## New Features
 
 - Support `snowflake://` URI scheme
 - Return the Snowflake version from GetInfo
 
-Fixes:
+## Bug Fixes
 
 - Return an UNAUTHORIZED error code for authorization issues
 - Handle TIMESTAMP(3) properly

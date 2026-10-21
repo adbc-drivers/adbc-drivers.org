@@ -1,5 +1,5 @@
 ---
-# Copyright (c) 2025 ADBC Drivers Contributors
+# Copyright (c) 2026 ADBC Drivers Contributors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.8.1 <v1.8.1.md>
 v1.8.0 <v1.8.0.md>
 v1.7.0 <v1.7.0.md>
 v1.6.0 <v1.6.0.md>
@@ -33,7 +34,7 @@ v1.1.0 <v1.1.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.8.0`](#driver-redshift-v1.8.0 "Permalink") {badge-secondary}`Release Date|2026-10-13` {badge-success}`Tested With|Amazon Redshift aws`
+[{badge-primary}`Driver Version|v1.8.1`](#driver-redshift-v1.8.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Amazon Redshift aws`
 
 This driver provides access to [Amazon Redshift][redshift]{target="_blank"}
 (commonly referred to as just "Redshift").
@@ -1006,6 +1007,7 @@ TIMESTAMPTZ
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.8.0](./v1.8.0.md)
 - [v1.7.0](./v1.7.0.md)
 - [v1.6.0](./v1.6.0.md)
 - [v1.5.0](./v1.5.0.md)

@@ -17,7 +17,11 @@
 
 # Changelog for Presto Driver
 
+## v0.1.0-alpha.4 (2026-10-21)
 
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
 
 ## v0.1.0-alpha.3 (2026-10-09)
 

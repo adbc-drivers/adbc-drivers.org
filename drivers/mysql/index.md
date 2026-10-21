@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.7.1 <v0.7.1.md>
 v0.7.0 <v0.7.0.md>
 v0.6.1 <v0.6.1.md>
 v0.6.0 <v0.6.0.md>
@@ -33,7 +34,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.7.0`](#driver-mysql-v0.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|MariaDB 12.2` {badge-success}`Tested With|Databend 12.2`
+[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|MariaDB 12.2` {badge-success}`Tested With|Databend 12.2`
 
 This driver provides access to [MySQL][mysql] and [MariaDB][mariadb], free and
 open-source relational database management systems.
@@ -1257,6 +1258,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.7.0](./v0.7.0.md)
 - [v0.6.1](./v0.6.1.md)
 - [v0.6.0](./v0.6.0.md)
 - [v0.5.0](./v0.5.0.md)

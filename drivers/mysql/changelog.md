@@ -17,6 +17,12 @@
 
 # Changelog for MySQL/MariaDB Driver
 
+## v0.7.1 (2026-10-21)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.7.0 (2026-10-09)
 
 ## New Features
@@ -54,28 +60,28 @@
 
 ## v0.4.0 (2026-06-18)
 
-New features:
+## New Features
 
 - Support querying unsigned types
 
-Fixes:
+## Bug Fixes
 
 - Guard against zero columns, >65536 columns in bulk ingest
 - Disable underlying connection pooling to avoid connection exhaustion
 
 ## v0.3.1 (2026-03-11)
 
-New features:
+## New Features
 
 - Enable bulk ingest into temporary tables
 
-Fixes:
+## Bug Fixes
 
 - Cap the size of batched INSERTS in bulk ingest, fixing a bug with wide tables
 
 ## v0.3.0 (2026-02-19)
 
-New features:
+## New Features
 
 - Improve bulk ingest performance by batching INSERT statements[^opt-0.3.0]
 
@@ -83,7 +89,7 @@ New features:
 
 ## v0.2.0 (2026-01-07)
 
-New features:
+## New Features
 
 - Support querying the `BIT` type
 - Force connection timezone to UTC for consistent handling

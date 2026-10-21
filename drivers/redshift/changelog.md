@@ -17,39 +17,45 @@
 
 # Changelog for Amazon Redshift Driver
 
+## v1.8.1 (2026-10-21)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v1.8.0 (2026-10-13)
 
-New features:
+## New Features
 
 - Include temporary tables in GetObjects results
 - Support fetching a new IdP access token for each connection using a configurable token endpoint
 
-Fixes:
+## Bug Fixes
 
 - Fix IdP token authentication failing with a "failed to authenticate" error
 - Update dependencies to pick up CVE fixes
 
 ## v1.7.0 (2026-09-09)
 
-New features:
+## New Features
 
 - Cache AWS Identity Center browser authentication tokens on disk to reduce repeated browser prompts across connections and processes
 
-Fixes:
+## Bug Fixes
 
 - Fix `redshift.connect_timeout` and `redshift.connect_timeout_ms` being incorrectly reported as unknown options
 - Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v1.6.0 (2026-08-18)
 
-Fixes:
+## Bug Fixes
 
 - Bump the Go version to pick up CVE fixes
 - Report 0 affected rows instead of -1 for DDL statements
 
 ## v1.5.0 (2026-07-31)
 
-New features:
+## New Features
 
 - Support dictionary-encoded bind parameters and the Arrow null type
 - Make VARBYTE size configurable and increase default size for GeoArrow data staged as VARBYTE in bulk ingest
@@ -57,20 +63,20 @@ New features:
 
 ## v1.4.0 (2026-07-07)
 
-Fixes:
+## Bug Fixes
 
 - Correctly query decimal values whose decimal representation ended in multiple zeroes
 
 (redshift-v1-3-0)=
 ## v1.3.0 (2026-05-25)
 
-New features:
+## New Features
 
 - Add `REDSHIFT:type` metadata on result set schema fields to provide the database's type name
 - Preserve SRID in GEOMETRY and GEOGRAPHY columns
 - Ingest GeoArrow arrays as GEOMETRY/GEOGRAPHY (this uses a staging table as these types cannot be directly uploaded)
 
-Fixes:
+## Bug Fixes
 
 - Ingest Arrow strings as VARCHAR(MAX) instead of TEXT
 - Pass credentials to COPY in bulk ingest, when AWS access key/secret key are specified directly
@@ -78,13 +84,13 @@ Fixes:
 
 ## v1.2.1 (2026-03-11)
 
-New features:
+## New Features
 
 - Improve ingest performance by uploading fewer, larger files
 
 ## v1.1.0 (2026-01-07)
 
-New features:
+## New Features
 
 - Support IdP token authentication
 - Support more options for IdP browser authentication

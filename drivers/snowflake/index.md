@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.15.1 <v1.15.1.md>
 v1.15.0 <v1.15.0.md>
 v1.14.0 <v1.14.0.md>
 v1.13.0 <v1.13.0.md>
@@ -32,7 +33,7 @@ v1.10.1 <v1.10.1.md>
 v1.10.0 <v1.10.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.15.0`](#driver-snowflake-v1.15.0 "Permalink") {badge-secondary}`Release Date|2026-10-15` {badge-success}`Tested With|Snowflake 10`
+[{badge-primary}`Driver Version|v1.15.1`](#driver-snowflake-v1.15.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Snowflake 10`
 
 This driver provides access to [Snowflake][snowflake], a cloud-based data warehouse platform.
 
@@ -1465,6 +1466,7 @@ TIMESTAMP_LTZ(6)
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.15.0](./v1.15.0.md)
 - [v1.14.0](./v1.14.0.md)
 - [v1.13.0](./v1.13.0.md)
 - [v1.12.0](./v1.12.0.md)
