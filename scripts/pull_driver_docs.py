@@ -39,6 +39,12 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+# Some repositories use the vendor name instead of the driver name.
+REPO_TO_DRIVER = {
+    "amazon": "redshift",
+    "microsoft": "mssql",
+}
+
 
 def run_gh_api(endpoint: str) -> dict:
     """Run a GitHub API call using gh CLI."""
@@ -512,6 +518,7 @@ def main():
 
     repo_org = args.repo_org
     repo_name = args.repo_name
+    driver_name = REPO_TO_DRIVER.get(repo_name, repo_name)
     release_tag = args.release_tag
     version = extract_version_from_tag(release_tag)
 
@@ -555,18 +562,18 @@ def main():
     # Find the .md asset
     md_asset = None
     for asset in release.get("assets", []):
-        if asset["name"] == f"{repo_name}.md":
+        if asset["name"] == f"{driver_name}.md":
             md_asset = asset
             break
 
     if not md_asset:
-        print(f"Error: {repo_name}.md asset not found in release")
+        print(f"Error: {driver_name}.md asset not found in release")
         sys.exit(1)
 
     # Setup paths
     script_dir = Path(__file__).parent
     docs_root = script_dir.parent
-    driver_dir = docs_root / "drivers" / repo_name
+    driver_dir = docs_root / "drivers" / driver_name
 
     if not driver_dir.exists():
         print(f"Error: Driver directory {driver_dir} does not exist")
@@ -585,7 +592,7 @@ def main():
             print(f"Found existing title: {existing_title}")
 
     # Download the asset to a temporary location first
-    temp_md = driver_dir / f".{repo_name}_temp.md"
+    temp_md = driver_dir / f".{driver_name}_temp.md"
     print(f"Downloading {md_asset['name']}...")
     download_asset(md_asset["url"], temp_md)
 
@@ -594,14 +601,14 @@ def main():
 
     # Give prerelease snapshots unique anchors before generating either page.
     new_content = re.sub(
-        rf"^\(driver-{re.escape(repo_name)}-prerelease\)=$",
-        f"(driver-{repo_name}-{version})=",
+        rf"^\(driver-{re.escape(driver_name)}-prerelease\)=$",
+        f"(driver-{driver_name}-{version})=",
         new_content,
         flags=re.MULTILINE,
     )
 
     # Copy to version-specific file first (so it appears in filesystem)
-    print(f"Copying {repo_name}.md -> {version}.md...")
+    print(f"Copying {driver_name}.md -> {version}.md...")
     version_path.write_text(new_content)
 
     # Now scan filesystem for ALL versions (including the one we just created)
@@ -619,10 +626,10 @@ def main():
 
     # Generate index.md from downloaded file (with title, TOC, and Previous Versions modifications)
     print(
-        f"Generating index.md from {repo_name}.md (replacing title, TOC, and Previous Versions)..."
+        f"Generating index.md from {driver_name}.md (replacing title, TOC, and Previous Versions)..."
     )
     updated_content = update_index_header(
-        new_content, repo_name, version, release_date, all_versions, existing_title
+        new_content, driver_name, version, release_date, all_versions, existing_title
     )
     index_path.write_text(updated_content)
 
@@ -634,7 +641,7 @@ def main():
     # Clean up temp file
     temp_md.unlink()
 
-    print(f"\n✅ Successfully synced {repo_name} documentation for {version}")
+    print(f"\n✅ Successfully synced {driver_name} documentation for {version}")
     print(f"   - Updated: {index_path}")
     print(f"   - Created: {version_path}")
     print(f"   - Updated: {changelog_path}")
