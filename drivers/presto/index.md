@@ -22,12 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.0-alpha.4 <v0.1.0-alpha.4.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|v0.1.0-alpha.3` {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|Presto 0.295`
+{badge-primary}`Driver Version|v0.1.0-alpha.4` {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Presto 0.295`
 
 :::{warning}
 This is documentation for a prerelease version.
@@ -834,6 +835,14 @@ TIMESTAMP(6) WITH TIME ZONE [^3]
 This driver was tested on:
 
 - Presto `Presto 0.299-7d50721`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
+- [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
+- [v0.1.0-alpha.1](./v0.1.0-alpha.1.md)
 
 [^1]: Due to [presto-go-client#102](https://github.com/prestodb/presto-go-client/issues/102), the maximum integer value that can be decoded is 9223372036854774784.
 [^2]: Negative scales are not supported
