@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.7.0 <v0.7.0.md>
 v0.6.1 <v0.6.1.md>
 v0.6.0 <v0.6.0.md>
 v0.5.3 <v0.5.3.md>
@@ -35,7 +36,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.6.1`](#driver-trino-v0.6.1 "Permalink") {badge-secondary}`Release Date|2026-10-15` {badge-success}`Tested With|Trino 483`
+[{badge-primary}`Driver Version|v0.7.0`](#driver-trino-v0.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Trino 484`
 
 This driver provides access to [Trino][trino], a free and
 open-source distributed SQL query engine.
@@ -952,6 +953,10 @@ TIMESTAMP(6) WITH TIME ZONE
 </tbody>
 </table>
 
+Year/month and day/time intervals, including parameterized interval types, are
+returned as Arrow month-day-nanosecond intervals. Fractional seconds beyond nine
+digits are truncated to nanoseconds.
+
 ## Options
 
 `trino.statement.last_query_id`
@@ -963,12 +968,13 @@ TIMESTAMP(6) WITH TIME ZONE
 
 This driver was tested on:
 
-- Trino `Trino 483`
+- Trino `Trino 484`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.6.1](./v0.6.1.md)
 - [v0.6.0](./v0.6.0.md)
 - [v0.5.3](./v0.5.3.md)
 - [v0.5.2](./v0.5.2.md)

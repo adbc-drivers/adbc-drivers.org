@@ -22,12 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.0-alpha.4 <v0.1.0-alpha.4.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|v0.1.0-alpha.3` {badge-secondary}`Release Date|2026-10-09` {badge-success}`Tested With|Apache Cassandra 5.0` {badge-success}`Tested With|DataStax Enterprise 6.9` {badge-success}`Tested With|ScyllaDB 2026.3`
+{badge-primary}`Driver Version|v0.1.0-alpha.4` {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Apache Cassandra 5.0` {badge-success}`Tested With|DataStax Enterprise 6.9` {badge-success}`Tested With|ScyllaDB 2026.3`
 
 :::{warning}
 This is documentation for a prerelease version.
@@ -1173,6 +1174,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
 - [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
 - [v0.1.0-alpha.1](./v0.1.0-alpha.1.md)
 
