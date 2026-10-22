@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.14.1 <v1.14.1.md>
 v1.14.0 <v1.14.0.md>
 v1.13.0 <v1.13.0.md>
 v1.12.2 <v1.12.2.md>
@@ -33,7 +34,7 @@ v1.10.0 <v1.10.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.14.0`](#driver-bigquery-v1.14.0 "Permalink") {badge-secondary}`Release Date|2026-10-15` {badge-success}`Tested With|BigQuery 1.85.0`
+[{badge-primary}`Driver Version|v1.14.1`](#driver-bigquery-v1.14.1 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|BigQuery 1.85.0`
 
 This driver provides access to [BigQuery][bigquery], a data warehouse offered by Google Cloud.
 
@@ -1068,7 +1069,7 @@ The BigQuery driver supports using the [Storage Write API](https://docs.cloud.go
 `bigquery.user_agent`
 : **Type:** string. **Default:** (empty)
 
-  Additional user agent text, such as `my-app/1.0`, appended to `Google-BigQuery-ADBC-Go/<version>` for BigQuery and Storage Read/Write API requests. Set this when creating the database, before opening a connection.
+  Additional user agent text, such as `my-app/1.0`, appended to the user agent (`Google-BigQuery-ADBC-Go/<version>`).
 
 ### Ingest Options
 
@@ -1217,6 +1218,7 @@ The BigQuery driver supports using the [Storage Write API](https://docs.cloud.go
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.14.0](./v1.14.0.md)
 - [v1.13.0](./v1.13.0.md)
 - [v1.12.2](./v1.12.2.md)
 - [v1.12.1](./v1.12.1.md)

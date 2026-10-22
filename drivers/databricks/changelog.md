@@ -17,6 +17,15 @@
 
 # Changelog for Databricks Driver
 
+## v0.3.0 (2026-10-22)
+
+## New Features
+
+- Support dictionary arrays in binding and ingestion
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
 
 ## v0.2.0 (2026-10-09)
 
@@ -31,7 +40,7 @@
 
 ## v0.1.3 (2026-07-15)
 
-Fixes:
+## Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 

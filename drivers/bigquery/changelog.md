@@ -17,15 +17,22 @@
 
 # Changelog for BigQuery Driver
 
+
+## v1.14.1 (2026-10-22)
+
+## Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v1.14.0 (2026-10-15)
 
-New features:
+## New Features
 
 - Add `bigquery.user_agent` option to customize the user agent
 - Add experimental support for optional job creation with Arrow result format
 - Return additional BigQuery table metadata
 
-Fixes:
+## Bug Fixes
 
 - Map REST API 403 access denials to the UNAUTHORIZED status code
 - Correct Arrow extension metadata for `ARRAY<GEOGRAPHY>` results
@@ -34,7 +41,7 @@ Fixes:
 
 ## v1.13.0 (2026-09-10)
 
-New features:
+## New Features
 
 - Return hidden datasets from GetObjects
 - Add normalized BigQuery job statistics keys to result set schema metadata
@@ -44,7 +51,7 @@ New features:
 - Add `BIGQUERY:query_id` to result set schema metadata
 - Support SCRIPT queries that return result sets
 
-Fixes:
+## Bug Fixes
 
 - Exclude hidden datasets from GetStatistics
 - Cancel server-side BigQuery jobs when statement execution is cancelled or result reading stops early
@@ -54,26 +61,26 @@ Fixes:
 
 ## v1.12.2 (2026-08-25)
 
-Fixes:
+## Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 
 ## v1.12.1 (2026-07-10)
 
-Fixes:
+## Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 
 ## v1.12.0 (2026-06-22)
 
-New features:
+## New Features
 
 - Make option names more consistent (allow `bigquery.foo` in addition to `adbc.bigquery.sql.foo`)
 - Allow overriding the gRPC endpoint for the BigQuery Storage Read API to enable (in theory) connecting to the BigQuery emulator
 - Add query statistics to the schema metadata of the result
 - Implement GetStatistics
 
-Fixes:
+## Bug Fixes
 
 - Add the SRID to returned GeoArrow metadata
 - Allow binding Arrow time[ns] values by truncating
@@ -84,18 +91,18 @@ Fixes:
 
 ## v1.11.2 (2026-03-10)
 
-Fixes:
+## Bug Fixes
 
 - Handle cancellation during bulk ingest better
 
 ## v1.11.0 (2026-02-19)
 
-New features:
+## New Features
 
 - Add experimental support for using the BigQuery Storage Write API for bulk ingest
 - Improve read performance by enabling Arrow compression
 
-Fixes:
+## Bug Fixes
 
 - Wait for table existence to propagate in bulk ingest
 
@@ -105,21 +112,21 @@ Fixes:
 The version number was bumped to align with the upstream arrow-adbc release.
 :::
 
-New features:
+## New Features
 
 - Support `bigquery://` connection URIs
 - Add `BIGQUERY:type` field metadata to note the original database type
 - Support setting the quota project for a connection
 - Support bulk ingest of list and struct types
 
-Fixes:
+## Bug Fixes
 
 - Work around hanging due to infinite retries in Google SDKs
 - Always return `decimal256(76,38)` for BIGDECIMAL columns
 
 ## v1.0.0 (2025-09-17)
 
-New features:
+## New Features
 
 - Support service account impersonation
 - Allow specifying the BigQuery location
@@ -127,7 +134,7 @@ New features:
 - Enable bulk ingest into a specified project/dataset (catalog/schema)
 - Tag GEOGRAPHY columns with GeoArrow extension metadata
 
-Fixes:
+## Bug Fixes
 
 - Put extension type metadata on the child in the case of nested types (like array-of-geography)
 - Export `AdbcDriverBigQueryInit` for backwards compatibility and ``AdbcDriverBigqueryInit` for driver managers

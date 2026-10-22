@@ -22,16 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.0 <v0.1.0.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|0.1.0-alpha.3` {badge-secondary}`Release Date|2026-07-27` {badge-success}`Tested With|DuckDB Quack 1.5`
-
-:::{warning}
-This is documentation for a prerelease version.
-:::
+[{badge-primary}`Driver Version|0.1.0`](#driver-quack-0.1.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|DuckDB Quack 2.0`
 
 This driver provides ADBC access to a DuckDB server exposed through the Quack
 remote protocol.
@@ -50,14 +47,21 @@ dbc install --pre quack
 
 ## Connecting
 
+Connections require verified TLS by default. Start the local development
+fixture with `docker compose up -d --wait test-service`. It includes a Caddy
+TLS proxy with a locally issued certificate, so the example skips verification:
+
 ```python
 from adbc_driver_manager import dbapi
 
 dbapi.connect(
     driver="quack",
-    db_kwargs={"uri": "quack://localhost:9494/?token=quack-secret"},
+    db_kwargs={"uri": "quack://localhost:9496/?token=quack-secret&tls=skip_verify"},
 )
 ```
+
+The plaintext endpoint is also available at
+`quack://localhost:9494/?token=quack-secret&tls=false`.
 
 ## Connection String Format
 
@@ -73,6 +77,14 @@ Components:
 - `HOST`: Quack server host (required)
 - `PORT`: Quack server port (optional)
 - `token`: shared Quack authentication token (optional)
+- `tls`: `true` (default) verifies the server certificate and hostname;
+  `false` uses plaintext HTTP; `skip_verify` or `skip-verify` requires TLS
+  without certificate or hostname verification.
+
+The database option `quack.tls` accepts the same values and overrides the URI
+setting regardless of setter order. Changes apply to subsequently initialized
+connections only. Empty, null, unknown, and duplicate URI `tls` values are
+rejected.
 
 ## Feature & Type Support
 
@@ -89,6 +101,10 @@ Components:
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td colspan="2">Bind Parameters</td>
+      <td colspan="1" style="text-align: center;">❌</td>
+    </tr>
     <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
@@ -163,6 +179,10 @@ Components:
 #### Database to Arrow
 
 <table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 50.0%;">
+<col span="1" style="width: 50.0%;">
+</colgroup>
 <thead>
 <tr>
 <th style="text-align: left; vertical-align: middle;">Database Type</th>
@@ -305,6 +325,54 @@ timestamp[us] (with time zone)
 <tr>
 <td style="text-align: left;">
 
+TIMESTAMPTZ
+
+</td>
+<td style="text-align: center;">
+
+timestamp[us] (with time zone) ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP_MS
+
+</td>
+<td style="text-align: center;">
+
+timestamp[ms]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP_NS
+
+</td>
+<td style="text-align: center;">
+
+timestamp[ns] ⚠️ [^2]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP_S
+
+</td>
+<td style="text-align: center;">
+
+timestamp[s]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
 VARBINARY
 
 </td>
@@ -332,13 +400,16 @@ string
 #### Arrow to Database
 
 <table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 75.0%;">
+</colgroup>
 <thead>
 <tr>
 <th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
-<th colspan="2" style="text-align: center;">DuckDB Quack Type</th>
+<th colspan="1" style="text-align: center;">DuckDB Quack Type</th>
 </tr>
 <tr>
-<th style="text-align: center;">Bind</th>
 <th style="text-align: center;">Ingest</th>
 </tr>
 </thead>
@@ -347,11 +418,6 @@ string
 <td style="text-align: left;">
 
 binary
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -368,11 +434,6 @@ binary_view
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 VARBINARY
 
 </td>
@@ -381,11 +442,6 @@ VARBINARY
 <td style="text-align: left;">
 
 bool
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -402,11 +458,6 @@ date32[day]
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 DATE
 
 </td>
@@ -419,12 +470,7 @@ decimal128
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-NUMERIC ⚠️ [^1]
+NUMERIC ⚠️ [^3]
 
 </td>
 </tr>
@@ -432,11 +478,6 @@ NUMERIC ⚠️ [^1]
 <td style="text-align: left;">
 
 double
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -453,11 +494,6 @@ fixed_size_binary
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 VARBINARY
 
 </td>
@@ -470,11 +506,6 @@ float
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 REAL
 
 </td>
@@ -482,29 +513,7 @@ REAL
 <tr>
 <td style="text-align: left;">
 
-halffloat
-
-</td>
-<td style="text-align: center;">
-
-❌
-
-</td>
-<td style="text-align: center;">
-
-(NA/not tested)
-
-</td>
-</tr>
-<tr>
-<td style="text-align: left;">
-
 int16
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -521,11 +530,6 @@ int32
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 INT
 
 </td>
@@ -534,11 +538,6 @@ INT
 <td style="text-align: left;">
 
 int64
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -555,11 +554,6 @@ large_binary
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 VARBINARY
 
 </td>
@@ -568,11 +562,6 @@ VARBINARY
 <td style="text-align: left;">
 
 large_string
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -589,11 +578,6 @@ string
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 VARCHAR
 
 </td>
@@ -602,11 +586,6 @@ VARCHAR
 <td style="text-align: left;">
 
 string_view
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -623,12 +602,7 @@ time32[ms]
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-TIME [^2]
+TIME [^4]
 
 </td>
 </tr>
@@ -640,12 +614,7 @@ time32[s]
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-TIME [^2]
+TIME [^4]
 
 </td>
 </tr>
@@ -653,11 +622,6 @@ TIME [^2]
 <td style="text-align: left;">
 
 time64[ns]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -674,11 +638,6 @@ time64[us]
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 TIME
 
 </td>
@@ -687,11 +646,6 @@ TIME
 <td style="text-align: left;">
 
 timestamp[ms]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -708,12 +662,7 @@ timestamp[ms] (with time zone)
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-TIMESTAMP(3) WITH TIME ZONE [^3]
+TIMESTAMP(3) WITH TIME ZONE [^5]
 
 </td>
 </tr>
@@ -721,11 +670,6 @@ TIMESTAMP(3) WITH TIME ZONE [^3]
 <td style="text-align: left;">
 
 timestamp[ns]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -742,12 +686,7 @@ timestamp[ns] (with time zone)
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-TIMESTAMP(9) WITH TIME ZONE [^3]
+TIMESTAMP(9) WITH TIME ZONE
 
 </td>
 </tr>
@@ -755,11 +694,6 @@ TIMESTAMP(9) WITH TIME ZONE [^3]
 <td style="text-align: left;">
 
 timestamp[s]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -776,12 +710,7 @@ timestamp[s] (with time zone)
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-TIMESTAMP(0) WITH TIME ZONE [^3]
+TIMESTAMP(0) WITH TIME ZONE [^5]
 
 </td>
 </tr>
@@ -789,11 +718,6 @@ TIMESTAMP(0) WITH TIME ZONE [^3]
 <td style="text-align: left;">
 
 timestamp[us]
-
-</td>
-<td style="text-align: center;">
-
-❌
 
 </td>
 <td style="text-align: center;">
@@ -810,11 +734,6 @@ timestamp[us] (with time zone)
 </td>
 <td style="text-align: center;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
 TIMESTAMP(6) WITH TIME ZONE
 
 </td>
@@ -822,19 +741,22 @@ TIMESTAMP(6) WITH TIME ZONE
 </tbody>
 </table>
 
-[^1]: Negative scales are not supported
-[^2]: DuckDB normalizes TIME values to microsecond precision on readback.
-[^3]: DuckDB normalizes TIMESTAMPTZ values to microsecond precision on readback.
+[^1]: DuckDB returns TIMESTAMPTZ values at microsecond precision; additional fractional digits are discarded. See https://duckdb.org/docs/current/sql/data_types/timestamp.
+[^2]: DuckDB reserves the extreme nanosecond values and cannot parse the full Arrow timestamp range; this case uses nearby finite values. See https://duckdb.org/docs/current/sql/data_types/timestamp#special-values.
+[^3]: Negative scales are not supported
+[^4]: DuckDB normalizes TIME values to microsecond precision on readback.
+[^5]: DuckDB normalizes TIMESTAMPTZ values to microsecond precision on readback.
 
 ## Compatibility
 
 This driver was tested on:
 
-- DuckDB Quack `1.5.5`
+- DuckDB Quack `2.0.0`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
-- [v0.1.0-alpha.2.md](./v0.1.0-alpha.2.md)
-- [v0.1.0-alpha.1.md](./v0.1.0-alpha.1.md)
+- [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
+- [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
+- [v0.1.0-alpha.1](./v0.1.0-alpha.1.md)

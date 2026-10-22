@@ -22,12 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.3.0 <v0.3.0.md>
 v0.2.0 <v0.2.0.md>
 v0.1.3 <v0.1.3.md>
 v0.1.2 <v0.1.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.2.0`](#driver-databricks-v0.2.0 "Permalink") {badge-success}`Tested With|Databricks 17`
+[{badge-primary}`Driver Version|v0.3.0`](#driver-databricks-v0.3.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Databricks 17`
 
 This driver provides access to [Databricks][databricks], a
 cloud-based platform for data analytics.
@@ -129,492 +130,730 @@ Examples:
   <colgroup>
     <col span="1" style="width: 25%;">
     <col span="1" style="width: 25%;">
-    <col span="1" style="width: 50%;">
+    <col span="1" style="width: 50.0%;">
   </colgroup>
   <thead>
     <tr>
-      <th>Feature</th>
-      <th colspan="2">Support</th>
+      <th colspan="2">Feature</th>
+      <th style="text-align: center;">Databricks</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td colspan="2">Bind Parameters</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Append</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Create/Append</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Replace</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Temporary Table</td>
-      <td>❌</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Specify target catalog</td>
-      <td>❌</td>
+      <td>Target Catalog</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Specify target schema</td>
-      <td>❌</td>
+      <td>Target Schema</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Non-nullable fields are marked NOT NULL</td>
-      <td>❌</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td rowspan="4">Catalog (GetObjects)</td>
       <td>depth=catalogs</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=tables</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=columns (all)</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Get Parameter Schema</td>
-      <td colspan="2">❌</td>
+      <td colspan="2">Get Parameter Schema</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Get Table Schema</td>
-      <td colspan="2">❌</td>
+      <td colspan="2">Get Table Schema</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Prepared Statements</td>
-      <td colspan="2">✅</td>
+      <td colspan="2">Prepared Statements</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
-      <td>Transactions</td>
-      <td colspan="2">❌</td>
+      <td colspan="2">Transactions</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
   </tbody>
 </table>
 
 ### Types
 
-#### Databricks to Arrow
-
-:::{list-table}
-:header-rows: 1
-:width: 100%
-:widths: 1 3
-
-* - Databricks Type
-  - Arrow Type
-* - BIGINT
-  - int64
-* - BOOLEAN
-  - bool
-* - DATE
-  - date32[day]
-* - DOUBLE PRECISION
-  - double
-* - INT
-  - int32
-* - NUMERIC
-  - decimal128
-* - REAL
-  - float
-* - SMALLINT
-  - int16
-* - TIMESTAMP
-  - timestamp[us] (with time zone)
-* - TIMESTAMP_NTZ
-  - timestamp[us]
-* - VARBINARY
-  - binary
-* - VARCHAR
-  - string
-:::
-
-#### Arrow to Databricks
+#### Database to Arrow
 
 <table class="docutils data align-default" style="width: 100%;">
-  <tr>
-    <th rowspan="2" style="text-align: center; vertical-align: middle;">Arrow Type</th>
-    <th colspan="2" style="text-align: center;">Databricks Type</th>
-  </tr>
-  <tr>
-    <th style="text-align: center;">Bind</th>
-    <th style="text-align: center;">Ingest</th>
-  </tr>
+<colgroup>
+<col span="1" style="width: 50.0%;">
+<col span="1" style="width: 50.0%;">
+</colgroup>
+<thead>
 <tr>
-  <td>binary</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-VARBINARY
-
-</td>
-
+<th style="text-align: left; vertical-align: middle;">Database Type</th>
+<th style="text-align: center;">Databricks</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-  <td>binary_view</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-VARBINARY
-
-</td>
-
-</tr>
-<tr>
-  <td>bool</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-BOOLEAN
-
-</td>
-
-</tr>
-<tr>
-  <td>date32[day]</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-DATE
-
-</td>
-
-</tr>
-<tr>
-  <td>decimal128</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-NUMERIC
-
-</td>
-
-</tr>
-<tr>
-  <td>double</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-DOUBLE PRECISION
-
-</td>
-
-</tr>
-<tr>
-  <td>fixed_size_binary</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-VARBINARY
-
-</td>
-
-</tr>
-<tr>
-  <td>float</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-REAL
-
-</td>
-
-</tr>
-<tr>
-  <td>halffloat</td>
-<td style="text-align: center;">
-
-REAL
-
-</td>
-<td style="text-align: center;">
-
-(not tested)
-
-</td>
-
-</tr>
-<tr>
-  <td>int16</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-SMALLINT
-
-</td>
-
-</tr>
-<tr>
-  <td>int32</td>
-
-
-<td colspan="2" style="text-align: center;">
-
-INT
-
-</td>
-
-</tr>
-<tr>
-  <td>int64</td>
-
-
-<td colspan="2" style="text-align: center;">
+<td style="text-align: left;">
 
 BIGINT
 
 </td>
+<td style="text-align: center;">
 
+int64
+
+</td>
 </tr>
 <tr>
-  <td>large_binary</td>
+<td style="text-align: left;">
 
-
-<td colspan="2" style="text-align: center;">
-
-VARBINARY
+BOOLEAN
 
 </td>
+<td style="text-align: center;">
 
+bool
+
+</td>
 </tr>
 <tr>
-  <td>large_string</td>
+<td style="text-align: left;">
 
-
-<td colspan="2" style="text-align: center;">
-
-VARCHAR
+DATE
 
 </td>
+<td style="text-align: center;">
 
+date32[day]
+
+</td>
 </tr>
 <tr>
-  <td>string</td>
+<td style="text-align: left;">
 
-
-<td colspan="2" style="text-align: center;">
-
-VARCHAR
+DOUBLE PRECISION
 
 </td>
+<td style="text-align: center;">
 
+double
+
+</td>
 </tr>
 <tr>
-  <td>string_view</td>
+<td style="text-align: left;">
 
-
-<td colspan="2" style="text-align: center;">
-
-VARCHAR
+INT
 
 </td>
+<td style="text-align: center;">
 
+int32
+
+</td>
 </tr>
 <tr>
-  <td>time32[ms]</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-(not tested)
+NUMERIC
 
 </td>
+<td style="text-align: center;">
 
+decimal128
+
+</td>
 </tr>
 <tr>
-  <td>time32[s]</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-(not tested)
+REAL
 
 </td>
+<td style="text-align: center;">
 
+float
+
+</td>
 </tr>
 <tr>
-  <td>time64[ns]</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
-❌
-
-</td>
-<td style="text-align: center;">
-
-(not tested)
+SMALLINT
 
 </td>
+<td style="text-align: center;">
 
+int16
+
+</td>
 </tr>
 <tr>
-  <td>time64[us]</td>
-<td style="text-align: center;">
-
-❌
-
-</td>
-<td style="text-align: center;">
-
-(not tested)
-
-</td>
-
-</tr>
-<tr>
-  <td>timestamp[ms]</td>
-<td style="text-align: center;">
-
-TIMESTAMP(3)
-
-</td>
-<td style="text-align: center;">
-
-TIMESTAMP_NTZ
-
-</td>
-
-</tr>
-<tr>
-  <td>timestamp[ms] (with time zone)</td>
-<td style="text-align: center;">
-
-TIMESTAMP(3) WITH TIME ZONE
-
-</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 TIMESTAMP
 
 </td>
+<td style="text-align: center;">
 
+timestamp[us] (with time zone)
+
+</td>
 </tr>
 <tr>
-  <td>timestamp[ns]</td>
+<td style="text-align: left;">
+
+TIMESTAMP(7)
+
+</td>
 <td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP(8)
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
 
 TIMESTAMP(9)
 
 </td>
 <td style="text-align: center;">
 
-TIMESTAMP_NTZ
+❌
 
 </td>
-
 </tr>
 <tr>
-  <td>timestamp[ns] (with time zone)</td>
-<td style="text-align: center;">
-
-TIMESTAMP(9) WITH TIME ZONE
-
-</td>
-<td style="text-align: center;">
-
-TIMESTAMP
-
-</td>
-
-</tr>
-<tr>
-  <td>timestamp[s]</td>
-<td style="text-align: center;">
-
-TIMESTAMP(0)
-
-</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 TIMESTAMP_NTZ
 
 </td>
-
-</tr>
-<tr>
-  <td>timestamp[s] (with time zone)</td>
 <td style="text-align: center;">
 
-TIMESTAMP(0) WITH TIME ZONE
+timestamp[us]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP_NTZ(7)
 
 </td>
 <td style="text-align: center;">
 
-TIMESTAMP
+❌
 
 </td>
-
 </tr>
 <tr>
-  <td>timestamp[us]</td>
+<td style="text-align: left;">
 
+TIMESTAMP_NTZ(8)
 
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP_NTZ(9)
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+binary
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+VARCHAR
+
+</td>
+<td style="text-align: center;">
+
+string
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Arrow to Database
+
+<table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 37.5%;">
+<col span="1" style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
+<th colspan="2" style="text-align: center;">Databricks Type</th>
+</tr>
+<tr>
+<th style="text-align: center;">Bind</th>
+<th style="text-align: center;">Ingest</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+
+binary
+
+</td>
 <td colspan="2" style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+binary_view
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+bool
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+BOOLEAN
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+date32[day]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+DATE
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+decimal128
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+NUMERIC
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+double
+
+</td>
+<td style="text-align: center;">
+
+DOUBLE
+
+</td>
+<td style="text-align: center;">
+
+DOUBLE PRECISION
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+fixed_size_binary
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+float
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+REAL
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+halffloat
+
+</td>
+<td style="text-align: center;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+int16
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+SMALLINT
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+int32
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+INT
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+int64
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+BIGINT
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+large_binary
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARBINARY
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+large_string
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARCHAR
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+string
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARCHAR
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+string_view
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+VARCHAR
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+time32[ms]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+time32[s]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+time64[ns]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+time64[us]
+
+</td>
+<td style="text-align: center;">
+
+❌
+
+</td>
+<td style="text-align: center;">
+
+(NA/not tested)
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[ms]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP_NTZ
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[ms] (with time zone)
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[ns]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP_NTZ ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[ns] (with time zone)
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[s]
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP_NTZ
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+timestamp[s] (with time zone)
+
+</td>
+<td colspan="2" style="text-align: center;">
+
+TIMESTAMP
+
+</td>
+</tr>
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
+
+timestamp[us]
+
+</td>
+<td style="text-align: center;">
+
+TIMESTAMP_NTZ
+
+</td>
+<td style="text-align: center;">
 
 TIMESTAMP(6)
 
 </td>
-
 </tr>
 <tr>
-  <td>timestamp[us] (with time zone)</td>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
-TIMESTAMP(6) WITH TIME ZONE
+timestamp[us] (with time zone)
 
 </td>
-<td style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP
 
 </td>
-
 </tr>
+</tbody>
 </table>
 
 ## Compatibility
 
-This driver was tested on the following versions of Databricks:
+This driver was tested on:
 
-- 2026.39
+- Databricks `2026.42`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.2.0](./v0.2.0.md)
 - [v0.1.3](./v0.1.3.md)
 - [v0.1.2](./v0.1.2.md)
 
-
-
+[^1]: Nanosecond timestamps are truncated to microseconds.
 
 [databricks]: https://www.databricks.com

@@ -17,15 +17,22 @@
 
 # Changelog for DuckDB Quack Driver
 
+## v0.1.0 (2026-10-22)
+
+## New Features
+
+- Bump DuckDB from `1.5.6` to `2.0.0`
+- Enable TLS certificate verification by default
+
 ## v0.1.0-alpha.3 (2026-07-27)
 
-New features:
+## New Features
 
 - Bump DuckDB from `1.5.4` to `1.5.5`
 
 ## v0.1.0-alpha.2 (2026-07-10)
 
-New features:
+## New Features
 
 - Bump DuckDB from `1.5.3` to `1.5.4`
 
