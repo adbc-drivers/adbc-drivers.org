@@ -17,6 +17,17 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.3.0 (2026-10-22)
+
+## New Features
+
+- Support dictionary-encoded bulk ingestion
+
+## Bug Fixes
+
+- Prevent table listing operations from failing when DESCRIBE TABLE fails on an individual table
+- Update dependencies to pick up CVE fixes
+
 ## v0.2.2 (2026-10-14)
 
 ## Bug Fixes
@@ -43,24 +54,24 @@
 (spark-v0-1-0)=
 ## v0.1.0 (2026-07-20)
 
-New features:
+## New Features
 
 - Implement GetTableSchema
 - Add option to set catalog on initial connect
 
-Fixes:
+## Bug Fixes
 
 - Guard against panic in Livy
 
 ## v0.1.0-alpha.3 (2026-07-10)
 
-New features:
+## New Features
 
 - Add the `spark.ingest.location` option to specify the LOCATION clause for CREATE TABLE in bulk ingest
 - Improve compatibility with Spark Connect on Amazon EMR
 - Improve compatibility with Livy on Amazon EMR
 
-Fixes:
+## Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 - Properly release Spark Connect sessions on disconnect

@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.3.0 <v0.3.0.md>
 v0.2.2 <v0.2.2.md>
 v0.2.1 <v0.2.1.md>
 v0.2.0 <v0.2.0.md>
@@ -30,7 +31,7 @@ v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.2.2`](#driver-spark-v0.2.2 "Permalink") {badge-secondary}`Release Date|2026-10-14` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
+[{badge-primary}`Driver Version|v0.3.0`](#driver-spark-v0.3.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
 
 This driver provides access to [Apache Spark][spark] (commonly referred to
 as just "Spark").
@@ -865,6 +866,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.2.2](./v0.2.2.md)
 - [v0.2.1](./v0.2.1.md)
 - [v0.2.0](./v0.2.0.md)
 - [v0.1.0](./v0.1.0.md)
