@@ -42,7 +42,7 @@ This project is not associated with DuckDB Labs.
 The driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install --pre quack
+dbc install quack
 ```
 
 ## Connecting
