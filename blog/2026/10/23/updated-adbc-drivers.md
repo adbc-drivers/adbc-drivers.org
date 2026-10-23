@@ -22,9 +22,9 @@ orphan: true
   limitations under the License.
 -->
 
-# Updated ADBC drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, Snowflake, and Trino
+# Updated ADBC drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Oracle Database, Presto, Snowflake, and Trino
 
-The ADBC Drivers Contributors have released updates to drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).
+The ADBC Drivers Contributors have released updates to drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Oracle Database, Presto, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).[^private]
 
 To update, run `dbc install <driver>`. For the Cassandra and Presto alpha releases, use `dbc install --pre <driver>`.
 
@@ -72,6 +72,10 @@ To update, run `dbc install <driver>`. For the Cassandra and Presto alpha releas
 
 - Update dependencies to pick up CVE fixes
 
+**[ADBC Driver for Oracle Database](https://docs.columnar.tech/drivers/oracle) version [0.6.4](https://docs.columnar.tech/drivers/oracle/v0.6.4)**
+
+- Update dependencies to pick up CVE fixes
+
 **[ADBC Driver for Presto](https://github.com/adbc-drivers/presto) version [0.1.0-alpha.4](/drivers/presto/v0.1.0-alpha.4.md)**
 
 - Update dependencies to pick up CVE fixes
@@ -90,3 +94,5 @@ To update, run `dbc install <driver>`. For the Cassandra and Presto alpha releas
 To learn more about any of these drivers, check out the [documentation](/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
 
 Bug reports and feature requests are welcome at the repositories linked above. You can also start a [Discussion](https://github.com/orgs/adbc-drivers/discussions) on GitHub or join the [Columnar Community Slack](https://join.slack.com/t/columnar-community/shared_invite/zt-3gt5cb69i-KRjJj~mjUZv5doVmpcVa4w).
+
+[^private]: The Oracle Database driver is available from Columnar's private driver registry and requires `dbc auth login`.
