@@ -22,13 +22,17 @@ orphan: true
   limitations under the License.
 -->
 
-# Updated ADBC drivers for Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, and Snowflake
+# Updated ADBC drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, Snowflake, and Trino
 
-The ADBC Drivers Contributors have released updates to drivers for Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, and Snowflake. All are available now via [dbc](https://docs.columnar.tech/dbc/).
+The ADBC Drivers Contributors have released updates to drivers for Apache Cassandra, Apache DataFusion, Apache Spark, Amazon Redshift, BigQuery, Databricks, DuckDB Quack, Microsoft SQL Server, MySQL/MariaDB, Presto, Snowflake, and Trino. All are available now via [dbc](https://docs.columnar.tech/dbc/).
 
-To update, run `dbc install <driver>`. For the Presto alpha release, use `dbc install --pre presto`.
+To update, run `dbc install <driver>`. For the Cassandra and Presto alpha releases, use `dbc install --pre <driver>`.
 
 ## Updated Drivers
+
+**[ADBC Driver for Apache Cassandra](https://github.com/adbc-drivers/cassandra) version [0.1.0-alpha.4](/drivers/cassandra/v0.1.0-alpha.4.md)**
+
+- Update dependencies to pick up CVE fixes
 
 **[ADBC Driver for Apache DataFusion](https://github.com/adbc-drivers/datafusion) version [0.28.0](/drivers/datafusion/v0.28.0.md)**
 
@@ -74,6 +78,13 @@ To update, run `dbc install <driver>`. For the Presto alpha release, use `dbc in
 
 **[ADBC Driver for Snowflake](https://github.com/adbc-drivers/snowflake) version [1.15.1](/drivers/snowflake/v1.15.1.md)**
 
+- Update dependencies to pick up CVE fixes
+
+**[ADBC Driver for Trino](https://github.com/adbc-drivers/trino) version [0.7.0](/drivers/trino/v0.7.0.md)**
+
+- Update trino-go-client to `1.4.1`
+- Support parameterized year/month and day/time intervals as Arrow month-day-nanosecond intervals
+- Report fractional-second precision correctly in interval field metadata
 - Update dependencies to pick up CVE fixes
 
 To learn more about any of these drivers, check out the [documentation](/index.md) and [quickstarts](https://github.com/columnar-tech/adbc-quickstarts).
