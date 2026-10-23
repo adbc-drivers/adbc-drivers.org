@@ -17,6 +17,18 @@
 
 # Changelog for Trino Driver
 
+## v0.7.0 (2026-10-22)
+
+## New Features
+
+- Bump trino-go-client to v1.4.1
+- Support parameterized year/month and day/time intervals as Arrow month-day-nanosecond intervals
+
+## Bug Fixes
+
+- Report fractional-second precision correctly in interval field metadata
+- Update dependencies to pick up CVE fixes
+
 ## v0.6.1 (2026-10-15)
 
 ## Bug Fixes
@@ -48,24 +60,24 @@
 
 ## v0.5.1 (2026-07-30)
 
-New features:
+## New Features
 
 - Update dependencies
 
 (trino-v0-5-0)=
 ## v0.5.0 (2026-07-06)
 
-New features:
+## New Features
 
 - Add `ARRAY` column type support
 
-Fixes:
+## Bug Fixes
 
 - Support TLS connections and validate over TLS
 
 ## v0.4.0 (2026-06-09)
 
-New features:
+## New Features
 
 - Add `trino.statement.last_query_id` option to retrieve the query ID ([trino#84](https://github.com/adbc-drivers/trino/issues/84))
 - Support ADBC's GetStatistics API call
@@ -77,7 +89,7 @@ Patch release updating dependencies only.
 
 ## v0.3.0 (2026-02-19)
 
-New features:
+## New Features
 
 - Optimize bulk ingest by batching INSERTs accounting for Trino query size limits
 - Test and enable Trino UUID and Arrow float16 types
@@ -85,12 +97,12 @@ New features:
 
 ## v0.2.0 (2026-02-19)
 
-New features:
+## New Features
 
 - Improve error messages
 - Support binding Arrow binary_view and fixed_size_binary types
 
-Fixes:
+## Bug Fixes
 
 - Override the HTTP client timeout to prevent spurious timeouts
 
