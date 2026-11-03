@@ -20,7 +20,9 @@
 :::{workinprogress}
 :::
 
-This style guide provides miscellaneous recommendations for building drivers that aren't quite part of the API contract, but which are meant to ensure a consistent "look-and-feel" for drivers. This page is meant both for humans and for agents. Agents can use this during code review and development to ensure drivers follow existing conventions.
+This style guide provides miscellaneous recommendations for building drivers. These recommendations aren't quite part of the API contract or the specification; instead we intend to ensure a consistent "look-and-feel" for drivers. This page is meant both for humans and for agents. We value consistency and brevity, as it helps all users (whether human or robotic) by avoiding surprises and guiding intuition. For the same reason, it helps developers by reducing the number of choices that must be made, discussed, and defended.
+
+Agents can use this guide during code review and development to ensure drivers follow existing conventions. To that end, a textual version of this page is available through the llms.txt convention; simply add `.md` to the URL.
 
 (style.naming)=
 ## Naming Conventions
@@ -43,7 +45,7 @@ Preferably,
 We recommend that:
 
 - `[driver]` should match the driver slug (e.g. used to install and load the driver).
-- Try to balance details with brevity.
+- Try to balance details with brevity. For example, adding a query ID or job link can help a user track down more details on the vendor's side. At the same time, adding too much extra information may make it hard to understand what the actual failure was.
 
 This gives the user context:
 
@@ -73,6 +75,16 @@ Examples:
 - ✔️ `bigquery.endpoint`
 
 [^adbc-prefix]: There are exceptions, e.g. connection options like `uri` tend not to use prefixes.
+
+---
+
+[{anchor}`§ <style.naming.common-options>`] Certain options tend to reocur, but are not part of the ADBC specification. They should still have generally consistent names and option values.
+
+[{anchor}`§ <style.naming.common-options.query>`] Options that relate to the behavior of queries should be under `vendor.query`. Examples: `bigquery.query.job_creation_mode`.
+
+[{anchor}`§ <style.naming.common-options.query-type>`] Options that control which Arrow type to use for a database type or vice-versa should be named `vendor.query.foobar_type`. Examples: `mssql.query.large_text_type`.
+
+[{anchor}`§ <style.naming.common-options.ingest>`] Options that relate to the behavior of bulk ingest should be under `vendor.ingest`. Examples: `spark.ingest.s3.base_endpoint`.
 
 (style.naming.schema-metadata)=
 ### Schema Metadata Key Naming
@@ -117,18 +129,7 @@ Rationale: ADBC driver managers generally can infer the driver name from the URI
 - UUID should use `arrow.uuid`.
 - Variant types (and similar types, like Redshift's SUPER type) should use `arrow.parquet.variant`.
 
-(style.behavior.common-options)=
-### Common Options
-
-Certain options tend to reocur, but are not part of the ADBC specification. They should have generally consistent names and option values:
-
-<!-- vendor.ingest.allow_unsafe_casts -->
-<!-- vendor.query.foobar_type -->
-
-:::{workinprogress}
-:::
-
 (style.testing)=
 ## Testing Conventions
 
-[{anchor}`§ <style.testing.unprivileged>`] Validation should be run with an unprivileged user account, not an administrator account; especially with agentic development, it's easy to accidentally implement features in terms of system tables/views that a user would not reasonably have access to.
+[{anchor}`§ <style.testing.unprivileged>`] Validation should be run with an unprivileged user account, not an administrator account. Especially with agentic development, it's easy to accidentally implement features in terms of system tables/views that a user would not reasonably have access to.
