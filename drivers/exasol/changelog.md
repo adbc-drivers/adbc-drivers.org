@@ -19,6 +19,29 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+(exasol-v0-31-0)
+## v0.31.0 (2026-11-02)
+
+New features:
+
+- Add build for Windows/arm64
+- Bump exarrow-rs to 0.31.0
+- Add support for ingesting date64, decimal256, dictionary-encoded, view, fixed-size binary, and interval types
+- Add Exasol-specific fields to result set schema metadata
+
+Fixes:
+
+- Raise an error before executing DDL for bulk ingest when the data to be ingested has an unsupported data type
+- Support retrieving INTERVAL, GEOGRAPHY, and HASHTYPE columns over WebSocket connections
+- {{BREAKING_CHANGE}} Return INTERVAL as Arrow month_day_nano interval, not string
+- {{BREAKING_CHANGE}} Return GEOMETRY and HASHTYPE as Arrow binary, not string
+- {{BREAKING_CHANGE}} Raise an error for unsupported options in connection strings, instead of silently ignoring them
+- {{BREAKING_CHANGE}} Require a schema in the connection URI
+- Don't run the statement in ADBC ExecuteSchema
+- After SetSqlQuery, execute methods will use the new query
+- Fix prepared statements with INSERT/UPDATE/DELETE/MERGE and bound parameters
+- Fix login failures when username/password contain special characters
+
 (exasol-v0-16-0)=
 ## v0.16.0 (2026-10-05)
 
