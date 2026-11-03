@@ -216,9 +216,11 @@ If you include a `compose.yaml`, you can run tests/validation against a containe
 
 ### Licensing
 
-Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license). If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>` and build your driver in Rust, this will be enforced for you by [cargo-about](https://embarkstudios.github.io/cargo-about/).
+Generally, drivers are open source under a permissive license. We suggest (and use) [Apache 2.0](https://www.apache.org/licenses/LICENSE-2.0), not least because many of us come from a background as maintainers of or contributors to Apache Software Foundation projects, but other permissive open source licenses like MIT or BSD are also reasonable. Please ensure that your driver does not depend on proprietary or copyleft components (i.e. that the driver actually fulfills the requirements of a permissive license). For example, GPL and LGPL-licensed dependencies can be problematic.
 
-If you would like to distribute a binary-only driver, or a driver that has binary-only dependencies, please {ref}`talk with us <building-drivers-contact>`.
+If you use the {ref}`standard CI workflows <building-drivers-internal-tooling>` and build your driver in Rust, this will be enforced for you by [cargo-about](https://embarkstudios.github.io/cargo-about/).
+
+If you would like to distribute a binary-only driver, or a driver that has binary-only/proprietary dependencies, please {ref}`talk with us <building-drivers-contact>`.
 
 For Apache-licensed repositories:
 
