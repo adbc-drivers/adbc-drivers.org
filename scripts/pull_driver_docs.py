@@ -298,7 +298,7 @@ def strip_version_from_title(title: str, version: str) -> str:
     """Remove version suffix from title.
 
     Examples:
-        '# MySQL/MariaDB Driver v0.5.0' -> '# MySQL/MariaDB'
+        '# MySQL Driver v0.5.0' -> '# MySQL'
         '# BigQuery Driver v1.2.0' -> '# BigQuery'
         '# Snowflake v3.0.0' -> '# Snowflake'
     """
@@ -340,11 +340,11 @@ def update_index_header(
     # Turns:
     #
     # (driver-mysql-v0.5.0)=
-    # MySQL/MariaDB Driver v0.5.0
+    # MySQL Driver v0.5.0
     #
     # Into:
     #
-    # MySQL/MariaDB
+    # MySQL
     #
     title_index = -1
     current_title = None

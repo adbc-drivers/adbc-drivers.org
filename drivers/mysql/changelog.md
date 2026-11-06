@@ -15,7 +15,7 @@
 {}
 ---
 
-# Changelog for MySQL/MariaDB Driver
+# Changelog for MySQL Driver
 
 ## v0.7.1 (2026-10-21)
 
