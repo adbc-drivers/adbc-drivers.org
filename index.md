@@ -252,6 +252,13 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/mariadb/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**MariaDB**
+::::
+
+::::{grid-item-card}
 :link: drivers/mssql/index
 :link-type: doc
 :class-body: sd-card-with-icon
