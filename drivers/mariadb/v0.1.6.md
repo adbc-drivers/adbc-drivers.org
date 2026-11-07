@@ -40,10 +40,7 @@ To connect, edit the `uri` option below to match your environment and run the fo
 from adbc_driver_manager import dbapi
 
 conn = dbapi.connect(
-  driver="mariadb",
-  db_kwargs = {
-    "uri": "mariadb://root@localhost:3306/demo"
-  }
+    driver="mariadb", db_kwargs={"uri": "mariadb://root@localhost:3306/demo"}
 )
 ```
 
