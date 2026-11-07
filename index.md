@@ -256,6 +256,18 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 :link-type: doc
 :class-body: sd-card-with-icon
 **MariaDB**
+:::{image} _static/driver_icons/color/light_mode/mariadb.svg
+:class: only-light
+:width: 28px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/mariadb.svg
+:class: only-dark
+:width: 28px
+:align: center
+:alt:
+:::
 ::::
 
 ::::{grid-item-card}
