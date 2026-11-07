@@ -15,7 +15,7 @@
 {}
 ---
 
-# MySQL/MariaDB
+# MySQL
 
 :::{toctree}
 :maxdepth: 1
@@ -34,10 +34,14 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|MariaDB 12.2` {badge-success}`Tested With|Databend 12.2`
+[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|Databend 1.2.881`
 
-This driver provides access to [MySQL][mysql] and [MariaDB][mariadb], free and
-open-source relational database management systems.
+This driver provides access to [MySQL][mysql], a free and
+open-source relational database management system.
+
+:::{note}
+For MariaDB, we recommend the [dedicated MariaDB driver](https://github.com/adbc-drivers/mariadb/blob/main/go/docs/mariadb.md).
+:::
 
 ## Installation
 
@@ -119,101 +123,99 @@ Examples:
   <colgroup>
     <col span="1" style="width: 25%;">
     <col span="1" style="width: 25%;">
-    <col span="1" style="width: 16.666666666666668%;">
-    <col span="1" style="width: 16.666666666666668%;">
-    <col span="1" style="width: 16.666666666666668%;">
+    <col span="1" style="width: 25%;">
+    <col span="1" style="width: 25%;">
   </colgroup>
   <thead>
     <tr>
       <th colspan="2">Feature</th>
       <th style="text-align: center;">MySQL</th>
-      <th style="text-align: center;">MariaDB</th>
       <th style="text-align: center;">Databend</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td colspan="2">Bind Parameters</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Append</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Create/Append</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Replace</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Temporary Table</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Target Catalog</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Target Schema</td>
-      <td colspan="3" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Non-nullable fields are marked NOT NULL</td>
-      <td colspan="3" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td rowspan="4">Catalog (GetObjects)</td>
       <td>depth=catalogs</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>depth=tables</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>depth=columns (all)</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td colspan="2">Get Parameter Schema</td>
-      <td colspan="3" style="text-align: center;">❌</td>
+      <td colspan="2" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td colspan="2">Get Table Schema</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td colspan="2">Prepared Statements</td>
-      <td colspan="2" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
       <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td colspan="2">Transactions</td>
-      <td colspan="3" style="text-align: center;">✅</td>
+      <td colspan="2" style="text-align: center;">✅</td>
     </tr>
   </tbody>
 </table>
@@ -228,16 +230,14 @@ MySQL only has databases. The driver treats MySQL databases as catalogs and leav
 
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
-<col span="1" style="width: 25.0%;">
-<col span="1" style="width: 25.0%;">
-<col span="1" style="width: 25.0%;">
-<col span="1" style="width: 25.0%;">
+<col span="1" style="width: 33.33333333%;">
+<col span="1" style="width: 33.33333333%;">
+<col span="1" style="width: 33.33333333%;">
 </colgroup>
 <thead>
 <tr>
 <th style="text-align: left; vertical-align: middle;">Database Type</th>
 <th style="text-align: center;">MySQL</th>
-<th style="text-align: center;">MariaDB</th>
 <th style="text-align: center;">Databend</th>
 </tr>
 </thead>
@@ -248,7 +248,7 @@ MySQL only has databases. The driver treats MySQL databases as catalogs and leav
 BIGINT
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int64
 
@@ -260,7 +260,7 @@ int64
 BIGINT UNSIGNED
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 uint64
 
@@ -277,7 +277,7 @@ uint64
 BIT
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 binary
 
@@ -301,11 +301,6 @@ int64, int8 ⚠️ [^1]
 </td>
 <td style="text-align: center;">
 
-int32, int8 ⚠️ [^1]
-
-</td>
-<td style="text-align: center;">
-
 int16
 
 </td>
@@ -316,7 +311,7 @@ int16
 DATE
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 date32[day]
 
@@ -328,7 +323,7 @@ date32[day]
 DATETIME
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 timestamp[ms], timestamp[s], timestamp[us] ⚠️ [^1]
 
@@ -345,7 +340,7 @@ timestamp[ms], timestamp[s], timestamp[us] ⚠️ [^1]
 DECIMAL
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -362,7 +357,7 @@ DECIMAL
 DOUBLE PRECISION
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 double
 
@@ -374,7 +369,7 @@ double
 INT
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int32
 
@@ -393,11 +388,6 @@ extension&lt;arrow.json&gt;
 </td>
 <td style="text-align: center;">
 
-string
-
-</td>
-<td style="text-align: center;">
-
 (NA/not tested)
 
 </td>
@@ -408,7 +398,7 @@ string
 NUMERIC
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 decimal64
 
@@ -425,7 +415,7 @@ decimal64
 REAL
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 float
 
@@ -437,7 +427,7 @@ float
 SMALLINT
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 int16
 
@@ -449,7 +439,7 @@ int16
 TIME
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 time64[us]
 
@@ -466,7 +456,7 @@ time64[us]
 TIMESTAMP
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 timestamp[ms] (with time zone), timestamp[s] (with time zone), timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
 
@@ -483,7 +473,7 @@ timestamp[s]
 TIMESTAMP(0)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -500,7 +490,7 @@ timestamp[s]
 TIMESTAMP(0) WITH TIME ZONE
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -517,7 +507,7 @@ TIMESTAMP(0) WITH TIME ZONE
 TIMESTAMP(p) (1 &lt;= p &lt;= 3)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -534,7 +524,7 @@ timestamp[s]
 TIMESTAMP(p) (1 &lt;= p &lt;= 3) WITH TIME ZONE
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -551,7 +541,7 @@ TIMESTAMP(p) (1 &lt;= p &lt;= 3) WITH TIME ZONE
 TIMESTAMP(p) (4 &lt;= p &lt;= 6)
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -568,7 +558,7 @@ timestamp[s]
 TIMESTAMP(p) (4 &lt;= p &lt;= 6) WITH TIME ZONE
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -585,7 +575,7 @@ TIMESTAMP(p) (4 &lt;= p &lt;= 6) WITH TIME ZONE
 TIMESTAMP_TZ
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -602,7 +592,7 @@ TIMESTAMP_TZ
 VARBINARY
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 binary
 
@@ -614,7 +604,7 @@ binary
 VARCHAR
 
 </td>
-<td colspan="3" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 string
 
@@ -628,22 +618,17 @@ string
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
 <col span="1" style="width: 25%;">
-<col span="1" style="width: 12.5%;">
-<col span="1" style="width: 12.5%;">
-<col span="1" style="width: 12.5%;">
-<col span="1" style="width: 12.5%;">
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 25%;">
 <col span="1" style="width: 25.0%;">
 </colgroup>
 <thead>
 <tr>
-<th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
+<th rowspan="2" style="text-align: left; vertical-align: middle;">Arrow Type</th>
 <th colspan="2" style="text-align: center;">MySQL Type</th>
-<th colspan="2" style="text-align: center;">MariaDB Type</th>
 <th colspan="1" style="text-align: center;">Databend Type</th>
 </tr>
 <tr>
-<th style="text-align: center;">Bind</th>
-<th style="text-align: center;">Ingest</th>
 <th style="text-align: center;">Bind</th>
 <th style="text-align: center;">Ingest</th>
 <th style="text-align: center;">Ingest</th>
@@ -656,7 +641,7 @@ string
 binary
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -673,7 +658,7 @@ VARBINARY
 binary_view
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -690,7 +675,7 @@ VARBINARY
 bool
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 BOOLEAN
 
@@ -707,7 +692,7 @@ BOOLEAN
 date32[day]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATE
 
@@ -736,16 +721,6 @@ DECIMAL ⚠️ [^2]
 </td>
 <td style="text-align: center;">
 
-DECIMAL
-
-</td>
-<td style="text-align: center;">
-
-DECIMAL ⚠️ [^2]
-
-</td>
-<td style="text-align: center;">
-
 ❌
 
 </td>
@@ -756,7 +731,7 @@ DECIMAL ⚠️ [^2]
 double
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DOUBLE PRECISION
 
@@ -773,7 +748,7 @@ DOUBLE PRECISION
 fixed_size_binary
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -800,12 +775,7 @@ REAL
 ❌
 
 </td>
-<td style="text-align: center;">
-
-REAL
-
-</td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 ❌
 
@@ -827,12 +797,7 @@ REAL
 (NA/not tested)
 
 </td>
-<td style="text-align: center;">
-
-REAL
-
-</td>
-<td colspan="2" style="text-align: center;">
+<td colspan="1" style="text-align: center;">
 
 (NA/not tested)
 
@@ -844,7 +809,7 @@ REAL
 int16
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 SMALLINT
 
@@ -861,7 +826,7 @@ SMALLINT
 int32
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 INT
 
@@ -878,7 +843,7 @@ INT
 int64
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 BIGINT
 
@@ -895,7 +860,7 @@ BIGINT
 large_binary
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARBINARY
 
@@ -912,7 +877,7 @@ VARBINARY
 large_string
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -929,7 +894,7 @@ VARCHAR
 string
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -946,7 +911,7 @@ VARCHAR
 string_view
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 VARCHAR
 
@@ -963,7 +928,7 @@ VARCHAR
 time32[ms]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIME
 
@@ -980,7 +945,7 @@ TIME
 time32[s]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIME
 
@@ -997,7 +962,7 @@ TIME
 time64[ns]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIME
 
@@ -1014,7 +979,7 @@ TIME
 time64[us]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIME
 
@@ -1031,7 +996,7 @@ TIME
 timestamp[ms]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME
 
@@ -1048,7 +1013,7 @@ DATETIME
 timestamp[ms] (with time zone)
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP
 
@@ -1065,7 +1030,7 @@ TIMESTAMP
 timestamp[ns]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME
 
@@ -1082,7 +1047,7 @@ DATETIME
 timestamp[ns] (with time zone)
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP
 
@@ -1099,7 +1064,7 @@ TIMESTAMP
 timestamp[s]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME
 
@@ -1116,7 +1081,7 @@ DATETIME
 timestamp[s] (with time zone)
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP
 
@@ -1133,7 +1098,7 @@ TIMESTAMP
 timestamp[us]
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 DATETIME
 
@@ -1150,7 +1115,7 @@ DATETIME
 timestamp[us] (with time zone)
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TIMESTAMP
 
@@ -1167,7 +1132,7 @@ TIMESTAMP
 uint16
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 SMALLINT UNSIGNED
 
@@ -1184,7 +1149,7 @@ SMALLINT UNSIGNED
 uint32
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 INT UNSIGNED
 
@@ -1201,7 +1166,7 @@ INT UNSIGNED
 uint64
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 BIGINT UNSIGNED
 
@@ -1218,7 +1183,7 @@ BIGINT UNSIGNED
 uint8
 
 </td>
-<td colspan="4" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 TINYINT UNSIGNED
 
@@ -1240,17 +1205,15 @@ TINYINT UNSIGNED
   Control what to do with DATE and TIMESTAMP values that contain zero components in the date (e.g. `0000-00-00`), which MySQL allows for backwards compatibility. By default, this will error; `convert_to_null` will instead treat these values as equivalent to null.
 
 `mysql.vendor`
-: **Values:** `mysql`, `mariadb`, `databend`, or another backend identifier. **Default:** `mysql`.
+: **Values:** `mysql`, `databend`, or another backend identifier. **Default:** `mysql`.
 
-  Controls whether the driver injects MySQL's UTC session timezone parameter into the DSN. Leave this unset for MySQL and MariaDB to use MySQL's `time_zone`. Other non-MySQL backends, including Databend, still get UTC client-side timestamp parsing, but no session timezone parameter is injected.
+  Controls whether the driver injects MySQL's UTC session timezone parameter into the DSN. Leave this unset for MySQL to use MySQL's `time_zone`. Other non-MySQL backends, including Databend, still get UTC client-side timestamp parsing, but no session timezone parameter is injected.
 
 ## Compatibility
 
 This driver was tested on:
 
-- MySQL `0 (0)`
-
-- MySQL `12.2.2-MariaDB-ubu2404 (mariadb.org binary distribution)`
+- Databend 1.2.881
 
 - MySQL `9.7.2 (MySQL Community Server - GPL)`
 
@@ -1271,5 +1234,4 @@ To see documentation for previous versions of this driver, see the following:
 [^1]: Return type is inconsistent depending on how the query was written
 [^2]: Negative scales are not supported
 
-[mariadb]: https://mariadb.org/
 [mysql]: https://www.mysql.com/
