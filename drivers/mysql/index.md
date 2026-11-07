@@ -34,10 +34,14 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|Databend 12.2`
+[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|Databend`
 
 This driver provides access to [MySQL][mysql], a free and
 open-source relational database management system.
+
+:::{note}
+For MariaDB, we recommend the [dedicated MariaDB driver](https://github.com/adbc-drivers/mariadb/blob/main/go/docs/mariadb.md).
+:::
 
 ## Installation
 
@@ -1209,7 +1213,7 @@ TINYINT UNSIGNED
 
 This driver was tested on:
 
-- MySQL `0 (0)`
+- Databend
 
 - MySQL `9.7.2 (MySQL Community Server - GPL)`
 
