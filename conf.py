@@ -309,6 +309,9 @@ driver_header_links_config = {
     "firebolt": [
         {"url": "https://github.com/adbc-drivers/firebolt", "label": "GitHub"},
     ],
+    "mariadb": [
+        {"url": "https://github.com/adbc-drivers/mariadb", "label": "GitHub"},
+    ],
     "mssql": [
         {"url": "https://github.com/adbc-drivers/mssql", "label": "GitHub"},
     ],
