@@ -21,3 +21,6 @@ An assorted list of footguns we've run into during development. This list is int
 
 - Go: it's easy to have the schema and data for record readers not match. Tests should validate that the schema of the _reader_ matches the expectation and that the schema of the _reader_ and the _record batch_ matches. (Example: [bigquery#303](https://github.com/adbc-drivers/bigquery/pull/303#discussion_r4032908603))
   - This is a common footgun in general in Arrow implementations.
+- Don't disclose sensitive information, like passwords, in error messages, logging, or tracing/telemetry.
+  - For example: it's tempting (and user-friendly) to return the URI in an error message if it failed to parse, but this may disclose the password to logs.
+  - Also see: [CWE-209](https://cwe.mitre.org/data/definitions/209.html).
