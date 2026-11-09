@@ -22,7 +22,7 @@
 ## New Features
 
 - Stream query results instead of buffering the full response
-- Support Zstandard- and LZ4-compressed Arrow IPC results
+- Support Zstandard and LZ4 compression for Arrow IPC results
 - Avoid extra payload copies during bulk ingestion
 
 ## Bug Fixes
