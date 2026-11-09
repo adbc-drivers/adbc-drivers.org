@@ -22,10 +22,11 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.3.1 <v0.3.1.md>
 v0.2.0 <v0.2.0.md>
 :::
 
-[{badge-primary}`Driver Version|0.2.0`](#driver-firebolt-0.2.0 "Permalink") {badge-secondary}`Release Date|2026-10-12` {badge-success}`Tested With|Firebolt 5.0.0`
+[{badge-primary}`Driver Version|0.3.1`](#driver-firebolt-0.3.1 "Permalink") {badge-secondary}`Release Date|2026-11-09` {badge-success}`Tested With|Firebolt 5.0.0`
 
 This driver provides ADBC access to Firebolt's HTTP query interface.
 
@@ -669,3 +670,9 @@ TIMESTAMP(6) WITH TIME ZONE
 This driver was tested on:
 
 - Firebolt `5.0.0-pre.0.20260927210425.e91cd5bd17f8`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.2.0](./v0.2.0.md)
