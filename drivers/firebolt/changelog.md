@@ -17,6 +17,18 @@
 
 # Changelog for Firebolt Driver
 
+## v0.3.1 (2026-11-09)
+
+## New Features
+
+- Stream query results instead of buffering the full response
+- Support Zstandard and LZ4 compression for Arrow IPC results
+- Avoid extra payload copies during bulk ingestion
+
+## Bug Fixes
+
+- Catch exceptions in connection operations to prevent process crashes
+
 ## v0.2.0 (2026-10-12)
 
 - Initial release through the ADBC Driver Foundry
