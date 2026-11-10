@@ -19,6 +19,12 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+## v0.32.0 (2026-11-06)
+
+Fixes:
+
+- Make the native transport match the WebSocket transport for `TIMESTAMP WITH LOCAL TIME ZONE`
+
 (exasol-v0-31-0)
 ## v0.31.0 (2026-11-02)
 

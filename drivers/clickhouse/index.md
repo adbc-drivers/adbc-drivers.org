@@ -22,12 +22,13 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.2 <v0.1.2.md>
 v0.1.1 <v0.1.1.md>
 v0.1.0 <v0.1.0.md>
 v0.1.0-alpha.2 <prerelease.md>
 :::
 
-[{badge-primary}`Driver Version|v0.1.1`](#driver-clickhouse-v0.1.1 "Permalink") {badge-secondary}`Release Date|2026-09-02` {badge-success}`Tested With|ClickHouse 26.8`
+[{badge-primary}`Driver Version|v0.1.2`](#driver-clickhouse-v0.1.2 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|ClickHouse 26.8`
 
 This driver provides access to [ClickHouse][clickhouse], an open source data warehouse and analytical database.  It is developed by ClickHouse, Inc.  The source code can be found at [adbc_clickhouse](https://github.com/ClickHouse/adbc_clickhouse); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
 
@@ -49,10 +50,10 @@ To use the driver, provide the URI of a ClickHouse database as the `uri` option.
 from adbc_driver_manager import dbapi
 
 conn = dbapi.connect(
-  driver="clickhouse",
-  db_kwargs={
-      "uri": "http://localhost:8123/",
-  }
+    driver="clickhouse",
+    db_kwargs={
+        "uri": "http://localhost:8123/",
+    },
 )
 ```
 
@@ -897,7 +898,14 @@ timestamp[us] (with time zone)
 
 This driver was tested on:
 
-- ClickHouse `26.8.2.7`
+- ClickHouse `26.8.36.3`
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.1.1](./v0.1.1.md)
+- [v0.1.0](./v0.1.0.md)
 
 [^1]: Date32 has limited range (1900-01-01 to 2299-12-31)
 [^2]: ClickHouse datetime without timezone is interpreted in **server** timezone

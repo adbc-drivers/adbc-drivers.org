@@ -21,6 +21,17 @@ See the [upstream
 changelog](https://github.com/ClickHouse/adbc_clickhouse/blob/main/CHANGELOG.md)
 in `ClickHouse/adbc_clickhouse` for full details.
 
+## v0.1.2 (2026-11-10)
+
+New features:
+
+- Add driver build for Windows/arm64
+
+Fixed:
+
+- GetTableSchema now returns decimal128, matching the server
+- Fix `decompression error: incorrect magic number` against ClickHouse 26.9+
+
 (clickhouse-v0-1-1)=
 ## v0.1.1 (2026-09-03)
 
