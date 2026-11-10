@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.32.0 <v0.32.0.md>
 v0.31.0 <v0.31.0.md>
 v0.16.0 <v0.16.0.md>
 v0.13.0 <v0.13.0.md>
@@ -33,7 +34,11 @@ v0.7.0 <v0.7.0.md>
 v0.6.3 <v0.6.3.md>
 :::
 
-{badge-primary}`Driver Version|0.31.0` {badge-secondary}`Release Date|2026-11-02` {badge-success}`Tested With|Exasol 2025`
+{badge-primary}`Driver Version|0.32.0` {badge-secondary}`Release Date|2026-11-09` {badge-success}`Tested With|Exasol 2025`
+
+:::{warning}
+This is documentation for a prerelease version.
+:::
 
 This driver provides access to [Exasol][exasol], an in-memory analytics engine.  It is developed by Exasol Labs.  The source code can be found at [exarrow-rs](https://github.com/exasol-labs/exarrow-rs); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
 
@@ -697,6 +702,7 @@ timestamp[us] (with time zone)
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.31.0](./v0.31.0.md)
 - [v0.16.0](./v0.16.0.md)
 - [v0.13.0](./v0.13.0.md)
 - [v0.12.7](./v0.12.7.md)
