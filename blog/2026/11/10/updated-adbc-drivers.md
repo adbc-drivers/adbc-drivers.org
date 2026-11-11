@@ -57,7 +57,7 @@ All drivers were updated to pick up CVE fixes in the Go runtime and in dependenc
 
 - When ingesting into a `VARCHAR`, let the server handle encoding conversions
 
-**[ADBC Driver for MariaDB](https://github.com/adbc-drivers/mysql) version [0.1.6](/drivers/mysql/v0.1.6.md)**
+**[ADBC Driver for MariaDB](https://github.com/adbc-drivers/mariadb) version [0.1.6](/drivers/mariadb/v0.1.6.md)**
 
 - Initial release.
 
