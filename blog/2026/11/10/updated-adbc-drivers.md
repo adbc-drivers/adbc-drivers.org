@@ -22,11 +22,15 @@ orphan: true
   limitations under the License.
 -->
 
-# Updated ADBC drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Databricks, MariaDB, Microsoft SQL Server, MySQL, Oracle Database, Presto, SAP HANA, Snowflake, and Trino
+# Updated ADBC drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Databricks, MariaDB, Microsoft SQL Server, MySQL, Oracle Database, Presto, SAP HANA, SingleStore, Snowflake, and Trino
 
-The ADBC Drivers Contributors have released updates to drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Databricks, Microsoft SQL Server, MySQL, Oracle Database[^private], Presto, SAP HANA[^private], Snowflake, and Trino. Also, we have released a new ADBC driver for MariaDB. All are available now via [dbc](https://docs.columnar.tech/dbc/).
+The ADBC Drivers Contributors have released updates to drivers for Apache Cassandra, Apache Spark, Amazon Redshift, BigQuery, Databricks, Microsoft SQL Server, MySQL, Oracle Database[^private], Presto, SAP HANA[^private], SingleStore, Snowflake, and Trino. Also, we have released a new ADBC driver for MariaDB. All are available now via [dbc](https://docs.columnar.tech/dbc/).
 
 To update, run `dbc install <driver>`. For the Cassandra and Presto alpha releases, use `dbc install --pre <driver>`.
+
+:::{note}
+Updated 2026-11-11 5 AM PST: SingleStore was also updated.
+:::
 
 ## Updated Drivers
 
@@ -76,6 +80,11 @@ No additional changes.
 **[ADBC Driver for SAP HANA](https://docs.columnar.tech/drivers/sap-hana) version [0.1.0-alpha.7](https://docs.columnar.tech/drivers/oracle/v0.1.0-alpha.7)**
 
 No additional changes.
+
+**[ADBC Driver for SingleStore](https://github.com/singlestore-labs/singlestore-adbc-connector) version [0.1.0-beta.3](/drivers/singlestore/v0.1.0-beta.3.md)**
+
+- Improve support for various data types
+- Implement server-side cancellation
 
 **[ADBC Driver for Snowflake](https://github.com/adbc-drivers/snowflake) version [1.16.0](/drivers/snowflake/v1.16.0.md)**
 
