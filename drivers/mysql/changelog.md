@@ -17,36 +17,49 @@
 
 # Changelog for MySQL Driver
 
+
+## v0.8.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Add basic support for Substrait by translating simple plans into SQL. This support is experimental and may have breaking changes or be removed without notice
+- MariaDB support has been split into a dedicated driver
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.7.1 (2026-10-21)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.7.0 (2026-10-09)
 
-## New Features
+### New Features
 
 - Support reading `BIGINT UNSIGNED` values above the signed 64-bit maximum through prepared statements
 
-## Bug Fixes
+### Bug Fixes
 
 - Accept target database via catalog for bulk ingestion
 - Update dependencies to pick up CVE fixes
 
 ## v0.6.1 (2026-09-08)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v0.6.0 (2026-08-18)
 
-## New Features
+### New Features
 
 - Add transaction support
 
-## Bug Fixes
+### Bug Fixes
 
 - Handle/test all timestamp precisions
 - Skip MySQL session timezone for non-MySQL backends and test with Databend
@@ -54,34 +67,34 @@
 
 ## v0.5.0 (2026-07-10)
 
-## New Features
+### New Features
 
 - Add option to control how date(time)s with zero components (`0000-00-00`) are read (either raising an error, or treating it as NULL)
 
 ## v0.4.0 (2026-06-18)
 
-## New Features
+### New Features
 
 - Support querying unsigned types
 
-## Bug Fixes
+### Bug Fixes
 
 - Guard against zero columns, >65536 columns in bulk ingest
 - Disable underlying connection pooling to avoid connection exhaustion
 
 ## v0.3.1 (2026-03-11)
 
-## New Features
+### New Features
 
 - Enable bulk ingest into temporary tables
 
-## Bug Fixes
+### Bug Fixes
 
 - Cap the size of batched INSERTS in bulk ingest, fixing a bug with wide tables
 
 ## v0.3.0 (2026-02-19)
 
-## New Features
+### New Features
 
 - Improve bulk ingest performance by batching INSERT statements[^opt-0.3.0]
 
@@ -89,7 +102,7 @@
 
 ## v0.2.0 (2026-01-07)
 
-## New Features
+### New Features
 
 - Support querying the `BIT` type
 - Force connection timezone to UTC for consistent handling

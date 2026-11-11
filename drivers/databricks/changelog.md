@@ -17,30 +17,43 @@
 
 # Changelog for Databricks Driver
 
+
+## v0.4.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Map not-found SQLSTATEs to StatusNotFound
+- Add databricks.auth_type
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.3.0 (2026-10-22)
 
-## New Features
+### New Features
 
 - Support dictionary arrays in binding and ingestion
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.2.0 (2026-10-09)
 
-## New Features
+### New Features
 
 - Support named query parameters
 - Support decimal data types
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.1.3 (2026-07-15)
 
-## Bug Fixes
+### Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 

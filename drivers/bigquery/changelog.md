@@ -17,22 +17,32 @@
 
 # Changelog for BigQuery Driver
 
+## v1.15.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Support 4-part table references in `destination_table`
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
 
 ## v1.14.1 (2026-10-22)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v1.14.0 (2026-10-15)
 
-## New Features
+### New Features
 
 - Add `bigquery.user_agent` option to customize the user agent
 - Add experimental support for optional job creation with Arrow result format
 - Return additional BigQuery table metadata
 
-## Bug Fixes
+### Bug Fixes
 
 - Map REST API 403 access denials to the UNAUTHORIZED status code
 - Correct Arrow extension metadata for `ARRAY<GEOGRAPHY>` results
@@ -41,7 +51,7 @@
 
 ## v1.13.0 (2026-09-10)
 
-## New Features
+### New Features
 
 - Return hidden datasets from GetObjects
 - Add normalized BigQuery job statistics keys to result set schema metadata
@@ -51,7 +61,7 @@
 - Add `BIGQUERY:query_id` to result set schema metadata
 - Support SCRIPT queries that return result sets
 
-## Bug Fixes
+### Bug Fixes
 
 - Exclude hidden datasets from GetStatistics
 - Cancel server-side BigQuery jobs when statement execution is cancelled or result reading stops early
@@ -61,26 +71,26 @@
 
 ## v1.12.2 (2026-08-25)
 
-## Bug Fixes
+### Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 
 ## v1.12.1 (2026-07-10)
 
-## Bug Fixes
+### Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 
 ## v1.12.0 (2026-06-22)
 
-## New Features
+### New Features
 
 - Make option names more consistent (allow `bigquery.foo` in addition to `adbc.bigquery.sql.foo`)
 - Allow overriding the gRPC endpoint for the BigQuery Storage Read API to enable (in theory) connecting to the BigQuery emulator
 - Add query statistics to the schema metadata of the result
 - Implement GetStatistics
 
-## Bug Fixes
+### Bug Fixes
 
 - Add the SRID to returned GeoArrow metadata
 - Allow binding Arrow time[ns] values by truncating
@@ -91,18 +101,18 @@
 
 ## v1.11.2 (2026-03-10)
 
-## Bug Fixes
+### Bug Fixes
 
 - Handle cancellation during bulk ingest better
 
 ## v1.11.0 (2026-02-19)
 
-## New Features
+### New Features
 
 - Add experimental support for using the BigQuery Storage Write API for bulk ingest
 - Improve read performance by enabling Arrow compression
 
-## Bug Fixes
+### Bug Fixes
 
 - Wait for table existence to propagate in bulk ingest
 
@@ -112,21 +122,21 @@
 The version number was bumped to align with the upstream arrow-adbc release.
 :::
 
-## New Features
+### New Features
 
 - Support `bigquery://` connection URIs
 - Add `BIGQUERY:type` field metadata to note the original database type
 - Support setting the quota project for a connection
 - Support bulk ingest of list and struct types
 
-## Bug Fixes
+### Bug Fixes
 
 - Work around hanging due to infinite retries in Google SDKs
 - Always return `decimal256(76,38)` for BIGDECIMAL columns
 
 ## v1.0.0 (2025-09-17)
 
-## New Features
+### New Features
 
 - Support service account impersonation
 - Allow specifying the BigQuery location
@@ -134,7 +144,7 @@ The version number was bumped to align with the upstream arrow-adbc release.
 - Enable bulk ingest into a specified project/dataset (catalog/schema)
 - Tag GEOGRAPHY columns with GeoArrow extension metadata
 
-## Bug Fixes
+### Bug Fixes
 
 - Put extension type metadata on the child in the case of nested types (like array-of-geography)
 - Export `AdbcDriverBigQueryInit` for backwards compatibility and ``AdbcDriverBigqueryInit` for driver managers

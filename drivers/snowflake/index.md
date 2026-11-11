@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.16.0 <v1.16.0.md>
 v1.15.1 <v1.15.1.md>
 v1.15.0 <v1.15.0.md>
 v1.14.0 <v1.14.0.md>
@@ -33,7 +34,7 @@ v1.10.1 <v1.10.1.md>
 v1.10.0 <v1.10.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.15.1`](#driver-snowflake-v1.15.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Snowflake 10`
+[{badge-primary}`Driver Version|v1.16.0`](#driver-snowflake-v1.16.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Snowflake 10`
 
 This driver provides access to [Snowflake][snowflake], a cloud-based data warehouse platform.
 
@@ -1455,6 +1456,19 @@ TIMESTAMP_LTZ(6)
 
   Can be set on the statement.
 
+`snowflake.query.last_query_id`
+: **Type:** string (read-only)
+
+  The ID of the latest query executed.
+
+  The query ID is also exposed in the schema metadata of the result set under
+  `SNOWFLAKE:query_id`.
+
+  :::{note}
+  Certain operations do not report a query ID through this option
+  (e.g. PUT/GET and bulk ingestion).
+  :::
+
 `adbc.snowflake.statement.query_tag`
 : **Type:** string. **Default:** (unset)
 
@@ -1466,6 +1480,7 @@ TIMESTAMP_LTZ(6)
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.15.1](./v1.15.1.md)
 - [v1.15.0](./v1.15.0.md)
 - [v1.14.0](./v1.14.0.md)
 - [v1.13.0](./v1.13.0.md)

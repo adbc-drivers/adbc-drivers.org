@@ -22,13 +22,14 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.1.0-alpha.5 <v0.1.0-alpha.5.md>
 v0.1.0-alpha.4 <v0.1.0-alpha.4.md>
 v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 :::
 
-{badge-primary}`Driver Version|v0.1.0-alpha.4` {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Presto 0.295`
+{badge-primary}`Driver Version|v0.1.0-alpha.5` {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Presto 0.295`
 
 :::{warning}
 This is documentation for a prerelease version.
@@ -42,7 +43,7 @@ open-source distributed SQL query engine.
 The Presto driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install --pre presto
+dbc install presto
 ```
 
 ## Connecting
@@ -834,12 +835,13 @@ TIMESTAMP(6) WITH TIME ZONE [^3]
 
 This driver was tested on:
 
-- Presto `Presto 0.299-7d50721`
+- Presto `Presto 0.300-01f660f`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.1.0-alpha.4](./v0.1.0-alpha.4.md)
 - [v0.1.0-alpha.3](./v0.1.0-alpha.3.md)
 - [v0.1.0-alpha.2](./v0.1.0-alpha.2.md)
 - [v0.1.0-alpha.1](./v0.1.0-alpha.1.md)

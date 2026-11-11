@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.8.0 <v0.8.0.md>
 v0.7.1 <v0.7.1.md>
 v0.7.0 <v0.7.0.md>
 v0.6.1 <v0.6.1.md>
@@ -34,7 +35,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.7.1`](#driver-mysql-v0.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|Databend 1.2.881`
+[{badge-primary}`Driver Version|v0.8.0`](#driver-mysql-v0.8.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|MySQL 9.7` {badge-success}`Tested With|Databend 1.2.881`
 
 This driver provides access to [MySQL][mysql], a free and
 open-source relational database management system.
@@ -123,8 +124,8 @@ Examples:
   <colgroup>
     <col span="1" style="width: 25%;">
     <col span="1" style="width: 25%;">
-    <col span="1" style="width: 25%;">
-    <col span="1" style="width: 25%;">
+    <col span="1" style="width: 25.0%;">
+    <col span="1" style="width: 25.0%;">
   </colgroup>
   <thead>
     <tr>
@@ -224,15 +225,34 @@ Examples:
 
 MySQL only has databases. The driver treats MySQL databases as catalogs and leaves schemas empty. To explicitly specify the database name when querying the catalog, bulk ingesting, or in other operations, pass it as the ADBC catalog.
 
+### Substrait
+
+The driver accepts Substrait plans via `AdbcStatementSetSubstraitPlan` by translating them to SQL. The supported relations, expressions, functions and types are listed in the driver's [Substrait dialect](https://github.com/adbc-drivers/mysql/blob/main/go/substrait_dialect.yaml). Plans that use anything else return `ADBC_STATUS_NOT_IMPLEMENTED`, and malformed plans return `ADBC_STATUS_INVALID_ARGUMENT`.
+
+In addition, the following restrictions apply, which a dialect can't express:
+
+- A plan is a `RelRoot` over any combination of `FilterRel`s, `FetchRel`s and `SortRel`s over a `ReadRel` over a `NamedTable`, whose name is either `[table]` (resolved against the current database) or `[database, table]`. The `ReadRel` can't have a projection. Its `best_effort_filter` is applied in full if all of it is supported, and ignored otherwise.
+- A `FetchRel`'s offset and count must be integer literals (or null).
+- Output column names must be unique, ignoring case.
+- Types can't have type variations.
+- Only `boolean`, `i8`, `i16`, `i32`, `i64`, `fp32` and `fp64` (except infinity and NaN), `decimal` and `date` (from 1000-01-01 to 9999-12-31) values can be literals. Null literals can have any supported type.
+- Comparisons are supported for booleans, integers, floating point numbers, decimals, dates and timestamps, and both sides must have the same type, including decimal precision and scale and timestamp precision.
+- Sort keys must have one of the types supported in comparisons. Sorts can't use the `CLUSTERED` direction or a comparison function, and sort keys can't be constant booleans.
+
+The column types and nullability in the `ReadRel`'s `base_schema` are not checked against the table: result types are those MySQL reports for the selected columns, and filters rely on the declared types. Filters compare the values stored in MySQL, which may differ from the declared types:
+
+- A `boolean` column is usually a `TINYINT(1)` in MySQL, which can hold values other than 0 and 1. `equal(b, true)` only matches 1, while `is_true(b)` and `not(b)` treat any non-zero value as true.
+- Zero dates (e.g. `0000-00-00`) are compared as dates before any other date, and are never NULL in filters, including with `mysql.query.zero_datetime_behavior=convert_to_null`, which only converts them to NULL in results.
+
 ### Types
 
 #### Database to Arrow
 
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
-<col span="1" style="width: 33.33333333%;">
-<col span="1" style="width: 33.33333333%;">
-<col span="1" style="width: 33.33333333%;">
+<col span="1" style="width: 33.333333333333336%;">
+<col span="1" style="width: 33.333333333333336%;">
+<col span="1" style="width: 33.333333333333336%;">
 </colgroup>
 <thead>
 <tr>
@@ -260,7 +280,7 @@ int64
 BIGINT UNSIGNED
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 uint64
 
@@ -277,7 +297,7 @@ uint64
 BIT
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 binary
 
@@ -323,7 +343,7 @@ date32[day]
 DATETIME
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 timestamp[ms], timestamp[s], timestamp[us] ⚠️ [^1]
 
@@ -340,7 +360,7 @@ timestamp[ms], timestamp[s], timestamp[us] ⚠️ [^1]
 DECIMAL
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -398,7 +418,7 @@ extension&lt;arrow.json&gt;
 NUMERIC
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 decimal64
 
@@ -439,7 +459,7 @@ int16
 TIME
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 time64[us]
 
@@ -456,7 +476,7 @@ time64[us]
 TIMESTAMP
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 timestamp[ms] (with time zone), timestamp[s] (with time zone), timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
 
@@ -473,7 +493,7 @@ timestamp[s]
 TIMESTAMP(0)
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -490,7 +510,7 @@ timestamp[s]
 TIMESTAMP(0) WITH TIME ZONE
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -507,7 +527,7 @@ TIMESTAMP(0) WITH TIME ZONE
 TIMESTAMP(p) (1 &lt;= p &lt;= 3)
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -524,7 +544,7 @@ timestamp[s]
 TIMESTAMP(p) (1 &lt;= p &lt;= 3) WITH TIME ZONE
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -541,7 +561,7 @@ TIMESTAMP(p) (1 &lt;= p &lt;= 3) WITH TIME ZONE
 TIMESTAMP(p) (4 &lt;= p &lt;= 6)
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -558,7 +578,7 @@ timestamp[s]
 TIMESTAMP(p) (4 &lt;= p &lt;= 6) WITH TIME ZONE
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -575,7 +595,7 @@ TIMESTAMP(p) (4 &lt;= p &lt;= 6) WITH TIME ZONE
 TIMESTAMP_TZ
 
 </td>
-<td colspan="1" style="text-align: center;">
+<td style="text-align: center;">
 
 (NA/not tested)
 
@@ -618,13 +638,13 @@ string
 <table class="docutils data align-default" style="width: 100%;">
 <colgroup>
 <col span="1" style="width: 25%;">
-<col span="1" style="width: 25%;">
-<col span="1" style="width: 25%;">
-<col span="1" style="width: 25.0%;">
+<col span="1" style="width: 18.75%;">
+<col span="1" style="width: 18.75%;">
+<col span="1" style="width: 37.5%;">
 </colgroup>
 <thead>
 <tr>
-<th rowspan="2" style="text-align: left; vertical-align: middle;">Arrow Type</th>
+<th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
 <th colspan="2" style="text-align: center;">MySQL Type</th>
 <th colspan="1" style="text-align: center;">Databend Type</th>
 </tr>
@@ -770,12 +790,7 @@ float
 REAL
 
 </td>
-<td style="text-align: center;">
-
-❌
-
-</td>
-<td colspan="1" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 ❌
 
@@ -792,12 +807,7 @@ halffloat
 REAL
 
 </td>
-<td style="text-align: center;">
-
-(NA/not tested)
-
-</td>
-<td colspan="1" style="text-align: center;">
+<td colspan="2" style="text-align: center;">
 
 (NA/not tested)
 
@@ -1213,14 +1223,15 @@ TINYINT UNSIGNED
 
 This driver was tested on:
 
-- Databend 1.2.881
+- Databend `v1.2.881-ca29960f5c(rust-1.94.0-nightly-2026-04-17T07:20:31.684496168Z)`
 
-- MySQL `9.7.2 (MySQL Community Server - GPL)`
+- MySQL `9.7.4 (MySQL Community Server - GPL)`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.7.1](./v0.7.1.md)
 - [v0.7.0](./v0.7.0.md)
 - [v0.6.1](./v0.6.1.md)
 - [v0.6.0](./v0.6.0.md)

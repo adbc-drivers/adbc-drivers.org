@@ -17,26 +17,37 @@
 
 # Changelog for Apache Cassandra Driver
 
+## v0.1.0-alpha.5 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Support vector columns
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.1.0-alpha.4 (2026-10-22)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.1.0-alpha.3 (2026-10-09)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.1.0-alpha.2 (2026-09-09)
 
-## New Features
+### New Features
 
 - Add Cassandra vector column support
 - Add ScyllaDB validation coverage
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes and bump the Go version
 

@@ -22,13 +22,14 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.4.0 <v0.4.0.md>
 v0.3.0 <v0.3.0.md>
 v0.2.0 <v0.2.0.md>
 v0.1.3 <v0.1.3.md>
 v0.1.2 <v0.1.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.3.0`](#driver-databricks-v0.3.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Databricks 17`
+[{badge-primary}`Driver Version|v0.4.0`](#driver-databricks-v0.4.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Databricks 17`
 
 This driver provides access to [Databricks][databricks], a
 cloud-based platform for data analytics.
@@ -123,6 +124,20 @@ Examples:
 - `databricks://token:dapi1234abcd5678efgh@dbc-a1b2345c-d6e7.cloud.databricks.com:443/sql/protocolv1/o/1234567890123456/1234-567890-abcdefgh`
 - `databricks://myworkspace.cloud.databricks.com:443/sql/1.0/warehouses/abc123def456?authType=OauthU2M`
 - `databricks://myworkspace.cloud.databricks.com:443/sql/1.0/warehouses/abc123def456?authType=OAuthM2M&clientID=12345678-1234-1234-1234-123456789012&clientSecret=mysecret123`
+
+## Options
+
+### Authentication Options
+
+`databricks.auth_type`
+: **Values:** `pat`, `oauth-m2m`. **Default:** (empty, inferred from the options that are set)
+
+  How to authenticate.
+
+  - `pat`: personal access token. Requires `databricks.access_token`.
+  - `oauth-m2m`: OAuth machine-to-machine. Requires `databricks.oauth.client_id` and `databricks.oauth.client_secret`.
+
+  If not set, the method is inferred: `pat` when `databricks.access_token` is set, `oauth-m2m` when a client ID or secret is set. Setting both an access token and OAuth options without `databricks.auth_type` is an error. If set, options that belong to other methods are ignored.
 
 ## Feature & Type Support
 
@@ -844,12 +859,13 @@ TIMESTAMP
 
 This driver was tested on:
 
-- Databricks `2026.42`
+- Databricks `2026.45`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.3.0](./v0.3.0.md)
 - [v0.2.0](./v0.2.0.md)
 - [v0.1.3](./v0.1.3.md)
 - [v0.1.2](./v0.1.2.md)

@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.4.0 <v0.4.0.md>
 v0.3.0 <v0.3.0.md>
 v0.2.2 <v0.2.2.md>
 v0.2.1 <v0.2.1.md>
@@ -31,7 +32,7 @@ v0.1.0-alpha.3 <v0.1.0-alpha.3.md>
 v0.1.0-alpha.2 <v0.1.0-alpha.2.md>
 :::
 
-[{badge-primary}`Driver Version|v0.3.0`](#driver-spark-v0.3.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
+[{badge-primary}`Driver Version|v0.4.0`](#driver-spark-v0.4.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-livy` {badge-success}`Tested With|Spark 3.x (Hive metastore) 3.5-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrift` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.0-thrifthttp` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.1-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.2-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) 4.3-connect` {badge-success}`Tested With|Spark 4.x (Hive metastore) emr-8.0-connect` {badge-success}`Tested With|Spark 4.x (Iceberg metastore) 4.1-connect`
 
 This driver provides access to [Apache Spark][spark] (commonly referred to
 as just "Spark").
@@ -300,7 +301,9 @@ Support is still experimental; Fabric is not yet part of integration testing.
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td colspan="3" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+      <td colspan="1" style="text-align: center;">⚠️ [^9]</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=tables</td>
@@ -843,29 +846,35 @@ TIMESTAMP(6) WITH TIME ZONE
 [^6]: select is not supported
 [^7]: Return type is inconsistent depending on how the query was written
 [^8]: Negative scales are not supported
+[^9]: Support varies based on version
 
 ## Compatibility
 
 This driver was tested on:
 
-- Apache Spark `3.5.8 (HiveServer2+binary)`
+- Apache Spark `3.5.9 (HiveServer2+binary)`
 
-- Apache Spark `3.5.8 5a48a37b2dbd7b51e3640cd1d947438459556cc6 (Apache Livy)`
+- Apache Spark `3.5.9 7c14a3c28b141cc97a330c4d0f5d2a6da7267f85 (Apache Livy)`
 
 - Apache Spark `4.0.2 10f33deed4f2f65836382f1efe4e9388b8b7e7cd (Spark Connect)`
 
-- Apache Spark `4.0.3 (HiveServer2+HTTP)`
+- Apache Spark `4.0.5 (HiveServer2+HTTP)`
 
-- Apache Spark `4.0.3 (HiveServer2+binary)`
+- Apache Spark `4.0.5 (HiveServer2+binary)`
 
-- Apache Spark `4.0.3 322ddd90b63c5d299427b7e32e255e25736db7ee (Spark Connect)`
+- Apache Spark `4.0.5 b472a3aa3c4b71b5a6ff068ef396f757bd662e59 (Spark Connect)`
 
-- Apache Spark `4.1.2 f0bb2e6a47d0ebda424ffd633fcea8644a597954 (Spark Connect)`
+- Apache Spark `4.1.4 45b9b176e6e27f530a86ac5421b03865b7ea6287 (Spark Connect)`
+
+- Apache Spark `4.2.1 617618396087429b5627a86ce933bb0f5d6645cb (Spark Connect)`
+
+- Apache Spark `4.3.0 98bc0212c94705434471627068f41e374ccab143 (Spark Connect)`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.3.0](./v0.3.0.md)
 - [v0.2.2](./v0.2.2.md)
 - [v0.2.1](./v0.2.1.md)
 - [v0.2.0](./v0.2.0.md)
