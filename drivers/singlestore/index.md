@@ -22,24 +22,26 @@
 :maxdepth: 1
 :hidden:
 
+changelog.md
+v0.1.0-beta.3.md
 v0.1.0-beta.1.md
 :::
 
-[{badge-primary}`Driver Version|v0.1.0-beta.1`](#driver-singlestore-v0.1.0-beta.1 "Permalink") {badge-secondary}`Release Date|2026-04-01` {badge-success}`Tested With|SingleStore 9.0.20`
+{badge-primary}`Driver Version|v0.1.0-beta.3` {badge-secondary}`Release Date|2026-11-11` {badge-success}`Tested With|SingleStore 9.0.33`
 
-This driver provides access to [SingleStore][singlestore]{target="_blank"}, a distributed database for low-latency SQL. It is developed by SingleStore, Inc. The source code can be found at [singlestore-adbc-connector](https://github.com/singlestore-labs/singlestore-adbc-connector); the ADBC Driver Foundry distributes precompiled binaries of the upstream sources for Linux, macOS, and Windows.
+:::{warning}
+This is documentation for a prerelease version.
+:::
+
+This driver provides access to [SingleStore][singlestore]{target="_blank"} relational database management system.
 
 ## Installation
 
 The SingleStore driver can be installed with [dbc](https://docs.columnar.tech/dbc):
 
 ```bash
-dbc install --pre singlestore
+dbc install singlestore
 ```
-
-:::{note}
-Only prerelease versions of the driver are currently available, so you must use `--pre` with dbc 0.2.0 or newer to install the driver.
-:::
 
 ## Connecting
 
@@ -99,163 +101,310 @@ The driver also supports the SingleStore DSN format (see [Go SingleStore Driver 
   <colgroup>
     <col span="1" style="width: 25%;">
     <col span="1" style="width: 25%;">
-    <col span="1" style="width: 50%;">
+    <col span="1" style="width: 50.0%;">
   </colgroup>
   <thead>
     <tr>
-      <th>Feature</th>
-      <th colspan="2">Support</th>
+      <th colspan="2">Feature</th>
+      <th style="text-align: center;">SingleStore</th>
     </tr>
   </thead>
   <tbody>
     <tr>
+      <td colspan="2">Bind Parameters</td>
+      <td colspan="1" style="text-align: center;">✅</td>
+    </tr>
+    <tr>
       <td rowspan="8">Bulk Ingestion</td>
       <td>Create</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Append</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Create/Append</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Replace</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>Temporary Table</td>
-      <td>❌</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Specify target catalog</td>
-      <td>✅</td>
+      <td>Target Catalog</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
-      <td>Specify target schema</td>
-      <td>❌</td>
+      <td>Target Schema</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
       <td>Non-nullable fields are marked NOT NULL</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td rowspan="4">Catalog (GetObjects)</td>
       <td>depth=catalogs</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=db_schemas</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=tables</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
       <td>depth=columns (all)</td>
-      <td>✅</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
-      <td>Get Parameter Schema</td>
-      <td colspan="2">❌</td>
+      <td colspan="2">Get Parameter Schema</td>
+      <td colspan="1" style="text-align: center;">❌</td>
     </tr>
     <tr>
-      <td>Get Table Schema</td>
-      <td colspan="2">✅</td>
+      <td colspan="2">Get Table Schema</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
-      <td>Prepared Statements</td>
-      <td colspan="2">✅</td>
+      <td colspan="2">Prepared Statements</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
     <tr>
-      <td>Transactions</td>
-      <td colspan="2">✅</td>
+      <td colspan="2">Transactions</td>
+      <td colspan="1" style="text-align: center;">✅</td>
     </tr>
   </tbody>
 </table>
 
-### Driver-Specific Features
-
-<table class="docutils data align-default" style="width: 100%">
-  <colgroup>
-    <col span="1" style="width: 25%;">
-    <col span="1" style="width: 25%;">
-    <col span="1" style="width: 10%;">
-    <col span="1" style="width: 40%;">
-  </colgroup>
-  <thead>
-    <tr>
-      <th>Feature</th>
-      <th>Name</th>
-      <th>Support</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-            <tr>
-          <td rowspan="1">Configuration</td>
-          <td>Connect with URI</td>
-      <td>✅</td>
-      <td>Test authentication with credentials embedded in URI.</td>
-    </tr>
-          </tbody>
-</table>
-
 ### Types
 
-#### SingleStore to Arrow
-
-:::{list-table}
-:header-rows: 1
-:width: 100%
-:widths: 1 3
-
-* - SingleStore Type
-  - Arrow Type
-* - BIGINT
-  - int64
-* - BIT
-  - binary
-* - BOOLEAN
-  - int64, int8 ⚠️ [^1]
-* - DATE
-  - date32[day]
-* - DATETIME
-  - timestamp[us]
-* - DOUBLE PRECISION
-  - double
-* - FLOAT
-  - float
-* - INT
-  - int32
-* - JSON
-  - extension&lt;arrow.json&gt;
-* - NUMERIC
-  - decimal64
-* - REAL
-  - float
-* - SMALLINT
-  - int16
-* - TIME
-  - time64[us]
-* - TIMESTAMP
-  - timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
-* - VARBINARY
-  - binary
-* - VARCHAR
-  - string
-:::
-
-#### Arrow to SingleStore
-
+#### Database to Arrow
 
 <table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 50.0%;">
+<col span="1" style="width: 50.0%;">
+</colgroup>
 <thead>
 <tr>
-<th rowspan="2" style="text-align: center; vertical-align: middle;">Arrow Type</th>
+<th style="text-align: left; vertical-align: middle;">Database Type</th>
+<th style="text-align: center;">SingleStore</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">
+
+BIGINT
+
+</td>
+<td style="text-align: center;">
+
+int64
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+BIT
+
+</td>
+<td style="text-align: center;">
+
+binary
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+BOOLEAN
+
+</td>
+<td style="text-align: center;">
+
+int64, int8 ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+DATE
+
+</td>
+<td style="text-align: center;">
+
+date32[day]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+DATETIME
+
+</td>
+<td style="text-align: center;">
+
+timestamp[s], timestamp[us] ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+DOUBLE PRECISION
+
+</td>
+<td style="text-align: center;">
+
+double
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+FLOAT
+
+</td>
+<td style="text-align: center;">
+
+float
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+INT
+
+</td>
+<td style="text-align: center;">
+
+int32
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+JSON
+
+</td>
+<td style="text-align: center;">
+
+extension&lt;arrow.json&gt;
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+NUMERIC
+
+</td>
+<td style="text-align: center;">
+
+decimal64
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+REAL
+
+</td>
+<td style="text-align: center;">
+
+float
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+SMALLINT
+
+</td>
+<td style="text-align: center;">
+
+int16
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIME
+
+</td>
+<td style="text-align: center;">
+
+time64[us]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+TIMESTAMP
+
+</td>
+<td style="text-align: center;">
+
+timestamp[s] (with time zone), timestamp[us], timestamp[us] (with time zone) ⚠️ [^1]
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+VARBINARY
+
+</td>
+<td style="text-align: center;">
+
+binary
+
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+
+VARCHAR
+
+</td>
+<td style="text-align: center;">
+
+string
+
+</td>
+</tr>
+</tbody>
+</table>
+
+#### Arrow to Database
+
+<table class="docutils data align-default" style="width: 100%;">
+<colgroup>
+<col span="1" style="width: 25%;">
+<col span="1" style="width: 37.5%;">
+<col span="1" style="width: 37.5%;">
+</colgroup>
+<thead>
+<tr>
+<th rowspan="3" style="text-align: left; vertical-align: middle;">Arrow Type</th>
 <th colspan="2" style="text-align: center;">SingleStore Type</th>
 </tr>
 <tr>
@@ -265,7 +414,7 @@ The driver also supports the SingleStore DSN format (see [Go SingleStore Driver 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 binary
 
@@ -277,7 +426,7 @@ VARBINARY
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 binary_view
 
@@ -289,7 +438,7 @@ VARBINARY
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 bool
 
@@ -301,7 +450,7 @@ BOOLEAN
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 date32[day]
 
@@ -312,20 +461,25 @@ DATE
 
 </td>
 </tr>
-<tr>
-<td style="text-align: center;">
+<tr class="row-with-cell-borders">
+<td style="text-align: left;">
 
 decimal128
 
 </td>
-<td colspan="2" style="text-align: center;">
+<td style="text-align: center;">
 
 DECIMAL
 
 </td>
+<td style="text-align: center;">
+
+DECIMAL ⚠️ [^2]
+
+</td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 double
 
@@ -337,7 +491,7 @@ DOUBLE PRECISION
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 fixed_size_binary
 
@@ -349,7 +503,7 @@ VARBINARY
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 float
 
@@ -361,7 +515,7 @@ FLOAT
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 int16
 
@@ -373,7 +527,7 @@ SMALLINT
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 int32
 
@@ -385,7 +539,7 @@ INT
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 int64
 
@@ -397,7 +551,7 @@ BIGINT
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 large_binary
 
@@ -409,7 +563,7 @@ VARBINARY
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 large_string
 
@@ -421,7 +575,7 @@ VARCHAR
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 string
 
@@ -433,7 +587,7 @@ VARCHAR
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 string_view
 
@@ -445,7 +599,7 @@ VARCHAR
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 time32[ms]
 
@@ -457,7 +611,7 @@ TIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 time32[s]
 
@@ -469,7 +623,7 @@ TIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 time64[ns]
 
@@ -481,7 +635,7 @@ TIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 time64[us]
 
@@ -493,7 +647,7 @@ TIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[ms]
 
@@ -505,7 +659,7 @@ DATETIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[ms] (with time zone)
 
@@ -517,7 +671,7 @@ TIMESTAMP
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[ns]
 
@@ -529,7 +683,7 @@ DATETIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[ns] (with time zone)
 
@@ -541,7 +695,7 @@ TIMESTAMP
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[s]
 
@@ -553,7 +707,7 @@ DATETIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[s] (with time zone)
 
@@ -565,7 +719,7 @@ TIMESTAMP
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[us]
 
@@ -577,7 +731,7 @@ DATETIME
 </td>
 </tr>
 <tr>
-<td style="text-align: center;">
+<td style="text-align: left;">
 
 timestamp[us] (with time zone)
 
@@ -593,10 +747,17 @@ TIMESTAMP
 
 ## Compatibility
 
-This driver was tested on the following versions of SingleStore:
+This driver was tested on:
 
-- 9.0.20 (SingleStoreDB source distribution (compatible; MySQL Enterprise & MySQL Commercial))
+- SingleStore `9.0.33 (SingleStoreDB source distribution (compatible; MySQL Enterprise & MySQL Commercial))`
 
 [^1]: Return type is inconsistent depending on how the query was written
+[^2]: Negative scales are not supported
 
 [singlestore]: https://www.singlestore.com/
+
+## Previous Versions
+
+To see documentation for previous versions of this driver, see the following:
+
+- [v0.1.0-beta.1](./v0.1.0-beta.1.md)
