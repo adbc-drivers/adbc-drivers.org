@@ -22,6 +22,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v0.8.0 <v0.8.0.md>
 v0.7.0 <v0.7.0.md>
 v0.6.1 <v0.6.1.md>
 v0.6.0 <v0.6.0.md>
@@ -36,7 +37,7 @@ v0.2.0 <v0.2.0.md>
 v0.1.0 <v0.1.0.md>
 :::
 
-[{badge-primary}`Driver Version|v0.7.0`](#driver-trino-v0.7.0 "Permalink") {badge-secondary}`Release Date|2026-10-22` {badge-success}`Tested With|Trino 484`
+[{badge-primary}`Driver Version|v0.8.0`](#driver-trino-v0.8.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Trino 484`
 
 This driver provides access to [Trino][trino], a free and
 open-source distributed SQL query engine.
@@ -98,9 +99,18 @@ By default, connections use HTTPS. To connect using HTTP, add `SSL=false` as a q
 
 SSL Certificate Verification:
 
-When connecting to servers with self-signed certificates or certificates signed by an unknown authority, you may encounter certificate verification errors. Use `SSLVerification=NONE` to disable certificate verification while maintaining an encrypted HTTPS connection:
+To trust a private CA, provide its certificate using `SSLCertPath` or `SSLCert`.
+
+Use `SSLVerification=NONE` to disable certificate verification while maintaining
+an encrypted HTTPS connection:
 
 - `trino://localhost:8443/catalog?SSLVerification=NONE` → Uses HTTPS with certificate verification disabled
+
+Client Certificate Authentication:
+
+For mutual TLS, use HTTPS and provide the client certificate using
+`SSLClientCertPath` or `SSLClientCert`, and its private key using
+`SSLClientKeyPath` or `SSLClientKey`.
 
 See [Trino JDBC Documentation](https://trino.io/docs/current/client/jdbc.html#parameter-reference) for complete parameter reference and [Trino Concepts](https://trino.io/docs/current/overview/concepts.html#catalog) for more information.
 
@@ -959,6 +969,21 @@ digits are truncated to nanoseconds.
 
 ## Options
 
+`trino.session_user`, `trino.impersonation_user`
+: **Type:** string.
+
+  Impersonate a different user (run queries as that user) while logging in as the specified user. If both options are provided, it is not specified which one will be followed.
+
+`trino.http_header.<Name>`
+: **Type:** string.
+
+  Send the HTTP header `<Name>` with the given value to the Trino server, for example to route queries through a gateway or proxy. Headers that the driver or the HTTP client manage (`Authorization`, `Accept-Encoding`, `X-Trino-User`, `X-Trino-Catalog`, `X-Trino-Schema`, `X-Trino-Session`, `X-Trino-Role`, `X-Trino-Transaction-Id`, `X-Trino-Prepared-Statement`, hop-by-hop headers, and similar) cannot be set.
+
+  - On the database, the header is sent on every request, and overrides one with the same name that the driver sets from the URI (e.g. `X-Trino-Client-Tags` from `clientTags`). An empty value is ignored.
+  - On a statement, the header is sent on every request of the queries run by this statement (submitting them, fetching their results, and cancelling them), and overrides one with the same name set by the driver or on the database. It applies to every execution of the statement (including `AdbcStatementExecuteSchema` and bulk ingestion) until it is changed; changing it does not affect a query that is already running. Set an empty string to remove the header.
+
+  For example, set `trino.http_header.X-Trino-Client-Tags` on a statement to replace the connection's client tags (from `clientTags` in the URI) for this statement's queries, e.g. to select a [resource group](https://trino.io/docs/current/admin/resource-groups.html).
+
 `trino.statement.last_query_id`
 : **Read-only.** **Type:** string.
 
@@ -974,6 +999,7 @@ This driver was tested on:
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v0.7.0](./v0.7.0.md)
 - [v0.6.1](./v0.6.1.md)
 - [v0.6.0](./v0.6.0.md)
 - [v0.5.3](./v0.5.3.md)

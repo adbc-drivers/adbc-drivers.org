@@ -17,67 +17,82 @@
 
 # Changelog for Trino Driver
 
+## v0.8.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Add option to send extra HTTP headers on requests
+- Support client certificate authentication
+- Add option to impersonate a user
+- Tolerate trailing semicolons in queries
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+- Serialize timezone-aware timestamps in UTC, fixing precision issues in bulk ingest and parameter binding
+
 ## v0.7.0 (2026-10-22)
 
-## New Features
+### New Features
 
 - Bump trino-go-client to v1.4.1
 - Support parameterized year/month and day/time intervals as Arrow month-day-nanosecond intervals
 
-## Bug Fixes
+### Bug Fixes
 
 - Report fractional-second precision correctly in interval field metadata
 - Update dependencies to pick up CVE fixes
 
 ## v0.6.1 (2026-10-15)
 
-## Bug Fixes
+### Bug Fixes
 
 - Bundle timezone data in shared libraries
 
 ## v0.6.0 (2026-10-09)
 
-## New Features
+### New Features
 
 - Support transactions
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v0.5.3 (2026-09-08)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v0.5.2 (2026-08-18)
 
-## Bug Fixes
+### Bug Fixes
 
 - Handle/test all timestamp precisions
 - Bump the Go version to pick up CVE fixes
 
 ## v0.5.1 (2026-07-30)
 
-## New Features
+### New Features
 
 - Update dependencies
 
 (trino-v0-5-0)=
 ## v0.5.0 (2026-07-06)
 
-## New Features
+### New Features
 
 - Add `ARRAY` column type support
 
-## Bug Fixes
+### Bug Fixes
 
 - Support TLS connections and validate over TLS
 
 ## v0.4.0 (2026-06-09)
 
-## New Features
+### New Features
 
 - Add `trino.statement.last_query_id` option to retrieve the query ID ([trino#84](https://github.com/adbc-drivers/trino/issues/84))
 - Support ADBC's GetStatistics API call
@@ -89,7 +104,7 @@ Patch release updating dependencies only.
 
 ## v0.3.0 (2026-02-19)
 
-## New Features
+### New Features
 
 - Optimize bulk ingest by batching INSERTs accounting for Trino query size limits
 - Test and enable Trino UUID and Arrow float16 types
@@ -97,12 +112,12 @@ Patch release updating dependencies only.
 
 ## v0.2.0 (2026-02-19)
 
-## New Features
+### New Features
 
 - Improve error messages
 - Support binding Arrow binary_view and fixed_size_binary types
 
-## Bug Fixes
+### Bug Fixes
 
 - Override the HTTP client timeout to prevent spurious timeouts
 

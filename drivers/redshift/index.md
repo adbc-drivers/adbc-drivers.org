@@ -1,17 +1,5 @@
 ---
 # Copyright (c) 2026 ADBC Drivers Contributors
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 {}
 ---
 
@@ -22,6 +10,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.9.0 <v1.9.0.md>
 v1.8.1 <v1.8.1.md>
 v1.8.0 <v1.8.0.md>
 v1.7.0 <v1.7.0.md>
@@ -34,7 +23,7 @@ v1.1.0 <v1.1.0.md>
 v1.0.0 <v1.0.0.md>
 :::
 
-[{badge-primary}`Driver Version|v1.8.1`](#driver-redshift-v1.8.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Amazon Redshift aws`
+[{badge-primary}`Driver Version|v1.9.0`](#driver-redshift-v1.9.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Amazon Redshift aws`
 
 This driver provides access to [Amazon Redshift][redshift]{target="_blank"}
 (commonly referred to as just "Redshift").
@@ -96,7 +85,9 @@ Connection strings are passed with the `uri` option. Redshift's URI syntax suppo
 Components:
 - Scheme: redshift:// (required)
 - User/Password: Optional (for standard user/password authentication with `cluster_type=redshift`)
-  - Ignored if cluster_type is `redshift-iam` or `redshift-serverless`
+  - Ignored if cluster_type is `redshift-serverless`
+  - If cluster_type is `redshift-iam`, then if omitted, the driver will log in with the current IAM identity; else it will fetch credentials for the given username
+  - For cluster_type `redshift`, the driver will fetch credentials for the given username
 - Host/Port: The Redshift cluster endpoint (e.g., my-cluster.c...com:5439)
   - If omitted (using redshift:///), the driver will discover this using the AWS SDK
 - Database: Required (e.g., /dev)
@@ -999,7 +990,161 @@ TIMESTAMPTZ
 </tbody>
 </table>
 
-### Caveats
+## Options
+
+### Connection Options
+
+`redshift.application_name`
+: **Type:** string.
+
+  The application name to present to the server.
+
+`redshift.auth.idc_client_display_name`
+: **Type:** string.
+
+  For browser-based authentication, the client name to display in the AWS IAM Identity Center.
+
+`redshift.auth.idc_region`
+: **Type:** string.
+
+  For browser-based authentication, the AWS region of the IdC.
+
+`redshift.auth.idp_response_timeout_seconds`
+: **Type:** integer. **Default:** 120
+
+  For IdP token authentication, how long to wait (in seconds) for the SSO flow to complete.
+
+`redshift.auth.issuer_url`
+: **Type:** string.
+
+  For browser-based authentication, the issuer URL.
+
+`redshift.auth.listen_port`
+: **Type:** integer. **Default:** 7890.
+
+  For browser-based authentication, the local port to listen on. Use port 0 to have the operating system assign a free port.
+
+`redshift.auth.provider`
+: **Values:** `userpass`, `BrowserIdcAuthPlugin`, `IdpTokenAuthPlugin`. **Default:** `userpass`.
+
+  How to authenticate. The default is user-password; `BrowserIdcAuthPlugin` triggers an authentication flow in the browser, while `IdpTokenAuthPlugin` fetches a token from an IdP.
+
+`redshift.auth.token`
+: **Type:** string.
+
+  An auth token to use with IdP token authentication.
+
+`redshift.auth.token_endpoint.request_data`
+: **Type:** string.
+
+  The form-urlencoded request body to POST to the IdP token endpoint.
+
+`redshift.auth.token_endpoint.request_headers`
+: **Type:** string.
+
+  Request headers to send to the IdP token endpoint, encoded as a JSON map.
+
+`redshift.auth.token_endpoint.request_url`
+: **Type:** string.
+
+  The URL of the IdP token endpoint.
+
+`redshift.auth.token_type`
+: **Values:** `ACCESS_TOKEN`, `EXT_JWT`.
+
+  The token type to use with IdP token authentication.
+
+`redshift.auto_create_user`
+: **Type:** boolean. **Default:** false.
+
+  When connecting via IAM, whether to create the user if it does not exist.
+
+`redshift.aws.access_key_id`
+: **Type:** string.
+
+  Explicitly supply the access key ID (by default the AWS SDK configures this, if needed).
+
+`redshift.aws.region`
+: **Type:** string.
+
+  Explicitly supply the region (by default the AWS SDK configures this).
+
+`redshift.aws.secret_access_key`
+: **Type:** string.
+
+  Explicitly supply the secret access key (by default the AWS SDK configures this, if needed).
+
+`redshift.aws.session_token`
+: **Type:** string.
+
+  Explicitly supply the session token (by default the AWS SDK configures this, if needed).
+
+`redshift.aws.profile`
+: **Type:** string.
+
+  Explicitly supply the profile to use (by default the AWS SDK configures this).
+
+`redshift.cluster_identifier`
+: **Type:** string.
+
+  The cluster to connect to (only applicable if `cluster_type` is `redshift` or `redshift-iam`).
+
+`redshift.cluster_type`
+: **Values:** `redshift`, `redshift-iam`, or `redshift-serverless`.
+
+  The type of Redshift cluster we are connecting to. `redshift` and `redshift-iam` both refer to Redshift clusters, while `redshift-serverless` means Redshift Serverless. They defer in how various other connection parameters are validated/inferred; see the connection documentation above.
+
+`redshift.connect_timeout_ms`
+: **Type:** integer.
+
+  A connection timeout, in milliseconds.
+
+`redshift.custom_domain_name`
+: **Type:** string.
+
+  Specify the workgroup to use by its custom domain name.
+
+`redshift.db_groups`
+: **Type:** string.
+
+  A list of groups that the user should join on connection, as a JSON-serialized list of strings.
+
+`redshift.db_name`
+: **Type:** string.
+
+  The name of the database to connect to.
+
+`redshift.ssl_cert`, `redshift.ssl_key`, `redshift.ssl_mode`, `redshift.ssl_root_key`
+: Configure SSL/TLS options. See the [Redshift documentation](https://docs.aws.amazon.com/redshift/latest/mgmt/connecting-ssl-support.html) for details.
+
+`redshift.workgroup_name`
+: **Type:** string.
+
+  Specify the workgroup to use by its name.
+
+### Bulk Ingest Options
+
+`redshift.ingest.bucket`
+: **Type:** string
+
+  The S3 bucket to use as a staging area when ingesting data.
+
+`redshift.ingest.geo_type`
+: **Values:** `GEOMETRY`, `GEOGRAPHY`. **Default:** `GEOMETRY`.
+
+  Whether GeoArrow columns (geoarrow.wkb, geoarrow.wkt) are ingested as GEOMETRY (default) or GEOGRAPHY.
+
+`redshift.ingest.geoarrow_wkb_size`
+: **Type:** integer. **Default:** 1048576
+
+  The size of VARBYTE columns created during ingest, used as staging columns for GeoArrow WKB data.
+
+`redshift.ingest.varbyte_size`
+: **Type:** integer. **Default:** 65536
+
+  The size of VARBYTE columns created during ingest.
+
+## Caveats
 
 - Temporary tables are shown in GetObjects, however, the order of the columns of these tables is not guaranteed to be correct. Also, less column/table metadata is returned.
 
@@ -1007,6 +1152,7 @@ TIMESTAMPTZ
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.8.1](./v1.8.1.md)
 - [v1.8.0](./v1.8.0.md)
 - [v1.7.0](./v1.7.0.md)
 - [v1.6.0](./v1.6.0.md)

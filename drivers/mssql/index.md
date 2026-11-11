@@ -1,17 +1,5 @@
 ---
 # Copyright (c) 2026 ADBC Drivers Contributors
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#         http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
 {}
 ---
 
@@ -22,6 +10,7 @@
 :hidden:
 
 Changelog <changelog.md>
+v1.8.0 <v1.8.0.md>
 v1.7.1 <v1.7.1.md>
 v1.7.0 <v1.7.0.md>
 v1.6.2 <v1.6.2.md>
@@ -41,7 +30,7 @@ v1.0.0 <v1.0.0.md>
 This project is not associated with Microsoft.
 :::
 
-[{badge-primary}`Driver Version|v1.7.1`](#driver-mssql-v1.7.1 "Permalink") {badge-secondary}`Release Date|2026-10-21` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
+[{badge-primary}`Driver Version|v1.8.0`](#driver-mssql-v1.8.0 "Permalink") {badge-secondary}`Release Date|2026-11-10` {badge-success}`Tested With|Microsoft SQL Server 2022` {badge-success}`Tested With|Microsoft SQL Server 2025` {badge-success}`Tested With|Fabric Data Warehouse azure`
 
 This driver provides access to [Microsoft SQL Server][mssql].
 
@@ -320,7 +309,7 @@ DATETIMEOFFSET(0)
 </td>
 <td style="text-align: center;">
 
-extension&lt;arrow.timestamp_with_offset&gt;, timestamp[s] (with time zone), timestamp[us] (with time zone) [^1]
+timestamp[us] (with time zone)
 
 </td>
 <td style="text-align: center;">
@@ -342,7 +331,7 @@ extension&lt;arrow.timestamp_with_offset&gt;, timestamp[ns] (with time zone), ti
 </td>
 <td style="text-align: center;">
 
-❌
+❌ [^1]
 
 </td>
 </tr>
@@ -354,7 +343,7 @@ DATETIMEOFFSET(p) (1 &lt;= p &lt;= 3)
 </td>
 <td style="text-align: center;">
 
-extension&lt;arrow.timestamp_with_offset&gt;, timestamp[ms] (with time zone), timestamp[us] (with time zone) [^1]
+timestamp[us] (with time zone)
 
 </td>
 <td style="text-align: center;">
@@ -371,7 +360,7 @@ DATETIMEOFFSET(p) (4 &lt;= p &lt;= 6)
 </td>
 <td style="text-align: center;">
 
-extension&lt;arrow.timestamp_with_offset&gt;, timestamp[us] (with time zone) [^1]
+timestamp[us] (with time zone)
 
 </td>
 <td style="text-align: center;">
@@ -1706,9 +1695,6 @@ You may want to authenticate with a service principal, e.g. in a pipeline. In ge
 
 ### Options Affecting Queries
 
-These options can be set on a database, connection, or statement. New connections
-inherit the database options, and new statements inherit the connection options.
-
 `mssql.query.datetimeoffset_type`
 : **Values:** `timestamp` or `timestamp_with_offset`. **Default:** `timestamp`
 
@@ -1769,9 +1755,6 @@ inherit the database options, and new statements inherit the connection options.
   effect when ingesting into Microsoft SQL Server (which uses `INSERT
   BULK`).
 
-  For batches containing `arrow.uuid` columns, the driver uses `openrowset`
-  regardless of this option to convert the staged binary values to UNIQUEIDENTIFIER.
-
   In some basic testing, we have not found any difference between these methods.
 
 `mssql.ingest.geo_type`
@@ -1799,14 +1782,15 @@ This driver was tested on:
 
 - Microsoft SQL Server `12.0.2000.8 SQL Azure`
 
-- Microsoft SQL Server `16.0.4305.5 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `16.0.4315.2 Enterprise Evaluation Edition (64-bit)`
 
-- Microsoft SQL Server `17.0.5015.4 Enterprise Evaluation Edition (64-bit)`
+- Microsoft SQL Server `17.0.5045.3 Enterprise Evaluation Edition (64-bit)`
 
 ## Previous Versions
 
 To see documentation for previous versions of this driver, see the following:
 
+- [v1.7.1](./v1.7.1.md)
 - [v1.7.0](./v1.7.0.md)
 - [v1.6.2](./v1.6.2.md)
 - [v1.6.1](./v1.6.1.md)
@@ -1820,7 +1804,7 @@ To see documentation for previous versions of this driver, see the following:
 - [v1.1.0](./v1.1.0.md)
 - [v1.0.0](./v1.0.0.md)
 
-[^1]: DATETIMEOFFSET result types depend on `mssql.query.datetimeoffset_type` and `mssql.query.datetimeoffset_precision`. The default is `timestamp[us, tz=UTC]`; nanosecond precision has a reduced date range. See [Options Affecting Queries](#options-affecting-queries).
+[^1]: Return type is inconsistent depending on how the query was written
 [^2]: while the documentation claims 7 digits of precision, the client only receives 6
 [^3]: Values rounded to microsecond precision
 [^4]: arrow-go cannot write view types to Parquet

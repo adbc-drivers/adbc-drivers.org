@@ -17,61 +17,73 @@
 
 # Changelog for Apache Spark Driver
 
+## v0.4.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+- Test against Spark 4.2, 4.3 as well
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+- For Thrift backends, filter out tables that don't belong to the schema in question
+
 ## v0.3.0 (2026-10-22)
 
-## New Features
+### New Features
 
 - Support dictionary-encoded bulk ingestion
 
-## Bug Fixes
+### Bug Fixes
 
 - Prevent table listing operations from failing when DESCRIBE TABLE fails on an individual table
 - Update dependencies to pick up CVE fixes
 
 ## v0.2.2 (2026-10-14)
 
-## Bug Fixes
+### Bug Fixes
 
 - Map Spark Connect gRPC errors to the correct ADBC status codes
 - Update dependencies to pick up CVE fixes
 
 ## v0.2.1 (2026-09-09)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v0.2.0 (2026-08-18)
 
-## New Features
+### New Features
 
 - Support Microsoft Fabric Lakehouse with Livy
 
-## Bug Fixes
+### Bug Fixes
 
 - Bump the Go version to pick up CVE fixes
 
 (spark-v0-1-0)=
 ## v0.1.0 (2026-07-20)
 
-## New Features
+### New Features
 
 - Implement GetTableSchema
 - Add option to set catalog on initial connect
 
-## Bug Fixes
+### Bug Fixes
 
 - Guard against panic in Livy
 
 ## v0.1.0-alpha.3 (2026-07-10)
 
-## New Features
+### New Features
 
 - Add the `spark.ingest.location` option to specify the LOCATION clause for CREATE TABLE in bulk ingest
 - Improve compatibility with Spark Connect on Amazon EMR
 - Improve compatibility with Livy on Amazon EMR
 
-## Bug Fixes
+### Bug Fixes
 
 - Bumped Go version to address security vulnerabilities (CVEs)
 - Properly release Spark Connect sessions on disconnect

@@ -17,21 +17,33 @@
 
 # Changelog for Microsoft SQL Server Driver
 
+
+## v1.8.0 (2026-11-10)
+
+### New Features
+
+- Add build for Windows/arm64
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+- When ingesting into VARCHAR (not NVARCHAR), let the server handle encoding conversions; previously text may have become mangled ([issue #16](https://github.com/adbc-drivers/mssql/issues/16))
+
 ## v1.7.1 (2026-10-21)
 
-## Bug Fixes
+### Bug Fixes
 
 - Update dependencies to pick up CVE fixes
 
 ## v1.7.0 (2026-10-13)
 
-## New Features
+### New Features
 
 - Add `mssql.query.datetimeoffset_type` option to return DATETIMEOFFSET as `arrow.timestamp_with_offset`, preserving the original UTC offset
 - Add `mssql.query.datetimeoffset_precision` option to choose between preserving the full date range and fractional-second precision
 - Support binding and ingesting `arrow.timestamp_with_offset` as DATETIMEOFFSET (Fabric Data Warehouse does not support DATETIMEOFFSET columns)
 
-## Bug Fixes
+### Bug Fixes
 
 - Restore support for querying DATETIMEOFFSET as `timestamp[us, tz=UTC]` by default
 - Correct UUID byte order when reading, binding, and ingesting UNIQUEIDENTIFIER values
@@ -41,46 +53,46 @@
 
 ## v1.6.2 (2026-09-10)
 
-## Bug Fixes
+### Bug Fixes
 
 - Prevent excessive memory allocation when parsing malformed GeoArrow WKB values
 - Update dependencies to pick up CVE fixes and bump the Go version
 
 ## v1.6.1 (2026-08-18)
 
-## Bug Fixes
+### Bug Fixes
 
 - Bump the Go version to pick up CVE fixes
 
 ## v1.6.0 (2026-07-30)
 
-## New Features
+### New Features
 
 - Support dictionary/null binding
 - Implement experimental trace propagation
 
 ## v1.5.0 (2026-07-07)
 
-## New Features
+### New Features
 
 - Add support for Microsoft Fabric Data Warehouse, including ingest support, OneLake support, `INSERT BULK`, and compatibility improvements
 - Add support for querying, binding, and ingesting `SQL_VARIANT`
 
-## Bug Fixes
+### Bug Fixes
 
 - {{BREAKING_CHANGE}} When ingesting `geoarrow.wkb`, ingest as GEOGRAPHY only when SRID and `"edges":"spherical"` are defined. See the new option `mssql.ingest.geo_type`
 - Fix typos in `INSERT BULK` support
 
 ## v1.4.1 (2026-05-22)
 
-## Bug Fixes
+### Bug Fixes
 
 - Restore support for SMALLDATETIME, IMAGE, UNIQUEIDENTIFIER, and XML types
 
 (mssql-v1-4-0)=
 ## v1.4.0 (2026-05-19)
 
-## New Features
+### New Features
 
 - Add `mssql.query.large_text_type` option to choose what Arrow type to use for NVARCHAR(MAX) and other similar database types
 - Support passing a catalog/schema name to GetTableSchema
@@ -88,7 +100,7 @@
 - Support querying GEOMETRY/GEOGRAPHY types as well-known binary (WKB) with the [GeoArrow](https://geoarrow.org/) extension type, with the SRID inferred from the first batch of data
 - Support ingesting GeoArrow WKB
 
-## Bug Fixes
+### Bug Fixes
 
 - Support ExecuteSchema for queries with unnamed columns ([mssql#7](https://github.com/adbc-drivers/mssql/issues/7))
 - Map TINYINT to Arrow `uint8` instead of `int8`
@@ -96,26 +108,26 @@
 
 ## v1.3.1 (2026-03-11)
 
-## Bug Fixes
+### Bug Fixes
 
 - Ingest string columns as `NVARCHAR(MAX)` (instead of the deprecated `NTEXT`)
 - Fix a bug where reusing a statement to execute a query after a bulk ingest would give an empty result set
 
 ## v1.3.0 (2026-02-19)
 
-## New Features
+### New Features
 
 - Improve query performance by optimizing the underlying [microsoft/go-mssqldb](https://github.com/microsoft/go-mssqldb) library[^opt-1.3.0]
 
 ## v1.2.0 (2026-01-12)
 
-## New Features
+### New Features
 
 - Add support for Microsoft Entra ID authentication
 
 ## v1.1.0 (2026-01-07)
 
-## New Features
+### New Features
 
 - Add support for querying DATETIME2, CHAR/NCHAR types
 - Add for binding/ingesting Arrow large/view/fixed-size string and binary types
