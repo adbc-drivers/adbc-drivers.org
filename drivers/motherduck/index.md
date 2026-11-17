@@ -31,15 +31,8 @@ v0.1.0-alpha.1 <v0.1.0-alpha.1.md>
 This is documentation for a prerelease version.
 :::
 
-This driver provides ADBC access to MotherDuck.
-
-:::{warning}
-This driver is **not** a drop-in replacement for the ADBC PostgreSQL driver,
-although it is built from it and talks to MotherDuck's PostgreSQL protocol
-endpoint. It is a separate driver with its own name, it only works with
-MotherDuck, and some of the PostgreSQL driver's options and features behave
-differently or don't work. See "Differences from the PostgreSQL Driver" below.
-:::
+This driver provides access to [MotherDuck](https://motherduck.com/), a
+serverless cloud data warehouse built on DuckDB.
 
 ## Installation & Quickstart
 
@@ -131,29 +124,6 @@ is more likely to be logged than the URI's password), and an option set on the
 database takes precedence over the URI's. Any other query parameter, including
 the PostgreSQL settings below, is rejected with `INVALID_ARGUMENT`.
 
-### PostgreSQL settings are not supported
-
-The driver reaches MotherDuck through a PostgreSQL client library, which has
-settings of its own. None of them are part of this driver's supported
-interface, and any of them may stop working, or work differently, in a future
-version, including a version that no longer uses that library:
-
-- URI query parameters, such as `sslmode`, `sslrootcert`, `options` and
-  `service`. These are rejected: the URI's query takes only the `motherduck.*`
-  options.
-- PostgreSQL environment variables, such as `PGHOST`, `PGPORT`, `PGSSLMODE`,
-  `PGSSLROOTCERT` and `PGOPTIONS`, and files such as `~/.pg_service.conf`.
-  Some are read today and some are ignored, as described under
-  [Differences from the PostgreSQL Driver](#differences-from-the-postgresql-driver).
-
-Use the `motherduck.*` options and the standard ADBC options instead,
-such as `motherduck.tls_root_cert_path` and `motherduck.tls_verify`
-for certificate verification. By default the driver verifies the server's
-certificate with the OS's trusted CA certificates (or `SSL_CERT_FILE`), so most
-connections need no TLS settings. If the driver finds no CA certificates,
-connecting fails; install the OS's CA certificates (such as the
-`ca-certificates` package) or use one of those options.
-
 ### Authentication
 
 The driver takes the token from the first of these that is set:
@@ -181,9 +151,11 @@ Without a token, connecting fails with `UNAUTHENTICATED`.
 
 ## Differences from the PostgreSQL Driver
 
-Code written for the ADBC PostgreSQL driver (`adbc_driver_postgresql`) needs
-changes to use this driver, and settings for this driver mean nothing to the
-PostgreSQL driver:
+Applications may have used the ADBC PostgreSQL driver
+(`adbc_driver_postgresql`) to connect to MotherDuck's PostgreSQL protocol
+endpoint. This driver builds on that implementation with connection handling
+and metadata support adapted for MotherDuck. If you are migrating an existing
+application from the PostgreSQL driver, review the differences below:
 
 - **A separate driver.** Load `motherduck`, not `postgresql`.
 - **MotherDuck only.** The driver connects only to MotherDuck's PostgreSQL
@@ -192,8 +164,8 @@ PostgreSQL driver:
 - **Connection URI.** The URI must use the `motherduck://` scheme (or `md://`, or `md:`),
   not `postgresql://`.
 - **Connection settings.** The MotherDuck token is the password, and the user
-  defaults to `postgres`. `PGUSER`, `PGPASSWORD`, `PGAPPNAME`, password files,
-  and connection service files are never used, and `sslmode` defaults to
+  defaults to `postgres`. `PGUSER`, `PGPASSWORD`, `PGAPPNAME`, and password
+  files are never used, and `sslmode` defaults to
   `verify-full`. The `motherduck.*` options have no PostgreSQL equivalent.
 - **Options that differ.** `adbc.postgresql.use_copy` defaults to `false`, and
   setting it to `true` fails. `adbc.postgresql.type_resolver_mode` is accepted
@@ -204,6 +176,27 @@ PostgreSQL driver:
   errors map to `INTERNAL` instead of `INVALID_DATA`.
 - **Missing features.** Bulk ingest, COPY result reads, statistics, and others
   don't work; the feature table below shows what is supported.
+
+### PostgreSQL settings are not supported
+
+The PostgreSQL client library has additional settings that are not part of this
+driver's supported interface. They may change or stop working in a future
+version, including a version that no longer uses that library:
+
+- URI query parameters, such as `sslmode`, `sslrootcert`, `options` and
+  `service`. These are rejected: the URI's query takes only the `motherduck.*`
+  options.
+- PostgreSQL environment variables, such as `PGHOST`, `PGPORT`, `PGSSLMODE`,
+  `PGSSLROOTCERT` and `PGOPTIONS`, and files such as `~/.pg_service.conf`.
+  Some are read today and some are ignored.
+
+Use the `motherduck.*` options and the standard ADBC options instead,
+such as `motherduck.tls_root_cert_path` and `motherduck.tls_verify`
+for certificate verification. By default the driver verifies the server's
+certificate with the OS's trusted CA certificates (or `SSL_CERT_FILE`), so most
+connections need no TLS settings. If the driver finds no CA certificates,
+connecting fails; install the OS's CA certificates (such as the
+`ca-certificates` package) or use one of those options.
 
 ## Feature & Type Support
 
@@ -1064,6 +1057,5 @@ timestamptz
 
 ## Compatibility
 
-This driver was tested on:
-
-- MotherDuck `(unknown)`
+This driver was tested against the MotherDuck cloud service. The driver does
+not report a server version.
