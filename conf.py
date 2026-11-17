@@ -313,6 +313,9 @@ driver_header_links_config = {
     "mariadb": [
         {"url": "https://github.com/adbc-drivers/mariadb", "label": "GitHub"},
     ],
+    "motherduck": [
+        {"url": "https://github.com/adbc-drivers/motherduck", "label": "GitHub"},
+    ],
     "mssql": [
         {"url": "https://github.com/adbc-drivers/mssql", "label": "GitHub"},
     ],
