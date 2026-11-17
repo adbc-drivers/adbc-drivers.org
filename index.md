@@ -290,6 +290,18 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/motherduck/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**MotherDuck**
+:::{image} _static/driver_icons/color/light_mode/motherduck.svg
+:width: 32px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: drivers/mysql/index
 :link-type: doc
 :class-body: sd-card-with-icon
