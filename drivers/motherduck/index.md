@@ -1057,5 +1057,4 @@ timestamptz
 
 ## Compatibility
 
-This driver was tested against the MotherDuck cloud service. The driver does
-not report a server version.
+This driver was tested against the MotherDuck cloud service.
