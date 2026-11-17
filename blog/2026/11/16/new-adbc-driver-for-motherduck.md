@@ -30,9 +30,9 @@ An alpha release of a new ADBC driver for [MotherDuck](https://motherduck.com/) 
 $ dbc install --pre motherduck
 ```
 
-The driver supports SQL query execution, bind parameters, table schema discovery, prepared statements, and transactions. See the [ADBC Driver for MotherDuck documentation](https://adbc-drivers.org/drivers/motherduck/). This is a preview release, and more features are actively being developed, so stay tuned. Bulk ingestion and COPY result reads are not supported in this release.
+The driver supports SQL query execution, bind parameters, table schema discovery, prepared statements, and transactions. See the [ADBC Driver for MotherDuck documentation](https://adbc-drivers.org/drivers/motherduck/). This is a preview release, and more features are actively being developed, so stay tuned. SSO login, Bulk ingestion and COPY result reads are not supported in this release but are on the roadmap.
 
-The driver was developed by the ADBC Driver Foundry, is implemented in C++, and is based on Apache Arrow ADBC's libpq-based PostgreSQL driver. It is a dedicated driver for MotherDuck and connects through MotherDuck's PostgreSQL protocol endpoint. It supports MotherDuck token authentication and verifies server certificates by default.
+The driver was developed by the ADBC Driver Foundry with support from Motherduck. It is implemented in C++, and is based on Apache Arrow ADBC's libpq-based PostgreSQL driver. Connections are made through their [Postgres endpoint]([url](https://motherduck.com/docs/sql-reference/postgres-endpoint/)) allowing users to run queries without needing a local duckdb client.
 
 To get started, set the `MOTHERDUCK_TOKEN` environment variable to your MotherDuck token and provide a connection URI with a `motherduck://` scheme:
 
