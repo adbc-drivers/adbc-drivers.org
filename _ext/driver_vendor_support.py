@@ -102,7 +102,6 @@ def setup(app: Sphinx):
     app.add_config_value("driver_vendor_support_config", {}, "env")
     app.add_post_transform(AddDriverVendorSupport)
     app.add_role("vendor-supported", VendorSupportedRole())
-    app.add_js_file("driver_vendor_support.js", loading_method="defer")
     return {
         "version": "0.1.0",
         "parallel_read_safe": True,
