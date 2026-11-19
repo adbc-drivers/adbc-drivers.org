@@ -531,6 +531,112 @@ section:has(> .driver-header-links) .md-typeset__table {
     color: white !important;
 }
 
+/* Small, neutral support badges stay distinct from release metadata. */
+.driver-vendor-support {
+    --driver-support-bg: #f5f5f6;
+    --driver-support-fg: #60646b;
+    --driver-support-border: #d6d8dc;
+    --driver-tooltip-bg: #ffffff;
+    --driver-tooltip-fg: #25272b;
+    display: inline-block;
+    position: relative;
+    margin-inline-start: 0.45rem;
+    vertical-align: middle;
+    font-size: 0.55rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    line-height: 1;
+    text-transform: none;
+}
+
+/* Driver page URLs identify the page; reserve permalinks for its sections. */
+.md-content section:has(> .driver-header-links) > h1 > .headerlink {
+    display: none;
+}
+
+[data-md-color-scheme="slate"] .driver-vendor-support {
+    --driver-support-bg: #2a2d34;
+    --driver-support-fg: #bcc0c8;
+    --driver-support-border: #575c66;
+    --driver-tooltip-bg: #292d37;
+    --driver-tooltip-fg: #e2e4e9;
+}
+
+.driver-vendor-support-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.1rem 0.4rem;
+    border: 1px solid var(--driver-support-border);
+    border-radius: 999px;
+    background: var(--driver-support-bg);
+    color: var(--driver-support-fg);
+    font: inherit;
+    line-height: 0.9rem;
+    white-space: nowrap;
+    cursor: help;
+}
+
+.driver-vendor-support-badge:focus-visible,
+.driver-vendor-support-tooltip a:focus-visible {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+}
+
+.driver-vendor-support-icon {
+    width: 0.6rem;
+    height: 0.6rem;
+    flex: none;
+}
+
+/* Compact list badges while retaining readable labels and tooltip text. */
+#available-drivers .driver-vendor-support {
+    margin-inline-start: 0.25rem;
+}
+
+#available-drivers .driver-vendor-support-badge {
+    gap: 0.15rem;
+    padding: 0 0.25rem;
+    font-size: 0.5rem;
+    line-height: 0.7rem;
+}
+
+#available-drivers .driver-vendor-support-icon {
+    width: 0.45rem;
+    height: 0.45rem;
+}
+
+.driver-vendor-support-tooltip {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    width: max-content;
+    max-width: min(18rem, calc(100vw - 2rem));
+    padding: 0.4rem 0.5rem;
+    border: 1px solid var(--driver-support-border);
+    border-radius: 0.2rem;
+    background: var(--driver-tooltip-bg);
+    color: var(--driver-tooltip-fg);
+    font-size: 0.65rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: start;
+    white-space: normal;
+    visibility: hidden;
+}
+
+.driver-vendor-support-tooltip a {
+    color: var(--md-typeset-a-color);
+    text-decoration: underline;
+}
+
+.driver-vendor-support:not(.is-dismissed):hover > .driver-vendor-support-tooltip,
+.driver-vendor-support:not(.is-dismissed):focus-within > .driver-vendor-support-tooltip,
+.driver-vendor-support.is-open > .driver-vendor-support-tooltip {
+    visibility: visible;
+}
+
 /* For grids on the homepage: remove forced padding on the sides */
 .grid-no-padding {
     padding-left: 0;
