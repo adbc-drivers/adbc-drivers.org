@@ -631,9 +631,8 @@ section:has(> .driver-header-links) .md-typeset__table {
     text-decoration: underline;
 }
 
-.driver-vendor-support:not(.is-dismissed):hover > .driver-vendor-support-tooltip,
-.driver-vendor-support:not(.is-dismissed):focus-within > .driver-vendor-support-tooltip,
-.driver-vendor-support.is-open > .driver-vendor-support-tooltip {
+.driver-vendor-support:hover > .driver-vendor-support-tooltip,
+.driver-vendor-support:focus-within > .driver-vendor-support-tooltip {
     visibility: visible;
 }
 
