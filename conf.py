@@ -104,6 +104,7 @@ extensions = [
     "sphinxext.opengraph",
     "driver_titles",
     "driver_header_links",
+    "driver_vendor_support",
     "structured_data",
 ]
 
@@ -279,6 +280,74 @@ BLOG_SIDEBAR_POST_COUNT = 5
 
 # Custom shields.io style badges. See custom.css for corresponding css.
 custom_badge_variants = ["primary", "secondary", "success", "warning", "danger", "info"]
+
+# -- Driver Vendor Support ---------------------------------------------------
+
+# Keep support descriptions here so headings, versioned docs, and links to
+# externally hosted documentation use the same wording.
+driver_vendor_support_config = {
+    "duckdb": {
+        "text": (
+            "DuckDB’s ADBC client API is maintained by the core DuckDB team "
+            "and falls under the Secondary support tier."
+        ),
+        "link_text": "Secondary support tier",
+        "link_url": "https://duckdb.org/docs/2.0/clients/overview",
+    },
+    "clickhouse": {
+        "text": (
+            "The ClickHouse ADBC driver is developed and maintained "
+            "by the ClickHouse team."
+        ),
+        "link_text": "ClickHouse ADBC driver",
+        "link_url": (
+            "https://clickhouse.com/docs/concepts/features/connect-to-clickhouse"
+            "#drivers-and-language-clients"
+        ),
+    },
+    "singlestore": {
+        "text": (
+            "The ADBC driver for SingleStore is maintained by SingleStore "
+            "and is available through the ADBC Driver Foundry."
+        ),
+        "link_text": "ADBC driver",
+        "link_url": (
+            "https://github.com/singlestore-labs/singlestore-adbc-connector#readme"
+        ),
+    },
+    "chdb": {
+        "text": "chDB’s ADBC driver is maintained by the chDB team.",
+        "link_text": "ADBC driver",
+        "link_url": "https://clickhouse.com/docs/chdb/install/adbc",
+    },
+    "exasol": {
+        "text": "The Exasol ADBC driver is maintained by Exasol Labs.",
+        "link_text": "Exasol ADBC driver",
+        "link_url": "https://docs.exasol.com/db/latest/connect_exasol/drivers/adbc.htm",
+    },
+    "firebolt": {
+        "text": "The ADBC driver for Firebolt is supported by the Firebolt team.",
+        "link_text": "ADBC driver",
+        "link_url": "https://docs.firebolt.io/overview#at-a-glance",
+    },
+    "mariadb": {
+        "text": (
+            "MariaDB’s ADBC driver is maintained by the ADBC Driver Foundry "
+            "and is affiliated with the MariaDB Foundation."
+        ),
+        "link_text": "MariaDB’s ADBC driver",
+        "link_url": (
+            "https://mariadb.com/docs/connectors/other/mariadb-adbc-driver-guide"
+        ),
+    },
+    "motherduck": {
+        "text": "MotherDuck’s ADBC driver is supported by the MotherDuck team.",
+        "link_text": "ADBC driver",
+        "link_url": (
+            "https://motherduck.com/docs/integrations/language-apis-and-drivers/adbc/"
+        ),
+    },
+}
 
 # -- Driver Header Links Extension Configuration -----------------------------
 
