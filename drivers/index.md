@@ -23,7 +23,28 @@ different languages including Go, Python, R, Rust, and more.
 
 Documentation for the following ADBC Driver Foundry drivers is hosted on this website:
 
+- {doc}`bigquery/index`
+- {doc}`cassandra/index`
+- {doc}`clickhouse/index` {vendor-supported}`clickhouse`
+- {doc}`databricks/index`
+- {doc}`datafusion/index`
+- {doc}`druid/index`
+- {doc}`exasol/index` {vendor-supported}`exasol`
+- {doc}`firebolt/index` {vendor-supported}`firebolt`
+- {doc}`mariadb/index` {vendor-supported}`mariadb`
+- {doc}`motherduck/index` {vendor-supported}`motherduck`
+- {doc}`mssql/index`
+- {doc}`mysql/index`
+- {doc}`presto/index`
+- {doc}`quack/index`
+- {doc}`redshift/index`
+- {doc}`singlestore/index` {vendor-supported}`singlestore`
+- {doc}`snowflake/index`
+- {doc}`spark/index`
+- {doc}`trino/index`
+
 :::{toctree}
+:hidden:
 :maxdepth: 1
 
 bigquery/index.md
@@ -49,8 +70,8 @@ trino/index.md
 
 The following drivers are also installable with [dbc](https://docs.columnar.tech/dbc/), but their documentation is hosted elsewhere:
 
-- [chDB](https://clickhouse.com/docs/chdb/install/adbc)
-- [DuckDB](https://duckdb.org/docs/stable/clients/adbc)
+- [chDB](https://clickhouse.com/docs/chdb/install/adbc) {vendor-supported}`chdb`
+- [DuckDB](https://duckdb.org/docs/stable/clients/adbc) {vendor-supported}`duckdb`
 - [Flight SQL](https://arrow.apache.org/adbc/current/driver/flight_sql.html)
 - [PostgreSQL](https://arrow.apache.org/adbc/current/driver/postgresql.html)
 - [SQLite](https://arrow.apache.org/adbc/current/driver/sqlite.html)
