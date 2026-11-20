@@ -333,7 +333,7 @@ driver_vendor_support_config = {
     "mariadb": {
         "text": (
             "MariaDB’s ADBC driver is maintained by the ADBC Driver Foundry "
-            "and is affiliated with the MariaDB Foundation."
+            "with support from the MariaDB Foundation."
         ),
         "link_text": "MariaDB’s ADBC driver",
         "link_url": (
