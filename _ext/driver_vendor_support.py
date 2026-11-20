@@ -51,7 +51,7 @@ def _badge(driver: str, tooltip: str | dict[str, str], serial: int) -> nodes.raw
         '<span class="driver-vendor-support">'
         '<button type="button" class="driver-vendor-support-badge" '
         f'aria-describedby="{tooltip_id}">'
-        f"{SUPPORT_ICON}<span>Vendor supported</span></button>"
+        f"{SUPPORT_ICON}<span>Vendor-supported</span></button>"
         f'<span class="driver-vendor-support-tooltip" id="{tooltip_id}" '
         f'role="{role}">{tooltip_html}</span></span>'
     )
