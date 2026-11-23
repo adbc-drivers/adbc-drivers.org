@@ -34,6 +34,7 @@ datafusion/index.md
 druid/index.md
 exasol/index.md
 firebolt/index.md
+db2/index.md
 mariadb/index.md
 motherduck/index.md
 mssql/index.md
