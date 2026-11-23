@@ -301,6 +301,9 @@ driver_header_links_config = {
     "datafusion": [
         {"url": "https://github.com/adbc-drivers/datafusion", "label": "GitHub"},
     ],
+    "db2": [
+        {"url": "https://github.com/adbc-drivers/db2", "label": "GitHub"},
+    ],
     "druid": [
         {"url": "https://github.com/adbc-drivers/druid", "label": "GitHub"},
     ],
