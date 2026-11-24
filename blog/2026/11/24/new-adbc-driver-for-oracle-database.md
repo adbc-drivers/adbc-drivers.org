@@ -62,4 +62,4 @@ Bug reports and feature requests are welcome through [GitHub Issues in the `orac
 
 ---
 
-Note that Columnar previously provided a driver for Oracle Database built on the Oracle Instant Client. That driver is still available from the dbc CDN as version 0.7.1, but will no longer receive updates, and it is recommended to use the official driver described here and in the documentation. We are actively working on full feature parity in the new driver. Unlike the legacy driver, the official driver is fully standalone and does not require the Oracle Instant Client.
+Note that Columnar previously provided a driver for Oracle Database, built on the Oracle Instant Client, in the private driver registry (requiring a license). For the convenience of existing users, that driver has been made available from the dbc CDN, sans license requirement, as version 0.7.1. It will no longer receive updates, and it is recommended to migrate to/start with the official driver as soon as possible. We are actively working on full feature parity in the new driver. Unlike the legacy driver, the official driver is fully standalone and does not require the Oracle Instant Client.
