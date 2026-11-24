@@ -325,6 +325,9 @@ driver_header_links_config = {
     "mysql": [
         {"url": "https://github.com/adbc-drivers/mysql", "label": "GitHub"},
     ],
+    "oracle": [
+        {"url": "https://github.com/adbc-drivers/oracle", "label": "GitHub"},
+    ],
     "presto": [
         {"url": "https://github.com/adbc-drivers/presto", "label": "GitHub"},
     ],
