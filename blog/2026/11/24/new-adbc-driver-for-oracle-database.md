@@ -47,10 +47,9 @@ from adbc_driver_manager import dbapi
 
 with (
     dbapi.connect(
-        driver="motherduck",
+        driver="oracle",
         db_kwargs={
-            "uri": "motherduck:///my_db",
-            "motherduck.region": "us-east-1",
+            "uri": "oracle://user:password@localhost:1521/FREEPDB1",
         },
     ) as con,
     con.cursor() as cursor,
@@ -63,4 +62,4 @@ Bug reports and feature requests are welcome through [GitHub Issues in the `orac
 
 ---
 
-Note that Columnar previously provided a driver for Oracle Database built on the Oracle Instant Client. That driver is still available from the dbc CDN as version 0.7.1, but will no longer receive updates, and it is recommended to use the official driver described here and in the documentation. We are actively working on full feature parity in the new driver.
+Note that Columnar previously provided a driver for Oracle Database built on the Oracle Instant Client. That driver is still available from the dbc CDN as version 0.7.1, but will no longer receive updates, and it is recommended to use the official driver described here and in the documentation. We are actively working on full feature parity in the new driver. Unlike the legacy driver, the official driver is fully standalone and does not require the Oracle Instant Client.
