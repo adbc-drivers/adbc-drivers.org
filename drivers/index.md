@@ -31,12 +31,12 @@ Documentation for the following ADBC Driver Foundry drivers is hosted on this we
 - {doc}`druid/index`
 - {doc}`exasol/index` {vendor-supported}`exasol`
 - {doc}`firebolt/index` {vendor-supported}`firebolt`
-- {doc}`db2/index`
+- {doc}`db2/index` {vendor-supported}`db2`
 - {doc}`mariadb/index` {vendor-supported}`mariadb`
 - {doc}`motherduck/index` {vendor-supported}`motherduck`
 - {doc}`mssql/index`
 - {doc}`mysql/index`
-- {doc}`oracle/index`
+- {doc}`oracle/index` {vendor-supported}`oracle`
 - {doc}`presto/index`
 - {doc}`quack/index`
 - {doc}`redshift/index`
