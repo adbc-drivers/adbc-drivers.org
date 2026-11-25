@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Add vendor support badges with per-driver tooltips to driver headings.
+"""Add vendor support badges with per-driver tooltips beside driver headings.
 
 Configure tooltip text by driver slug in ``driver_vendor_support_config``.
 Descriptions can be plain text or a mapping with text, link_text, and link_url.
@@ -59,7 +59,7 @@ def _badge(driver: str, tooltip: str | dict[str, str], serial: int) -> nodes.raw
 
 
 class AddDriverVendorSupport(SphinxPostTransform):
-    """Append the badge after the driver landing title has been styled."""
+    """Place the badge beside the rendered driver title."""
 
     default_priority = 10
     formats = ("html",)
@@ -75,9 +75,18 @@ class AddDriverVendorSupport(SphinxPostTransform):
             return
 
         title = next(iter(self.document.findall(nodes.title)), None)
-        if title is not None:
-            title += nodes.Text(" ")
-            title += _badge(driver, tooltip, self.env.new_serialno("vendor-support"))
+        if title is None:
+            return
+
+        # Keep the space before the badge in the heading's text run.
+        title += nodes.Text(" ")
+        badge = _badge(driver, tooltip, self.env.new_serialno("vendor-support"))
+
+        # Sphinx uses the title's section parent for its level and permalink.
+        # Group the rendered HTML while preserving that relationship.
+        start = nodes.raw("", '<div class="driver-title-with-support">', format="html")
+        end = nodes.raw("", "</div>", format="html")
+        title.parent.replace(title, [start, title, badge, end])
 
 
 class VendorSupportedRole(SphinxRole):
