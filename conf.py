@@ -327,7 +327,8 @@ driver_vendor_support_config = {
         ),
         "link_text": "ADBC driver for Db2",
         "link_url": (
-            "https://adbc-drivers.org/blog/2026/11/24/new-adbc-driver-for-ibm-db2/"
+            "https://community.ibm.com/community/user/blogs/awanish-gupta-1/2026/11/23/"
+            "querying-ibm-db2-at-arrow-speed-introducing-the-native-adbc-driver"
         ),
     },
     "exasol": {
@@ -357,17 +358,10 @@ driver_vendor_support_config = {
             "https://motherduck.com/docs/integrations/language-apis-and-drivers/adbc/"
         ),
     },
-    "oracle": {
-        "text": (
-            "Oracle developed the ADBC driver for Oracle Database with support "
-            "from the ADBC Driver Foundry."
-        ),
-        "link_text": "ADBC driver for Oracle Database",
-        "link_url": (
-            "https://adbc-drivers.org/blog/2026/11/24/"
-            "new-adbc-driver-for-oracle-database/"
-        ),
-    },
+    "oracle": (
+        "Oracle developed the ADBC driver for Oracle Database with support "
+        "from the ADBC Driver Foundry."
+    ),
 }
 
 # -- Driver Header Links Extension Configuration -----------------------------
