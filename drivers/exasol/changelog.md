@@ -19,6 +19,17 @@
 
 For full details, see the [upstream changelog](https://github.com/exasol-labs/exarrow-rs/blob/main/CHANGELOG.md).
 
+
+## v0.34.2 (2026-11-19)
+
+New Features:
+
+- Fetch batches as they are read instead of buffering the entire result set in memory up front
+
+Fixes:
+
+- `certificate_fingerprint` also verifies the server's TLS handshake signature
+
 ## v0.32.0 (2026-11-06)
 
 Fixes:
