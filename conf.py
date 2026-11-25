@@ -341,6 +341,13 @@ driver_vendor_support_config = {
         "link_text": "ADBC driver",
         "link_url": "https://docs.firebolt.io/overview#at-a-glance",
     },
+    "kinetica": {
+        "text": (
+            "The Kinetica ADBC driver is developed and maintained by Kinetica DB, Inc."
+        ),
+        "link_text": "Kinetica ADBC driver",
+        "link_url": "https://github.com/adbc-drivers/kinetica#readme",
+    },
     "mariadb": {
         "text": (
             "MariaDB’s ADBC driver is maintained by the ADBC Driver Foundry "
@@ -396,6 +403,9 @@ driver_header_links_config = {
     ],
     "firebolt": [
         {"url": "https://github.com/adbc-drivers/firebolt", "label": "GitHub"},
+    ],
+    "kinetica": [
+        {"url": "https://github.com/adbc-drivers/kinetica", "label": "GitHub"},
     ],
     "mariadb": [
         {"url": "https://github.com/adbc-drivers/mariadb", "label": "GitHub"},

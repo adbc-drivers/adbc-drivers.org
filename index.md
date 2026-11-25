@@ -271,6 +271,25 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/kinetica/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**Kinetica**
+:::{image} _static/driver_icons/color/light_mode/kinetica.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/kinetica.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: drivers/mariadb/index
 :link-type: doc
 :class-body: sd-card-with-icon

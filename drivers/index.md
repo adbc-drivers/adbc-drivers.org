@@ -32,6 +32,7 @@ Documentation for the following ADBC Driver Foundry drivers is hosted on this we
 - {doc}`exasol/index` {vendor-supported}`exasol`
 - {doc}`firebolt/index` {vendor-supported}`firebolt`
 - {doc}`db2/index` {vendor-supported}`db2`
+- {doc}`kinetica/index` {vendor-supported}`kinetica`
 - {doc}`mariadb/index` {vendor-supported}`mariadb`
 - {doc}`motherduck/index` {vendor-supported}`motherduck`
 - {doc}`mssql/index`
@@ -58,6 +59,7 @@ druid/index.md
 exasol/index.md
 firebolt/index.md
 db2/index.md
+kinetica/index.md
 mariadb/index.md
 motherduck/index.md
 mssql/index.md

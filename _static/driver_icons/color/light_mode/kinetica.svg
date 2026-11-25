@@ -1,0 +1,12 @@
+<!-- Kinetica logo mark from https://www.kinetica.com/favicon.svg. Kinetica logos are trademarks of Kinetica DB, Inc. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="38.18 3.81 14.5 14.5" fill="none">
+  <path d="M52.4994 9.73438H38.3594V12.4644H52.4994V9.73438Z" fill="url(#brand-gradient)"/>
+  <path d="M52.4994 6.86281H38.3594V4.90281C38.3594 4.90281 38.9894 4.13281 45.4294 4.13281C51.8694 4.13281 52.4994 4.90281 52.4994 4.90281V6.86281Z" fill="url(#brand-gradient)"/>
+  <path d="M38.3594 15.2578H52.4994V17.2178C52.4994 17.2178 51.8694 17.9878 45.4294 17.9878C38.9894 17.9878 38.3594 17.2178 38.3594 17.2178V15.2578Z" fill="url(#brand-gradient)"/>
+  <defs>
+    <linearGradient id="brand-gradient" gradientUnits="userSpaceOnUse" x1="0" y1="4" x2="0" y2="18">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+  </defs>
+</svg>
