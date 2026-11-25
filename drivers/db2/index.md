@@ -30,6 +30,7 @@ v0.1.0-beta.1 <v0.1.0-beta.1.md>
 
 This driver provides access to IBM Db2 through the Db2 CLI.
 
+(driver-db2-installing-clidriver)=
 ## Installing the Db2 CLI driver
 
 The driver needs IBM's Db2 CLI driver (the "clidriver") at run time. Download it
