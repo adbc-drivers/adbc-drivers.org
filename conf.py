@@ -313,6 +313,9 @@ driver_header_links_config = {
     "firebolt": [
         {"url": "https://github.com/adbc-drivers/firebolt", "label": "GitHub"},
     ],
+    "kinetica": [
+        {"url": "https://github.com/adbc-drivers/kinetica", "label": "GitHub"},
+    ],
     "mariadb": [
         {"url": "https://github.com/adbc-drivers/mariadb", "label": "GitHub"},
     ],
