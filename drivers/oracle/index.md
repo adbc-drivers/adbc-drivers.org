@@ -42,6 +42,8 @@ This is documentation for a prerelease version.
 This driver provides access to [Oracle Database][oracle] (commonly referred to
 as just "Oracle").
 
+[oracle]: https://www.oracle.com/database/
+
 ## Installation & Quickstart
 
 The driver can be installed with [dbc](https://docs.columnar.tech/dbc):
