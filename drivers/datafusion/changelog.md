@@ -17,49 +17,60 @@
 
 # Changelog for ADBC Driver for Apache DataFusion
 
+## v0.29.0 (2026-11-25)
+
+### New Features
+
+- Update DataFusion to 55.3
+- Add build for Windows/arm64
+
+### Bug Fixes
+
+- Update dependencies to pick up CVE fixes
+
 ## v0.28.0 (2026-10-21)
 
-## New Features
+### New Features
 
 - Bump DataFusion to 55.2
 
-## Bug Fixes
+### Bug Fixes
 
 - Preserve original column ordinal positions in `GetObjects` when filtering columns.
 - Fix bulk-ingestion appends for table, schema, and catalog names containing mixed case or special characters.
 
 ## v0.27.0 (2026-09-02)
 
-## New Features
+### New Features
 
 - Bump DataFusion to 55
 
-## Bug Fixes
+### Bug Fixes
 
 - Cast bind parameters to the expected type
 
 ## v0.26.0 (2026-07-07)
 
-## New Features
+### New Features
 
 - Implement `ExecutePartitions` and `ReadPartition`
 
 ## v0.25.0 (2026-06-08)
 
-## New Features
+### New Features
 
 - Enable direct querying of HTTP/S3/etc. URIs and local files/directories in the same way as `datafusion-cli`
 
 ## v0.24.1 (2026-05-27)
 
-## New Features
+### New Features
 
 - Support bind parameters
 - Enable ADBC ExecuteSchema, GetTableSchema, Prepare API calls
 - Improve error messages
 - Add support for bulk ingest modes
 
-## Bug Fixes
+### Bug Fixes
 
 - Share a context between connections
 - Stream results instead of materializing them
