@@ -328,6 +328,25 @@ Drivers available on [dbc](https://columnar.tech/dbc/) from the ADBC Driver Foun
 ::::
 
 ::::{grid-item-card}
+:link: drivers/oracle/index
+:link-type: doc
+:class-body: sd-card-with-icon
+**Oracle Database**
+:::{image} _static/driver_icons/color/light_mode/oracle.svg
+:class: only-light
+:width: 24px
+:align: center
+:alt:
+:::
+:::{image} _static/driver_icons/color/dark_mode/oracle.svg
+:class: only-dark
+:width: 24px
+:align: center
+:alt:
+:::
+::::
+
+::::{grid-item-card}
 :link: drivers/presto/index
 :link-type: doc
 :class-body: sd-card-with-icon
@@ -506,7 +525,7 @@ Other drivers available on dbc from across the ADBC-verse:
 ::::{grid-item-card}
 :link: https://docs.columnar.tech/drivers/oracle
 :class-body: sd-card-center
-**Oracle Database**
+**Oracle Database** (legacy)
 ::::
 
 ::::{grid-item-card}
